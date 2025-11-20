@@ -1,184 +1,110 @@
-// src/screens/WisdomDetailScreen.tsx
-import React, { useEffect, useRef } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  TouchableOpacity,
-  Animated,
-} from 'react-native';
-import { useRoute, useNavigation } from '@react-navigation/native';
-import { BlurView } from 'expo-blur';
+import React from 'react';
+import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, StatusBar, Dimensions } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
-type WisdomItem = {
-  id: string;
-  tradition: string;
-  lineage?: string;
-  original_transliteration: string;
-  translation_en: string;
-  source: string;
-  theme: string;
-  is_core: boolean;
-};
+const { width, height } = Dimensions.get('window');
 
-type RouteParams = {
-  wisdom: WisdomItem;
-};
-
-const getBackgroundForTradition = (tradition: string) => {
-  const t = tradition.toLowerCase();
-
-  if (t.includes('sikh')) {
-    return require('../../assets/wisdom/quotes_bg_03.png');
-  }
-  if (t.includes('buddh')) {
-    return require('../../assets/wisdom/quotes_bg_05.png');
-  }
-  if (t.includes('jain')) {
-    return require('../../assets/wisdom/quotes_bg_07.png');
-  }
-  if (t.includes('zen')) {
-    return require('../../assets/wisdom/quotes_bg_10.png');
-  }
-  // default: Hindu / Vedanta / general
-  return require('../../assets/wisdom/quotes_bg_01.png');
-};
-
-export const WisdomDetailScreen: React.FC = () => {
-  const route = useRoute();
+export const WisdomDetailScreen = () => {
   const navigation = useNavigation();
-  const { wisdom } = route.params as RouteParams;
+  const route = useRoute();
+  
+  const { wisdom } = route.params as any || {};
+  if (!wisdom) return null;
 
-  const fadeAnim = useRef(new Animated.Value(0)).current;
+  // --- THE NEW IMAGE LOGIC (Same as Library) ---
+  const getBackgroundImage = () => {
+    const t = wisdom.tradition.toLowerCase();
+    
+    // 1. Community
+    if (t.includes('sikh')) return require('../../assets/images/community/community_sikh.jpg');
+    if (t.includes('jain')) return require('../../assets/images/community/community_jain.jpg');
+    if (t.includes('gujarati')) return require('../../assets/images/community/community_gujarati.jpg');
+    if (t.includes('himachal')) return require('../../assets/images/community/community_himachal.jpg');
 
-  useEffect(() => {
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 350,
-      useNativeDriver: true,
-    }).start();
-  }, [fadeAnim]);
+    // 2. Quotes
+    if (t.includes('zen') || t.includes('buddh')) {
+        return require('../../assets/images/quotes/quotes_bg_01.jpg');
+    }
 
-  const bgSource = getBackgroundForTradition(wisdom.tradition);
+    // 3. Splash (Fallback)
+    // You can randomly pick one here if you want variety later:
+    // const splashes = [require(...splash_01.jpg), require(...splash_02.jpg)]
+    return require('../../assets/images/splash/splash_01.jpg');
+  };
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={bgSource} style={styles.bgImage}>
-        <View style={styles.overlay} />
-
-        {/* Close button */}
-        <View style={styles.topBar}>
-          <TouchableOpacity
+      <StatusBar barStyle="light-content" />
+      
+      <ImageBackground 
+        source={getBackgroundImage()} 
+        style={styles.bgImage}
+        resizeMode="cover"
+      >
+        <LinearGradient
+          colors={['rgba(2,6,23,0.1)', 'rgba(2,6,23,0.6)', '#020617']}
+          locations={[0, 0.6, 1]}
+          style={styles.gradient}
+        >
+          <TouchableOpacity 
+            style={styles.closeBtn} 
             onPress={() => navigation.goBack()}
-            style={styles.closePill}
+            hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
           >
-            <Text style={styles.closeText}>Close</Text>
+            <Ionicons name="chevron-down" size={32} color="#f8fafc" />
           </TouchableOpacity>
-        </View>
 
-        {/* Glass card with verse */}
-        <Animated.View style={[styles.glassWrapper, { opacity: fadeAnim }]}>
-          <BlurView intensity={80} tint="dark" style={styles.glassCard}>
-            <Text style={styles.traditionLabel}>
-              {wisdom.tradition}
-              {wisdom.lineage ? ` • ${wisdom.lineage}` : ''}
-            </Text>
+          <View style={styles.contentContainer}>
+            <View style={styles.metaRow}>
+              <Text style={styles.tradition}>
+                {wisdom.tradition.toUpperCase()}
+              </Text>
+              {wisdom.lineage && (
+                <Text style={styles.lineage}> • {wisdom.lineage.toUpperCase()}</Text>
+              )}
+            </View>
 
-            <Text style={styles.originalText}>
+            <Text style={styles.original}>
               {wisdom.original_transliteration}
             </Text>
 
-            <Text style={styles.translationText}>
-              {wisdom.translation_en}
+            <View style={styles.divider} />
+
+            <Text style={styles.translation}>
+              "{wisdom.translation_en}"
             </Text>
 
-            <Text style={styles.sourceText}>— {wisdom.source}</Text>
+            <Text style={styles.source}>
+              — {wisdom.source}
+            </Text>
 
-            {wisdom.theme ? (
-              <Text style={styles.themeText}>{wisdom.theme}</Text>
-            ) : null}
-          </BlurView>
-        </Animated.View>
+            {wisdom.theme && (
+              <View style={styles.themeBadge}>
+                <Text style={styles.themeText}>{wisdom.theme}</Text>
+              </View>
+            )}
+          </View>
+        </LinearGradient>
       </ImageBackground>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#020617',
-  },
-  bgImage: {
-    flex: 1,
-  },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(3, 7, 18, 0.55)',
-  },
-  topBar: {
-    paddingTop: 54,
-    paddingHorizontal: 20,
-    alignItems: 'flex-start',
-  },
-  closePill: {
-    paddingHorizontal: 14,
-    paddingVertical: 6,
-    borderRadius: 999,
-    backgroundColor: 'rgba(15, 23, 42, 0.85)',
-    borderWidth: 1,
-    borderColor: 'rgba(148, 163, 184, 0.6)',
-  },
-  closeText: {
-    color: '#e5e7eb',
-    fontSize: 13,
-    fontFamily: 'Playfair_Regular',
-  },
-  glassWrapper: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 22,
-    paddingBottom: 80,
-  },
-  glassCard: {
-    borderRadius: 26,
-    paddingHorizontal: 22,
-    paddingVertical: 24,
-    borderWidth: 1,
-    borderColor: 'rgba(191, 219, 254, 0.6)',
-    backgroundColor: 'rgba(15, 23, 42, 0.83)',
-  },
-  traditionLabel: {
-    fontSize: 13,
-    color: '#a5b4fc',
-    textTransform: 'uppercase',
-    letterSpacing: 1.2,
-    marginBottom: 10,
-    fontFamily: 'Playfair_SemiBold',
-  },
-  originalText: {
-    fontSize: 15,
-    color: '#e5e7eb',
-    fontFamily: 'Playfair_Regular',
-    marginBottom: 16,
-  },
-  translationText: {
-    fontSize: 18,
-    lineHeight: 26,
-    color: '#f9fafb',
-    fontFamily: 'Playfair_Bold',
-    marginBottom: 16,
-  },
-  sourceText: {
-    fontSize: 14,
-    color: '#d1d5db',
-    fontFamily: 'Playfair_Regular',
-    marginBottom: 4,
-  },
-  themeText: {
-    fontSize: 13,
-    color: '#fbbf24',
-    fontFamily: 'Playfair_SemiBold',
-  },
+  container: { flex: 1, backgroundColor: '#020617' },
+  bgImage: { width, height, flex: 1 },
+  gradient: { flex: 1, justifyContent: 'space-between', padding: 24 },
+  closeBtn: { marginTop: 60, alignSelf: 'flex-start', padding: 8, backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 50 },
+  contentContainer: { paddingBottom: 50 },
+  metaRow: { flexDirection: 'row', marginBottom: 16, opacity: 0.9 },
+  tradition: { color: '#fbbf24', fontSize: 12, fontFamily: 'Playfair_Bold', letterSpacing: 2 },
+  lineage: { color: '#cbd5e1', fontSize: 12, fontFamily: 'Playfair_Regular', letterSpacing: 1 },
+  original: { fontSize: 22, color: '#e2e8f0', fontFamily: 'Playfair_Medium', fontStyle: 'italic', marginBottom: 24, lineHeight: 34 },
+  divider: { height: 1, width: 60, backgroundColor: '#fbbf24', marginBottom: 24, opacity: 0.6 },
+  translation: { fontSize: 24, color: '#ffffff', fontFamily: 'Playfair_Bold', lineHeight: 34, marginBottom: 20 },
+  source: { fontSize: 15, color: '#94a3b8', fontFamily: 'Playfair_Regular', fontStyle: 'italic', marginBottom: 32 },
+  themeBadge: { alignSelf: 'flex-start', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, borderWidth: 1, borderColor: 'rgba(251, 191, 36, 0.3)', backgroundColor: 'rgba(251, 191, 36, 0.1)' },
+  themeText: { color: '#fbbf24', fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }
 });

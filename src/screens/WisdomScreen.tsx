@@ -1,18 +1,10 @@
-// src/screens/WisdomScreen.tsx
 import React, { useMemo, useState } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity,
-  ScrollView,
-  ImageBackground,
+  View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView, ImageBackground, Dimensions
 } from 'react-native';
-import { BlurView } from 'expo-blur';
 import { useNavigation } from '@react-navigation/native';
-
-import wisdomData from '../data/wisdom_core_50.json';
+import { usePreferencesStore, isTraditionEnabled } from '../store/preferencesStore';
+import wisdomDataRaw from '../data/wisdom_core_50.json';
 
 type WisdomItem = {
   id: string;
@@ -21,62 +13,57 @@ type WisdomItem = {
   original_transliteration: string;
   translation_en: string;
   source: string;
-  theme?: string;
-  is_core?: boolean;
+  theme: string;
+  is_core: boolean;
 };
 
-const typedWisdom = wisdomData as WisdomItem[];
+const TRADITIONS = ['All', 'Hindu', 'Sikh', 'Buddhist', 'Jain', 'Zen'] as const;
+const { width } = Dimensions.get('window');
 
-const TRADITION_FILTERS = ['All', 'Hindu', 'Sikh', 'Buddhist', 'Jain', 'Zen'];
-
+// --- THE NEW IMAGE LOGIC ---
 const getBackgroundForTradition = (tradition: string) => {
   const t = tradition.toLowerCase();
 
-  // These paths expect your images at assets/images/quotes/...
-  if (t.includes('sikh')) {
-    return require('../../assets/images/quotes/quotes_bg_03.png');
+  // 1. Check COMMUNITY folder (Specific identities)
+  if (t.includes('sikh')) return require('../../assets/images/community/community_sikh.jpg');
+  if (t.includes('jain')) return require('../../assets/images/community/community_jain.jpg');
+  if (t.includes('gujarati')) return require('../../assets/images/community/community_gujarati.jpg');
+  if (t.includes('himachal')) return require('../../assets/images/community/community_himachal.jpg');
+
+  // 2. Check QUOTES folder (Thematic matches)
+  // Assuming you might add specific quote backgrounds later, we use your existing one for now
+  if (t.includes('zen') || t.includes('buddh')) {
+     return require('../../assets/images/quotes/quotes_bg_01.jpg'); 
   }
-  if (t.includes('buddh')) {
-    return require('../../assets/images/quotes/quotes_bg_05.png');
-  }
-  if (t.includes('jain')) {
-    return require('../../assets/images/quotes/quotes_bg_07.png');
-  }
-  if (t.includes('zen')) {
-    return require('../../assets/images/quotes/quotes_bg_10.png');
-  }
-  // default (Hindu / Vedanta / other)
-  return require('../../assets/images/quotes/quotes_bg_01.png');
+
+  // 3. Default to SPLASH folder (The "Base" screens)
+  // We can rotate these or pick a specific one for Hindu/General
+  return require('../../assets/images/splash/splash_01.jpg'); 
 };
 
 export const WisdomScreen: React.FC = () => {
-  const [selectedFilter, setSelectedFilter] = useState<string>('All');
   const navigation = useNavigation<any>();
+  const enabledTraditions = usePreferencesStore((s) => s.enabledTraditions);
+  const [activeFilter, setActiveFilter] = useState<(typeof TRADITIONS)[number]>('All');
+  const wisdomData = wisdomDataRaw as WisdomItem[];
 
-  const filteredWisdom = useMemo(() => {
-    if (selectedFilter === 'All') return typedWisdom;
-
-    const key = selectedFilter.toLowerCase();
-    return typedWisdom.filter((w) =>
-      w.tradition.toLowerCase().includes(key)
+  const filteredData = useMemo(() => {
+    let base = wisdomData.filter((item) => isTraditionEnabled(item.tradition));
+    if (activeFilter === 'All') return base;
+    return base.filter((item) =>
+      item.tradition.toLowerCase().includes(activeFilter.toLowerCase()),
     );
-  }, [selectedFilter]);
+  }, [wisdomData, activeFilter, enabledTraditions]);
 
-  const renderChip = (label: string) => {
-    const active = selectedFilter === label;
+  const renderChip = (label: (typeof TRADITIONS)[number]) => {
+    const isActive = activeFilter === label;
     return (
       <TouchableOpacity
         key={label}
-        onPress={() => setSelectedFilter(label)}
-        activeOpacity={0.8}
-        style={[
-          styles.chip,
-          active && styles.chipActive,
-        ]}
+        onPress={() => setActiveFilter(label)}
+        style={[styles.chip, isActive && styles.chipActive]}
       >
-        <Text style={[styles.chipText, active && styles.chipTextActive]}>
-          {label}
-        </Text>
+        <Text style={[styles.chipText, isActive && styles.chipTextActive]}>{label}</Text>
       </TouchableOpacity>
     );
   };
@@ -86,32 +73,23 @@ export const WisdomScreen: React.FC = () => {
 
     return (
       <TouchableOpacity
-        activeOpacity={0.85}
+        activeOpacity={0.9}
         onPress={() => navigation.navigate('WisdomDetail', { wisdom: item })}
+        style={styles.cardWrapper}
       >
-        <ImageBackground
-          source={bgSource}
-          style={styles.cardBackground}
-          imageStyle={styles.cardImage}
-        >
+        <ImageBackground source={bgSource} style={styles.cardBg} resizeMode="cover">
           <View style={styles.cardOverlay} />
-
-          <BlurView intensity={45} tint="dark" style={styles.cardGlass}>
-            <Text style={styles.cardTradition}>
+          <View style={styles.cardInner}>
+            <Text style={styles.traditionLabel}>
               {item.tradition.toUpperCase()}
-              {item.lineage ? ` • ${item.lineage}` : ''}
+              {item.lineage ? ` • ${item.lineage.toUpperCase()}` : ''}
             </Text>
-
-            <Text style={styles.cardTranslation}>
-              {item.translation_en}
-            </Text>
-
-            <Text style={styles.cardSource}>— {item.source}</Text>
-
-            {item.theme ? (
-              <Text style={styles.cardTheme}>{item.theme}</Text>
+            {item.original_transliteration ? (
+              <Text style={styles.originalText} numberOfLines={2}>{item.original_transliteration}</Text>
             ) : null}
-          </BlurView>
+            <Text style={styles.translationText} numberOfLines={3}>{item.translation_en}</Text>
+            <Text style={styles.sourceText}>— {item.source}</Text>
+          </View>
         </ImageBackground>
       </TouchableOpacity>
     );
@@ -119,136 +97,40 @@ export const WisdomScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.screenTitle}>Wisdom Library</Text>
-        <Text style={styles.screenSubtitle}>
-          Browse core verses across traditions.
-        </Text>
-      </View>
-
-      {/* Filter chips */}
-      <View style={styles.chipRowWrapper}>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.chipRow}
-        >
-          {TRADITION_FILTERS.map(renderChip)}
+      <Text style={styles.title}>Wisdom Library</Text>
+      <Text style={styles.subtitle}>Browse timeless teachings.</Text>
+      <View style={{ height: 50 }}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
+          {TRADITIONS.map(renderChip)}
         </ScrollView>
       </View>
-
       <FlatList
-        data={filteredWisdom}
+        data={filteredData}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.listContent}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#020617',
-    paddingTop: 56,
-  },
-  header: {
-    paddingHorizontal: 20,
-    marginBottom: 8,
-  },
-  screenTitle: {
-    fontSize: 28,
-    color: '#fbbf24',
-    fontFamily: 'Playfair_Bold',
-  },
-  screenSubtitle: {
-    marginTop: 6,
-    fontSize: 15,
-    color: '#e5e7eb',
-    fontFamily: 'Playfair_Regular',
-  },
-  chipRowWrapper: {
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    paddingBottom: 6,
-  },
-  chipRow: {
-    alignItems: 'center',
-    paddingRight: 8,
-  },
-  chip: {
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    borderRadius: 999,
-    borderWidth: 1,
-    borderColor: 'rgba(148, 163, 184, 0.6)',
-    marginRight: 8,
-    backgroundColor: 'rgba(15, 23, 42, 0.9)',
-  },
-  chipActive: {
-    backgroundColor: 'rgba(251, 191, 36, 0.18)',
-    borderColor: 'rgba(251, 191, 36, 0.85)',
-  },
-  chipText: {
-    fontSize: 13,
-    color: '#e5e7eb',
-    fontFamily: 'Playfair_Regular',
-  },
-  chipTextActive: {
-    color: '#fef3c7',
-    fontFamily: 'Playfair_SemiBold',
-  },
-  listContent: {
-    paddingHorizontal: 16,
-    paddingBottom: 32,
-  },
-  cardBackground: {
-    marginBottom: 18,
-  },
-  cardImage: {
-    borderRadius: 24,
-  },
-  cardOverlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(3, 7, 18, 0.45)',
-    borderRadius: 24,
-  },
-  cardGlass: {
-    borderRadius: 24,
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-    borderWidth: 1,
-    borderColor: 'rgba(191, 219, 254, 0.45)',
-    backgroundColor: 'rgba(15, 23, 42, 0.72)',
-  },
-  cardTradition: {
-    fontSize: 13,
-    letterSpacing: 1.1,
-    textTransform: 'uppercase',
-    color: '#a5b4fc',
-    marginBottom: 8,
-    fontFamily: 'Playfair_SemiBold',
-  },
-  cardTranslation: {
-    fontSize: 18,
-    lineHeight: 26,
-    color: '#f9fafb',
-    fontFamily: 'Playfair_Bold',
-    marginBottom: 10,
-  },
-  cardSource: {
-    fontSize: 14,
-    color: '#e5e7eb',
-    fontFamily: 'Playfair_Regular',
-    marginBottom: 4,
-  },
-  cardTheme: {
-    fontSize: 13,
-    color: '#fbbf24',
-    fontFamily: 'Playfair_SemiBold',
-  },
+  container: { flex: 1, backgroundColor: '#020617', paddingTop: 60 },
+  title: { fontSize: 28, color: '#fbbf24', fontFamily: 'Playfair_Bold', marginBottom: 4, paddingHorizontal: 20 },
+  subtitle: { fontSize: 15, color: '#94a3b8', fontFamily: 'System', marginBottom: 16, paddingHorizontal: 20 },
+  chipRow: { paddingHorizontal: 20, alignItems: 'center' },
+  chip: { paddingHorizontal: 16, paddingVertical: 8, borderRadius: 20, borderWidth: 1, borderColor: 'rgba(148, 163, 184, 0.4)', marginRight: 8, backgroundColor: 'rgba(15, 23, 42, 0.8)' },
+  chipActive: { backgroundColor: 'rgba(251, 191, 36, 0.15)', borderColor: '#fbbf24' },
+  chipText: { fontSize: 14, color: '#cbd5e1' },
+  chipTextActive: { color: '#fbbf24', fontWeight: '600' },
+  listContent: { paddingTop: 10, paddingBottom: 100, paddingHorizontal: 20 },
+  cardWrapper: { marginBottom: 20, borderRadius: 24, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
+  cardBg: { width: '100%' },
+  cardOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(2, 6, 23, 0.7)' },
+  cardInner: { padding: 24 },
+  traditionLabel: { fontSize: 12, color: '#fbbf24', letterSpacing: 1.5, textTransform: 'uppercase', fontFamily: 'Playfair_SemiBold', marginBottom: 12 },
+  originalText: { fontSize: 16, color: '#94a3b8', fontFamily: 'Playfair_Regular', fontStyle: 'italic', marginBottom: 12, lineHeight: 24 },
+  translationText: { fontSize: 18, lineHeight: 28, color: '#f8fafc', fontFamily: 'Playfair_Medium', marginBottom: 12 },
+  sourceText: { fontSize: 14, color: '#cbd5e1', fontFamily: 'System', marginBottom: 8 },
 });
-
-export default WisdomScreen;

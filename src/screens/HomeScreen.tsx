@@ -1,19 +1,15 @@
-// src/screens/HomeScreen.tsx
 import React, { useMemo } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity,
-  ScrollView,
+  View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView, StatusBar, ImageBackground, Dimensions
 } from 'react-native';
-import { BlurView } from 'expo-blur';
+import { LinearGradient } from 'expo-linear-gradient'; // Import Gradient
 import { useNavigation } from '@react-navigation/native';
 
 import wisdomData from '../data/wisdom_core_50.json';
 import eventsDataRaw from '../data/calendar/events_2025.json';
+import { usePreferencesStore, isTraditionEnabled } from '../store/preferencesStore';
 
+// --- Types ---
 type WisdomItem = {
   id: string;
   tradition: string;
@@ -21,216 +17,160 @@ type WisdomItem = {
   original_transliteration: string;
   translation_en: string;
   source: string;
-  theme?: string;
-  is_core?: boolean;
+  theme: string;
+  is_core: boolean;
 };
 
 type EventItem = {
+  id: string;
   date: string;
-  name: string;
+  title: string;
   faith: string;
-  category: string;
-  wisdom_tags?: string[];
+  type: string;
 };
 
-const typedWisdom = wisdomData as WisdomItem[];
+const { width, height } = Dimensions.get('window');
 
-// Be defensive in case the JSON is wrapped like { "events": [...] }
+// --- Data Logic ---
 const eventsData: EventItem[] = Array.isArray(eventsDataRaw)
   ? (eventsDataRaw as EventItem[])
-  : ((eventsDataRaw as any).events ?? []);
+  : ((eventsDataRaw as { events?: EventItem[] }).events ?? []);
+
+const formatDate = (iso: string) => {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+};
 
 export const HomeScreen: React.FC = () => {
   const navigation = useNavigation<any>();
+  const enabledTraditions = usePreferencesStore((state) => state.enabledTraditions);
 
-  // Pick the first "core" wisdom, otherwise fall back to first entry
-  const coreWisdom =
-    typedWisdom.find((w) => w.is_core) ?? (typedWisdom[0] as WisdomItem);
+  // --- Pick Background ---
+  // You can randomize this later: `splash_0${Math.floor(Math.random() * 7) + 1}.jpg`
+  const bgImage = require('../../assets/images/splash/splash_01.jpg'); 
+
+  const coreWisdom = useMemo(() => {
+    const all = (wisdomData as WisdomItem[]).filter((w) => w.is_core);
+    const filtered = all.filter((w) => isTraditionEnabled(w.tradition));
+    if (!filtered.length) return all[0];
+    const dayOfYear = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 1000 / 60 / 60 / 24);
+    return filtered[dayOfYear % filtered.length];
+  }, [enabledTraditions]);
 
   const upcomingEvents = useMemo(() => {
-    if (!eventsData || eventsData.length === 0) return [];
-
+    if (!eventsData || !eventsData.length) return [] as EventItem[];
     const today = new Date();
+    today.setHours(0,0,0,0);
+
     return eventsData
-      .slice()
       .filter((event) => {
         const d = new Date(event.date);
-        // keep today or later
-        return d >= new Date(
-          today.getFullYear(),
-          today.getMonth(),
-          today.getDate()
-        );
+        if (d < today) return false;
+        if (event.faith && !isTraditionEnabled(event.faith)) return false;
+        return true;
       })
-      .sort(
-        (a, b) =>
-          new Date(a.date).getTime() - new Date(b.date).getTime()
-      )
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
       .slice(0, 3);
-  }, []);
+  }, [enabledTraditions]);
 
   return (
     <View style={styles.container}>
-      <ScrollView
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Header */}
-        <View style={styles.header}>
-          <Text style={styles.appName}>Dharma</Text>
-          <Text style={styles.tagline}>A daily compass for the inner life</Text>
-        </View>
-
-        {/* Today's Wisdom – tappable glass card */}
-        <TouchableOpacity
-          activeOpacity={0.85}
-          onPress={() => navigation.navigate('WisdomDetail', { wisdom: coreWisdom })}
+      <StatusBar barStyle="light-content" />
+      
+      {/* 1. Background Image */}
+      <ImageBackground source={bgImage} style={styles.bg} resizeMode="cover">
+        
+        {/* 2. Gradient Overlay (Essential for text readability) */}
+        <LinearGradient 
+          colors={['rgba(2,6,23,0.3)', 'rgba(2,6,23,0.95)']} 
+          locations={[0, 0.7]}
+          style={styles.gradient}
         >
-          <BlurView intensity={40} tint="dark" style={styles.glassCard}>
-            <Text style={styles.sectionLabel}>TODAY’S WISDOM</Text>
-
-            <Text style={styles.wisdomText}>
-              {coreWisdom.translation_en}
-            </Text>
-
-            <Text style={styles.wisdomMeta}>
-              {coreWisdom.source} • {coreWisdom.tradition}
-            </Text>
-
-            {coreWisdom.original_transliteration ? (
-              <Text style={styles.wisdomOriginal}>
-                {coreWisdom.original_transliteration}
+          <ScrollView
+            contentContainerStyle={styles.scrollContent}
+            showsVerticalScrollIndicator={false}
+          >
+            <View style={styles.headerBlock}>
+              <Text style={styles.appTitle}>Dharma</Text>
+              <Text style={styles.appSubtitle}>
+                A daily compass for the inner life
               </Text>
-            ) : null}
-          </BlurView>
-        </TouchableOpacity>
+            </View>
 
-        {/* Coming Up – events list in a glass card */}
-        {upcomingEvents.length > 0 && (
-          <BlurView intensity={40} tint="dark" style={[styles.glassCard, styles.eventsCard]}>
-            <Text style={styles.sectionLabel}>COMING UP</Text>
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => navigation.navigate('WisdomDetail', { wisdom: coreWisdom })}
+              style={styles.cardWrapper}
+            >
+              {/* Added blur for glass effect on the card */}
+              <View style={styles.card}>
+                <Text style={styles.sectionLabel}>TODAY’S WISDOM</Text>
+                <Text style={styles.wisdomText}>{coreWisdom.translation_en}</Text>
+                <Text style={styles.wisdomMeta}>{coreWisdom.source} • {coreWisdom.tradition}</Text>
+                <Text style={styles.wisdomOriginal}>{coreWisdom.original_transliteration}</Text>
+              </View>
+            </TouchableOpacity>
 
-            <FlatList
-              scrollEnabled={false}
-              data={upcomingEvents}
-              keyExtractor={(item) => `${item.date}-${item.name}`}
-              renderItem={({ item }) => (
-                <View style={styles.eventRow}>
-                  <View style={styles.eventDateBlock}>
-                    <Text style={styles.eventDateText}>{item.date}</Text>
-                  </View>
-                  <View style={styles.eventTextBlock}>
-                    <Text style={styles.eventName}>{item.name}</Text>
-                    <Text style={styles.eventMeta}>
-                      {item.faith} • {item.category}
-                    </Text>
-                  </View>
-                </View>
-              )}
-              ItemSeparatorComponent={() => <View style={styles.eventDivider} />}
-            />
-          </BlurView>
-        )}
-      </ScrollView>
+            <View style={[styles.cardWrapper, { marginTop: 24 }]}>
+              <View style={styles.card}>
+                <Text style={styles.sectionLabel}>COMING UP</Text>
+                {upcomingEvents.length === 0 ? (
+                  <Text style={[styles.emptyText, { marginTop: 12 }]}>No upcoming events.</Text>
+                ) : (
+                  <FlatList
+                    data={upcomingEvents}
+                    keyExtractor={(item) => item.id || item.date + item.title}
+                    renderItem={({ item }) => (
+                      <View style={styles.eventRow}>
+                        <View style={styles.eventDateCol}>
+                          <Text style={styles.eventDate}>{formatDate(item.date)}</Text>
+                        </View>
+                        <View style={styles.eventTextCol}>
+                          <Text style={styles.eventTitle}>{item.name || item.title}</Text>
+                          <Text style={styles.eventMeta}>{item.faith} • {item.type || item.category}</Text>
+                        </View>
+                      </View>
+                    )}
+                    scrollEnabled={false}
+                    ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
+                    contentContainerStyle={{ marginTop: 12 }}
+                  />
+                )}
+              </View>
+            </View>
+          </ScrollView>
+        </LinearGradient>
+      </ImageBackground>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#020617', // deep navy
-  },
-  scrollContent: {
-    paddingHorizontal: 20,
-    paddingTop: 56,
-    paddingBottom: 32,
-  },
-  header: {
-    marginBottom: 28,
-  },
-  appName: {
-    fontSize: 40,
-    color: '#fbbf24', // saffron gold
-    fontFamily: 'Playfair_Bold',
-  },
-  tagline: {
-    marginTop: 8,
-    fontSize: 16,
-    color: '#e5e7eb',
-    fontFamily: 'Playfair_Regular',
-  },
-  glassCard: {
-    borderRadius: 26,
-    paddingHorizontal: 22,
-    paddingVertical: 22,
-    marginBottom: 24,
-    borderWidth: 1,
-    borderColor: 'rgba(191, 219, 254, 0.35)',
-    backgroundColor: 'rgba(15, 23, 42, 0.55)',
+  container: { flex: 1, backgroundColor: '#020617' },
+  bg: { flex: 1, width, height },
+  gradient: { flex: 1 },
+  scrollContent: { paddingTop: 60, paddingHorizontal: 20, paddingBottom: 100 },
+  headerBlock: { marginBottom: 26 },
+  appTitle: { fontSize: 36, color: '#fbbf24', fontFamily: 'Playfair_Bold' },
+  appSubtitle: { marginTop: 6, fontSize: 16, color: '#e2e8f0', fontFamily: 'Playfair_Regular', opacity: 0.9 },
+  cardWrapper: {
+    borderRadius: 24,
     overflow: 'hidden',
+    backgroundColor: 'rgba(15, 23, 42, 0.6)', // More transparent to show background
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.15)',
   },
-  eventsCard: {
-    marginTop: 4,
-  },
-  sectionLabel: {
-    fontSize: 14,
-    letterSpacing: 1.2,
-    textTransform: 'uppercase',
-    color: '#a5b4fc',
-    marginBottom: 10,
-    fontFamily: 'Playfair_SemiBold',
-  },
-  wisdomText: {
-    fontSize: 22,
-    lineHeight: 30,
-    color: '#f9fafb',
-    fontFamily: 'Playfair_Bold',
-    marginBottom: 10,
-  },
-  wisdomMeta: {
-    fontSize: 14,
-    color: '#e5e7eb',
-    fontFamily: 'Playfair_Regular',
-    marginBottom: 6,
-  },
-  wisdomOriginal: {
-    fontSize: 14,
-    color: '#c4b5fd',
-    fontFamily: 'Playfair_Regular',
-  },
-  eventRow: {
-    flexDirection: 'row',
-    paddingVertical: 10,
-  },
-  eventDateBlock: {
-    width: 96,
-    paddingRight: 12,
-  },
-  eventDateText: {
-    fontSize: 13,
-    color: '#e5e7eb',
-    fontFamily: 'Playfair_Regular',
-  },
-  eventTextBlock: {
-    flex: 1,
-  },
-  eventName: {
-    fontSize: 16,
-    color: '#f9fafb',
-    fontFamily: 'Playfair_SemiBold',
-    marginBottom: 2,
-  },
-  eventMeta: {
-    fontSize: 14,
-    color: '#d1d5db',
-    fontFamily: 'Playfair_Regular',
-  },
-  eventDivider: {
-    height: 1,
-    backgroundColor: 'rgba(148, 163, 184, 0.35)',
-    marginVertical: 4,
-  },
+  card: { padding: 24 },
+  sectionLabel: { fontSize: 12, color: '#fbbf24', letterSpacing: 1.5, marginBottom: 16, fontFamily: 'Playfair_SemiBold' },
+  wisdomText: { fontSize: 22, lineHeight: 32, color: '#f8fafc', fontFamily: 'Playfair_Medium', marginBottom: 16 },
+  wisdomMeta: { fontSize: 14, color: '#94a3b8', marginBottom: 8 },
+  wisdomOriginal: { fontSize: 14, color: '#64748b', fontStyle: 'italic' },
+  eventRow: { flexDirection: 'row' },
+  eventDateCol: { width: 90 },
+  eventDate: { fontSize: 14, color: '#cbd5e1', fontFamily: 'Playfair_Regular' },
+  eventTextCol: { flex: 1 },
+  eventTitle: { fontSize: 16, color: '#f1f5f9', fontFamily: 'Playfair_SemiBold', marginBottom: 4 },
+  eventMeta: { fontSize: 12, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: 0.5 },
+  emptyText: { color: '#64748b', fontSize: 14, fontStyle: 'italic' },
 });
-
-export default HomeScreen;
