@@ -1,0 +1,459 @@
+[
+  {
+    "id": "gita-2-20",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "na jāyate mriyate vā kadācin",
+    "translation_en": "The soul is never born and never dies.",
+    "source": "Bhagavad Gita 2.20",
+    "theme": "eternal-soul",
+    "is_core": true
+  },
+  {
+    "id": "gita-2-22",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "vāsāṁsi jīrṇāni yathā vihāya",
+    "translation_en": "As a person casts off worn-out clothes and puts on new ones, so the soul discards worn bodies and takes on new ones.",
+    "source": "Bhagavad Gita 2.22",
+    "theme": "reincarnation",
+    "is_core": true
+  },
+  {
+    "id": "gita-2-47",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "karmaṇy evādhikāras te mā phaleṣu kadācana",
+    "translation_en": "You have a right to action alone, never to its fruits.",
+    "source": "Bhagavad Gita 2.47",
+    "theme": "non-attachment",
+    "is_core": true
+  },
+  {
+    "id": "gita-2-48",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "yoga-sthaḥ kuru karmāṇi",
+    "translation_en": "Established in yoga, perform your actions.",
+    "source": "Bhagavad Gita 2.48",
+    "theme": "equanimity",
+    "is_core": true
+  },
+  {
+    "id": "gita-3-19",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "tasmād asaktaḥ satataṁ kāryaṁ karma samācara",
+    "translation_en": "Therefore, always perform your duty, without attachment.",
+    "source": "Bhagavad Gita 3.19",
+    "theme": "duty",
+    "is_core": true
+  },
+  {
+    "id": "gita-4-7",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "yadā yadā hi dharmasya glānir bhavati",
+    "translation_en": "Whenever dharma declines and adharma rises, I manifest Myself.",
+    "source": "Bhagavad Gita 4.7",
+    "theme": "divine-intervention",
+    "is_core": true
+  },
+  {
+    "id": "gita-4-11",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "ye yathā māṁ prapadyante tāṁs tathaiva bhajāmy aham",
+    "translation_en": "As people approach Me, so do I reciprocate.",
+    "source": "Bhagavad Gita 4.11",
+    "theme": "devotion",
+    "is_core": true
+  },
+  {
+    "id": "gita-6-5",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "uddhared ātmanātmānaṁ",
+    "translation_en": "Let a person lift himself by himself; the self is the friend and the enemy of the self.",
+    "source": "Bhagavad Gita 6.5",
+    "theme": "self-mastery",
+    "is_core": true
+  },
+  {
+    "id": "gita-9-22",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "ananyāś cintayanto māṁ… yoga-kṣemaṁ vahāmy aham",
+    "translation_en": "Those who think of Me alone, I carry what they lack and preserve what they have.",
+    "source": "Bhagavad Gita 9.22",
+    "theme": "surrender",
+    "is_core": true
+  },
+  {
+    "id": "gita-12-13-14",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "adveṣṭā sarva-bhūtānāṁ maitraḥ karuṇa eva ca",
+    "translation_en": "One who hates no being, who is friendly and compassionate, is dear to Me.",
+    "source": "Bhagavad Gita 12.13–14",
+    "theme": "compassion",
+    "is_core": true
+  },
+  {
+    "id": "gita-18-66",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "sarva-dharmān parityajya mām ekaṁ śaraṇaṁ vraja",
+    "translation_en": "Abandon all duties and take refuge in Me alone.",
+    "source": "Bhagavad Gita 18.66",
+    "theme": "ultimate-surrender",
+    "is_core": true
+  },
+  {
+    "id": "chandogya-tat-tvam-asi",
+    "tradition": "Hindu",
+    "lineage": "Vedanta",
+    "original_transliteration": "tat tvam asi",
+    "translation_en": "Thou art That.",
+    "source": "Chāndogya Upanishad",
+    "theme": "non-duality",
+    "is_core": true
+  },
+  {
+    "id": "mandukya-ayam-atma",
+    "tradition": "Hindu",
+    "lineage": "Vedanta",
+    "original_transliteration": "ayam ātmā brahma",
+    "translation_en": "This Self is Brahman.",
+    "source": "Māṇḍūkya Upanishad",
+    "theme": "non-duality",
+    "is_core": true
+  },
+  {
+    "id": "brihadaranyaka-neti",
+    "tradition": "Hindu",
+    "lineage": "Vedanta",
+    "original_transliteration": "neti neti",
+    "translation_en": "Not this, not this.",
+    "source": "Bṛhadāraṇyaka Upanishad",
+    "theme": "negation",
+    "is_core": true
+  },
+  {
+    "id": "mundaka-satyam-eva",
+    "tradition": "Hindu",
+    "lineage": "Vedanta",
+    "original_transliteration": "satyam eva jayate",
+    "translation_en": "Truth alone triumphs.",
+    "source": "Muṇḍaka Upanishad",
+    "theme": "truth",
+    "is_core": true
+  },
+  {
+    "id": "taittiriya-anando",
+    "tradition": "Hindu",
+    "lineage": "Vedanta",
+    "original_transliteration": "ānando brahmeti vyajānāt",
+    "translation_en": "One realizes that Brahman is bliss.",
+    "source": "Taittirīya Upanishad",
+    "theme": "bliss",
+    "is_core": true
+  },
+  {
+    "id": "isa-isavasyam",
+    "tradition": "Hindu",
+    "lineage": "Vedanta",
+    "original_transliteration": "īśāvāsyam idaṁ sarvaṁ",
+    "translation_en": "All this is pervaded by the Lord.",
+    "source": "Iśa Upanishad",
+    "theme": "omnipresence",
+    "is_core": true
+  },
+  {
+    "id": "katha-shreyas",
+    "tradition": "Hindu",
+    "lineage": "Vedanta",
+    "original_transliteration": "śreyas ca preyas ca manuṣyam etas",
+    "translation_en": "The good and the pleasant approach the person; the wise choose the good.",
+    "source": "Kaṭha Upanishad",
+    "theme": "discernment",
+    "is_core": true
+  },
+  {
+    "id": "brihadaranyaka-aham",
+    "tradition": "Hindu",
+    "lineage": "Vedanta",
+    "original_transliteration": "ahaṁ brahmāsmi",
+    "translation_en": "I am Brahman.",
+    "source": "Bṛhadāraṇyaka Upanishad",
+    "theme": "non-duality",
+    "is_core": true
+  },
+  {
+    "id": "rigveda-nasadiya",
+    "tradition": "Hindu",
+    "lineage": "Veda",
+    "original_transliteration": "nāsad āsīn no sad āsīt tadānīm",
+    "translation_en": "Then, there was neither non-existence nor existence.",
+    "source": "Nāsadīya Sūkta (Ṛg Veda)",
+    "theme": "creation",
+    "is_core": true
+  },
+  {
+    "id": "hanuman-chalisa-jaya",
+    "tradition": "Hindu",
+    "lineage": "Bhakti",
+    "original_transliteration": "jaya hanumān jñāna guṇa sāgara",
+    "translation_en": "Victory to Hanuman, ocean of wisdom and virtue.",
+    "source": "Hanuman Chalisa",
+    "theme": "devotion",
+    "is_core": true
+  },
+  {
+    "id": "hanuman-chalisa-buddhi",
+    "tradition": "Hindu",
+    "lineage": "Bhakti",
+    "original_transliteration": "buddhi-hīna tanū jānike",
+    "translation_en": "Knowing my body to be dull of intellect, I remember you, Hanuman.",
+    "source": "Hanuman Chalisa",
+    "theme": "humility",
+    "is_core": true
+  },
+  {
+    "id": "ramayana-dharmo",
+    "tradition": "Hindu",
+    "lineage": "Itihasa",
+    "original_transliteration": "dharmo rakṣati rakṣitaḥ",
+    "translation_en": "Dharma protects those who protect it.",
+    "source": "Rāmāyaṇa (Valmiki)",
+    "theme": "dharma",
+    "is_core": true
+  },
+  {
+    "id": "narada-bhakti",
+    "tradition": "Hindu",
+    "lineage": "Bhakti",
+    "original_transliteration": "sā tv asmin parama-prema-rūpā",
+    "translation_en": "Bhakti is supreme love for God.",
+    "source": "Narada Bhakti Sūtra",
+    "theme": "bhakti",
+    "is_core": true
+  },
+  {
+    "id": "kabir-prem",
+    "tradition": "Hindu",
+    "lineage": "Bhakti",
+    "original_transliteration": "prem galī ati sānkarī",
+    "translation_en": "The lane of love is very narrow; two cannot pass through together.",
+    "source": "Kabir",
+    "theme": "love",
+    "is_core": true
+  },
+  {
+    "id": "tulsidas-ram",
+    "tradition": "Hindu",
+    "lineage": "Bhakti",
+    "original_transliteration": "śrī rām jai rām jai jai rām",
+    "translation_en": "Glory to Rama, victory to Rama.",
+    "source": "Tulsidas",
+    "theme": "devotion",
+    "is_core": true
+  },
+  {
+    "id": "mahamrityunjaya",
+    "tradition": "Hindu",
+    "lineage": "Veda",
+    "original_transliteration": "tryambakaṁ yajāmahe sugandhiṁ puṣṭi-vardhanam",
+    "translation_en": "We worship the three-eyed One, fragrant and nourishing all.",
+    "source": "Mahāmrityuñjaya mantra",
+    "theme": "protection",
+    "is_core": true
+  },
+  {
+    "id": "sikh-mul-mantra",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "ik oṅkār sat nām kartā purakh nirbhau nirvair",
+    "translation_en": "There is One Reality; His Name is Truth, the Creator, without fear, without hate.",
+    "source": "Mūl Mantra",
+    "theme": "unity",
+    "is_core": true
+  },
+  {
+    "id": "sikh-waheguru",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "vāheguru",
+    "translation_en": "Wondrous is the Enlightener.",
+    "source": "Gurbani",
+    "theme": "praise",
+    "is_core": true
+  },
+  {
+    "id": "sikh-hukam",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "hukamī andar sabh ko, bāhar hukam na ko-e",
+    "translation_en": "All exist within His command; nothing is outside of it.",
+    "source": "Japji",
+    "theme": "divine-will",
+    "is_core": true
+  },
+  {
+    "id": "sikh-man-jite",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "man jīte jag jīt",
+    "translation_en": "Conquer the mind and you conquer the world.",
+    "source": "Gurbani",
+    "theme": "self-mastery",
+    "is_core": true
+  },
+  {
+    "id": "sikh-chardi-kala",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "nānak nām chaṛdī kalā",
+    "translation_en": "Through the Name, the spirit rises ever higher.",
+    "source": "Ardas",
+    "theme": "upliftment",
+    "is_core": true
+  },
+  {
+    "id": "dhammapada-1",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "manopubbaṅgamā dhammā",
+    "translation_en": "Mind precedes all phenomena.",
+    "source": "Dhammapada 1",
+    "theme": "mind",
+    "is_core": true
+  },
+  {
+    "id": "dhammapada-183",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "sabbapāpassa akaraṇaṁ… etaṁ buddhāna sāsanaṁ",
+    "translation_en": "Avoid evil, cultivate good, purify the mind — this is the teaching of the Buddhas.",
+    "source": "Dhammapada 183",
+    "theme": "path",
+    "is_core": true
+  },
+  {
+    "id": "anicca",
+    "tradition": "Buddhist",
+    "lineage": "Core",
+    "original_transliteration": "sabba saṅkhārā aniccā",
+    "translation_en": "All conditioned things are impermanent.",
+    "source": "Anicca",
+    "theme": "impermanence",
+    "is_core": true
+  },
+  {
+    "id": "anatta",
+    "tradition": "Buddhist",
+    "lineage": "Core",
+    "original_transliteration": "sabba dhammā anattā",
+    "translation_en": "All phenomena are not-self.",
+    "source": "Anattā",
+    "theme": "no-self",
+    "is_core": true
+  },
+  {
+    "id": "metta-sutta",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "sukhino vā khemino hontu",
+    "translation_en": "May all beings be happy and safe.",
+    "source": "Metta Sutta",
+    "theme": "compassion",
+    "is_core": true
+  },
+  {
+    "id": "om-mani-padme-hum",
+    "tradition": "Buddhist",
+    "lineage": "Tibetan",
+    "original_transliteration": "oṁ maṇi padme hūṁ",
+    "translation_en": "Hail the Jewel in the Lotus.",
+    "source": "Compassion mantra",
+    "theme": "compassion",
+    "is_core": true
+  },
+  {
+    "id": "heart-sutra",
+    "tradition": "Buddhist",
+    "lineage": "Mahayana",
+    "original_transliteration": "gate gate pāragate pārasaṁgate bodhi svāhā",
+    "translation_en": "Gone, gone, gone beyond, utterly beyond — enlightenment, hail!",
+    "source": "Heart Sutra",
+    "theme": "enlightenment",
+    "is_core": true
+  },
+  {
+    "id": "jain-ahimsa",
+    "tradition": "Jain",
+    "original_transliteration": "ahiṁsā paramo dharmaḥ",
+    "translation_en": "Non-violence is the highest dharma.",
+    "source": "Jain Agamas",
+    "theme": "ahimsa",
+    "is_core": true
+  },
+  {
+    "id": "jain-parasparopagraho",
+    "tradition": "Jain",
+    "original_transliteration": "parasparopagraho jīvānām",
+    "translation_en": "Souls support one another.",
+    "source": "Jain Agamas",
+    "theme": "interdependence",
+    "is_core": true
+  },
+  {
+    "id": "jain-navkar",
+    "tradition": "Jain",
+    "original_transliteration": "namō arihantāṇaṁ",
+    "translation_en": "I bow to the Arihants, the enlightened ones.",
+    "source": "Navkar Mantra",
+    "theme": "reverence",
+    "is_core": true
+  },
+  {
+    "id": "zen-wash-bowl",
+    "tradition": "Zen",
+    "lineage": "Chan",
+    "original_transliteration": "Go wash your bowl.",
+    "translation_en": "The master, after the disciple eats, simply says: “Go wash your bowl.”",
+    "source": "Joshu",
+    "theme": "ordinariness",
+    "is_core": true
+  },
+  {
+    "id": "zen-mu",
+    "tradition": "Zen",
+    "lineage": "Chan",
+    "original_transliteration": "mu",
+    "translation_en": "“No thing”; a negation that points beyond yes/no.",
+    "source": "Zen",
+    "theme": "negation",
+    "is_core": true
+  },
+  {
+    "id": "zen-chop-wood",
+    "tradition": "Zen",
+    "lineage": "Chan",
+    "original_transliteration": "Before enlightenment, chop wood, carry water. After enlightenment, chop wood, carry water.",
+    "translation_en": "Before enlightenment, chop wood, carry water. After enlightenment, chop wood, carry water.",
+    "source": "Zen",
+    "theme": "enlightenment",
+    "is_core": true
+  },
+  {
+    "id": "zen-mountains",
+    "tradition": "Zen",
+    "lineage": "Chan",
+    "original_transliteration": "Mountains are mountains, waters are waters.",
+    "translation_en": "Things are simply as they are — suchness.",
+    "source": "Zen",
+    "theme": "suchness",
+    "is_core": true
+  }
+]
