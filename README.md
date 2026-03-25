@@ -1,50 +1,88 @@
-# Welcome to your Expo app 👋
+# Dharma
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**A daily spiritual companion across Hindu, Sikh, Buddhist, Jain, and Zen traditions.**
 
-## Get started
+Part of the [DharmaWeave](https://play.google.com/store/books/author?id=Anant+Swarup) ecosystem.
 
-1. Install dependencies
+## Features
 
-   ```bash
-   npm install
-   ```
+### Temple Darshan (Home)
+Swipeable deity carousel with 10 deities across traditions. Interactive aarti plate, shankh audio loop, and devotional music player. A digital temple experience you can carry in your pocket.
 
-2. Start the app
+### Sacred Calendar
+150+ festivals and observances for 2026-2027 across Hindu, Buddhist, Jain, and Sikh traditions. Tap any event to learn its significance, rituals, and spiritual meaning.
 
-   ```bash
-   npx expo start
-   ```
+### Wisdom Library
+150+ teachings from the Bhagavad Gita, Guru Granth Sahib, Dhammapada, Tattvartha Sutra, and Zen masters. Filter by tradition. Each teaching includes the original transliteration and English translation.
 
-In the output, you'll find options to open the app in a
+### Learn
+Interactive lesson modules starting with the Hanuman Chalisa (43 verses). Each lesson includes Hindi text, transliteration, English meaning, and associated imagery. Bhagavad Gita module coming soon.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### DharmaWeave Store
+Links to the DharmaWeave ecosystem including books on Google Play and chants on Spotify.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Daily Wisdom Notifications
+Configurable daily reminders with tradition-filtered wisdom quotes.
 
-## Get a fresh project
+## Tech Stack
 
-When you're ready, run:
+- **React Native** 0.81 + **Expo** SDK 54
+- **TypeScript** with Playfair Display typography
+- **Zustand** for state management with AsyncStorage persistence
+- **Expo AV** for devotional audio playback
+- **React Navigation** (bottom tabs + native stack)
+- **Offline-first** -- no backend required
+
+## Design Language
+
+Dark theme (#020617), saffron/gold accents (#fbbf24), Playfair Display font, glass morphism cards with blur effects.
+
+## Getting Started
 
 ```bash
-npm run reset-project
+npm install
+npx expo start --web
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Multi-Tradition Representation
 
-## Learn more
+Dharma serves five traditions equally:
+- **Hindu**: Bhagavad Gita, Upanishads, Yoga Sutras, festivals, Ekadashi calendar
+- **Sikh**: Guru Granth Sahib, Japji Sahib, all Gurpurabs, Baisakhi
+- **Buddhist**: Dhammapada, Heart Sutra, Vesak, Asalha Puja, Bodhi Day
+- **Jain**: Tattvartha Sutra, Mahavir Jayanti, Paryushana, Das Lakshan
+- **Zen**: Platform Sutra, Gateless Gate, Blue Cliff Record
 
-To learn more about developing your project with Expo, look at the following resources:
+## Project Structure
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```
+src/
+  screens/       # 13 screens
+  components/    # Reusable UI (GlassCard, AartiPlate, MusicPlayer, etc.)
+  data/          # Wisdom teachings, calendar events, lesson content
+  services/      # Audio, notifications, shankh audio
+  store/         # Zustand stores (preferences, premium, progress, music)
+  navigation/    # React Navigation setup
+assets/
+  audio/         # Devotional audio tracks
+  images/        # Deity images, lesson images, community photos
+```
 
-## Join the community
+## Build
 
-Join our community of developers creating universal apps.
+```bash
+# EAS Build for Android APK
+npx eas build -p android --profile preview
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+# Production builds
+npx eas build -p android --profile production
+npx eas build -p ios --profile production
+```
+
+## Credits
+
+Built by **Anant Swarup** with contributions from Manisha and Kashyap.
+
+## License
+
+All rights reserved.

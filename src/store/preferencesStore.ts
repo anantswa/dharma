@@ -1,7 +1,11 @@
-// src/store/preferencesStore.ts
-import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
+
+/**
+ * PreferencesStore - User preferences and onboarding state
+ * Persists tradition filters, reminder settings, and onboarding status
+ */
 
 export type TraditionKey = 'Hindu' | 'Sikh' | 'Buddhist' | 'Jain' | 'Zen';
 
@@ -9,6 +13,17 @@ type PreferencesState = {
   enabledTraditions: Record<TraditionKey, boolean>;
   toggleTradition: (key: TraditionKey) => void;
   resetTraditions: () => void;
+  
+  hasCompletedOnboarding: boolean;
+  primaryTradition?: TraditionKey;
+  remindersEnabled: boolean;
+  reminderTime: string;
+  setOnboarding: (data: {
+    primaryTradition: TraditionKey;
+    remindersEnabled: boolean;
+  }) => void;
+  setReminderTime: (time: string) => void;
+  toggleReminders: (enabled: boolean) => void;
 };
 
 const DEFAULT_TRADITIONS: Record<TraditionKey, boolean> = {
@@ -19,7 +34,6 @@ const DEFAULT_TRADITIONS: Record<TraditionKey, boolean> = {
   Zen: true,
 };
 
-// CRITICAL: This must have 'export'
 export const usePreferencesStore = create<PreferencesState>()(
   persist(
     (set) => ({
@@ -32,6 +46,19 @@ export const usePreferencesStore = create<PreferencesState>()(
           },
         })),
       resetTraditions: () => set({ enabledTraditions: DEFAULT_TRADITIONS }),
+      
+      hasCompletedOnboarding: false,
+      primaryTradition: undefined,
+      remindersEnabled: false,
+      reminderTime: '07:00', // Default 7:00 AM
+      setOnboarding: (data) =>
+        set({
+          hasCompletedOnboarding: true,
+          primaryTradition: data.primaryTradition,
+          remindersEnabled: data.remindersEnabled,
+        }),
+      setReminderTime: (time) => set({ reminderTime: time }),
+      toggleReminders: (enabled) => set({ remindersEnabled: enabled }),
     }),
     {
       name: 'dharma-preferences',
@@ -56,9 +83,11 @@ const normalizeTraditionLabel = (tradition?: string): TraditionKey | null => {
 };
 
 // CRITICAL: This must have 'export'
-export const isTraditionEnabled = (tradition?: string): boolean => {
+export const isTraditionEnabled = (
+  tradition: string | undefined,
+  enabledTraditions: Record<TraditionKey, boolean>
+): boolean => {
   const key = normalizeTraditionLabel(tradition);
   if (!key) return true;
-  const { enabledTraditions } = usePreferencesStore.getState();
   return enabledTraditions[key] ?? true;
 };

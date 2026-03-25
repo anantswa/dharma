@@ -1,10 +1,17 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useMemo, useState } from 'react';
 import {
-  View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView, ImageBackground, Dimensions
+    Dimensions,
+    FlatList,
+    ImageBackground,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { usePreferencesStore, isTraditionEnabled } from '../store/preferencesStore';
 import wisdomDataRaw from '../data/wisdom_core_50.json';
+import { isTraditionEnabled, TraditionKey, usePreferencesStore } from '../store/preferencesStore';
 
 type WisdomItem = {
   id: string;
@@ -17,7 +24,6 @@ type WisdomItem = {
   is_core: boolean;
 };
 
-const TRADITIONS = ['All', 'Hindu', 'Sikh', 'Buddhist', 'Jain', 'Zen'] as const;
 const { width } = Dimensions.get('window');
 
 // --- THE NEW IMAGE LOGIC ---
@@ -44,18 +50,34 @@ const getBackgroundForTradition = (tradition: string) => {
 export const WisdomScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const enabledTraditions = usePreferencesStore((s) => s.enabledTraditions);
-  const [activeFilter, setActiveFilter] = useState<(typeof TRADITIONS)[number]>('All');
+  const [activeFilter, setActiveFilter] = useState<string>('All');
   const wisdomData = wisdomDataRaw as WisdomItem[];
 
+  // Build available traditions based on user's enabled traditions
+  const availableTraditions = useMemo(() => {
+    const traditions: string[] = ['All'];
+    if (enabledTraditions) {
+      const tradKeys: TraditionKey[] = ['Hindu', 'Sikh', 'Buddhist', 'Jain', 'Zen'];
+      tradKeys.forEach((key) => {
+        if (enabledTraditions[key]) {
+          traditions.push(key);
+        }
+      });
+    }
+    return traditions;
+  }, [enabledTraditions]);
+
   const filteredData = useMemo(() => {
-    let base = wisdomData.filter((item) => isTraditionEnabled(item.tradition));
+    // Safety check: if enabledTraditions is undefined during initial load, show all
+    if (!enabledTraditions) return [];
+    let base = wisdomData.filter((item) => isTraditionEnabled(item.tradition, enabledTraditions));
     if (activeFilter === 'All') return base;
     return base.filter((item) =>
       item.tradition.toLowerCase().includes(activeFilter.toLowerCase()),
     );
   }, [wisdomData, activeFilter, enabledTraditions]);
 
-  const renderChip = (label: (typeof TRADITIONS)[number]) => {
+  const renderChip = (label: string) => {
     const isActive = activeFilter === label;
     return (
       <TouchableOpacity
@@ -101,7 +123,7 @@ export const WisdomScreen: React.FC = () => {
       <Text style={styles.subtitle}>Browse timeless teachings.</Text>
       <View style={{ height: 50 }}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
-          {TRADITIONS.map(renderChip)}
+          {availableTraditions.map(renderChip)}
         </ScrollView>
       </View>
       <FlatList

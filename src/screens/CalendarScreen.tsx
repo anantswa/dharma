@@ -1,10 +1,13 @@
-import React, { useMemo } from 'react';
-import { View, Text, StyleSheet, SectionList, StatusBar } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { BlurView } from 'expo-blur';
-import { usePreferencesStore, isTraditionEnabled } from '../store/preferencesStore';
+import React, { useMemo } from 'react';
+import { SectionList, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { isTraditionEnabled, usePreferencesStore } from '../store/preferencesStore';
 
-// Import your specific data structure
+// Import calendar data for all years
 const eventsDataRaw = require('../data/calendar/events_2025.json');
+let eventsData2027: any = {};
+try { eventsData2027 = require('../data/calendar/events_2027.json'); } catch (e) { /* 2027 data not yet available */ }
 
 type CalendarEvent = {
   date: string;
@@ -19,19 +22,24 @@ type SectionData = {
 };
 
 export const CalendarScreen: React.FC = () => {
+  const navigation = useNavigation<any>();
   const enabledTraditions = usePreferencesStore((s) => s.enabledTraditions);
 
   const sections = useMemo(() => {
-    // 1. Merge 2025 and 2026 arrays into one master list
+    // 1. Merge all year arrays into one master list
     const list2025 = eventsDataRaw.events_2025 || [];
     const list2026 = eventsDataRaw.events_2026 || [];
-    const allEvents: CalendarEvent[] = [...list2025, ...list2026];
+    const list2027 = eventsData2027.events_2027 || [];
+    const allEvents: CalendarEvent[] = [...list2025, ...list2026, ...list2027];
+
+    // Safety check: if enabledTraditions is undefined during initial load, show all
+    if (!enabledTraditions) return [];
 
     // 2. Filter by Tradition (Respecting Settings)
     const filtered = allEvents.filter(e => {
       // Always show Secular/National holidays, filter religious ones
       if (e.faith === 'Secular') return true;
-      return isTraditionEnabled(e.faith);
+      return isTraditionEnabled(e.faith, enabledTraditions);
     });
 
     // 3. Group by Month (e.g. "November 2025")
@@ -62,7 +70,7 @@ export const CalendarScreen: React.FC = () => {
       <StatusBar barStyle="light-content" />
       <View style={styles.header}>
         <Text style={styles.title}>Sacred Calendar</Text>
-        <Text style={styles.subtitle}>Observances and festivals.</Text>
+        <Text style={styles.subtitle}>Click a Festival to Learn significance.</Text>
       </View>
 
       <SectionList
@@ -80,21 +88,26 @@ export const CalendarScreen: React.FC = () => {
         )}
         
         renderItem={({ item }) => (
-          <BlurView intensity={30} tint="dark" style={styles.card}>
-            <View style={styles.dateBox}>
-              <Text style={styles.dayText}>
-                {new Date(item.date).getDate()}
-              </Text>
-              <Text style={styles.weekdayText}>
-                {new Date(item.date).toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase()}
-              </Text>
-            </View>
-            
-            <View style={styles.details}>
-              <Text style={styles.eventTitle}>{item.name}</Text>
-              <Text style={styles.traditionBadge}>{item.faith} • {item.category}</Text>
-            </View>
-          </BlurView>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate('FestivalDetail', { festival: item })}
+          >
+            <BlurView intensity={30} tint="dark" style={styles.card}>
+              <View style={styles.dateBox}>
+                <Text style={styles.dayText}>
+                  {new Date(item.date).getDate()}
+                </Text>
+                <Text style={styles.weekdayText}>
+                  {new Date(item.date).toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase()}
+                </Text>
+              </View>
+              
+              <View style={styles.details}>
+                <Text style={styles.eventTitle}>{item.name}</Text>
+                <Text style={styles.traditionBadge}>{item.faith} • {item.category}</Text>
+              </View>
+            </BlurView>
+          </TouchableOpacity>
         )}
         
         ListEmptyComponent={

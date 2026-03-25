@@ -392,6 +392,7 @@
   {
     "id": "jain-ahimsa",
     "tradition": "Jain",
+    "lineage": "Agama",
     "original_transliteration": "ahiṁsā paramo dharmaḥ",
     "translation_en": "Non-violence is the highest dharma.",
     "source": "Jain Agamas",
@@ -401,6 +402,7 @@
   {
     "id": "jain-parasparopagraho",
     "tradition": "Jain",
+    "lineage": "Agama",
     "original_transliteration": "parasparopagraho jīvānām",
     "translation_en": "Souls support one another.",
     "source": "Jain Agamas",
@@ -410,6 +412,7 @@
   {
     "id": "jain-navkar",
     "tradition": "Jain",
+    "lineage": "Agama",
     "original_transliteration": "namō arihantāṇaṁ",
     "translation_en": "I bow to the Arihants, the enlightened ones.",
     "source": "Navkar Mantra",
@@ -421,7 +424,7 @@
     "tradition": "Zen",
     "lineage": "Chan",
     "original_transliteration": "Go wash your bowl.",
-    "translation_en": "The master, after the disciple eats, simply says: “Go wash your bowl.”",
+    "translation_en": "The master, after the disciple eats, simply says: \"Go wash your bowl.\"",
     "source": "Joshu",
     "theme": "ordinariness",
     "is_core": true
@@ -431,7 +434,7 @@
     "tradition": "Zen",
     "lineage": "Chan",
     "original_transliteration": "mu",
-    "translation_en": "“No thing”; a negation that points beyond yes/no.",
+    "translation_en": "\"No thing\"; a negation that points beyond yes/no.",
     "source": "Zen",
     "theme": "negation",
     "is_core": true
@@ -454,6 +457,1142 @@
     "translation_en": "Things are simply as they are — suchness.",
     "source": "Zen",
     "theme": "suchness",
+    "is_core": true
+  },
+
+  {
+    "id": "gita-2-14",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "mātrā-sparśās tu kaunteya śītoṣṇa-sukha-duḥkha-dāḥ",
+    "translation_en": "Contacts of the senses with their objects give rise to cold and heat, pleasure and pain; they come and go, bear them patiently.",
+    "source": "Bhagavad Gita 2.14",
+    "theme": "patience",
+    "is_core": true
+  },
+  {
+    "id": "gita-2-62",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "dhyāyato viṣayān puṁsaḥ saṅgas teṣūpajāyate",
+    "translation_en": "When one contemplates sense objects, attachment to them arises; from attachment springs desire, from desire anger is born.",
+    "source": "Bhagavad Gita 2.62",
+    "theme": "mindfulness",
+    "is_core": true
+  },
+  {
+    "id": "gita-4-38",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "na hi jñānena sadṛśaṁ pavitram iha vidyate",
+    "translation_en": "There is nothing in this world as purifying as knowledge.",
+    "source": "Bhagavad Gita 4.38",
+    "theme": "wisdom",
+    "is_core": true
+  },
+  {
+    "id": "gita-5-18",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "vidyā-vinaya-sampanne brāhmaṇe gavi hastini",
+    "translation_en": "The wise see equally a learned sage, a cow, an elephant, a dog, and an outcaste.",
+    "source": "Bhagavad Gita 5.18",
+    "theme": "equanimity",
+    "is_core": true
+  },
+  {
+    "id": "gita-6-35",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "asaṁśayaṁ mahā-bāho mano durnigrahaṁ calam",
+    "translation_en": "The mind is restless and hard to control, but it can be trained by practice and detachment.",
+    "source": "Bhagavad Gita 6.35",
+    "theme": "self-mastery",
+    "is_core": true
+  },
+  {
+    "id": "gita-9-26",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "patraṁ puṣpaṁ phalaṁ toyaṁ yo me bhaktyā prayacchati",
+    "translation_en": "Whoever offers Me a leaf, a flower, a fruit, or water with devotion, I accept that offering of love.",
+    "source": "Bhagavad Gita 9.26",
+    "theme": "devotion",
+    "is_core": true
+  },
+  {
+    "id": "gita-11-33",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "tasmāt tvam uttiṣṭha yaśo labhasva",
+    "translation_en": "Therefore arise and win glory; conquer your foes and enjoy a flourishing kingdom.",
+    "source": "Bhagavad Gita 11.33",
+    "theme": "courage",
+    "is_core": true
+  },
+  {
+    "id": "gita-18-20",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "sarva-bhūteṣu yenaikaṁ bhāvam avyayam īkṣate",
+    "translation_en": "That knowledge by which one sees a single imperishable reality in all beings is sattvic knowledge.",
+    "source": "Bhagavad Gita 18.20",
+    "theme": "unity",
+    "is_core": true
+  },
+  {
+    "id": "kena-1-3",
+    "tradition": "Hindu",
+    "lineage": "Vedanta",
+    "original_transliteration": "na tatra cakṣur gacchati na vāg gacchati no manaḥ",
+    "translation_en": "The eye does not reach there, nor speech, nor the mind; we do not know how to teach it.",
+    "source": "Kena Upanishad 1.3",
+    "theme": "wisdom",
+    "is_core": true
+  },
+  {
+    "id": "mundaka-2-2-9",
+    "tradition": "Hindu",
+    "lineage": "Vedanta",
+    "original_transliteration": "bhidyate hṛdaya-granthiś chidyante sarva-saṁśayāḥ",
+    "translation_en": "The knot of the heart is broken, all doubts are cut, when the Supreme is seen.",
+    "source": "Muṇḍaka Upanishad 2.2.9",
+    "theme": "liberation",
+    "is_core": true
+  },
+  {
+    "id": "brihadaranyaka-1-3-28",
+    "tradition": "Hindu",
+    "lineage": "Vedanta",
+    "original_transliteration": "asato mā sad gamaya, tamaso mā jyotir gamaya, mṛtyor mā amṛtaṁ gamaya",
+    "translation_en": "Lead me from the unreal to the real, from darkness to light, from death to immortality.",
+    "source": "Bṛhadāraṇyaka Upanishad 1.3.28",
+    "theme": "liberation",
+    "is_core": true
+  },
+  {
+    "id": "chandogya-6-2-1",
+    "tradition": "Hindu",
+    "lineage": "Vedanta",
+    "original_transliteration": "sad eva saumya idam agra āsīd ekam evādvitīyam",
+    "translation_en": "In the beginning, dear one, there was Being alone, one without a second.",
+    "source": "Chāndogya Upanishad 6.2.1",
+    "theme": "non-duality",
+    "is_core": true
+  },
+  {
+    "id": "isa-6",
+    "tradition": "Hindu",
+    "lineage": "Vedanta",
+    "original_transliteration": "yas tu sarvāṇi bhūtāny ātmany evānupaśyati",
+    "translation_en": "One who sees all beings in the Self and the Self in all beings never turns away.",
+    "source": "Iśa Upanishad 6",
+    "theme": "unity",
+    "is_core": true
+  },
+  {
+    "id": "yoga-sutra-1-2",
+    "tradition": "Hindu",
+    "lineage": "Yoga",
+    "original_transliteration": "yogaś citta-vṛtti-nirodhaḥ",
+    "translation_en": "Yoga is the stilling of the fluctuations of the mind.",
+    "source": "Yoga Sutras of Patanjali 1.2",
+    "theme": "mindfulness",
+    "is_core": true
+  },
+  {
+    "id": "yoga-sutra-1-12",
+    "tradition": "Hindu",
+    "lineage": "Yoga",
+    "original_transliteration": "abhyāsa-vairāgyābhyāṁ tan-nirodhaḥ",
+    "translation_en": "The mind is controlled through practice and non-attachment.",
+    "source": "Yoga Sutras of Patanjali 1.12",
+    "theme": "non-attachment",
+    "is_core": true
+  },
+  {
+    "id": "yoga-sutra-1-33",
+    "tradition": "Hindu",
+    "lineage": "Yoga",
+    "original_transliteration": "maitrī karuṇā muditopekṣāṇāṁ sukha-duḥkha-puṇyāpuṇya-viṣayāṇāṁ bhāvanātaś citta-prasādanam",
+    "translation_en": "Through cultivation of friendliness, compassion, joy, and equanimity, the mind becomes serene.",
+    "source": "Yoga Sutras of Patanjali 1.33",
+    "theme": "compassion",
+    "is_core": true
+  },
+  {
+    "id": "yoga-sutra-2-46",
+    "tradition": "Hindu",
+    "lineage": "Yoga",
+    "original_transliteration": "sthira-sukham āsanam",
+    "translation_en": "Posture should be steady and comfortable.",
+    "source": "Yoga Sutras of Patanjali 2.46",
+    "theme": "peace",
+    "is_core": true
+  },
+  {
+    "id": "mahabharata-dharma",
+    "tradition": "Hindu",
+    "lineage": "Itihasa",
+    "original_transliteration": "āhiṁsā satyam akrodhaḥ dānam śāntir apaiśunam",
+    "translation_en": "Non-violence, truthfulness, freedom from anger, charity, tranquility, and freedom from malice — these constitute dharma.",
+    "source": "Mahābhārata, Shanti Parva",
+    "theme": "dharma",
+    "is_core": true
+  },
+  {
+    "id": "mahabharata-sarvadharma",
+    "tradition": "Hindu",
+    "lineage": "Itihasa",
+    "original_transliteration": "śruṇudhvaṁ sarva-dharmāṇāṁ sāraṁ: mā paropakāraḥ",
+    "translation_en": "The essence of all dharma is this: do not do unto others what causes pain if done to you.",
+    "source": "Mahābhārata, Anushasana Parva 113.8",
+    "theme": "compassion",
+    "is_core": true
+  },
+  {
+    "id": "ramayana-satya",
+    "tradition": "Hindu",
+    "lineage": "Itihasa",
+    "original_transliteration": "rāmo vigrahavān dharmaḥ",
+    "translation_en": "Rama is dharma in living form.",
+    "source": "Rāmāyaṇa (Valmiki)",
+    "theme": "dharma",
+    "is_core": true
+  },
+
+  {
+    "id": "sikh-japji-sochai",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "sochai soch na hova-ī je sochī lakh vār",
+    "translation_en": "By thinking, the truth cannot be found, even if one thinks a hundred thousand times.",
+    "source": "Japji Sahib, Guru Nanak",
+    "theme": "wisdom",
+    "is_core": true
+  },
+  {
+    "id": "sikh-japji-gaviai",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "gāvīai suṇīai man rakhīai bhā-o",
+    "translation_en": "Sing and listen, and let your mind be filled with love.",
+    "source": "Japji Sahib, Guru Nanak",
+    "theme": "devotion",
+    "is_core": true
+  },
+  {
+    "id": "sikh-japji-sunia",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "suṇi-ai dūkh pāp kā nāsu",
+    "translation_en": "Listening to the Name, sorrow and sin are destroyed.",
+    "source": "Japji Sahib, Guru Nanak",
+    "theme": "liberation",
+    "is_core": true
+  },
+  {
+    "id": "sikh-japji-nanak-khote",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "nānak nāvai bājh sanāth sabh koā",
+    "translation_en": "Without the Name, all are desolate and false.",
+    "source": "Japji Sahib, Guru Nanak",
+    "theme": "truth",
+    "is_core": true
+  },
+  {
+    "id": "sikh-japji-aakhaa",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "ākhā jīvā visrai mar jāu",
+    "translation_en": "Speaking the Name I live; forgetting it, I die.",
+    "source": "Japji Sahib, Guru Nanak",
+    "theme": "devotion",
+    "is_core": true
+  },
+  {
+    "id": "sikh-sukhmani-1",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "sukhamanī sukh amrit prabh nām",
+    "translation_en": "The Psalm of Peace: the Name of God is sweet ambrosial nectar.",
+    "source": "Sukhmani Sahib, Guru Arjan Dev",
+    "theme": "peace",
+    "is_core": true
+  },
+  {
+    "id": "sikh-sukhmani-simran",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "simrau simar simar sukh pāvau",
+    "translation_en": "Meditate, meditate in remembrance, and find peace.",
+    "source": "Sukhmani Sahib, Guru Arjan Dev",
+    "theme": "mindfulness",
+    "is_core": true
+  },
+  {
+    "id": "sikh-sukhmani-sarbat",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "sarbat dā bhalā",
+    "translation_en": "May there be well-being for all.",
+    "source": "Sikh Ardas",
+    "theme": "compassion",
+    "is_core": true
+  },
+  {
+    "id": "sikh-anand-sahib-1",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "anand bha-i-ā merī mā-e satgurū mai pā-i-ā",
+    "translation_en": "I am in bliss, O my mother, for I have found the True Guru.",
+    "source": "Anand Sahib, Guru Amar Das",
+    "theme": "bliss",
+    "is_core": true
+  },
+  {
+    "id": "sikh-rehras-satigur",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "so dar kehā so ghar kehā jit bahi sarab samālhe",
+    "translation_en": "Where is that door, where is that house in which You sit and take care of all?",
+    "source": "Rehras Sahib, Guru Nanak",
+    "theme": "devotion",
+    "is_core": true
+  },
+  {
+    "id": "sikh-nanak-truth",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "sach kahau sun le-hu sabhai jin prem kī-o tin hī prabh pā-i-o",
+    "translation_en": "I speak the truth, listen all: only those who love attain the Lord.",
+    "source": "Guru Granth Sahib, Guru Gobind Singh",
+    "theme": "love",
+    "is_core": true
+  },
+  {
+    "id": "sikh-gobind-khalsa",
+    "tradition": "Sikh",
+    "lineage": "Dasam Granth",
+    "original_transliteration": "jab lag khalsa rahe niārā tab lag tej dīau mai sārā",
+    "translation_en": "So long as the Khalsa remains distinct, I shall give them my full radiance.",
+    "source": "Guru Gobind Singh",
+    "theme": "courage",
+    "is_core": true
+  },
+  {
+    "id": "sikh-gobind-manas",
+    "tradition": "Sikh",
+    "lineage": "Dasam Granth",
+    "original_transliteration": "mānas kī jāt sabai ekai pahchānbo",
+    "translation_en": "Recognize all humankind as one.",
+    "source": "Akal Ustat, Guru Gobind Singh",
+    "theme": "unity",
+    "is_core": true
+  },
+  {
+    "id": "sikh-arjan-thaal",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "thāl vich tinn vastū pa-ī-o sat santoakh vīchāro",
+    "translation_en": "Upon this plate, three things are placed: truth, contentment, and contemplation.",
+    "source": "Guru Granth Sahib, Guru Arjan Dev",
+    "theme": "truth",
+    "is_core": true
+  },
+  {
+    "id": "sikh-tegh-bahadur-jo",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "jo nar dukh meh dukh nahī mānai sukh sneh ar bhay nahīn jā kai",
+    "translation_en": "One who does not feel pain in sorrow, who is unaffected by pleasure, attachment, and fear — know that person to be wise.",
+    "source": "Guru Granth Sahib, Guru Tegh Bahadur",
+    "theme": "equanimity",
+    "is_core": true
+  },
+  {
+    "id": "sikh-tegh-bahadur-bhay",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "bhay kahū ko det nahi nahi bhay mānat ān",
+    "translation_en": "One who frightens no one and is not afraid of anyone — such a person is truly wise.",
+    "source": "Guru Granth Sahib, Guru Tegh Bahadur",
+    "theme": "courage",
+    "is_core": true
+  },
+  {
+    "id": "sikh-nanak-seva",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "vich dunīā sev kamā-ī-ai tā dargeh baiṣan pā-ī-ai",
+    "translation_en": "In this world, engage in selfless service, and you shall find a seat in the Court of the Lord.",
+    "source": "Guru Granth Sahib, Guru Nanak",
+    "theme": "service",
+    "is_core": true
+  },
+  {
+    "id": "sikh-nanak-kirat",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "ghāl khā-e kichh hathahu de-e nānak rāh pachāṇeh se-ī",
+    "translation_en": "One who works honestly and shares with others knows the true path.",
+    "source": "Guru Granth Sahib, Guru Nanak",
+    "theme": "service",
+    "is_core": true
+  },
+  {
+    "id": "sikh-nanak-humility",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "miṭhatu nīvīn nānakā guṇ changāīāṁ tatu",
+    "translation_en": "Sweetness and humility, O Nanak, are the essence of all virtues.",
+    "source": "Guru Granth Sahib, Guru Nanak",
+    "theme": "humility",
+    "is_core": true
+  },
+  {
+    "id": "sikh-bhai-gurdas-gurmukh",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "gurmukh sukh phal piram ras chākhai",
+    "translation_en": "The one oriented toward the Guru tastes the fruit of bliss and divine love.",
+    "source": "Bhai Gurdas, Vaar 1",
+    "theme": "devotion",
+    "is_core": true
+  },
+  {
+    "id": "sikh-nanak-naam",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "nām japai nām āradhe nām bole-ī ban āī",
+    "translation_en": "Chant the Name, worship the Name; speaking the Name is the true calling.",
+    "source": "Guru Granth Sahib, Guru Nanak",
+    "theme": "devotion",
+    "is_core": true
+  },
+
+  {
+    "id": "dhammapada-5",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "na hi verena verāni sammantīdha kudācanaṁ",
+    "translation_en": "Hatred is never appeased by hatred in this world; by non-hatred alone is it appeased.",
+    "source": "Dhammapada 5",
+    "theme": "compassion",
+    "is_core": true
+  },
+  {
+    "id": "dhammapada-21",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "appamādo amatapadaṁ",
+    "translation_en": "Heedfulness is the path to the deathless; heedlessness is the path to death.",
+    "source": "Dhammapada 21",
+    "theme": "mindfulness",
+    "is_core": true
+  },
+  {
+    "id": "dhammapada-50",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "na paresaṁ vilomāni na paresaṁ katākataṁ",
+    "translation_en": "Do not look at the faults of others but at your own deeds done and left undone.",
+    "source": "Dhammapada 50",
+    "theme": "self-knowledge",
+    "is_core": true
+  },
+  {
+    "id": "dhammapada-103",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "yo sahassaṁ sahassena saṅgāme mānuse jine ekañ ca jeyya-m-attānaṁ",
+    "translation_en": "One who conquers himself is greater than one who conquers a thousand men in battle.",
+    "source": "Dhammapada 103",
+    "theme": "self-mastery",
+    "is_core": true
+  },
+  {
+    "id": "dhammapada-160",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "attā hi attano nātho ko hi nātho paro siyā",
+    "translation_en": "One is one's own refuge; what other refuge could there be?",
+    "source": "Dhammapada 160",
+    "theme": "self-knowledge",
+    "is_core": true
+  },
+  {
+    "id": "dhammapada-223",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "akkodhena jine kodhaṁ asādhuṁ sādhunā jine",
+    "translation_en": "Conquer anger by non-anger; conquer wickedness by goodness.",
+    "source": "Dhammapada 223",
+    "theme": "patience",
+    "is_core": true
+  },
+  {
+    "id": "dhammapada-276",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "tumhehi kiccaṁ ātappaṁ akkhātāro tathāgatā",
+    "translation_en": "You yourselves must strive; the Buddhas only point the way.",
+    "source": "Dhammapada 276",
+    "theme": "self-mastery",
+    "is_core": true
+  },
+  {
+    "id": "heart-sutra-form",
+    "tradition": "Buddhist",
+    "lineage": "Mahayana",
+    "original_transliteration": "rūpaṁ śūnyatā śūnyataiva rūpaṁ",
+    "translation_en": "Form is emptiness; emptiness is form.",
+    "source": "Heart Sutra",
+    "theme": "wisdom",
+    "is_core": true
+  },
+  {
+    "id": "lotus-sutra-1",
+    "tradition": "Buddhist",
+    "lineage": "Mahayana",
+    "original_transliteration": "myōhō renge kyō",
+    "translation_en": "The wonderful dharma of the Lotus Flower: all beings possess the potential for Buddhahood.",
+    "source": "Lotus Sutra",
+    "theme": "liberation",
+    "is_core": true
+  },
+  {
+    "id": "metta-sutta-full",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "mātar yathā niyaṁ puttaṁ āyusā ekaputtaṁ anurakkhe",
+    "translation_en": "As a mother would protect her only child with her life, so cultivate boundless love for all beings.",
+    "source": "Metta Sutta",
+    "theme": "love",
+    "is_core": true
+  },
+  {
+    "id": "sutta-nipata-muni",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "eko care khaggavisāṇakappo",
+    "translation_en": "Let one walk alone like a rhinoceros horn, doing no harm to any living being.",
+    "source": "Sutta Nipata, Khaggavisana Sutta",
+    "theme": "non-attachment",
+    "is_core": true
+  },
+  {
+    "id": "sutta-nipata-atthaka",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "na sīlabbatena suddhiṁ āha na bahussaccena na samādhinā",
+    "translation_en": "Purity comes not merely from rituals, learning, or concentration alone, but from letting go of clinging.",
+    "source": "Sutta Nipata, Atthaka Vagga",
+    "theme": "non-attachment",
+    "is_core": true
+  },
+  {
+    "id": "buddha-kalama-sutta",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "mā anussavena mā paramparāya mā itikirāya",
+    "translation_en": "Do not accept anything merely by tradition, hearsay, or authority; know for yourself what leads to suffering and what leads to wellbeing.",
+    "source": "Kalama Sutta (AN 3.65)",
+    "theme": "discernment",
+    "is_core": true
+  },
+  {
+    "id": "buddha-dhamma-island",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "attadīpā viharatha attasaraṇā anaññasaraṇā",
+    "translation_en": "Be a lamp unto yourselves; take refuge in yourselves and in no other.",
+    "source": "Mahāparinibbāna Sutta (DN 16)",
+    "theme": "self-knowledge",
+    "is_core": true
+  },
+  {
+    "id": "buddha-dukkha",
+    "tradition": "Buddhist",
+    "lineage": "Core",
+    "original_transliteration": "idaṁ dukkhaṁ ariyasaccaṁ",
+    "translation_en": "This is the noble truth of suffering: birth is suffering, aging is suffering, illness is suffering.",
+    "source": "Dhammacakkappavattana Sutta (SN 56.11)",
+    "theme": "wisdom",
+    "is_core": true
+  },
+  {
+    "id": "buddha-middle-way",
+    "tradition": "Buddhist",
+    "lineage": "Core",
+    "original_transliteration": "majjhimā paṭipadā",
+    "translation_en": "The middle way avoids both extremes and gives rise to calm, to insight, to awakening.",
+    "source": "Dhammacakkappavattana Sutta (SN 56.11)",
+    "theme": "equanimity",
+    "is_core": true
+  },
+  {
+    "id": "buddha-karuna",
+    "tradition": "Buddhist",
+    "lineage": "Mahayana",
+    "original_transliteration": "karuṇā-mūlaṁ bodhisattvacaryā",
+    "translation_en": "Compassion is the root of the bodhisattva's practice.",
+    "source": "Bodhisattva teachings",
+    "theme": "compassion",
+    "is_core": true
+  },
+  {
+    "id": "buddha-sangha",
+    "tradition": "Buddhist",
+    "lineage": "Core",
+    "original_transliteration": "buddhaṁ saraṇaṁ gacchāmi, dhammaṁ saraṇaṁ gacchāmi, saṅghaṁ saraṇaṁ gacchāmi",
+    "translation_en": "I take refuge in the Buddha, I take refuge in the Dharma, I take refuge in the Sangha.",
+    "source": "Three Refuges",
+    "theme": "devotion",
+    "is_core": true
+  },
+
+  {
+    "id": "jain-tattvartha-1-1",
+    "tradition": "Jain",
+    "lineage": "Tattvartha Sutra",
+    "original_transliteration": "samyag-darśana-jñāna-cāritrāṇi mokṣa-mārgaḥ",
+    "translation_en": "Right faith, right knowledge, and right conduct together constitute the path to liberation.",
+    "source": "Tattvartha Sutra 1.1, Umasvati",
+    "theme": "liberation",
+    "is_core": true
+  },
+  {
+    "id": "jain-tattvartha-5-21",
+    "tradition": "Jain",
+    "lineage": "Tattvartha Sutra",
+    "original_transliteration": "sthitir bandhaḥ",
+    "translation_en": "Attachment causes bondage of karma to the soul.",
+    "source": "Tattvartha Sutra 5.21, Umasvati",
+    "theme": "non-attachment",
+    "is_core": true
+  },
+  {
+    "id": "jain-tattvartha-7-1",
+    "tradition": "Jain",
+    "lineage": "Tattvartha Sutra",
+    "original_transliteration": "nirjarā ca tapasā",
+    "translation_en": "Karmic matter is shed through austerity and self-discipline.",
+    "source": "Tattvartha Sutra 7.1, Umasvati",
+    "theme": "self-mastery",
+    "is_core": true
+  },
+  {
+    "id": "jain-uttaradhyayana-1-1",
+    "tradition": "Jain",
+    "lineage": "Uttaradhyayana Sutra",
+    "original_transliteration": "savvesim jīva-nikāyesim na hantavvā na ajjhāvayitavvā",
+    "translation_en": "No living beings should be harmed, nor should one exercise power over them.",
+    "source": "Uttaradhyayana Sutra 1",
+    "theme": "ahimsa",
+    "is_core": true
+  },
+  {
+    "id": "jain-uttaradhyayana-8-1",
+    "tradition": "Jain",
+    "lineage": "Uttaradhyayana Sutra",
+    "original_transliteration": "khamemi savva-jīve savve jīvā khamantu me",
+    "translation_en": "I forgive all beings; may all beings forgive me.",
+    "source": "Uttaradhyayana Sutra 8",
+    "theme": "compassion",
+    "is_core": true
+  },
+  {
+    "id": "jain-uttaradhyayana-patience",
+    "tradition": "Jain",
+    "lineage": "Uttaradhyayana Sutra",
+    "original_transliteration": "khamā vīrassa bhūsaṇaṁ",
+    "translation_en": "Forgiveness is the ornament of the brave.",
+    "source": "Uttaradhyayana Sutra",
+    "theme": "patience",
+    "is_core": true
+  },
+  {
+    "id": "jain-acharanga-1-1",
+    "tradition": "Jain",
+    "lineage": "Acharanga Sutra",
+    "original_transliteration": "tumam si ṇāma sacceva jamhā meāvakamkhasī",
+    "translation_en": "You are that which you wish to harm; you are that which you wish to dominate. In hurting others, you hurt yourself.",
+    "source": "Acharanga Sutra 1.1",
+    "theme": "ahimsa",
+    "is_core": true
+  },
+  {
+    "id": "jain-acharanga-self",
+    "tradition": "Jain",
+    "lineage": "Acharanga Sutra",
+    "original_transliteration": "soyaṁ bāle appaṇā appaṇaṁ kuvvai dukkhiyaṁ",
+    "translation_en": "The ignorant one makes oneself suffer; one who understands this finds peace.",
+    "source": "Acharanga Sutra",
+    "theme": "self-knowledge",
+    "is_core": true
+  },
+  {
+    "id": "jain-mahavir-soul",
+    "tradition": "Jain",
+    "lineage": "Mahavira",
+    "original_transliteration": "appā so paramappā",
+    "translation_en": "The soul itself is the supreme soul; the individual self is the highest reality.",
+    "source": "Teachings of Mahavira",
+    "theme": "self-knowledge",
+    "is_core": true
+  },
+  {
+    "id": "jain-mahavir-compassion",
+    "tradition": "Jain",
+    "lineage": "Mahavira",
+    "original_transliteration": "dayā dhamma kā mūla hai",
+    "translation_en": "Compassion is the root of all dharma.",
+    "source": "Teachings of Mahavira",
+    "theme": "compassion",
+    "is_core": true
+  },
+  {
+    "id": "jain-mahavir-anger",
+    "tradition": "Jain",
+    "lineage": "Mahavira",
+    "original_transliteration": "koha-m-koheṇa jei ṇam jaṁ jiyai, taṁ jaṁ dujjiyaṁ",
+    "translation_en": "Anger conquered by anger becomes harder to conquer; anger conquered by calm is truly conquered.",
+    "source": "Teachings of Mahavira",
+    "theme": "patience",
+    "is_core": true
+  },
+  {
+    "id": "jain-mahavir-nonpossession",
+    "tradition": "Jain",
+    "lineage": "Mahavira",
+    "original_transliteration": "aparigraha-vratam etat",
+    "translation_en": "Non-possessiveness is the supreme vow; attach yourself to nothing.",
+    "source": "Teachings of Mahavira",
+    "theme": "non-attachment",
+    "is_core": true
+  },
+  {
+    "id": "jain-kundakunda-samayasara",
+    "tradition": "Jain",
+    "lineage": "Kundakunda",
+    "original_transliteration": "appā kattā vikattā ya duhāṇa ya suhāṇa ya",
+    "translation_en": "The self is the doer and un-doer of both suffering and happiness.",
+    "source": "Samayasara, Kundakunda",
+    "theme": "karma",
+    "is_core": true
+  },
+  {
+    "id": "jain-kundakunda-nischaya",
+    "tradition": "Jain",
+    "lineage": "Kundakunda",
+    "original_transliteration": "ṇicchaya-ṇayeṇa ṇāṇī du appaṁ jāṇai kevalaṁ",
+    "translation_en": "From the ultimate standpoint, the wise one knows only the self in its pure form.",
+    "source": "Niyamasara, Kundakunda",
+    "theme": "self-knowledge",
+    "is_core": true
+  },
+  {
+    "id": "jain-acharya-tulsi-anuvrat",
+    "tradition": "Jain",
+    "lineage": "Terapanth",
+    "original_transliteration": "aṇuvrata-dharma-samācāra",
+    "translation_en": "Practice small vows daily: even a small step toward non-violence transforms the world.",
+    "source": "Acharya Tulsi, Anuvrat Movement",
+    "theme": "ahimsa",
+    "is_core": true
+  },
+  {
+    "id": "jain-truth-anekanta",
+    "tradition": "Jain",
+    "lineage": "Agama",
+    "original_transliteration": "anekānta-vādaḥ",
+    "translation_en": "Reality is many-sided; no single viewpoint captures the whole truth.",
+    "source": "Jain Philosophy, Anekantavada",
+    "theme": "wisdom",
+    "is_core": true
+  },
+  {
+    "id": "jain-navkar-full",
+    "tradition": "Jain",
+    "lineage": "Agama",
+    "original_transliteration": "namō arihantāṇaṁ, namō siddhāṇaṁ, namō āyariyāṇaṁ, namō uvajjhāyāṇaṁ, namō lōe savva-sāhūṇaṁ",
+    "translation_en": "I bow to the enlightened, the liberated, the teachers, the preceptors, and all seekers in the world.",
+    "source": "Navkar Mantra (full)",
+    "theme": "humility",
+    "is_core": true
+  },
+
+  {
+    "id": "zen-huineng-mind",
+    "tradition": "Zen",
+    "lineage": "Chan",
+    "original_transliteration": "bù shì fēng dòng, bù shì fān dòng, rén zhě xīn dòng",
+    "translation_en": "It is not the flag that moves, nor the wind; it is only the mind that moves.",
+    "source": "Platform Sutra, Hui-neng",
+    "theme": "mind",
+    "is_core": true
+  },
+  {
+    "id": "zen-huineng-nature",
+    "tradition": "Zen",
+    "lineage": "Chan",
+    "original_transliteration": "hé qí zì xìng běn zì qīng jìng",
+    "translation_en": "How wonderful that one's own nature is originally pure.",
+    "source": "Platform Sutra, Hui-neng",
+    "theme": "self-knowledge",
+    "is_core": true
+  },
+  {
+    "id": "zen-huineng-no-abiding",
+    "tradition": "Zen",
+    "lineage": "Chan",
+    "original_transliteration": "yīng wú suǒ zhù ér shēng qí xīn",
+    "translation_en": "Let the mind arise without fixing it anywhere.",
+    "source": "Platform Sutra, Hui-neng",
+    "theme": "non-attachment",
+    "is_core": true
+  },
+  {
+    "id": "zen-mumonkan-1",
+    "tradition": "Zen",
+    "lineage": "Rinzai",
+    "original_transliteration": "kǒu tóng tiě shuān wú ěr kǒng quē",
+    "translation_en": "The Great Way has no gate; a thousand paths lead to it. Pass through this barrier and walk freely through the universe.",
+    "source": "Gateless Gate (Mumonkan), Case 1",
+    "theme": "liberation",
+    "is_core": true
+  },
+  {
+    "id": "zen-mumonkan-19",
+    "tradition": "Zen",
+    "lineage": "Rinzai",
+    "original_transliteration": "píng cháng xīn shì dào",
+    "translation_en": "Everyday mind is the Way.",
+    "source": "Gateless Gate (Mumonkan), Case 19",
+    "theme": "ordinariness",
+    "is_core": true
+  },
+  {
+    "id": "zen-bluecliff-1",
+    "tradition": "Zen",
+    "lineage": "Chan",
+    "original_transliteration": "kuò rán wú shèng",
+    "translation_en": "Vast emptiness, nothing holy. Bodhidharma's reply reveals that the sacred is not separate from the ordinary.",
+    "source": "Blue Cliff Record, Case 1",
+    "theme": "wisdom",
+    "is_core": true
+  },
+  {
+    "id": "zen-dogen-shikantaza",
+    "tradition": "Zen",
+    "lineage": "Soto",
+    "original_transliteration": "shikan-taza",
+    "translation_en": "Just sitting: zazen is not a means to awakening, it is awakening itself.",
+    "source": "Shobogenzo, Dogen",
+    "theme": "mindfulness",
+    "is_core": true
+  },
+  {
+    "id": "zen-dogen-genjo",
+    "tradition": "Zen",
+    "lineage": "Soto",
+    "original_transliteration": "hotoke no dō o narau to iu wa, jiko o narau nari",
+    "translation_en": "To study the Buddha Way is to study the self; to study the self is to forget the self.",
+    "source": "Shobogenzo Genjokoan, Dogen",
+    "theme": "self-knowledge",
+    "is_core": true
+  },
+  {
+    "id": "zen-dogen-uji",
+    "tradition": "Zen",
+    "lineage": "Soto",
+    "original_transliteration": "u-ji",
+    "translation_en": "Being-time: each moment of existence is all of time; time does not fly away.",
+    "source": "Shobogenzo Uji, Dogen",
+    "theme": "mindfulness",
+    "is_core": true
+  },
+  {
+    "id": "zen-dogen-firewood",
+    "tradition": "Zen",
+    "lineage": "Soto",
+    "original_transliteration": "takigi wa hai to naru, sara ni kaeri te takigi to naru bekarazu",
+    "translation_en": "Firewood becomes ash and does not become firewood again; yet do not suppose ash is after and firewood before.",
+    "source": "Shobogenzo Genjokoan, Dogen",
+    "theme": "impermanence",
+    "is_core": true
+  },
+  {
+    "id": "zen-rinzai-true-person",
+    "tradition": "Zen",
+    "lineage": "Rinzai",
+    "original_transliteration": "wú wèi zhēn rén",
+    "translation_en": "There is a true person of no rank who is always going in and out through the gates of your face.",
+    "source": "Record of Linji (Rinzai)",
+    "theme": "self-knowledge",
+    "is_core": true
+  },
+  {
+    "id": "zen-linji-seeking",
+    "tradition": "Zen",
+    "lineage": "Rinzai",
+    "original_transliteration": "féng fó shā fó féng zǔ shā zǔ",
+    "translation_en": "If you meet the Buddha on the road, strike him down. Do not seek outside yourself.",
+    "source": "Record of Linji (Rinzai)",
+    "theme": "self-knowledge",
+    "is_core": true
+  },
+  {
+    "id": "zen-bodhidharma-mind",
+    "tradition": "Zen",
+    "lineage": "Chan",
+    "original_transliteration": "zhí zhǐ rén xīn jiàn xìng chéng fó",
+    "translation_en": "Point directly at the human mind; see your true nature and become a Buddha.",
+    "source": "Bodhidharma",
+    "theme": "enlightenment",
+    "is_core": true
+  },
+  {
+    "id": "zen-bodhidharma-wall",
+    "tradition": "Zen",
+    "lineage": "Chan",
+    "original_transliteration": "bì guān",
+    "translation_en": "Nine years facing a wall: stillness and perseverance are the foundation of awakening.",
+    "source": "Bodhidharma, Wall-Gazing",
+    "theme": "patience",
+    "is_core": true
+  },
+  {
+    "id": "zen-bluecliff-cloud",
+    "tradition": "Zen",
+    "lineage": "Chan",
+    "original_transliteration": "yún zài qīng tiān shuǐ zài píng",
+    "translation_en": "Clouds in the blue sky, water in the jug. Each thing rests perfectly in its own nature.",
+    "source": "Blue Cliff Record",
+    "theme": "peace",
+    "is_core": true
+  },
+  {
+    "id": "zen-shunryu-beginners",
+    "tradition": "Zen",
+    "lineage": "Soto",
+    "original_transliteration": "shoshin",
+    "translation_en": "In the beginner's mind there are many possibilities; in the expert's mind there are few.",
+    "source": "Shunryu Suzuki, Zen Mind",
+    "theme": "humility",
+    "is_core": true
+  },
+
+  {
+    "id": "cross-sarva-dharma",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "sarva-dharma-sama-bhāva",
+    "translation_en": "Equal respect for all paths of truth.",
+    "source": "Indian philosophical principle",
+    "theme": "unity",
+    "is_core": true
+  },
+  {
+    "id": "cross-ahimsa-universal",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "ahiṁsā — sarvatra sarvadā sarva-bhūta-hite ratāḥ",
+    "translation_en": "Non-violence everywhere, always, devoted to the welfare of all beings.",
+    "source": "Shared across Hindu, Jain, Buddhist traditions",
+    "theme": "ahimsa",
+    "is_core": true
+  },
+  {
+    "id": "cross-karma-shared",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "yathā bījaṁ tathā phalam",
+    "translation_en": "As the seed, so the fruit; every action bears its own consequence.",
+    "source": "Shared karma teaching across Dharmic traditions",
+    "theme": "karma",
+    "is_core": true
+  },
+  {
+    "id": "cross-compassion-path",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "karuṇā sarvasya mūlam",
+    "translation_en": "Compassion is the root of all spiritual life.",
+    "source": "Shared across Buddhist, Hindu, Jain, Sikh traditions",
+    "theme": "compassion",
+    "is_core": true
+  },
+  {
+    "id": "cross-satsang",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "sat-saṅga — sādh saṅgat",
+    "translation_en": "The company of the truthful transforms the seeker; seek holy fellowship.",
+    "source": "Shared: Hindu satsang, Sikh sadh sangat, Buddhist sangha",
+    "theme": "wisdom",
+    "is_core": true
+  },
+  {
+    "id": "cross-guru-grace",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "guru-kṛpā hi kevalam",
+    "translation_en": "The grace of the teacher alone opens the door to liberation.",
+    "source": "Shared across Hindu, Sikh, Zen traditions",
+    "theme": "gratitude",
+    "is_core": true
+  },
+  {
+    "id": "cross-inner-light",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "antar-jyoti — man dīpak chet jagai",
+    "translation_en": "The divine light shines within every being; awaken the lamp of awareness in the heart.",
+    "source": "Shared: Hindu antaryami, Sikh jot, Buddhist Buddha-nature",
+    "theme": "self-knowledge",
+    "is_core": true
+  },
+  {
+    "id": "cross-detachment",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "vairāgyam — nekkhamma — aparigraha",
+    "translation_en": "Detachment from worldly entanglement is praised across all paths as the gateway to freedom.",
+    "source": "Shared: Hindu vairagya, Buddhist nekkhamma, Jain aparigraha",
+    "theme": "non-attachment",
+    "is_core": true
+  },
+  {
+    "id": "cross-silence",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "mauna — noble silence",
+    "translation_en": "In silence the mind discovers its own nature and the voice of truth is heard.",
+    "source": "Shared: Hindu mauna, Buddhist noble silence, Zen stillness",
+    "theme": "peace",
+    "is_core": true
+  },
+  {
+    "id": "cross-service",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "sevā — dāna — paropakāra",
+    "translation_en": "Selfless service to others is the highest expression of spiritual life.",
+    "source": "Shared: Sikh seva, Hindu paropakara, Buddhist dana",
+    "theme": "service",
+    "is_core": true
+  },
+  {
+    "id": "cross-impermanence",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "anitya — aniccā — kṣaṇa-bhaṅgura",
+    "translation_en": "All things are impermanent; understanding this deeply brings freedom from clinging.",
+    "source": "Shared: Buddhist anicca, Hindu anitya, Jain kshana-bhangura",
+    "theme": "impermanence",
+    "is_core": true
+  },
+  {
+    "id": "cross-truthfulness",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "satyam — sach — sacca",
+    "translation_en": "Truth is the foundation of all dharma; speak truth, live truth, be truth.",
+    "source": "Shared across all Dharmic traditions",
+    "theme": "truth",
+    "is_core": true
+  },
+  {
+    "id": "cross-equality",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "samatā — samadarśana",
+    "translation_en": "See all beings with equal vision; the divine resides equally in all.",
+    "source": "Shared: Gita samadarshana, Sikh ek jot, Buddhist metta for all",
+    "theme": "equanimity",
+    "is_core": true
+  },
+  {
+    "id": "cross-liberation",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "mokṣa — nibbāna — mukti — kevala",
+    "translation_en": "Liberation is the ultimate aim: freedom from the cycle of suffering, known by many names across traditions.",
+    "source": "Shared: Hindu moksha, Buddhist nibbana, Sikh mukti, Jain kevala",
+    "theme": "liberation",
+    "is_core": true
+  },
+  {
+    "id": "cross-mindful-action",
+    "tradition": "Cross-tradition",
+    "lineage": "Universal",
+    "original_transliteration": "sati-sampajañña — smṛti — surati",
+    "translation_en": "Act with full awareness in every moment; mindful action transforms the mundane into the sacred.",
+    "source": "Shared: Buddhist sati, Hindu smriti, Sikh surati, Zen mindfulness",
+    "theme": "mindfulness",
+    "is_core": true
+  },
+  {
+    "id": "gita-13-28",
+    "tradition": "Hindu",
+    "lineage": "Bhagavad Gita",
+    "original_transliteration": "samaṁ sarveṣu bhūteṣu tiṣṭhantaṁ parameśvaram",
+    "translation_en": "One who sees the Supreme Lord dwelling equally in all beings does not degrade the self by the self.",
+    "source": "Bhagavad Gita 13.28",
+    "theme": "unity",
+    "is_core": true
+  },
+  {
+    "id": "yoga-sutra-2-30",
+    "tradition": "Hindu",
+    "lineage": "Yoga",
+    "original_transliteration": "ahiṁsā-satyāsteya-brahmacaryāparigrahā yamāḥ",
+    "translation_en": "Non-violence, truth, non-stealing, continence, and non-possessiveness are the great universal vows.",
+    "source": "Yoga Sutras of Patanjali 2.30",
+    "theme": "dharma",
+    "is_core": true
+  },
+  {
+    "id": "sikh-nanak-pavan",
+    "tradition": "Sikh",
+    "lineage": "Gurbani",
+    "original_transliteration": "pavan gurū pānī pitā mātā dharat mahat",
+    "translation_en": "Air is the Guru, water the father, and the great earth the mother of all.",
+    "source": "Japji Sahib, Guru Nanak",
+    "theme": "gratitude",
+    "is_core": true
+  },
+  {
+    "id": "dhammapada-277",
+    "tradition": "Buddhist",
+    "lineage": "Theravada",
+    "original_transliteration": "sabbe saṅkhārā dukkhā ti yadā paññāya passati",
+    "translation_en": "When one sees with wisdom that all formations are suffering, one turns away from the path of sorrow.",
+    "source": "Dhammapada 277",
+    "theme": "wisdom",
+    "is_core": true
+  },
+  {
+    "id": "jain-mahavir-truth",
+    "tradition": "Jain",
+    "lineage": "Mahavira",
+    "original_transliteration": "saccaṁ bhūya-hitaṁ ca jai bhaṇāmi",
+    "translation_en": "Speak what is true and what is beneficial to all beings.",
+    "source": "Teachings of Mahavira",
+    "theme": "truth",
+    "is_core": true
+  },
+  {
+    "id": "zen-huineng-bodhi",
+    "tradition": "Zen",
+    "lineage": "Chan",
+    "original_transliteration": "pútí běn wú shù, míng jìng yì fēi tái",
+    "translation_en": "Bodhi originally has no tree; the bright mirror has no stand. There is nothing from the start; where can dust alight?",
+    "source": "Platform Sutra, Hui-neng",
+    "theme": "wisdom",
     "is_core": true
   }
 ]

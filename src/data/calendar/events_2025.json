@@ -1,1086 +1,1080 @@
+
+
+
 {
-  "events_2025": [
-    {
-      "date": "2025-11-20",
-      "name": "Shaheedi Baba Gurbaksh Singh ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-11-20",
-      "name": "New Moon",
-      "faith": "Buddhist",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-11-24",
-      "name": "Shaheedi Bhai Mati Das ji, Bhai Sati Das ji, and Bhai Dyala ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-11-24",
-      "name": "Shaheedi Sri Guru Teg Bahadur Sahib Ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-11-25",
-      "name": "Vivah Panchami",
-      "faith": "Hindu",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-11-26",
-      "name": "Shaheedi Elder Sahibzadas and other singhs at Chamkaur",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-11-26",
-      "name": "Shaheedi Younger Sahibzadas and Mata Gujri ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-11-28",
-      "name": "Janam Dihara Sahibzada Zorawar Singh ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-01",
-      "name": "Gita Jayanti",
-      "faith": "Hindu",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-01",
-      "name": "Mokshada Ekadashi",
-      "faith": "Hindu",
-      "category": "Ekadashi"
-    },
-    {
-      "date": "2025-12-01",
-      "name": "First Parkaash of Sri Guru Granth Sahib",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-02",
-      "name": "Shaheedi Baba Gurbaksh Singh ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-04",
-      "name": "Margashirsha Purnima",
-      "faith": "Hindu",
-      "category": "Tithi"
-    },
-    {
-      "date": "2025-12-04",
-      "name": "Rohini Vrat",
-      "faith": "Jain",
-      "category": "Vrat"
-    },
-    {
-      "date": "2025-12-08",
-      "name": "Bodhi Day",
-      "faith": "Buddhist",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-09",
-      "name": "Parkaash Sri Guru Ramdas Ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-12",
-      "name": "Janam Dihara Bhagat Namdev Ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-13",
-      "name": "Shaheedi Baba Deep Singh ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-14",
-      "name": "Gurgaddi Sri Guru Harkrishan Sahib Ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-15",
-      "name": "Saphala Ekadashi",
-      "faith": "Hindu",
-      "category": "Ekadashi"
-    },
-    {
-      "date": "2025-12-20",
-      "name": "Gurgaddi Guru Granth Sahib",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-21",
-      "name": "Joti-Jot Sri Guru Harrai Sahib Ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-21",
-      "name": "Joti-Jot Sri Guru Gobind Singh Sahib Ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-24",
-      "name": "Gurgaddi Sri Guru Gobind Singh Sahib Ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-26",
-      "name": "Janam Dihara Bhai Udham Singh Ji(26/12/1899)",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-27",
-      "name": "Prakash Guru Gobind Singh Sahib Ji",
-      "faith": "Sikh",
-      "category": "Festival"
-    },
-    {
-      "date": "2025-12-30",
-      "name": "Pausha Putrada Ekadashi",
-      "faith": "Hindu",
-      "category": "Ekadashi"
-    }
-  ],
+  
   "events_2026": [
     {
       "date": "2026-01-03",
       "name": "Pausha Purnima",
       "faith": "Hindu",
-      "category": "Tithi"
+      "category": "Tithi",
+      "description": "Pausha Purnima marks the beginning of the month-long austerity period of Magha, leading up to the Magha Mela or Kumbh Mela. On this full moon, thousands of devotees bathe in holy rivers like the Ganges at Prayagraj to cleanse their souls. It also marks the start of Kalpavas (a period of simple living and isolation) for ascetics. Charity (Daan) given on this day is considered to yield great spiritual rewards."
     },
     {
       "date": "2026-01-06",
       "name": "Sakat Chauth",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Also known as Til-Kuta Chauth, this festival is observed by mothers for the long life and well-being of their children. It involves fasting all day and breaking the fast only after sighting the moon and worshipping Lord Ganesha. Special sweets made of sesame seeds (Til) and jaggery are prepared and offered to the deity. Legends of Ganesha's wisdom are narrated during the evening puja."
     },
     {
       "date": "2026-01-14",
       "name": "Makara Sankranti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This major harvest festival marks the sun's transition into the zodiac sign of Capricorn (Makara), signaling the end of winter and longer days. It is celebrated across India under various names (Lohri, Uttarayan, Magh Bihu) with regional variations like kite flying, bonfires, and river bathing. Sesame and jaggery sweets are exchanged to symbolize spreading sweetness and forgetting past grievances. It is a solar festival dedicated to the Sun God, Surya."
     },
     {
       "date": "2026-01-14",
       "name": "Pongal",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Pongal is the Tamil harvest festival lasting four days, giving thanks to nature and the Sun God for a bountiful harvest. The signature dish, also called Pongal (rice boiled with milk and jaggery), is allowed to boil over as a sign of abundance. Cows and cattle are decorated and worshipped on Mattu Pongal. It is a time of family reunions, new clothes, and decorating homes with Kolam (rice flour designs)."
     },
     {
       "date": "2026-01-14",
       "name": "Shattila Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Shattila Ekadashi emphasizes the importance of 'Til' (Sesame seeds) in six different ways: bathing with sesame water, rubbing sesame paste, offering sesame in fire, donating sesame, eating sesame, and giving sesame gifts. It is believed that using sesame on this day purifies the body and soul, washing away sins. Lord Vishnu is worshipped to prevent misfortune and poverty. The fast is kept strictly to ensure spiritual merit."
     },
     {
       "date": "2026-01-16",
       "name": "Meru Trayodashi",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Meru Trayodashi is a significant Jain festival commemorating the day the first Tirthankara, Rishabhdev, attained Nirvana (liberation). Jains visit temples, perform abhishekam (ritual bathing of idols), and remember the path of non-attachment taught by the Tirthankaras. It is a day for reflecting on the ultimate goal of the soul: freedom from the cycle of rebirth. Special pujas are dedicated to Mount Meru, considered the center of the universe in Jain cosmology."
     },
     {
       "date": "2026-01-18",
       "name": "Mauni Amavasya",
       "faith": "Hindu",
-      "category": "Tithi"
+      "category": "Tithi",
+      "description": "Observed on the no-moon day of the Magha month, Mauni Amavasya is the day of 'Silent Wisdom'. Devotees practice 'Mauna Vrat' (vow of total silence) to control their speech and mind, connecting deeply with the divine. It is considered the most auspicious day for bathing in the holy Sangam at Prayagraj. Millions congregate for the holy dip, believing it washes away the sins of lifetimes."
     },
     {
       "date": "2026-01-23",
       "name": "Vasant Panchami",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This festival marks the arrival of spring (Vasant) and is dedicated to Goddess Saraswati, the deity of knowledge, music, and arts. People dress in yellow (symbolizing mustard flowers), fly kites, and initiate young children into learning (Vidyarambham). In schools and homes, books and instruments are placed before the Goddess for blessings. It is a vibrant celebration of nature's renewal and the pursuit of wisdom."
     },
     {
       "date": "2026-01-25",
       "name": "Ratha Saptami",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Also known as Magha Saptami, this day celebrates the birth of the Sun God, Surya. It is believed that on this day, the Sun God begins his journey towards the Northern Hemisphere in his chariot drawn by seven horses. Devotees wake up before sunrise, take a holy bath using Calotropis leaves, and offer 'Arghya' (water) to the rising sun. It is believed to grant health and cure diseases."
     },
     {
       "date": "2026-01-26",
       "name": "Bhishma Ashtami",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This day commemorates the death anniversary of Bhishma Pitamah from the Mahabharata, who had the boon of choosing his time of death and waited for the auspicious Uttarayan period. Devotees perform 'Tarpan' (ritual offering of water) to their ancestors and to Bhishma, as he died childless. It is believed that performing these rites helps childless couples attain progeny and appeases the souls of ancestors."
     },
     {
       "date": "2026-01-28",
       "name": "Rohini Vrat",
       "faith": "Jain",
-      "category": "Vrat"
+      "category": "Vrat",
+      "description": "Observed when the moon is in the Rohini Nakshatra, this fast is a regular feature in the Jain calendar, primarily undertaken by women. It involves strict dietary restrictions and prayers to Tirthankara Vasupujya. The fast is kept to ensure peace and prosperity within the household. It serves as a periodic reminder of self-discipline and detachment from sensory pleasures."
     },
     {
       "date": "2026-01-28",
       "name": "Jaya Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Jaya Ekadashi is a powerful fasting day believed to absolve devotees of the gravest sins, including those that might lead to a ghostly existence (pisach yoni) in the afterlife. The story behind it involves a cursed musician regained his human form through the merit of this fast. Devotees worship Lord Vishnu with flowers and perform Jagran (night vigil). It is observed to attain purity and eventual salvation."
     },
     {
       "date": "2026-01-29",
       "name": "Gauna Jaya Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Gauna Jaya Ekadashi is observed by Vaishnavas and Smarthas who missed the primary Ekadashi date or follow a specific calculation where the fasting period extends. The rituals and significance remain the same as Jaya Ekadashi—seeking liberation from sins and ghostly forms. It highlights the flexibility within Hindu tradition to accommodate different astrological calculations (Smartha vs. Vaishnava dates)."
     },
     {
       "date": "2026-02-01",
       "name": "Magha Purnima",
       "faith": "Hindu",
-      "category": "Tithi"
+      "category": "Tithi",
+      "description": "Magha Purnima is the final and most important bathing day of the Magha month. It is believed that deities descend to earth on this day to bathe in the holy Ganges. Devotees perform charity, feed Brahmins, and worship the Moon God and Lord Vishnu. It is considered a highly auspicious time for starting new spiritual ventures and concluding the month-long Kalpavas vows."
     },
     {
       "date": "2026-02-03",
       "name": "Magha Puja Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Also known as Sangha Day, this festival commemorates the spontaneous gathering of 1,250 enlightened monks (Arahants) to hear the Buddha preach the 'Ovadapatimokkha' (core principles of Buddhism). It is celebrated with candlelit processions (Wien Tien) around temples. Buddhists aim to do only good, purify the mind, and abstain from evil on this day. It highlights the importance of the monastic community (Sangha)."
     },
     {
       "date": "2026-02-12",
       "name": "Kumbha Sankranti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This day marks the sun's transition into the Aquarius (Kumbha) zodiac sign. It is one of the twelve monthly Sankrantis and is observed with holy dips in rivers, particularly the Ganges, which is said to turn into nectar (Amrit). It is a significant day for performing 'Dan-Punya' (charity), particularly donating cows or food to the needy. The day connects the solar cycle with personal purification."
     },
     {
       "date": "2026-02-13",
       "name": "Vijaya Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Vijaya Ekadashi is observed to ensure victory ('Vijaya') over enemies and success in difficult endeavors. The legend associates it with Lord Rama observing this fast to find a way to cross the ocean to Lanka. Devotees fast and worship Lord Vishnu to overcome obstacles in their life, whether they are physical battles or internal struggles against vices. It provides spiritual strength."
     },
     {
       "date": "2026-02-15",
       "name": "Parinirvana - Nirvana Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This solemn festival marks the death of the Buddha and his entry into Parinirvana (Final Nirvana), escaping the cycle of rebirth. It is a time for reflection on the impermanence of life and the inevitability of death. Buddhists read the Mahaparinirvana Sutra, which details the Buddha's final days. Meditation retreats and discussions on legacy and loss are common, focusing on the transience of all compounded things."
     },
     {
       "date": "2026-02-15",
       "name": "Nirvana Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Celebrated primarily by Mahayana Buddhists, this day overlaps with Parinirvana Day. It focuses on the Buddha's final passing at Kushinagar at the age of 80. Temples may hold special services where the story of the Buddha's last moments is retold, emphasizing his final words: 'Strive on with diligence.' It acts as a reminder that even the enlightened must pass away, reinforcing the law of nature."
     },
     {
       "date": "2026-02-15",
       "name": "Maha Shivaratri",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The 'Great Night of Shiva' is one of the most significant Hindu festivals, celebrating the marriage of Shiva and Parvati, as well as the night Shiva performed the Tandava dance. Devotees fast all day and keep a night-long vigil (Jagran) at temples, pouring milk and water on the Shiva Lingam. It is believed that meditation on this night is 100 times more powerful. The atmosphere is filled with chants of 'Om Namah Shivaya'."
     },
     {
       "date": "2026-02-17",
       "name": "Chinese New Year",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "While primarily a cultural festival, Chinese New Year is celebrated by Mahayana Buddhists as a time of renewal. It marks the beginning of the lunisolar calendar. People clean their homes to sweep away bad luck, visit temples to light incense for ancestors and gods, and offer prayers for prosperity in the coming year. It is a time of family reunions, red envelopes, and vegetarian feasts."
     },
     {
       "date": "2026-02-23",
       "name": "Phalguna Ashtahnika Begins",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The Ashtahnika Parva is an eight-day festival occurring three times a year, considered the 'festival of the gods' (Nandyishwar Dweep). During these days, Jains believe celestial beings worship eternal Tirthankara idols. Devotees on earth replicate this by engaging in specialized pujas, fasting, and spiritual study. It is a period of heightened religious adherence and checking one's spiritual progress."
     },
     {
       "date": "2026-02-25",
       "name": "Rohini Vrat",
       "faith": "Jain",
-      "category": "Vrat"
+      "category": "Vrat",
+      "description": "Occurring on the Rohini Nakshatra, this fasting day is a staple of Jain ascetic practice for laypeople. By abstaining from food and drink, devotees aim to purify their karma and strengthen their resolve against worldly temptations. It is often accompanied by the reading of scriptures and visiting the Upashraya (monk's residence) to seek blessings. The focus is on non-violence and self-control."
     },
     {
       "date": "2026-03-02",
       "name": "Chhoti Holi",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Chhoti Holi, or Holika Dahan, takes place on the eve of Holi. It involves lighting large bonfires to symbolize the burning of the demoness Holika, who sat in fire to kill Prahlad but was burnt herself while Prahlad survived due to his devotion to Vishnu. The fire represents the triumph of good over evil. People sing, dance around the fire, and roast grains in it as offerings."
     },
     {
       "date": "2026-03-02",
       "name": "Holika Dahan",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This is the ritualistic bonfire lit after sunset on Purnima (Full Moon) before the color festival. It commemorates the legend of Prahlad and Hiranyakashipu. The ash from the Holika fire is considered sacred and is often applied to the forehead the next morning. It marks the end of winter and the removal of negativity from one's life before the joyful celebration of spring."
     },
     {
       "date": "2026-03-02",
       "name": "Phalguna Chaumasi Chaudas",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This festival marks the culmination of the four-month winter period in the Jain calendar. It is a significant day for performing 'Pratikramana' (repentance rituals) to ask for forgiveness for any harm caused to living beings during the season. Jains fast and engage in deep introspection to cleanse their karma. It serves as a spiritual checkpoint before the season changes."
     },
     {
       "date": "2026-03-03",
       "name": "Phalguna Ashtahnika Ends",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This day concludes the eight-day Ashtahnika period of worship. After a week of intense prayer, fasting, and visiting temples, devotees perform the closing ceremonies. It is believed that the merit accumulated during these eight days is immense. The end is often marked by community gatherings and the breaking of fasts (Parana)."
     },
     {
       "date": "2026-03-03",
       "name": "Holi",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Known as the 'Festival of Colors', Holi is a boisterous celebration of spring, love, and the divine play of Radha and Krishna. People smear each other with colored powder (Gulal) and spray water, breaking down social barriers of caste, age, and status. It is a day of forgiveness, where old grudges are washed away with the colors. Traditional drinks like Thandai and sweets are enjoyed in a carnival-like atmosphere."
     },
     {
       "date": "2026-03-03",
       "name": "Phalguna Purnima",
       "faith": "Hindu",
-      "category": "Tithi"
+      "category": "Tithi",
+      "description": "This full moon coincides with the Holi festival and is the last full moon of the Hindu lunar year. Apart from Holika Dahan, it is also the birthday of Goddess Lakshmi and Caitanya Mahaprabhu (in some traditions). Devotees worship the moon and Lord Vishnu for prosperity. It is a highly energetic day charged with the spiritual significance of the changing seasons."
     },
     {
       "date": "2026-03-11",
       "name": "Sheetala Ashtami",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Dedicated to Goddess Sheetala, the deity who cures poxes and fevers, this festival is unique because no fresh food is cooked on this day. Families consume food prepared the previous day (Basoda) to please the Goddess, who is believed to prefer cold things. It is celebrated to protect the family from heat-borne diseases as summer approaches. The kitchen fire is not lit as a mark of respect."
     },
     {
       "date": "2026-03-11",
       "name": "Basoda",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Basoda is the local name for the custom observed during Sheetala Ashtami, literally meaning 'stale' or 'previous night's' food. Women wake up early to worship Sheetala Mata with cold offerings like curd and sweet rice. It is believed to bring health and cooling energy to the household. The tradition highlights the link between diet, seasonal changes, and immunity in Ayurveda and folk belief."
     },
     {
       "date": "2026-03-11",
       "name": "Varshitapa Arambha",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This marks the beginning of a challenging year-long fasting regimen known as 'Varshitap', emulating the first Tirthankara Rishabhdev. Devotees fast on alternate days (one day eating, one day fasting) for over 13 months. It is undertaken for immense karmic purification and spiritual stamina. The fast concludes the following year on Akshaya Tritiya with sugarcane juice."
     },
     {
       "date": "2026-03-14",
       "name": "Meena Sankranti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Meena Sankranti marks the sun's entry into the Pisces (Meena) zodiac sign, which is the last month of the solar calendar. It is considered an auspicious time for charitable works, specifically donating land or grains. In southern India, it holds significance for temple rituals. It represents the conclusion of the solar cycle, preparing for the renewal of the Solar New Year."
     },
     {
       "date": "2026-03-14",
       "name": "Papamochani Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "As the name suggests, 'Papamochani' means 'that which releases from sin'. This Ekadashi is the last one of the Hindu year and is observed to absolve oneself of all sins committed knowingly or unknowingly. The legend involves the sage Medhavi and the nymph Manjughosha. Fasting on this day is said to protect the devotee from demonic influences and guilt."
     },
     {
       "date": "2026-03-19",
       "name": "Ugadi",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Ugadi marks the New Year for people in Karnataka, Andhra Pradesh, and Telangana. The day begins with an oil bath and the consumption of 'Ugadi Pachadi', a dish with six tastes (sweet, sour, salty, bitter, pungent, astringent) symbolizing the acceptance of all experiences in life. It is a time for new beginnings, buying new clothes, and reading the 'Panchangam' (almanac) to predict the year's fortunes."
     },
     {
       "date": "2026-03-19",
       "name": "Gudi Padwa",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Celebrated as the Maharashtrian New Year, Gudi Padwa signifies the victory of King Shalivahana and also Lord Rama's return to Ayodhya. Households hoist a 'Gudi' (a decorated flag with a copper pot) outside their windows to invite prosperity and ward off evil. It is a day of spring cleaning, making Rangolis, and eating Shrikhand and Puran Poli. The Gudi is a symbol of victory and high aspirations."
     },
     {
       "date": "2026-03-19",
       "name": "Chaitra Navratri",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This nine-day festival is dedicated to the nine forms of Goddess Durga (Shakti). Unlike the autumn Navratri, this one concludes with Rama Navami. Devotees fast and perform 'Ghatasthapana' (invoking the goddess in a pot). It is a time of spiritual cleansing and prayer as the seasons change from spring to summer. Each day is dedicated to a specific avatar of the Goddess."
     },
     {
       "date": "2026-03-21",
       "name": "Gauri Puja",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Gauri Puja is dedicated to Goddess Gauri (Parvati), the consort of Lord Shiva. It is celebrated with great fervor in Maharashtra and by Gangaur devotees in Rajasthan. Women worship the Goddess for marital bliss and the longevity of their husbands. Unmarried girls pray for a good spouse. The festivities often involve colorful processions and the decoration of Gauri idols."
     },
     {
       "date": "2026-03-21",
       "name": "Gangaur",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "A vibrant festival of Rajasthan, Gangaur celebrates the union of Shiva (Isar) and Parvati (Gauri). Women balance brass pots on their heads and dress in traditional attire. It involves making clay images of the deities and worshipping them for 18 days (culminating around this date). It is a celebration of spring, harvest, and marital fidelity, filled with folk songs and dances."
     },
     {
       "date": "2026-03-24",
       "name": "Rohini Vrat",
       "faith": "Jain",
-      "category": "Vrat"
+      "category": "Vrat",
+      "description": "Another occurrence of the monthly Rohini Vrat, where Jain devotees observe a fast to honor Tirthankara Vasupujya. The repetition of this vrat throughout the year builds a rhythm of spiritual discipline. Adherents believe that consistent observance leads to the shedding of heavy karma and brings peace to the soul. It is a day of silence and scripture reading."
     },
     {
       "date": "2026-03-24",
       "name": "Yamuna Chhath",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Also known as Yamuna Jayanti, this day celebrates the descent of the Goddess Yamuna to earth. It is celebrated primarily in Mathura and Vrindavan. Devotees bathe in the Yamuna river and offer prayers to the Goddess, who is considered the sister of Yama (Death) and the beloved of Krishna. Worship on this day is believed to purify the soul and remove the fear of death."
     },
     {
       "date": "2026-03-25",
       "name": "Chaitra Navapada Oli Begins",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The Navapada Oli is a nine-day period of semi-fasting observed twice a year by Jains. Devotees eat only one meal a day of plain, boiled food without spices, oil, milk, or curd (Ayambil). It is dedicated to the worship of the 'Siddha Chakra' and the nine supreme posts of the universe. The austerity is performed to conquer the sense of taste and improve physical and mental health."
     },
     {
       "date": "2026-03-26",
       "name": "Rama Navami",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Rama Navami celebrates the birth of Lord Rama, the seventh avatar of Vishnu, to King Dasharatha and Queen Kausalya. It marks the climax of Chaitra Navratri. Temples are decorated, the Ramayana is recited, and small idols of the infant Rama are rocked in cradles. Devotees fast and drink 'Panakam' (a sweet drink). It is a celebration of dharma (righteousness) and the ideal human life."
     },
     {
       "date": "2026-03-26",
       "name": "Swaminarayan Jayanti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This day marks the birth of Bhagwan Swaminarayan, the founder of the Swaminarayan Sampraday, who was born on Rama Navami in Chhapaiya. His followers celebrate with immense devotion, holding assemblies throughout the night to celebrate his life and teachings. His message focused on non-violence, morality, and social reform. Temples are decorated, and the 'Murti' is offered a variety of foods (Annakut)."
     },
     {
       "date": "2026-03-28",
       "name": "Kamada Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Kamada Ekadashi is the first Ekadashi of the Hindu New Year and is believed to fulfill all desires ('Kamada'). The legend tells of a Gandharva who was released from a curse that turned him into a demon by the merit of this fast. Devotees worship Lord Vishnu to get rid of sins and to have their virtuous wishes granted. It is a day of hope and spiritual renewal."
     },
     {
       "date": "2026-03-30",
       "name": "Mahavir Swami Jayanti",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This is the most important festival for Jains, celebrating the birth of the 24th and last Tirthankara, Lord Mahavir. Grand processions are held with the idol of Mahavir, and his teachings of Ahimsa (non-violence), Satya (truth), and Anekantavada (pluralism) are preached. Jains engage in charity, release animals from slaughterhouses, and visit temples to meditate. It is a celebration of peace and compassion."
     },
     {
       "date": "2026-04-01",
       "name": "Chaitra Navapada Oli Ends",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This day marks the conclusion of the nine-day Ayambil Oli fast. Devotees break their semi-fasting regimen and offer prayers to the Siddha Chakra. It is a time of thanksgiving for having the strength to complete the austerity. The period is believed to have fortified the devotee's soul against the influx of bad karma. Community meals are often organized."
     },
     {
       "date": "2026-04-01",
       "name": "Hanuman Jayanti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Hanuman Jayanti celebrates the birth of Lord Hanuman, the supreme devotee of Lord Rama and a symbol of strength and devotion. Devotees visit temples, apply vermilion (Sindoor) to their foreheads, and recite the Hanuman Chalisa. It is believed that worshiping Hanuman on this day grants protection from evil and strength to face life's challenges. In some regions, wrestling competitions are held in his honor."
     },
     {
       "date": "2026-04-01",
       "name": "Hanuman Janmotsava",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Preferably called 'Janmotsava' (birth celebration) rather than 'Jayanti' (which implies the person is no longer alive, while Hanuman is considered immortal/Chiranjeevi). The festivities are the same as Hanuman Jayanti, involving processions, chanting of 'Jai Bajrangbali', and reading the Sundarkand. It is a high-energy festival celebrating loyalty, celibacy, and selfless service."
     },
     {
       "date": "2026-04-01",
       "name": "Chaitra Purnima",
       "faith": "Hindu",
-      "category": "Tithi"
+      "category": "Tithi",
+      "description": "This full moon day marks the beginning of the Hindu New Year in some calendars and is sacred for Chitragupta, the scribe of the Gods who records deeds. Devotees bathe in holy rivers and perform charity. It is also significant for the fishing communities in some coastal areas. The moon is worshipped for mental peace and coolness as the summer heat sets in."
     },
     {
       "date": "2026-04-13",
       "name": "Theravada New Year",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Celebrated in Theravada Buddhist countries like Thailand, Sri Lanka, and Cambodia, this New Year is a time of cleansing and renewal. People clean their houses and pour water over Buddha statues to symbolize washing away bad luck (Songkran). It involves making merit by offering food to monks and releasing captive birds or fish. It is a joyful festival often involving water fights in the streets."
     },
     {
       "date": "2026-04-13",
       "name": "Varuthini Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Varuthini Ekadashi is believed to protect ('Varuthini') the devotee from all miseries and grant constant happiness. Fasting on this day is said to be equivalent to donating gold or performing grand sacrifices. Lord Vishnu is worshipped in his Vamana avatar. It is believed to cure prolonged illnesses and ensure good fortune in this life and the next."
     },
     {
       "date": "2026-04-14",
       "name": "Mesha Sankranti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Mesha Sankranti marks the sun's entry into Aries (Mesha), the first sign of the zodiac, symbolizing the solar New Year. It is celebrated as Baisakhi in Punjab, Puthandu in Tamil Nadu, and Vishu in Kerala. It is a major harvest festival involving feasts, cultural dances, and looking at auspicious items first thing in the morning (Vishu Kani). It represents fresh starts and agricultural abundance."
     },
     {
       "date": "2026-04-14",
       "name": "Solar New Year",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This event coincides with Mesha Sankranti and is celebrated across South and Southeast Asia. It marks the beginning of the solar cycle. People pray for a prosperous year ahead, consult almanacs, and pay respect to elders. The day is filled with traditional foods and wearing new clothes. It unites various cultures under the astronomical event of the sun beginning a new circle."
     },
     {
       "date": "2026-04-19",
       "name": "Parashurama Jayanti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This day celebrates the birth of Lord Parashurama, the sixth avatar of Vishnu, known for his martial prowess and ridding the earth of corrupt warriors. He is considered one of the Chiranjeevis (immortals). Devotees worship him for courage and protection. It often coincides with Akshaya Tritiya, doubling the auspiciousness of the day."
     },
     {
       "date": "2026-04-19",
       "name": "Akshaya Tritiya",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Akshaya Tritiya is one of the most auspicious days in the Hindu calendar, meaning 'Eternal Third'. It is believed that any venture started or gold purchased on this day will grow and never diminish. It is a preferred day for weddings, business inaugurations, and investments. Devotees also perform charity, as the merit gained on this day is said to be everlasting."
     },
     {
       "date": "2026-04-19",
       "name": "Varshitapa Parana",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This is the breaking of the year-long 'Varshitap' fast (alternate day fasting). Devotees break their fast by drinking sugarcane juice, just as Tirthankara Rishabhdev did at the hands of King Shreyans. Thousands of Jains gather at Palitana or Hastinapur for this event. It is a moment of great spiritual accomplishment and community celebration."
     },
     {
       "date": "2026-04-20",
       "name": "Rohini Vrat",
       "faith": "Jain",
-      "category": "Vrat"
+      "category": "Vrat",
+      "description": "The monthly observance of fasting during the Rohini Nakshatra. Jains use this time to pull back from the material world and focus on the nature of the soul. The regularity of the Vrat helps in maintaining a constant spiritual practice throughout the year. It is a day dedicated to non-violence in thought, word, and deed."
     },
     {
       "date": "2026-04-23",
       "name": "Ganga Saptami",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Ganga Saptami, or Ganga Jayanti, celebrates the rebirth of the River Ganges. According to legend, Sage Jahnu drank the river up and released her through his ear on this day. Devotees worship the river and take holy dips to wash away sins. A special 'Deep Daan' (offering of lamps) is performed on the river banks in the evening."
     },
     {
       "date": "2026-04-25",
       "name": "Sita Navami",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Sita Navami, or Janaki Navami, celebrates the birth of Goddess Sita, who was found in a furrow while King Janaka was ploughing the earth. It falls exactly one month after Rama Navami. Married women fast for the longevity of their husbands and family harmony. It is a celebration of purity, sacrifice, and the earth element."
     },
     {
       "date": "2026-04-26",
       "name": "Mahavira Swami Kevalagyan",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This day marks the event when Lord Mahavira attained 'Kevala Jnana' (Omniscience) after years of rigorous penance and meditation. It signifies his complete understanding of the universe and the laws of karma. Jains celebrate by lighting lamps and visiting temples to offer prayers. It is a celebration of the triumph of the soul over ignorance."
     },
     {
       "date": "2026-04-27",
       "name": "Mohini Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Mohini Ekadashi is dedicated to the Mohini avatar of Lord Vishnu, the enchantress form he took to distribute the Amrit (nectar) to the gods. Fasting on this day is believed to remove the sins of many lifetimes and help devotees overcome illusion (Maya) and attachment. It is considered one of the most powerful Ekadashis for spiritual purification."
     },
     {
       "date": "2026-04-29",
       "name": "Narasimha Jayanti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This festival celebrates the appearance of Lord Narasimha, the half-man, half-lion avatar of Vishnu, who appeared at twilight to protect his devotee Prahlad and kill the demon Hiranyakashipu. Devotees fast until dusk and perform special pujas at sunset, the time of the avatar's appearance. It is a celebration of the protection of the faithful and the destruction of evil."
     },
     {
       "date": "2026-05-01",
       "name": "Vaishakha Purnima",
       "faith": "Hindu",
-      "category": "Tithi"
+      "category": "Tithi",
+      "description": "Also known as Buddha Purnima in many regions, this full moon is significant for Hindus as the day of Satyanarayan Puja. It is considered an auspicious day for charity and donation. Many believe that taking a bath in a holy river on this day liberates one from the cycle of rebirth. It coincides with the blooming of nature in full spring."
     },
     {
       "date": "2026-05-02",
       "name": "Narada Jayanti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Narada Jayanti celebrates the birth of Devarishi Narada, the divine sage and messenger of the gods. He is considered the first journalist of the universe and a great devotee of Narayana (Vishnu). Musicians and writers often worship him on this day. It is a day to celebrate communication, devotion, and the spreading of divine knowledge."
     },
     {
       "date": "2026-05-04",
       "name": "Vesak - Buddha Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Vesak is the most sacred day for Buddhists, commemorating the Birth, Enlightenment, and Death (Parinirvana) of Gautama Buddha. Temples are decorated with lanterns and flowers. Buddhists visit temples to chant, meditate, and pour water over the Buddha statue. Acts of generosity and releasing caged animals are common practices to earn merit and honor the Buddha's compassion."
     },
     {
       "date": "2026-05-13",
       "name": "Apara Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Apara Ekadashi is known as the 'limitless' (Apara) Ekadashi because the merit gained from observing it is said to be boundless. It is believed to absolve people of grave sins and even public defamation. Devotees worship Lord Trivikrama (a form of Vishnu). It is observed to gain fame, wealth, and spiritual merit."
     },
     {
       "date": "2026-05-15",
       "name": "Vrishabha Sankranti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This day marks the transition of the sun into the Taurus (Vrishabha) zodiac sign. It is another significant solar transition observed with river baths and charity. In many traditions, it is a day to honor the bull (Nandi), which is the vehicle of Lord Shiva. It marks the beginning of the second month of the solar calendar."
     },
     {
       "date": "2026-05-16",
       "name": "Vat Savitri Vrat",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Vat Savitri Vrat is observed by married women for the longevity of their husbands, based on the legend of Savitri who tricked Yama into returning her husband Satyavan's life. Women tie threads around a Banyan (Vat) tree and offer prayers. The banyan tree represents the Trinity (Brahma, Vishnu, Shiva) and longevity. It is a festival of marital devotion."
     },
     {
       "date": "2026-05-16",
       "name": "Shani Jayanti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Shani Jayanti celebrates the birth of Lord Shani (Saturn), the god of justice and karma. Devotees visit Shani temples, offer oil and sesame seeds to the idol to appease the planet's influence. It is believed that worshiping Shani Dev on this day reduces the malefic effects of Saturn (Sade Sati) and brings good luck. It falls on Amavasya (New Moon)."
     },
     {
       "date": "2026-05-18",
       "name": "Rohini Vrat",
       "faith": "Jain",
-      "category": "Vrat"
+      "category": "Vrat",
+      "description": "The monthly fasting day for Jains coinciding with the Rohini star. It is a time for quiet reflection and austerity. By controlling the appetite, Jains believe they can control the passions of the mind. It is customary to visit the temple and perform 'Darshan' of the Tirthankaras."
     },
     {
       "date": "2026-05-22",
       "name": "Guru Rinpoche Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Observed primarily in Tibetan Buddhism, this day honors Padmasambhava (Guru Rinpoche), who brought Buddhism to Tibet. It falls on the 10th day of the lunar month. Devotees perform 'Tsok' offerings (feasts) and recite the Seven Line Prayer. It is believed that the Guru's blessings are particularly potent on this day for removing obstacles."
     },
     {
       "date": "2026-05-25",
       "name": "Ganga Dussehra",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Ganga Dussehra celebrates the descent of the holy River Ganges from heaven to earth. It is a ten-day festival culminating on this day. Devotees flock to Varanasi, Haridwar, and Rishikesh for a holy dip, which is believed to wash away ten types of sins. In the evening, thousands of leaf boats with lamps and flowers are floated on the river."
     },
     {
       "date": "2026-05-26",
       "name": "Padmini Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Padmini Ekadashi occurs only during the Adhik Maas (leap month), making it a rare and highly meritorious event. It is also called Kamala Ekadashi. Fasting on this day is said to grant the merit of visiting all holy places and performing all sacrifices. It is a special opportunity for devotees to accumulate extra spiritual credit."
     },
     {
       "date": "2026-05-31",
       "name": "Vesak",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "A variation of the Vesak date based on different lunar calculations (often the full moon of the 4th lunar month). The celebrations remain focused on the Buddha's life events. Buddhists decorate their homes, perform acts of charity, and abstain from meat. It is a day of universal peace and brotherhood."
     },
     {
       "date": "2026-05-31",
       "name": "Jyeshtha Adhika Purnima",
       "faith": "Hindu",
-      "category": "Tithi"
+      "category": "Tithi",
+      "description": "This is the full moon of the extra (Adhik) month in the Hindu calendar. It is a special time for performing 'Satyanarayan Puja' and donating to the needy. Since Adhik Maas is dedicated to Lord Vishnu, this Purnima is considered extra potent for Vishnu worship. It is a day to seek blessings for the family's prosperity."
     },
     {
       "date": "2026-06-11",
       "name": "Parama Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Like Padmini Ekadashi, Parama Ekadashi occurs only during the leap month (Adhik Maas). It is the last Ekadashi of the extra month. Observing this fast is believed to remove poverty and suffering, granting the devotee a wealthy and happy life. The legend involves a Brahmin named Sumedha who became rich after observing this fast."
     },
     {
       "date": "2026-06-14",
       "name": "Rohini Vrat",
       "faith": "Jain",
-      "category": "Vrat"
+      "category": "Vrat",
+      "description": "The monthly recurrence of the Rohini Vrat. Devotees maintain their cycle of fasting to honor the Tirthankaras. It is a day to practice forgiveness and patience. Many Jains engage in 'Samayik' (a period of meditation) to cleanse their thoughts."
     },
     {
       "date": "2026-06-15",
       "name": "Mithuna Sankranti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Mithuna Sankranti marks the sun's entry into Gemini (Mithuna). It often coincides with the onset of the monsoon season in India. In Odisha, it is celebrated as Raja Parba, a festival of womanhood and the earth. Farmers prepare for the upcoming agricultural season. It is a time to respect nature and its fertility."
     },
     {
       "date": "2026-06-21",
       "name": "Guru Rinpoche Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The monthly celebration of Padmasambhava on the 10th lunar day. Practitioners engage in visualization practices involving the Guru to receive his blessings. It is considered a powerful day to purify negative karma and renew tantric vows. The day is often marked by communal chanting."
     },
     {
       "date": "2026-06-25",
       "name": "Nirjala Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Nirjala Ekadashi is the toughest of all Ekadashis, as 'Nirjala' means 'without water'. Devotees abstain from both food and water for 24 hours in the heat of summer. It is believed that observing this single fast gives the merit of observing all 24 Ekadashis of the year. It shows immense devotion and willpower."
     },
     {
       "date": "2026-06-29",
       "name": "Vat Purnima Vrat",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Similar to Vat Savitri Vrat, this is celebrated in Maharashtra and Gujarat on the full moon day. Married women tie threads around the Banyan tree and pray for the well-being of their husbands. The tree is worshipped with fruits and flowers. It reinforces the bond of marriage and the sanctity of nature."
     },
     {
       "date": "2026-06-29",
       "name": "Jyeshtha Purnima",
       "faith": "Hindu",
-      "category": "Tithi"
+      "category": "Tithi",
+      "description": "This full moon marks the end of the Jyeshtha month. It is significant for the 'Snana Yatra' of Lord Jagannath in Puri, where the deities are bathed publicly. It is believed that the Lord falls sick after this bath and goes into seclusion. Devotees fast and offer prayers to the Moon and Vishnu."
     },
     {
       "date": "2026-07-01",
       "name": "Asala - Dharma Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Asala, or Asalha Puja, commemorates the Buddha's first sermon in the Deer Park at Sarnath, known as 'Setting the Wheel of Dhamma in Motion'. It marks the beginning of the Buddhist Sangha. It also signals the start of the 'Vassa' (Rains Retreat) for monks. Buddhists visit temples to listen to sermons and offer candles."
     },
     {
       "date": "2026-07-10",
       "name": "Yogini Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Yogini Ekadashi is observed to get rid of skin diseases and sins. The legend involves a gardener of Kubera who was cursed with leprosy but was cured after observing this fast. Devotees worship Lord Vishnu and feed the poor. It is believed to grant beauty, health, and liberation."
     },
     {
       "date": "2026-07-12",
       "name": "Rohini Vrat",
       "faith": "Jain",
-      "category": "Vrat"
+      "category": "Vrat",
+      "description": "The monthly fasting day in the Jain tradition. Observance on this day is believed to reduce future suffering. It is a day of spiritual accounting, where one reviews their conduct of the past month. Families often go to the temple together."
     },
     {
       "date": "2026-07-15",
       "name": "Jagannath Rathyatra",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The famous Chariot Festival of Puri, Odisha, where Lord Jagannath, Balabhadra, and Subhadra are taken out of the temple in massive chariots to visit their aunt's house (Gundicha Temple). Millions of devotees gather to pull the ropes of the chariots, which is considered highly auspicious. It symbolizes the Lord stepping out to meet his devotees."
     },
     {
       "date": "2026-07-16",
       "name": "Karka Sankranti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Karka Sankranti marks the sun's entry into Cancer (Karka) and the beginning of the 'Dakshinayana' (southern journey of the sun), considered the night of the gods. It is a time for pitru tarpan (ancestral offerings) rather than auspicious celebrations like weddings. Devotees perform charity to help the needy during the monsoon."
     },
     {
       "date": "2026-07-20",
       "name": "Ashadha Ashtahnika Begins",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The beginning of the second Ashtahnika period of the year. For eight days, Jains engage in rigorous worship and scriptural study. It is a time when the faithful try to emulate the lives of the Tirthankaras. Special decorations and pujas are arranged in Jain temples."
     },
     {
       "date": "2026-07-21",
       "name": "Guru Rinpoche Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The 10th day of the lunar month dedicated to Padmasambhava. Tibetan Buddhists offer prayers to remove obstacles to their spiritual practice. It is a day to remember the qualities of the teacher and the lineage. Tsok feasts are shared among the community."
     },
     {
       "date": "2026-07-25",
       "name": "Devshayani Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Devshayani Ekadashi marks the beginning of 'Chaturmas', the four-month period when Lord Vishnu is believed to go to sleep on the cosmic serpent Shesha. Auspicious ceremonies like weddings are paused during this period. Devotees observe this fast to seek God's protection during the monsoon months. It is a time for deepened spiritual practice."
     },
     {
       "date": "2026-07-28",
       "name": "Ashadha Chaumasi Chaudas",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This day marks the beginning of the four-month rainy season retreat (Chaturmas) for Jain monks, who stay in one place to avoid harming insects that proliferate in the rain. Laypeople perform Pratikramana to confess sins. It is a time of increased restraint and fasting."
     },
     {
       "date": "2026-07-29",
       "name": "Guru Purnima",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Guru Purnima is dedicated to the Guru (spiritual teacher). It coincides with the birth of Veda Vyasa, the author of the Mahabharata. Disciples visit their Gurus, offer gifts, and seek blessings. It is a celebration of the removal of darkness (Gu) by the bringer of light (Ru)."
     },
     {
       "date": "2026-07-29",
       "name": "Ashadha Purnima",
       "faith": "Hindu",
-      "category": "Tithi"
+      "category": "Tithi",
+      "description": "This full moon day holds significance for the 'Gopadon' (Cow gift) ritual. It is also the conclusion of the Rath Yatra festival in some traditions. Devotees fast and worship Lakshmi-Narayana. It marks the formal beginning of the Chaturmas period."
     },
     {
       "date": "2026-07-29",
       "name": "Asala - Religion Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Also known as Dhamma Day, this celebrates the Buddha's first teaching. It is a day to reflect on the Four Noble Truths and the Eightfold Path. Many young men in Theravada countries ordain as monks for the duration of the rainy season on this day. It is a community-centric festival."
     },
     {
       "date": "2026-07-29",
       "name": "Ashadha Ashtahnika Ends",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The conclusion of the eight-day festival of worship. Devotees perform the final rituals and break any specific fasts undertaken. It serves as a spiritual recharge before the monks settle down for the Chaturmas. The merit gained is dedicated to the liberation of all beings."
     },
     {
       "date": "2026-08-08",
       "name": "Kamika Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Kamika Ekadashi is observed during the dark fortnight of Shravana. Worshiping Lord Vishnu on this day is said to be equivalent to worshiping him with tender basil (Tulsi) leaves. It is believed to absolve the devotee of the sin of killing a Brahmin (a metaphor for grave sins) and ensures no future birth in lower realms."
     },
     {
       "date": "2026-08-08",
       "name": "Rohini Vrat",
       "faith": "Jain",
-      "category": "Vrat"
+      "category": "Vrat",
+      "description": "The monthly Rohini fast. Observance involves abstaining from food and focusing on the soul's purity. It is a practice of Tapas (penance). Jains often use this day to study the Agamas (scriptures)."
     },
     {
       "date": "2026-08-09",
       "name": "Gauna Kamika Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "The alternate date for Kamika Ekadashi for Vaishnava sects who follow specific astronomical alignments. The significance remains the forgiveness of sins and the attainment of spiritual merit. It highlights the diversity in the Hindu calendrical system."
     },
     {
       "date": "2026-08-13",
       "name": "Obon",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Obon is a Japanese Buddhist custom to honor the spirits of one's ancestors. It involves the 'Bon Odori' dance, visiting graves, and lighting lanterns to guide spirits home. It is based on the story of Mogallana saving his mother from the hungry ghost realm. It is a time of family reunions and gratitude."
     },
     {
       "date": "2026-08-15",
       "name": "Hariyali Teej",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Hariyali Teej welcomes the monsoon season and is dedicated to the union of Shiva and Parvati. Women dress in green (Hariyali), swing on decorated swings (jhulas), and sing folk songs. It is primarily celebrated in North India. The festival represents the greenery of nature and marital bliss."
     },
     {
       "date": "2026-08-15",
       "name": "Guru Rinpoche Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The monthly day of Padmasambhava worship. Practitioners may engage in retreat or intensive meditation on this day. It is an opportunity to reconnect with the teacher's energy. Prayers are made for world peace and the removal of suffering."
     },
     {
       "date": "2026-08-17",
       "name": "Nag Panchami",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Nag Panchami is the worship of snakes (Nagas). Devotees offer milk to snake idols or living snakes to seek protection from snakebites and to please Lord Shiva, who wears a snake. It is traditionally believed that snakes come out of their holes during the monsoon, so this festival honors them as part of the ecosystem."
     },
     {
       "date": "2026-08-17",
       "name": "Simha Sankranti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Simha Sankranti marks the sun's entry into Leo (Simha). In southern India, it is a time for special temple worship. It is considered good for performing rituals to pacify the sun god if he is malefic in one's horoscope. It marks another month in the solar calendar."
     },
     {
       "date": "2026-08-21",
       "name": "Varalakshmi Vrat",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Varalakshmi Vrat is a significant festival for married women in South India. They worship Goddess Lakshmi (the goddess of wealth) seeking 'Boons' (Vara). A kalash (pot) representing the Goddess is decorated with a saree and jewels. It is believed to grant prosperity, health, and well-being to the entire family."
     },
     {
       "date": "2026-08-23",
       "name": "Shravana Putrada Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "This Ekadashi falls in the month of Shravana and is observed by couples desiring a son. It has similar significance to the Pausha Putrada Ekadashi. Devotees worship Lord Vishnu and listen to the Vrat Katha. It is a day of hope for lineage continuity."
     },
     {
       "date": "2026-08-26",
       "name": "Onam",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Onam is the biggest harvest festival of Kerala, celebrated to welcome the spirit of the benevolent King Mahabali. It lasts for ten days and features the 'Sadhya' feast, snake boat races (Vallam Kali), and floral carpets (Pookkalam). It is a festival of equality and joy, transcending religious lines in Kerala culture."
     },
     {
       "date": "2026-08-27",
       "name": "Raksha Bandhan",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Raksha Bandhan celebrates the bond between brothers and sisters. Sisters tie a sacred thread (Rakhi) on their brothers' wrists, praying for their well-being, while brothers vow to protect them. It involves family gatherings, exchange of gifts, and sweets. The festival emphasizes the duty of care and social harmony."
     },
     {
       "date": "2026-08-27",
       "name": "Rakhi",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The colloquial name for Raksha Bandhan. It signifies the 'bond of protection'. Historically, queens sent Rakhis to neighboring kings to seek alliance and protection. Today, it has evolved to include tying Rakhis to soldiers, close friends, and even trees (Vriksha Bandhan) to show care."
     },
     {
       "date": "2026-08-27",
       "name": "Gayatri Jayanti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This day celebrates the birth of Goddess Gayatri, the mother of the Vedas. It often coincides with Shravana Purnima. Devotees chant the Gayatri Mantra, which is considered one of the most powerful Vedic hymns. It is a day dedicated to the pursuit of knowledge and enlightenment."
     },
     {
       "date": "2026-08-27",
       "name": "Shravana Purnima",
       "faith": "Hindu",
-      "category": "Tithi"
+      "category": "Tithi",
+      "description": "The full moon of Shravana is highly auspicious. It marks the end of the Shravana month. Brahmins change their sacred threads (Upakarma) on this day. It is also the day of the Amarnath Yatra conclusion. Devotees worship the moon and Lord Shiva."
     },
     {
       "date": "2026-08-30",
       "name": "Kajari Teej",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Also known as Badi Teej, this festival is celebrated by women in Rajasthan and Uttar Pradesh. It takes place after Raksha Bandhan. Women sing folk songs about the separation from their beloved and the arrival of rain. It involves worshiping the Neem tree and the Moon."
     },
     {
       "date": "2026-09-03",
       "name": "Janmashtami (Smarta)",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Janmashtami celebrates the birth of Lord Krishna, the eighth avatar of Vishnu. Smarta followers (who prefer the lunar calculation) celebrate it on this day. Devotees fast until midnight (the time of birth), sing bhajans, and rock the baby Krishna in a cradle. Temples are decorated, and 'Dahi Handi' (breaking a pot of curd) is performed."
     },
     {
       "date": "2026-09-04",
       "name": "Rohini Vrat",
       "faith": "Jain",
-      "category": "Vrat"
+      "category": "Vrat",
+      "description": "The monthly fasting day for Jains. It is a day to practice the control of the senses. Jains believe that observing this Vrat helps in destroying the 'Ghatiya Karmas' (destructive karmas). It is a quiet day of introspection."
     },
     {
       "date": "2026-09-04",
       "name": "Janmashtami (ISKCON)",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Vaishnava traditions, particularly ISKCON, often celebrate Janmashtami a day later based on the sunrise calculation of the Ashtami Tithi. The celebrations are grand, with chanting of 'Hare Krishna', elaborate feasts (Prasadam), and plays depicting Krishna's life (Raas Leela). It is a global celebration of divine love."
     },
     {
       "date": "2026-09-06",
       "name": "Ullambana",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Also known as the Ghost Festival, Ullambana is celebrated by Mahayana Buddhists. It is a time to offer food to the spirits of deceased ancestors and hungry ghosts to relieve their suffering. It is based on the story of Maudgalyayana saving his mother. Monks are offered new robes and food."
     },
     {
       "date": "2026-09-07",
       "name": "Aja Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Aja Ekadashi is observed to destroy one's sins and regain lost status or wealth. The legend is associated with King Harishchandra, who regained his lost kingdom and family after observing this fast. Devotees worship Lord Vishnu (Upendra) and keep a vigil at night."
     },
     {
       "date": "2026-09-08",
       "name": "Paryushana Parvarambha",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Paryushana is the most important annual holy event for Jains, lasting 8-10 days. It means 'abiding' or 'coming together'. Jains increase their level of spiritual intensity through fasting and meditation. The focus is on the five vows of Jainism. It is a time of deep soul-searching."
     },
     {
       "date": "2026-09-13",
       "name": "Hartalika Teej",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Hartalika Teej is observed by women who fast without water (Nirjala) for the welfare of their husbands. It commemorates Goddess Parvati's severe penance to win Lord Shiva as her consort. Women make Shiva Lingams out of clay and worship them. It is a celebration of female determination and devotion."
     },
     {
       "date": "2026-09-14",
       "name": "Ganesh Chaturthi",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This massive 10-day festival celebrates the birth of Lord Ganesha, the remover of obstacles. Clay idols of Ganesha are installed in homes and public pandals. Daily prayers and offerings of Modak (sweets) are made. It concludes with 'Visarjan', where the idols are immersed in water, symbolizing the cycle of creation and dissolution."
     },
     {
       "date": "2026-09-14",
       "name": "Guru Rinpoche Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The 10th day of the lunar month for Padmasambhava. Tibetan Buddhists perform rituals to clear away negativity and attract positive energy. It is a day to strengthen the bond with the spiritual master. Incense and light offerings are common."
     },
     {
       "date": "2026-09-15",
       "name": "Samvatsari Parva",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The final day of Paryushana is Samvatsari, the Day of Forgiveness. Jains say 'Michhami Dukkadam' to friends and foes alike, asking for forgiveness for any hurt caused in the past year. It is the holiest day of the Jain calendar. The goal is to start the new spiritual year with a clean slate."
     },
     {
       "date": "2026-09-15",
       "name": "Rishi Panchami",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Rishi Panchami is observed to honor the Saptarishi (Seven Sages). It is traditionally observed by women to cleanse themselves of any ritual impurities. Devotees take a holy bath and eat simple food like tubers. It is a day of gratitude towards the ancient teachers of humanity."
     },
     {
       "date": "2026-09-16",
       "name": "Balarama Jayanti",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This day celebrates the birth of Lord Balarama, the elder brother of Krishna. He is considered the avatar of Adishesha (the cosmic serpent) and the god of agriculture and strength. Farmers worship the plough on this day. Devotees pray for physical strength and a healthy life."
     },
     {
       "date": "2026-09-17",
       "name": "Vishwakarma Puja",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Vishwakarma Puja honors the divine architect of the universe, Lord Vishwakarma. It is celebrated by artisans, engineers, and factory workers who worship their tools and machines. Factories remain closed for work but open for the puja. It is a day to bless the instruments of one's livelihood."
     },
     {
       "date": "2026-09-22",
       "name": "Parsva Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Also known as Vamana Ekadashi, it is believed that Lord Vishnu turns onto his side (Parsva) while sleeping during Chaturmas on this day. Devotees worship the Vamana avatar of Vishnu. Fasting on this day is said to grant the merit of performing a horse sacrifice (Ashvamedha Yajna) and liberation."
     },
     {
       "date": "2026-09-26",
       "name": "Radha Ashtami",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Radha Ashtami celebrates the birth of Radha, the consort of Lord Krishna. It falls 15 days after Janmashtami. It is believed that Krishna worship is incomplete without worshipping Radha. Devotees in Vrindavan and Barsana celebrate with great pomp, bathing the idol of Radha and offering prayers."
     },
     {
       "date": "2026-10-01",
       "name": "Rohini Vrat",
       "faith": "Jain",
-      "category": "Vrat"
+      "category": "Vrat",
+      "description": "The monthly fasting day for Jains. Regular observance is considered a sign of a devout householder. It is a day to remember the qualities of the Tirthankaras, such as detachment and omniscience. Fasting helps in reducing the attachment to the body."
     },
     {
       "date": "2026-10-02",
       "name": "Indira Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Indira Ekadashi falls during Pitru Paksha (the fortnight of ancestors). Observing this fast is believed to provide salvation to forefathers who may be suffering in lower realms. Devotees perform charity and offer pind-daan to ancestors. It is a day of interceding for the dead."
     },
     {
       "date": "2026-10-06",
       "name": "Pravāraṇā day/ Abhidhamma Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Pavarana marks the end of the three-month Rains Retreat (Vassa). Monks gather to confess any offenses and invite constructive criticism from others. Abhidhamma Day celebrates the Buddha's descent from Tavatimsa heaven after teaching the Abhidhamma to his mother. It is a joyful day of offerings."
     },
     {
       "date": "2026-10-06",
       "name": "Kojagara Puja",
       "faith": "Hindu",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Celebrated in Bengal, Orissa, and Assam, this puja is dedicated to Goddess Lakshmi. It is believed she roams the earth at night asking 'Ko Jagarti?' (Who is awake?). Devotees stay awake all night playing games and singing to invite the Goddess into their homes for wealth and prosperity."
     },
     {
       "date": "2026-10-06",
       "name": "Sharad Purnima",
       "faith": "Hindu",
-      "category": "Tithi"
+      "category": "Tithi",
+      "description": "This is the harvest festival marking the end of the monsoon. It is believed that the moon drips nectar (Amrit) on this night. People prepare Kheer (rice pudding) and leave it in the moonlight overnight to be consumed the next morning. It is also associated with the Raas Leela of Krishna and Gopis."
     },
     {
       "date": "2026-10-09",
       "name": "Guru Ram Das Birthday",
       "faith": "Sikh",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The birth anniversary of the fourth Sikh Guru, Guru Ram Das, known as the founder of Amritsar. The Golden Temple is illuminated, and fireworks are displayed. Hymns composed by him, which speak of humility and devotion, are sung in Gurdwaras. It is a day of community service and celebration."
     },
     {
       "date": "2026-10-14",
       "name": "Guru Rinpoche Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The monthly observance for Padmasambhava. It is a time for Tibetan Buddhists to renew their spiritual commitments. Offerings are made to the Three Jewels (Buddha, Dharma, Sangha). It serves as a reminder of the power of the Vajrayana teachings."
     },
     {
       "date": "2026-10-17",
       "name": "Ashwina Navapada Oli Begins",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The second semi-annual Ayambil Oli fast. For nine days, Jains eat bland food once a day to honor the Siddha Chakra. This period occurs during the Navratri festival. It is a time for conquering the sense of taste and focusing on spiritual health."
     },
     {
       "date": "2026-10-17",
       "name": "Papankusha Ekadashi",
       "faith": "Hindu",
-      "category": "Ekadashi"
+      "category": "Ekadashi",
+      "description": "Papankusha Ekadashi is believed to be the goad (ankusha) that drives away the elephant of sin (papa). Devotees worship Lord Padmanabha (Vishnu). Fasting on this day is said to grant the merit of performing difficult penances and ensures a place in heaven."
     },
     {
       "date": "2026-10-25",
       "name": "Ashwina Navapada Oli Ends",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The conclusion of the nine-day Ayambil Oli. Devotees celebrate the successful completion of their vows. It is a day of joy and spiritual satisfaction. The fast is usually broken with a community meal where simple food is served."
     },
     {
       "date": "2026-10-28",
       "name": "Rohini Vrat",
       "faith": "Jain",
-      "category": "Vrat"
+      "category": "Vrat",
+      "description": "The monthly fasting day for Jains. As the year progresses, the accumulation of these fasts is believed to bring the devotee closer to liberation. It is a personal practice of endurance and faith. Worship is offered to the Tirthankaras."
     },
     {
       "date": "2026-10-28",
       "name": "Jain New Year",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Jains celebrate their New Year on the day after Diwali (which marks Mahavir's Nirvana). It begins with the worship of Gautam Swami, Mahavir's chief disciple, who attained omniscience on this day. Jains greet each other with 'Saal Mubarak' and open new account books. It is a day of wisdom and new beginnings."
     },
     {
       "date": "2026-11-08",
       "name": "Diwali",
       "faith": "Sikh",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "For Sikhs, Diwali is celebrated as 'Bandi Chhor Divas' (Day of Liberation). It commemorates the release of Guru Hargobind Ji from the Gwalior Fort prison, along with 52 Hindu kings. The Golden Temple is illuminated with thousands of lights. It is a celebration of freedom, justice, and the victory of right over might."
     },
     {
       "date": "2026-11-08",
       "name": "Lakshmi Puja",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "While often associated with Hinduism, Jains observe Diwali as the Nirvana Kalyanak of Lord Mahavir. However, in the evening, many also perform a form of Lakshmi Puja, interpreting Lakshmi not just as material wealth but as 'Moksha Lakshmi' (the wealth of liberation). It is the day Mahavir attained ultimate liberation."
     },
     {
       "date": "2026-11-11",
       "name": "Guru Har Rai Death Anniversary",
       "faith": "Sikh",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Sikhs observe the Joti-Jot (passing) of the seventh Guru, Guru Har Rai. He was a nature lover and a compassionate healer. Gurdwaras hold prayers to honor his contribution to the faith, particularly his emphasis on seva (service) and protecting the environment. It is a solemn day of remembrance."
     },
     {
       "date": "2026-11-13",
       "name": "Guru Rinpoche Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The monthly day of worship for Padmasambhava. It is an important day for the transmission of teachings in the Vajrayana tradition. Devotees may perform the 'Ganachakra' feast offering. It reinforces the commitment to the path of enlightenment."
     },
     {
       "date": "2026-11-14",
       "name": "Guru Granth Sahib Guryai",
       "faith": "Sikh",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This day celebrates the conferment of the title of Guru upon the Adi Granth by Guru Gobind Singh. It signifies that the scripture is the living guide for Sikhs forever. Elaborate processions and non-stop reading of the Granth Sahib take place. It is a central event in Sikh theology."
     },
     {
       "date": "2026-11-16",
       "name": "Kartika Ashtahnika Begins",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The third and final Ashtahnika period of the year. During these eight days, Jains intensify their religious practices. It is considered a time when the gates to higher spiritual realms are open. Devotees visit temples and listen to sermons."
     },
     {
       "date": "2026-11-23",
       "name": "Kartika Chaumasi Chaudas",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "This day marks the end of the four-month rainy season retreat (Chaturmas). Jain monks, who had been stationary, can now resume their travel (Vihar). It involves a final Pratikramana (confession) for the Chaturmas period. It is a day of transition and renewal."
     },
     {
       "date": "2026-11-24",
       "name": "Kartika Ashtahnika Ends",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The conclusion of the eight-day worship period in the month of Kartik. It coincides with the full moon (Kartik Purnima). Jains celebrate the end of their austerities. Thousands of Jains visit Palitana, a holy mountain, for pilgrimage on this day."
     },
     {
       "date": "2026-11-24",
       "name": "Kartika Ratha Yatra",
       "faith": "Jain",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "On Kartik Purnima, Jains often organize a Rath Yatra (chariot procession) of the Tirthankara idols. It is a public display of devotion and community strength. The procession is accompanied by music and dance. It marks a joyous end to the festival season."
     },
     {
       "date": "2026-11-24",
       "name": "Guru Nanak Dev Ji Jayanti",
       "faith": "Sikh",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Gurpurab celebrates the birth of the first Sikh Guru and founder of Sikhism, Guru Nanak Dev Ji. It is one of the most sacred festivals in Sikhism. Celebrations include early morning processions (Prabhat Pheris), hymns, and massive Langars (community meals) open to people of all faiths. His message of 'Ik Onkar' (One God) and equality is preached globally."
     },
     {
       "date": "2026-11-25",
       "name": "Rohini Vrat",
       "faith": "Jain",
-      "category": "Vrat"
+      "category": "Vrat",
+      "description": "The monthly fasting observance. By this time of the year, regular practitioners have built a strong rhythm of discipline. It is believed to bring harmony to the household. The day is spent in prayer and reading religious texts."
     },
     {
       "date": "2026-12-08",
       "name": "Bodhi Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "Bodhi Day commemorates the moment Siddhartha Gautama attained enlightenment under the Bodhi tree to become the Buddha. Buddhists meditate and string multi-colored lights (representing the aura of enlightenment). Traditional meals of rice and milk are eaten. It is a quiet celebration of the potential for awakening in all beings."
     },
     {
       "date": "2026-12-13",
       "name": "Guru Rinpoche Day",
       "faith": "Buddhist",
-      "category": "Festival"
+      "category": "Festival",
+      "description": "The final monthly celebration of Padmasambhava for the year 2026. It is a time to reflect on the spiritual progress made throughout the year. Offerings are made to ensure a good transition into the next cycle. It connects the practitioner to the lineage of masters."
     },
     {
       "date": "2026-12-22",
       "name": "Rohini Vrat",
       "faith": "Jain",
-      "category": "Vrat"
+      "category": "Vrat",
+      "description": "The last Rohini Vrat of the year. It marks the continuation of the devotee's commitment to ascetic ideals. Jains fast and pray for the welfare of all living beings. It serves as a peaceful conclusion to the year's religious observances."
     }
   ]
 }
+
