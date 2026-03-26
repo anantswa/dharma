@@ -1,24 +1,27 @@
 {
   "expo": {
-    "name": "Dharma",
+    "name": "Dharma — Daily Wisdom",
     "slug": "dharma",
     "version": "1.0.0",
     "description": "A daily spiritual companion across Hindu, Sikh, Buddhist, Jain, and Zen traditions. Temple darshan, sacred calendar, wisdom library, and learning modules — all offline-first.",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/icon1.png",
     "scheme": "dharma",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anantswarup.dharma"
+      "bundleIdentifier": "com.taraventures.dharma",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSCalendarsUsageDescription": "Dharma uses your calendar to remind you of sacred festivals.",
+        "UIBackgroundModes": ["audio"]
+      }
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#020617",
-        "foregroundImage": "./assets/images/icon.png",
-        "backgroundImage": "./assets/images/icon.png",
-        "monochromeImage": "./assets/images/icon.png"
+        "foregroundImage": "./assets/images/icon1.png"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
@@ -27,17 +30,18 @@
         "VIBRATE",
         "SCHEDULE_EXACT_ALARM"
       ],
-      "package": "com.anantswarup.dharma"
+      "package": "com.taraventures.dharma",
+      "versionCode": 1
     },
     "web": {
       "output": "single",
-      "favicon": "./assets/images/icon.png"
+      "favicon": "./assets/images/icon1.png"
     },
     "plugins": [
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/icon.png",
+          "image": "./assets/images/icon1.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#020617",
@@ -49,7 +53,7 @@
       [
         "expo-notifications",
         {
-          "icon": "./assets/images/icon.png",
+          "icon": "./assets/images/icon1.png",
           "color": "#fbbf24",
           "sounds": []
         }

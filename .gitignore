@@ -83,3 +83,7 @@ yarn-error.*
 *.tsbuildinfo
 
 # @end expo-cli
+# Store credentials (NEVER commit)
+google-play-key.json
+*.keystore
+*.jks
