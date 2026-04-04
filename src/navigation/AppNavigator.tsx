@@ -5,10 +5,8 @@ import React from 'react';
 import { Platform, View } from 'react-native';
 
 import { CalendarScreen } from '../screens/CalendarScreen';
-import { DashboardScreen } from '../screens/DashboardScreen';
 import { FestivalDetailScreen } from '../screens/FestivalDetailScreen';
 import { HomeScreen } from '../screens/HomeScreen';
-import { IapTestScreen } from '../screens/IapTestScreen';
 import { LearnScreen } from '../screens/LearnScreen';
 import { LessonFlowScreen } from '../screens/LessonFlowScreen';
 import { LessonSelectionScreen } from '../screens/LessonSelectionScreen';
@@ -58,12 +56,10 @@ const MainTabs: React.FC = () => {
           let iconName: keyof typeof Ionicons.glyphMap = 'ellipse-outline';
 
           if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline';
-          if (route.name === 'Dashboard') iconName = focused ? 'grid' : 'grid-outline';
-          if (route.name === 'Wisdom') iconName = focused ? 'book' : 'book-outline';
           if (route.name === 'Learn') iconName = focused ? 'school' : 'school-outline';
+          if (route.name === 'Wisdom') iconName = focused ? 'book' : 'book-outline';
           if (route.name === 'Calendar') iconName = focused ? 'calendar' : 'calendar-outline';
           if (route.name === 'Settings') iconName = focused ? 'settings' : 'settings-outline';
-          if (route.name === 'Store') iconName = focused ? 'cart' : 'cart-outline';
 
           return (
             <View
@@ -81,12 +77,10 @@ const MainTabs: React.FC = () => {
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Learn" component={LearnScreen} />
       <Tab.Screen name="Wisdom" component={WisdomScreen} />
       <Tab.Screen name="Calendar" component={CalendarScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
-      <Tab.Screen name="Store" component={IapTestScreen} />
     </Tab.Navigator>
   );
 };

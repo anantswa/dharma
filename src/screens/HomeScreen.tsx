@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   AppState,
   Dimensions,
@@ -8,6 +9,7 @@ import {
   Pressable,
   StatusBar,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { AartiPlate } from '../components/AartiPlate';
@@ -15,6 +17,8 @@ import { FloatingMusicButton } from '../components/FloatingMusicButton';
 import { Deity, FINAL_DEITIES } from '../data/deityImages';
 import { AudioService } from '../services/audioService';
 import { ShankhService } from '../services/shankhService';
+import { useDataStore } from '../store/dataStore';
+import { isTraditionEnabled, usePreferencesStore } from '../store/preferencesStore';
 
 const { width, height } = Dimensions.get('window');
 
@@ -25,9 +29,27 @@ const THEME_COLOR = '#0f172a';
 const DEITIES = FINAL_DEITIES;
 
 export const HomeScreen: React.FC = () => {
+  const navigation = useNavigation<any>();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isReady, setIsReady] = useState(false);
   const [isShankhPlaying, setIsShankhPlaying] = useState(false);
+  const wisdom = useDataStore((s) => s.wisdom);
+  const primaryTradition = usePreferencesStore((s) => s.primaryTradition);
+  const enabledTraditions = usePreferencesStore((s) => s.enabledTraditions);
+
+  // Today's wisdom — same rotation logic as old Dashboard
+  const todaysWisdom = useMemo(() => {
+    if (!wisdom.length) return null;
+    const dayOfYear = Math.floor(
+      (new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000,
+    );
+    if (primaryTradition) {
+      const filtered = wisdom.filter((w) => w.tradition?.toLowerCase() === primaryTradition.toLowerCase());
+      if (filtered.length) return filtered[dayOfYear % filtered.length];
+    }
+    const filtered = wisdom.filter((w) => isTraditionEnabled(w.tradition, enabledTraditions));
+    return filtered.length ? filtered[dayOfYear % filtered.length] : wisdom[0];
+  }, [wisdom, primaryTradition, enabledTraditions]);
 
   // Initialize audio service on mount
   useEffect(() => {
@@ -139,6 +161,22 @@ export const HomeScreen: React.FC = () => {
 
         {/* TOP LAYER: UI Elements */}
         <View style={styles.topLayer} pointerEvents="box-none">
+          {/* Today's Wisdom — subtle overlay at top */}
+          {todaysWisdom && (
+            <Pressable
+              style={styles.wisdomOverlay}
+              onPress={() => navigation.navigate('WisdomDetail', { wisdom: todaysWisdom })}
+            >
+              <Text style={styles.wisdomOverlayLabel}>TODAY'S WISDOM</Text>
+              <Text style={styles.wisdomOverlayText} numberOfLines={2}>
+                {todaysWisdom.translation_en || todaysWisdom.short_form || ''}
+              </Text>
+              <Text style={styles.wisdomOverlaySource}>
+                {todaysWisdom.source_text || ''} {'\u2022'} {todaysWisdom.tradition}
+              </Text>
+            </Pressable>
+          )}
+
           {/* Pagination */}
           <View style={styles.paginationContainer} pointerEvents="none">
             {DEITIES.map((_, index) => (
@@ -217,7 +255,37 @@ const styles = StyleSheet.create({
     left: 0,
     width,
     height,
-    zIndex: 20, 
+    zIndex: 20,
+  },
+  wisdomOverlay: {
+    position: 'absolute',
+    top: 52,
+    left: 20,
+    right: 20,
+    backgroundColor: 'rgba(2, 6, 23, 0.75)',
+    borderRadius: 16,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(251, 191, 36, 0.2)',
+    zIndex: 25,
+  },
+  wisdomOverlayLabel: {
+    fontSize: 10,
+    color: '#fbbf24',
+    letterSpacing: 1.5,
+    fontWeight: '700',
+    marginBottom: 6,
+  },
+  wisdomOverlayText: {
+    fontSize: 15,
+    color: '#f1f5f9',
+    fontFamily: 'Playfair_Medium',
+    lineHeight: 22,
+    marginBottom: 6,
+  },
+  wisdomOverlaySource: {
+    fontSize: 11,
+    color: '#64748b',
   },
   paginationContainer: {
     position: 'absolute',

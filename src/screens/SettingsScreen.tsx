@@ -316,6 +316,29 @@ export const SettingsScreen: React.FC = () => {
         ))}
       </View>
 
+      {/* DharmaWeave Products */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>DharmaWeave</Text>
+        <TouchableOpacity
+          style={styles.linkRow}
+          onPress={() => {
+            const { Linking } = require('react-native');
+            Linking.openURL('https://play.google.com/store/books/details?id=HnSlEQAAQBAJ');
+          }}
+        >
+          <Text style={styles.linkText}>Hanuman — Book on Google Play</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.linkRow}
+          onPress={() => {
+            const { Linking } = require('react-native');
+            Linking.openURL('https://open.spotify.com/artist/4Kg2Tc3I1sC1zMPiwYeX2x');
+          }}
+        >
+          <Text style={styles.linkText}>DharmaWeave Chants on Spotify</Text>
+        </TouchableOpacity>
+      </View>
+
       <Text style={styles.footerNote}>v1.0.0 — Dharma by DharmaWeave</Text>
     </ScrollView>
   );
@@ -386,6 +409,15 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#94a3b8',
     marginTop: 2,
+  },
+  linkRow: {
+    paddingVertical: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(255,255,255,0.06)',
+  },
+  linkText: {
+    fontSize: 15,
+    color: '#fbbf24',
   },
   footerNote: {
     marginTop: 32,
