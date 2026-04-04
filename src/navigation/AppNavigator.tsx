@@ -7,6 +7,7 @@ import { Platform, View } from 'react-native';
 import { CalendarScreen } from '../screens/CalendarScreen';
 import { FestivalDetailScreen } from '../screens/FestivalDetailScreen';
 import { HomeScreen } from '../screens/HomeScreen';
+import { IapTestScreen } from '../screens/IapTestScreen';
 import { LearnScreen } from '../screens/LearnScreen';
 import { LessonFlowScreen } from '../screens/LessonFlowScreen';
 import { LessonSelectionScreen } from '../screens/LessonSelectionScreen';
@@ -59,6 +60,7 @@ const MainTabs: React.FC = () => {
           if (route.name === 'Learn') iconName = focused ? 'school' : 'school-outline';
           if (route.name === 'Wisdom') iconName = focused ? 'book' : 'book-outline';
           if (route.name === 'Calendar') iconName = focused ? 'calendar' : 'calendar-outline';
+          if (route.name === 'Store') iconName = focused ? 'cart' : 'cart-outline';
           if (route.name === 'Settings') iconName = focused ? 'settings' : 'settings-outline';
 
           return (
@@ -80,6 +82,7 @@ const MainTabs: React.FC = () => {
       <Tab.Screen name="Learn" component={LearnScreen} />
       <Tab.Screen name="Wisdom" component={WisdomScreen} />
       <Tab.Screen name="Calendar" component={CalendarScreen} />
+      <Tab.Screen name="Store" component={IapTestScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
