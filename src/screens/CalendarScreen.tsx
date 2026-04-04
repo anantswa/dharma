@@ -3,41 +3,23 @@ import { BlurView } from 'expo-blur';
 import React, { useMemo } from 'react';
 import { SectionList, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { isTraditionEnabled, usePreferencesStore } from '../store/preferencesStore';
-
-// Import calendar data for all years
-const eventsDataRaw = require('../data/calendar/events_2025.json');
-let eventsData2027: any = {};
-try { eventsData2027 = require('../data/calendar/events_2027.json'); } catch (e) { /* 2027 data not yet available */ }
-
-type CalendarEvent = {
-  date: string;
-  name: string;
-  faith: string;
-  category: string;
-};
+import { useDataStore } from '../store/dataStore';
+import type { FestivalEntry } from '../types/supabase';
 
 type SectionData = {
   title: string;
-  data: CalendarEvent[];
+  data: FestivalEntry[];
 };
 
 export const CalendarScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const enabledTraditions = usePreferencesStore((s) => s.enabledTraditions);
+  const festivals = useDataStore((s) => s.festivals);
 
   const sections = useMemo(() => {
-    // 1. Merge all year arrays into one master list
-    const list2025 = eventsDataRaw.events_2025 || [];
-    const list2026 = eventsDataRaw.events_2026 || [];
-    const list2027 = eventsData2027.events_2027 || [];
-    const allEvents: CalendarEvent[] = [...list2025, ...list2026, ...list2027];
+    if (!enabledTraditions || !festivals.length) return [];
 
-    // Safety check: if enabledTraditions is undefined during initial load, show all
-    if (!enabledTraditions) return [];
-
-    // 2. Filter by Tradition (Respecting Settings)
-    const filtered = allEvents.filter(e => {
-      // Always show Secular/National holidays, filter religious ones
+    const filtered = festivals.filter(e => {
       if (e.faith === 'Secular') return true;
       return isTraditionEnabled(e.faith, enabledTraditions);
     });
@@ -63,7 +45,7 @@ export const CalendarScreen: React.FC = () => {
         data: grouped[key].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
       }));
 
-  }, [enabledTraditions]);
+  }, [enabledTraditions, festivals]);
 
   return (
     <View style={styles.container}>

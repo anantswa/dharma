@@ -14,7 +14,7 @@ import {
 import { usePreferencesStore } from '../store/preferencesStore';
 
 // IMPORTANT: must match your store's TraditionKey exactly
-const TRADITIONS = ['Sikh', 'Jain', 'Hindu', 'Buddhist', 'Zen'] as const;
+const TRADITIONS = ['Hindu', 'Sikh', 'Buddhist', 'Jain', 'Zen', 'Christian', 'Sufi'] as const;
 type TraditionKey = (typeof TRADITIONS)[number];
 
  

@@ -23,6 +23,12 @@ type FestivalDetailProps = {
         faith: string;
         category: string;
         description?: string;
+        significance?: string;
+        story?: string;
+        customs?: string;
+        regions?: string[];
+        lunar_date?: string;
+        importance?: number;
       };
     };
   };
@@ -98,14 +104,56 @@ As we honor this sacred occasion, we are reminded of the eternal wisdom and the 
           {/* Divider */}
           <View style={styles.divider} />
 
-          {/* Content Section */}
+          {/* Description */}
           <View style={styles.contentSection}>
             <Text style={styles.sectionTitle}>About This Festival</Text>
             <Text style={styles.description}>{getContent()}</Text>
           </View>
 
-          {/* Show note only if using placeholder content */}
-          {!festival.description && (
+          {/* Significance */}
+          {festival.significance ? (
+            <View style={styles.contentSection}>
+              <Text style={styles.sectionTitle}>Significance</Text>
+              <Text style={styles.description}>{festival.significance}</Text>
+            </View>
+          ) : null}
+
+          {/* Story */}
+          {festival.story ? (
+            <View style={styles.contentSection}>
+              <Text style={styles.sectionTitle}>The Story</Text>
+              <Text style={styles.description}>{festival.story}</Text>
+            </View>
+          ) : null}
+
+          {/* Customs & Practices */}
+          {festival.customs ? (
+            <View style={styles.contentSection}>
+              <Text style={styles.sectionTitle}>Customs & Practices</Text>
+              <Text style={styles.description}>{festival.customs}</Text>
+            </View>
+          ) : null}
+
+          {/* Lunar Date & Regions */}
+          {(festival.lunar_date || (festival.regions && festival.regions.length > 0)) ? (
+            <View style={[styles.noteSection, { marginTop: 8 }]}>
+              <View style={{ flex: 1 }}>
+                {festival.lunar_date ? (
+                  <Text style={[styles.noteText, { fontStyle: 'normal', color: '#94a3b8' }]}>
+                    Lunar date: {festival.lunar_date}
+                  </Text>
+                ) : null}
+                {festival.regions && festival.regions.length > 0 ? (
+                  <Text style={[styles.noteText, { fontStyle: 'normal', color: '#94a3b8', marginTop: 4 }]}>
+                    Celebrated in: {festival.regions.join(', ')}
+                  </Text>
+                ) : null}
+              </View>
+            </View>
+          ) : null}
+
+          {/* Placeholder note only if no real content at all */}
+          {!festival.description && !festival.significance && !festival.story && (
             <View style={styles.noteSection}>
               <Ionicons name="information-circle-outline" size={20} color="#64748b" />
               <Text style={styles.noteText}>

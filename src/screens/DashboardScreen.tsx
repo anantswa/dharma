@@ -13,40 +13,11 @@ import {
     View
 } from 'react-native';
 
-import eventsDataRaw from '../data/calendar/events_2025.json';
-let eventsData2027Raw: any = {};
-try { eventsData2027Raw = require('../data/calendar/events_2027.json'); } catch (e) { /* 2027 data not yet available */ }
-import wisdomData from '../data/wisdom_core_50.json';
+import { useDataStore } from '../store/dataStore';
 import { isTraditionEnabled, usePreferencesStore } from '../store/preferencesStore';
-
-// --- Types ---
-type WisdomItem = {
-  id: string;
-  tradition: string;
-  lineage?: string;
-  original_transliteration: string;
-  translation_en: string;
-  source: string;
-  theme: string;
-  is_core: boolean;
-};
-
-type EventItem = {
-  id?: string;
-  date: string;
-  name: string;
-  faith: string;
-  category: string;
-};
+import type { WisdomEntry, FestivalEntry } from '../types/supabase';
 
 const { width, height } = Dimensions.get('window');
-
-// --- Data Logic ---
-const eventsData: EventItem[] = [
-  ...((eventsDataRaw as any).events_2025 || []),
-  ...((eventsDataRaw as any).events_2026 || []),
-  ...((eventsData2027Raw as any).events_2027 || [])
-];
 
 const formatDate = (iso: string) => {
   const d = new Date(iso);
@@ -58,52 +29,52 @@ export const DashboardScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const enabledTraditions = usePreferencesStore((state) => state.enabledTraditions);
   const primaryTradition = usePreferencesStore((state) => state.primaryTradition);
+  const wisdom = useDataStore((state) => state.wisdom);
+  const festivals = useDataStore((state) => state.festivals);
 
-  const bgImage = require('../../assets/images/splash/splash_01.jpg'); 
+  const bgImage = require('../../assets/images/splash/splash_01.jpg');
 
   const coreWisdom = useMemo(() => {
-    const all = (wisdomData as WisdomItem[]).filter((w) => w.is_core);
-    
+    if (!wisdom.length) return null;
+
+    const dayOfYear = Math.floor(
+      (new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 1000 / 60 / 60 / 24,
+    );
+
     // First priority: Show wisdom from user's primary tradition
     if (primaryTradition) {
-      const primaryFiltered = all.filter((w) => w.tradition === primaryTradition);
+      const primaryFiltered = wisdom.filter(
+        (w) => w.tradition?.toLowerCase() === primaryTradition.toLowerCase(),
+      );
       if (primaryFiltered.length > 0) {
-        const dayOfYear = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 1000 / 60 / 60 / 24);
         return primaryFiltered[dayOfYear % primaryFiltered.length];
       }
     }
-    
+
     // Fallback: Use enabled traditions
-    if (!enabledTraditions) return all[0];
-    const filtered = all.filter((w) => isTraditionEnabled(w.tradition, enabledTraditions));
-    if (!filtered.length) return all[0];
-    const dayOfYear = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 1000 / 60 / 60 / 24);
+    if (!enabledTraditions) return wisdom[0];
+    const filtered = wisdom.filter((w) => isTraditionEnabled(w.tradition, enabledTraditions));
+    if (!filtered.length) return wisdom[0];
     return filtered[dayOfYear % filtered.length];
-  }, [enabledTraditions, primaryTradition]);
+  }, [wisdom, enabledTraditions, primaryTradition]);
 
   const upcomingEvents = useMemo(() => {
-    if (!eventsData || !eventsData.length) return [] as EventItem[];
-    // Safety check: if enabledTraditions is undefined during initial load, show all
-    if (!enabledTraditions) return [];
+    if (!festivals.length || !enabledTraditions) return [];
     const today = new Date();
-    today.setHours(0,0,0,0);
-    
-    // Show events in the next 7 days only
+    today.setHours(0, 0, 0, 0);
     const oneWeekFromNow = new Date(today);
     oneWeekFromNow.setDate(today.getDate() + 7);
 
-    return eventsData
+    return festivals
       .filter((event) => {
         const d = new Date(event.date);
-        // Only show events between today and 7 days from now
         if (d < today || d > oneWeekFromNow) return false;
-        // Filter by enabled traditions
         if (event.faith && !isTraditionEnabled(event.faith, enabledTraditions)) return false;
         return true;
       })
       .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
       .slice(0, 3);
-  }, [enabledTraditions]);
+  }, [festivals, enabledTraditions]);
 
   return (
     <View style={styles.container}>
@@ -129,18 +100,28 @@ export const DashboardScreen: React.FC = () => {
               </Text>
             </View>
 
-            <TouchableOpacity
-              activeOpacity={0.9}
-              onPress={() => navigation.navigate('WisdomDetail', { wisdom: coreWisdom })}
-              style={styles.cardWrapper}
-            >
-              <View style={styles.card}>
-                <Text style={styles.sectionLabel}>TODAY'S WISDOM</Text>
-                <Text style={styles.wisdomText}>{coreWisdom.translation_en}</Text>
-                <Text style={styles.wisdomMeta}>{coreWisdom.source} • {coreWisdom.tradition}</Text>
-                <Text style={styles.wisdomOriginal}>{coreWisdom.original_transliteration}</Text>
-              </View>
-            </TouchableOpacity>
+            {coreWisdom && (
+              <TouchableOpacity
+                activeOpacity={0.9}
+                onPress={() => navigation.navigate('WisdomDetail', { wisdom: coreWisdom })}
+                style={styles.cardWrapper}
+              >
+                <View style={styles.card}>
+                  <Text style={styles.sectionLabel}>TODAY'S WISDOM</Text>
+                  <Text style={styles.wisdomText}>
+                    {coreWisdom.translation_en || coreWisdom.short_form || ''}
+                  </Text>
+                  <Text style={styles.wisdomMeta}>
+                    {coreWisdom.source_text || ''}{coreWisdom.source_location ? ` ${coreWisdom.source_location}` : ''} {'\u2022'} {coreWisdom.tradition}
+                  </Text>
+                  {coreWisdom.transliteration ? (
+                    <Text style={styles.wisdomOriginal}>{coreWisdom.transliteration}</Text>
+                  ) : coreWisdom.original_script ? (
+                    <Text style={styles.wisdomOriginal}>{coreWisdom.original_script}</Text>
+                  ) : null}
+                </View>
+              </TouchableOpacity>
+            )}
 
             <View style={[styles.cardWrapper, { marginTop: 24 }]}>
               <View style={styles.card}>

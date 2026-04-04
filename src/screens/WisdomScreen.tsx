@@ -10,19 +10,11 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
-import wisdomDataRaw from '../data/wisdom_core_50.json';
+import { useDataStore } from '../store/dataStore';
 import { isTraditionEnabled, TraditionKey, usePreferencesStore } from '../store/preferencesStore';
+import type { WisdomEntry } from '../types/supabase';
 
-type WisdomItem = {
-  id: string;
-  tradition: string;
-  lineage?: string;
-  original_transliteration: string;
-  translation_en: string;
-  source: string;
-  theme: string;
-  is_core: boolean;
-};
+// WisdomEntry type from Supabase is used instead of local WisdomItem
 
 const { width } = Dimensions.get('window');
 
@@ -51,13 +43,13 @@ export const WisdomScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const enabledTraditions = usePreferencesStore((s) => s.enabledTraditions);
   const [activeFilter, setActiveFilter] = useState<string>('All');
-  const wisdomData = wisdomDataRaw as WisdomItem[];
+  const wisdomData = useDataStore((s) => s.wisdom);
 
   // Build available traditions based on user's enabled traditions
   const availableTraditions = useMemo(() => {
     const traditions: string[] = ['All'];
     if (enabledTraditions) {
-      const tradKeys: TraditionKey[] = ['Hindu', 'Sikh', 'Buddhist', 'Jain', 'Zen'];
+      const tradKeys: TraditionKey[] = ['Hindu', 'Sikh', 'Buddhist', 'Jain', 'Zen', 'Christian', 'Sufi'];
       tradKeys.forEach((key) => {
         if (enabledTraditions[key]) {
           traditions.push(key);
@@ -90,8 +82,8 @@ export const WisdomScreen: React.FC = () => {
     );
   };
 
-  const renderItem = ({ item }: { item: WisdomItem }) => {
-    const bgSource = getBackgroundForTradition(item.tradition);
+  const renderItem = ({ item }: { item: WisdomEntry }) => {
+    const bgSource = getBackgroundForTradition(item.tradition || '');
 
     return (
       <TouchableOpacity
@@ -103,14 +95,20 @@ export const WisdomScreen: React.FC = () => {
           <View style={styles.cardOverlay} />
           <View style={styles.cardInner}>
             <Text style={styles.traditionLabel}>
-              {item.tradition.toUpperCase()}
-              {item.lineage ? ` • ${item.lineage.toUpperCase()}` : ''}
+              {(item.tradition || '').toUpperCase()}
+              {item.source_text ? ` \u2022 ${item.source_text.toUpperCase()}` : ''}
             </Text>
-            {item.original_transliteration ? (
-              <Text style={styles.originalText} numberOfLines={2}>{item.original_transliteration}</Text>
+            {item.transliteration ? (
+              <Text style={styles.originalText} numberOfLines={2}>{item.transliteration}</Text>
+            ) : item.original_script ? (
+              <Text style={styles.originalText} numberOfLines={2}>{item.original_script}</Text>
             ) : null}
-            <Text style={styles.translationText} numberOfLines={3}>{item.translation_en}</Text>
-            <Text style={styles.sourceText}>— {item.source}</Text>
+            <Text style={styles.translationText} numberOfLines={3}>
+              {item.translation_en || item.short_form || ''}
+            </Text>
+            <Text style={styles.sourceText}>
+              {'\u2014'} {item.source_text || ''}{item.source_location ? ` ${item.source_location}` : ''}
+            </Text>
           </View>
         </ImageBackground>
       </TouchableOpacity>

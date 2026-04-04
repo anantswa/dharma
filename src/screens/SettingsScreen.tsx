@@ -16,7 +16,7 @@ import {
 } from '../services/notificationService';
 import { TraditionKey, usePreferencesStore } from '../store/preferencesStore';
 
-const TRADITIONS: TraditionKey[] = ['Hindu', 'Sikh', 'Buddhist', 'Jain', 'Zen'];
+const TRADITIONS: TraditionKey[] = ['Hindu', 'Sikh', 'Buddhist', 'Jain', 'Zen', 'Christian', 'Sufi'];
 
  
 

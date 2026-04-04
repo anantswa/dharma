@@ -20,6 +20,8 @@ import { AudioService } from './src/services/audioService';
 import type { WisdomNotificationData } from './src/services/notificationService';
 import { initializeNotifications } from './src/services/notificationService';
 import { usePreferencesStore } from './src/store/preferencesStore';
+import { useDataStore } from './src/store/dataStore';
+import { loadImageIndex } from './src/services/imageService';
 
 export default function App() {
   const navigationRef = useRef<any>(null);
@@ -35,6 +37,12 @@ export default function App() {
     Playfair_SemiBold: PlayfairDisplay_600SemiBold,
     Playfair_Bold: PlayfairDisplay_700Bold,
   });
+
+  // Initialize data from Supabase (cache-first, then background sync)
+  useEffect(() => {
+    useDataStore.getState().initialize();
+    loadImageIndex();
+  }, []);
 
   // Initialize notifications
   useEffect(() => {

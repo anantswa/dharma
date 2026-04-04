@@ -7,7 +7,7 @@ import { createJSONStorage, persist } from 'zustand/middleware';
  * Persists tradition filters, reminder settings, and onboarding status
  */
 
-export type TraditionKey = 'Hindu' | 'Sikh' | 'Buddhist' | 'Jain' | 'Zen';
+export type TraditionKey = 'Hindu' | 'Sikh' | 'Buddhist' | 'Jain' | 'Zen' | 'Christian' | 'Sufi';
 
 type PreferencesState = {
   enabledTraditions: Record<TraditionKey, boolean>;
@@ -32,6 +32,8 @@ const DEFAULT_TRADITIONS: Record<TraditionKey, boolean> = {
   Buddhist: true,
   Jain: true,
   Zen: true,
+  Christian: true,
+  Sufi: true,
 };
 
 export const usePreferencesStore = create<PreferencesState>()(
@@ -78,7 +80,9 @@ const normalizeTraditionLabel = (tradition?: string): TraditionKey | null => {
   if (lower.includes('buddh')) return 'Buddhist';
   if (lower.includes('jain')) return 'Jain';
   if (lower.includes('zen')) return 'Zen';
-  
+  if (lower.includes('christian') || lower.includes('bible') || lower.includes('catholic') || lower.includes('orthodox') || lower.includes('protestant')) return 'Christian';
+  if (lower.includes('sufi') || lower.includes('rumi') || lower.includes('hafiz') || lower.includes('islamic')) return 'Sufi';
+
   return null;
 };
 
