@@ -11,12 +11,14 @@ import { supabaseQuery } from './supabase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const IMAGES_CACHE_KEY = '@dharma:images_cache';
+const SUPABASE_STORAGE_BASE = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-images';
 
 let cachedImages: ImageEntry[] = [];
 
 /**
  * Load image index from Supabase (or cache).
  * Only fetches the metadata (URLs + tags), not the actual image bytes.
+ * Images are served from Supabase Storage (dharma-images bucket).
  */
 export async function loadImageIndex(): Promise<void> {
   // Try cache first
@@ -35,13 +37,31 @@ export async function loadImageIndex(): Promise<void> {
     const fields = 'id,file_url,thumbnail_url,tradition,source_text,primary_figure,mood,scene_description,tags,orientation';
     const images = await supabaseQuery<ImageEntry>(
       'image_library',
-      `select=${fields}&available=eq.true&orientation=eq.portrait&order=created_at.desc&limit=500`,
+      `select=${fields}&available=eq.true&order=created_at.desc&limit=500`,
     );
     cachedImages = images;
     await AsyncStorage.setItem(IMAGES_CACHE_KEY, JSON.stringify(images));
   } catch (error) {
     console.error('[ImageService] Failed to load image index:', error);
   }
+}
+
+/**
+ * Check if a URL points to Supabase Storage (web-accessible).
+ * Local drive paths (G:\...) are not usable by the mobile app.
+ */
+function isWebUrl(url: string | null): boolean {
+  return !!url && (url.startsWith('http://') || url.startsWith('https://'));
+}
+
+/**
+ * Get the best available image URL for an entry.
+ * Prefers Supabase Storage URLs. Falls back to null for local paths.
+ */
+export function getImageUrl(entry: ImageEntry | null, size: 'full' | 'thumb' = 'full'): string | null {
+  if (!entry) return null;
+  const url = size === 'thumb' ? (entry.thumbnail_url || entry.file_url) : entry.file_url;
+  return isWebUrl(url) ? url : null;
 }
 
 /**
