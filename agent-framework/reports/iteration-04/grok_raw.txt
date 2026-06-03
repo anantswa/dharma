@@ -1,0 +1,91 @@
+```json
+{
+  "dimensions": [
+    {
+      "id": "darshan_loop",
+      "score": 4,
+      "justification": "Strong 60fps Reanimated parallax carousel + GestureDetector drag-to-offer Aarti with haptics/spring return; shankh loop + persistent MusicBottomSheet. Missing explicit particles and tight aarti-audio flame sync.",
+      "evidence": "HomeScreen.tsx:110-190 (Animated.FlatList+scrollX+DeityCard), AartiPlate.tsx:45-110 (panGesture+withSpring+haptics), shankhService.ts:15-45, FloatingMusicButton.tsx"
+    },
+    {
+      "id": "faith_personalization",
+      "score": 5,
+      "justification": "Onboarding <30s, primaryTradition drives deitiesForFaith+theme+accent, enabledTraditions filters Home/Wisdom/Learn/Calendar with zero visible cross-faith bleed.",
+      "evidence": "WelcomeScreen.tsx:45-110 (faith cards+setOnboarding), preferencesStore.ts:35-85 (primaryTradition+isTraditionEnabled), HomeScreen.tsx:48-55 (deitiesForFaith+theme), LearnScreen.tsx:55 (getModulesForUser)"
+    },
+    {
+      "id": "sensory_fidelity",
+      "score": 4,
+      "justification": "expo-av background/foreground lifecycle via AppState listeners, haptics on every swipe/lift, UI-thread Reanimated. No explicit crossfade or preload strategy visible; minor over-haptics risk on rapid drags.",
+      "evidence": "App.tsx:55-85 (AppState+AudioService.pauseForBackground/restore), audioService.ts:140-190, AartiPlate.tsx:55+105 (liftHaptic+settleHaptic), HomeScreen.tsx:165"
+    },
+    {
+      "id": "asset_moat",
+      "score": 4,
+      "justification": "19 deity images, 23 lesson images, 12 real gita_*.mp3, devotional wavs, temple frames vs placeholders. Store tab still uses Linking.openURL to Spotify+Google Play for core music/book experience.",
+      "evidence": "BUILD SNAPSHOT (asset inventory), IapTestScreen.tsx:75-110 (BOOK_URL+SPOTIFY_URL+Linking), devotionalTracks.ts+gitaShlokas.ts, HomeScreen.tsx:220 (local temple_screen.png)"
+    },
+    {
+      "id": "habit_retention",
+      "score": 4,
+      "justification": "Streak engine records visit on Home mount, visible chip, daily notificationService tied to calendar+primaryTradition, learnProgressStore+visible module progress. No explicit 'Today's Practice' screen or smart non-spam logic beyond daily.",
+      "evidence": "HomeScreen.tsx:65-75 (useStreakStore+recordVisit+chip), streakStore.ts, notificationService.ts:80-130 (scheduleDailyWisdomNotification), LearnScreen.tsx:80-110 (progress bars)"
+    },
+    {
+      "id": "offline_tech",
+      "score": 5,
+      "justification": "dataStore.initialize() is cache-first (AsyncStorage) then background Supabase sync; bundled JSON fallback; no heavy parse on main thread; clean TS; newArchEnabled; airplane core works.",
+      "evidence": "dataStore.ts:45-85 (loadCachedData+isSyncNeeded+forceSync), dataSync.ts:30-70, App.tsx:25-30 (initialize+loadImageIndex), app.json:28 (newArchEnabled)"
+    },
+    {
+      "id": "learning_quality",
+      "score": 4,
+      "justification": "LessonFlowScreen implements Chalisa-depth (original+translit+meaning+audio+reflect+progress mark) for multiple modules; GitaAudioScreen; not pure text dump. Audio is currently placeholder Omm_and_Bells for all lessons; retention is completion-only, no quiz.",
+      "evidence": "LessonFlowScreen.tsx:80-220 (4-step read/understand/reflect/done+verseCard+audio), chalisaLessons.ts+modules.ts, LearnScreen.tsx:110 (LessonSelection), learnProgressStore.ts:25-55"
+    },
+    {
+      "id": "monetization",
+      "score": 2,
+      "justification": "IAP skeleton via react-native-iap + premiumStore + Paywall.tsx present but Store tab is IapTestScreen dominated by external Linking to book/Spotify; no contextual inline paywalls, no layered SKUs, no beautiful original-art paywall, no RevenueCat.",
+      "evidence": "IapTestScreen.tsx:20-150 (PRODUCT_ID+external links+FeatureRow), premiumStore.ts, Paywall.tsx (file present but unused in provided screens), AppNavigator.tsx:55 (Store→IapTestScreen)"
+    },
+    {
+      "id": "authenticity_trust",
+      "score": 5,
+      "justification": "Gita shlokas+audio correctly attributed, sane transliteration in chalisaLessons, dignified deity images across traditions, uplifting tone, honest privacy (no dark patterns), gate confirms no leaked secrets.",
+      "evidence": "gitaShlokas.ts+assets/audio/gita/*.mp3, deityImages.ts:10-60, LessonFlowScreen.tsx:130 (source+speaker), supabase.ts+app.json (gate passed clean)"
+    },
+    {
+      "id": "delight_share",
+      "score": 3,
+      "justification": "Holy-shit micro-moments via draggable glowing Aarti+shankh+parallax swipe haptics present; ShareableCard.tsx exists but no evidence of one-tap native WhatsApp/IG cards embedding verse+art+audio preview in dark mode.",
+      "evidence": "AartiPlate.tsx:full (delightful drag), ShareableCard.tsx (file present), HomeScreen.tsx:170 (shankhDotActive glow), WisdomDetailScreen.tsx (not fully shown)"
+    }
+  ],
+  "gate_passed": true,
+  "weighted_total": 82,
+  "top_improvements": [
+    {
+      "priority": 1,
+      "dimension": "monetization",
+      "action": "Integrate Paywall.tsx contextually inside LessonFlowScreen completion and WisdomDetailScreen (inline 'Unlock full module' CTA); replace IapTestScreen external links with RevenueCat layered SKUs (monthly/lifetime) using original deity art; remove Linking.openURL from Store tab."
+    },
+    {
+      "priority": 2,
+      "dimension": "darshan_loop",
+      "action": "Add Reanimated particle flame effect (or expo-particles) to AartiPlate.tsx synced to shankh audio playback; position under plate with opacity tied to liftY shared value (see lines 65-85)."
+    },
+    {
+      "priority": 3,
+      "dimension": "learning_quality",
+      "action": "Wire per-lesson chant audio from chalisaLessons.ts or moduleService into LessonFlowScreen:80 (replace hardcoded Omm_and_Bells.wav with lesson.audioUrl + expo-av preload); add simple retention quiz before 'done' step."
+    },
+    {
+      "priority": 4,
+      "dimension": "asset_moat",
+      "action": "Replace Spotify/Play Store Linking in IapTestScreen.tsx:85-105 with in-app MiniMusicPlayer using real Suno/ElevenLabs tracks served from Supabase Storage; ensure all 23 lesson images are used in LessonFlowScreen art layer."
+    }
+  ],
+  "summary": "Exemplary darshan loop, faith personalization, offline-first architecture and sensory polish deliver a genuinely delightful daily ritual experience (82/100). Monetization remains placeholder/test-oriented and learning audio is not yet per-verse; address top improvements then ship."
+}
+```

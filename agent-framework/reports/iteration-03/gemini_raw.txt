@@ -1,0 +1,91 @@
+```json
+{
+  "dimensions": [
+    {
+      "id": "darshan_loop",
+      "score": 4,
+      "justification": "Smooth Reanimated parallax and gesture-driven Aarti plate with haptics, but lacks particle effects.",
+      "evidence": "src/components/AartiPlate.tsx:64"
+    },
+    {
+      "id": "faith_personalization",
+      "score": 2,
+      "justification": "Onboarding sets primary tradition, but enabledTraditions defaults to all, causing cross-faith bleed in Wisdom/Calendar.",
+      "evidence": "src/store/preferencesStore.ts:28"
+    },
+    {
+      "id": "sensory_fidelity",
+      "score": 4,
+      "justification": "Good use of expo-av lifecycle and UI-thread haptics, though audio crossfading is not explicitly implemented.",
+      "evidence": "src/services/audioService.ts:153"
+    },
+    {
+      "id": "asset_moat",
+      "score": 4,
+      "justification": "Strong local asset utilization for deities and audio. External Spotify link is appropriately placed in the Store.",
+      "evidence": "src/screens/IapTestScreen.tsx:138"
+    },
+    {
+      "id": "habit_retention",
+      "score": 5,
+      "justification": "Excellent implementation of local streak engine, daily prasad, and scheduled local notifications.",
+      "evidence": "src/screens/HomeScreen.tsx:143"
+    },
+    {
+      "id": "offline_tech",
+      "score": 2,
+      "justification": "Offline-first Supabase sync is well-architected, but the build fails due to numerous TypeScript errors.",
+      "evidence": "App.tsx:105"
+    },
+    {
+      "id": "learning_quality",
+      "score": 4,
+      "justification": "Structured 4-step learning flow (Read, Understand, Reflect, Done) with audio support.",
+      "evidence": "src/screens/LessonFlowScreen.tsx:143"
+    },
+    {
+      "id": "monetization",
+      "score": 3,
+      "justification": "Native IAP is implemented, but paywalls are isolated to the Store tab rather than contextually inline.",
+      "evidence": "src/screens/IapTestScreen.tsx:156"
+    },
+    {
+      "id": "authenticity_trust",
+      "score": 5,
+      "justification": "Content is respectful, properly attributed, and the secret scan is clean.",
+      "evidence": "src/screens/LessonFlowScreen.tsx:156"
+    },
+    {
+      "id": "delight_share",
+      "score": 2,
+      "justification": "ShareableCard component exists but is not integrated into the core Wisdom or Lesson flows.",
+      "evidence": "src/components/ShareableCard.tsx"
+    }
+  ],
+  "gate_passed": false,
+  "weighted_total": 49,
+  "top_improvements": [
+    {
+      "priority": 1,
+      "dimension": "offline_tech",
+      "action": "Fix TypeScript errors in App.tsx, SettingsScreen.tsx, and components to pass the build health gate."
+    },
+    {
+      "priority": 2,
+      "dimension": "faith_personalization",
+      "action": "Modify WelcomeScreen onboarding to set enabledTraditions to only the selected primaryTradition to prevent cross-faith bleed."
+    },
+    {
+      "priority": 3,
+      "dimension": "delight_share",
+      "action": "Integrate ShareableCard into WisdomScreen and LessonFlowScreen to enable one-tap sharing to social platforms."
+    },
+    {
+      "priority": 4,
+      "dimension": "monetization",
+      "action": "Implement contextual inline paywalls within LearnScreen for premium modules instead of relying solely on the Store tab."
+    }
+  ],
+  "summary": "The app demonstrates a strong foundation with excellent offline-first architecture, habit loops, and sensory fidelity. However, it fails the build gate due to TypeScript errors and suffers from cross-faith bleed by default, capping its overall score."
+}
+```

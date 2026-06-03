@@ -12,12 +12,12 @@ import {
     View,
 } from 'react-native';
 import { usePreferencesStore } from '../store/preferencesStore';
-
-// IMPORTANT: must match your store's TraditionKey exactly
-const TRADITIONS = ['Hindu', 'Sikh', 'Buddhist', 'Jain', 'Zen', 'Christian', 'Sufi'] as const;
-type TraditionKey = (typeof TRADITIONS)[number];
-
- 
+import {
+  FaithKey,
+  PRIMARY_FAITHS,
+  SECONDARY_FAITHS,
+  getFaithTheme,
+} from '../data/faiths';
 
 export const WelcomeScreen: React.FC = () => {
   const navigation = useNavigation<any>();
@@ -27,22 +27,19 @@ export const WelcomeScreen: React.FC = () => {
   const savedRemindersEnabled = usePreferencesStore((s) => s.remindersEnabled);
   const setOnboarding = usePreferencesStore((s) => s.setOnboarding);
 
-  const [tradition, setTradition] = useState<TraditionKey>(
-    (primaryTradition as TraditionKey) ?? 'Sikh',
+  const [tradition, setTradition] = useState<FaithKey>(
+    (primaryTradition as FaithKey) ?? 'Hindu',
   );
   const [remindersEnabled, setRemindersEnabled] = useState(!!savedRemindersEnabled);
-
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  
+  const theme = getFaithTheme(tradition);
 
   const onNext = () => {
     setOnboarding({
       primaryTradition: tradition,
       remindersEnabled,
     });
-
-    // Go to main app (Tabs)
     navigation.replace('MainTabs');
   };
 
@@ -54,19 +51,42 @@ export const WelcomeScreen: React.FC = () => {
       />
 
       <View style={styles.content}>
-        <Text style={styles.title}>Begin your Dharma journey</Text>
-        <Text style={styles.subtitle}>Tailor your experience in a few taps.</Text>
+        <Text style={[styles.title, { color: theme.accent }]}>Begin your Dharma journey</Text>
+        <Text style={styles.subtitle}>Choose your path — the temple, calendar, and teachings shape around it.</Text>
 
-        {/* Tradition dropdown */}
-        <Text style={styles.sectionLabel}>CHOOSE YOUR PATH</Text>
-        <TouchableOpacity
-          style={styles.dropdownButton}
-          onPress={() => setDropdownOpen(true)}
-          activeOpacity={0.9}
-        >
-          <Text style={styles.dropdownText}>{tradition}</Text>
-          <Text style={styles.dropdownChevron}>▾</Text>
+        <Text style={[styles.sectionLabel, { color: theme.accent }]}>CHOOSE YOUR PATH</Text>
+
+        {/* Primary faith cards */}
+        {PRIMARY_FAITHS.map((key) => {
+          const t = getFaithTheme(key);
+          const selected = key === tradition;
+          return (
+            <TouchableOpacity
+              key={key}
+              activeOpacity={0.9}
+              onPress={() => setTradition(key)}
+              style={[
+                styles.faithCard,
+                selected && { borderColor: t.accent, backgroundColor: t.accentSoft },
+              ]}
+            >
+              <View style={{ flex: 1 }}>
+                <Text style={[styles.faithName, selected && { color: t.accent }]}>{t.label}</Text>
+                <Text style={styles.faithBlurb}>{t.blurb}</Text>
+              </View>
+              <Text style={[styles.faithGreeting, selected && { color: t.accent }]}>{t.greeting}</Text>
+            </TouchableOpacity>
+          );
+        })}
+
+        {/* More traditions — only when there are any to surface */}
+        {SECONDARY_FAITHS.length > 0 && (
+        <TouchableOpacity onPress={() => setDropdownOpen(true)} activeOpacity={0.8}>
+          <Text style={styles.moreLink}>
+            {SECONDARY_FAITHS.includes(tradition) ? `More: ${tradition} ▾` : 'More traditions ▾'}
+          </Text>
         </TouchableOpacity>
+        )}
 
         <Modal
           visible={dropdownOpen}
@@ -74,12 +94,9 @@ export const WelcomeScreen: React.FC = () => {
           animationType="fade"
           onRequestClose={() => setDropdownOpen(false)}
         >
-          <Pressable
-            style={styles.modalBackdrop}
-            onPress={() => setDropdownOpen(false)}
-          >
+          <Pressable style={styles.modalBackdrop} onPress={() => setDropdownOpen(false)}>
             <View style={styles.modalCard}>
-              {TRADITIONS.map((t) => (
+              {SECONDARY_FAITHS.map((t) => (
                 <TouchableOpacity
                   key={t}
                   style={styles.modalRow}
@@ -88,12 +105,7 @@ export const WelcomeScreen: React.FC = () => {
                     setDropdownOpen(false);
                   }}
                 >
-                  <Text
-                    style={[
-                      styles.modalRowText,
-                      t === tradition && styles.modalRowTextActive,
-                    ]}
-                  >
+                  <Text style={[styles.modalRowText, t === tradition && styles.modalRowTextActive]}>
                     {t}
                   </Text>
                 </TouchableOpacity>
@@ -102,13 +114,11 @@ export const WelcomeScreen: React.FC = () => {
           </Pressable>
         </Modal>
 
-        
-
         {/* Reminders */}
         <View style={styles.reminderRow}>
           <View style={{ flex: 1 }}>
-            <Text style={styles.reminderTitle}>Reminders</Text>
-            <Text style={styles.reminderSubtitle}>Get a gentle daily nudge.</Text>
+            <Text style={styles.reminderTitle}>Daily reminder</Text>
+            <Text style={styles.reminderSubtitle}>A gentle nudge to visit the temple.</Text>
           </View>
           <Switch value={remindersEnabled} onValueChange={setRemindersEnabled} />
         </View>
@@ -117,12 +127,10 @@ export const WelcomeScreen: React.FC = () => {
         <TouchableOpacity
           activeOpacity={0.9}
           onPress={onNext}
-          disabled={false}
-          style={[styles.nextButton]}
+          style={[styles.nextButton, { backgroundColor: theme.accent }]}
         >
-          <Text style={styles.nextText}>Next</Text>
+          <Text style={styles.nextText}>Enter the temple</Text>
         </TouchableOpacity>
-
       </View>
     </View>
   );
@@ -156,6 +164,22 @@ const styles = StyleSheet.create({
   },
   dropdownText: { color: '#f8fafc', fontSize: 16, fontFamily: 'System' },
   dropdownChevron: { color: '#94a3b8', fontSize: 18 },
+
+  faithCard: {
+    marginTop: 12,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.12)',
+    backgroundColor: 'rgba(15,23,42,0.55)',
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  faithName: { color: '#f8fafc', fontSize: 18, fontFamily: 'Playfair_SemiBold' },
+  faithBlurb: { color: '#94a3b8', fontSize: 12.5, marginTop: 4, paddingRight: 10 },
+  faithGreeting: { color: '#cbd5e1', fontSize: 12, fontStyle: 'italic', maxWidth: 96, textAlign: 'right' },
+  moreLink: { color: '#94a3b8', fontSize: 13, marginTop: 14, alignSelf: 'flex-start' },
 
   modalBackdrop: {
     flex: 1,

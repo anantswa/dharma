@@ -7,7 +7,7 @@ import { createJSONStorage, persist } from 'zustand/middleware';
  * Persists tradition filters, reminder settings, and onboarding status
  */
 
-export type TraditionKey = 'Hindu' | 'Sikh' | 'Buddhist' | 'Jain' | 'Zen' | 'Christian' | 'Sufi';
+export type TraditionKey = 'Hindu' | 'Buddhist';
 
 type PreferencesState = {
   enabledTraditions: Record<TraditionKey, boolean>;
@@ -28,12 +28,7 @@ type PreferencesState = {
 
 const DEFAULT_TRADITIONS: Record<TraditionKey, boolean> = {
   Hindu: true,
-  Sikh: true,
   Buddhist: true,
-  Jain: true,
-  Zen: true,
-  Christian: true,
-  Sufi: true,
 };
 
 export const usePreferencesStore = create<PreferencesState>()(
@@ -74,24 +69,24 @@ export const usePreferencesStore = create<PreferencesState>()(
 const normalizeTraditionLabel = (tradition?: string): TraditionKey | null => {
   if (!tradition) return null;
   const lower = tradition.toLowerCase();
-  
-  if (lower.includes('hindu') || lower.includes('vedanta') || lower.includes('gita')) return 'Hindu';
-  if (lower.includes('sikh') || lower.includes('gurbani')) return 'Sikh';
-  if (lower.includes('buddh')) return 'Buddhist';
-  if (lower.includes('jain')) return 'Jain';
-  if (lower.includes('zen')) return 'Zen';
-  if (lower.includes('christian') || lower.includes('bible') || lower.includes('catholic') || lower.includes('orthodox') || lower.includes('protestant')) return 'Christian';
-  if (lower.includes('sufi') || lower.includes('rumi') || lower.includes('hafiz') || lower.includes('islamic')) return 'Sufi';
+
+  if (
+    lower.includes('hindu') || lower.includes('vedanta') || lower.includes('gita') ||
+    lower.includes('upanishad') || lower.includes('purana') || lower.includes('veda') ||
+    lower.includes('yoga') || lower.includes('ramayan')
+  ) return 'Hindu';
+  if (lower.includes('buddh') || lower.includes('zen') || lower.includes('dhamma')) return 'Buddhist';
 
   return null;
 };
 
+// Content outside the two focus faiths (Christian/Sikh/Jain/Sufi/…) is excluded.
 // CRITICAL: This must have 'export'
 export const isTraditionEnabled = (
   tradition: string | undefined,
   enabledTraditions: Record<TraditionKey, boolean>
 ): boolean => {
   const key = normalizeTraditionLabel(tradition);
-  if (!key) return true;
+  if (!key) return false; // not Hindu or Buddhist → not shown
   return enabledTraditions[key] ?? true;
 };

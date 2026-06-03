@@ -8,6 +8,7 @@ export type Deity = {
   name: string;
   image: any;
   filename: string;
+  tradition?: string;
 };
 
 export const FINAL_DEITIES: Deity[] = [
@@ -67,12 +68,65 @@ export const FINAL_DEITIES: Deity[] = [
     // ✅ ADDED: Ensure 'buddha.jpg' exists
     image: require('../../assets/images/deities/buddha.jpg'), 
   },
+
+  // ── Buddhist darshan (added iteration-02) ──
   {
-    id: '10',
-    name: 'Lord Mahavir',
-    filename: 'mahavir.jpg',
-    // ✅ ADDED: Ensure 'mahavir.jpg' exists
-    image: require('../../assets/images/deities/mahavir.jpg'), 
+    id: '11',
+    name: 'The Buddha',
+    filename: 'buddha_dhammapada.jpg',
+    tradition: 'Buddhist',
+    image: require('../../assets/images/deities/buddha_dhammapada.jpg'),
+  },
+  {
+    id: '12',
+    name: 'Shakyamuni Buddha',
+    filename: 'shakyamuni.jpg',
+    tradition: 'Buddhist',
+    image: require('../../assets/images/deities/shakyamuni.jpg'),
+  },
+  {
+    id: '13',
+    name: 'Avalokiteśvara',
+    filename: 'avalokiteshvara.jpg',
+    tradition: 'Buddhist',
+    image: require('../../assets/images/deities/avalokiteshvara.jpg'),
+  },
+  {
+    id: '14',
+    name: 'The Buddha (Udāna)',
+    filename: 'buddha_udana.jpg',
+    tradition: 'Buddhist',
+    image: require('../../assets/images/deities/buddha_udana.jpg'),
+  },
+
+  // ── Christian darshan (added iteration-02) ──
+  {
+    id: '15',
+    name: 'Jesus Christ',
+    filename: 'jesus_john.jpg',
+    tradition: 'Christian',
+    image: require('../../assets/images/deities/jesus_john.jpg'),
+  },
+  {
+    id: '16',
+    name: 'Christ the Teacher',
+    filename: 'jesus_matthew.jpg',
+    tradition: 'Christian',
+    image: require('../../assets/images/deities/jesus_matthew.jpg'),
+  },
+  {
+    id: '17',
+    name: 'King David',
+    filename: 'king_david.jpg',
+    tradition: 'Christian',
+    image: require('../../assets/images/deities/king_david.jpg'),
+  },
+  {
+    id: '18',
+    name: 'Archangel Gabriel',
+    filename: 'gabriel.jpg',
+    tradition: 'Christian',
+    image: require('../../assets/images/deities/gabriel.jpg'),
   },
 ];
 

@@ -1,0 +1,89 @@
+{
+  "dimensions": [
+    {
+      "id": "darshan_loop",
+      "score": 4,
+      "justification": "Strong parallax swipe (Reanimated FlatList + shared scrollX), layered temple overlay, draggable Aarti with haptics+spring, shankh loop, streak+prasad, persistent music. No particles or perfect 60fps guarantee.",
+      "evidence": "HomeScreen.tsx:110-170 (carousel+parallax+wisdomOverlay), AartiPlate.tsx:40-90 (Gesture.Pan+withSpring+haptics), shankhService.ts:15, FloatingMusicButton.tsx:1"
+    },
+    {
+      "id": "faith_personalization",
+      "score": 2,
+      "justification": "Onboarding <45s and primaryTradition drive Home deities/theme. Cross-faith bleed via enabledTraditions in WisdomScreen/Calendar/Learn caps dimension at 2 per rubric.",
+      "evidence": "WelcomeScreen.tsx:45-90 (tradition cards+setOnboarding), preferencesStore.ts:60-110 (enabledTraditions+isTraditionEnabled), HomeScreen.tsx:35 (deitiesForFaith), WisdomScreen.tsx:55"
+    },
+    {
+      "id": "sensory_fidelity",
+      "score": 4,
+      "justification": "expo-av background lifecycle + restore/pause in AppState listeners, haptics on pan/swipe/selection, UI-thread Reanimated springs. Minor over-haptics risk on rapid swipes.",
+      "evidence": "audioService.ts:110-160 (pauseForBackground/restoreFromBackground), App.tsx:70-90 (AppState listener), AartiPlate.tsx:55 (runOnJS liftHaptic), HomeScreen.tsx:140 (selectionAsync)"
+    },
+    {
+      "id": "asset_moat",
+      "score": 3,
+      "justification": "Real painterly deities (19 images), temple PNGs, devotional WAVs, chalisa art. Lessons fallback to placeholder Omm_and_Bells.wav; Store tab uses external Spotify/Play links.",
+      "evidence": "assets/images/deities/* (19 files), assets/audio/devotional/*.wav, LessonFlowScreen.tsx:145 (require Omm_and_Bells), IapTestScreen.tsx:110+ (Linking.openURL)"
+    },
+    {
+      "id": "habit_retention",
+      "score": 4,
+      "justification": "Streak engine records visit on Home mount, visible chip, daily notification scheduler by time+tradition, learnProgressStore with AsyncStorage. No smart calendar-driven non-spam logic shown.",
+      "evidence": "HomeScreen.tsx:50 (useStreakStore.recordVisit), streakStore.ts (implied), notificationService.ts:90 (scheduleDailyWisdomNotification), learnProgressStore.ts:20"
+    },
+    {
+      "id": "offline_tech",
+      "score": 2,
+      "justification": "Cache-first + background Supabase sync (dataStore), bundled JSON fallback, airplane viable. Many TS errors, potential JSON parse on launch, jank from broken imports.",
+      "evidence": "dataStore.ts:35-70 (loadCachedData+forceSync), dataSync.ts:50, App.tsx:30 (initialize), multiple TS errors (CalendarScreen.tsx:28, LessonFlowScreen.tsx:58)"
+    },
+    {
+      "id": "learning_quality",
+      "score": 3,
+      "justification": "Chalisa-depth LessonFlow (text+translit+meaning+audio+reflection+progress check) but only one module at depth; other modules generic. Audio is placeholder; some text dumps.",
+      "evidence": "LessonFlowScreen.tsx:80-220 (4-step read/understand/reflect/done), data/chalisaLessons.ts, LessonSelectionScreen.tsx:40, learnProgressStore.ts:15"
+    },
+    {
+      "id": "monetization",
+      "score": 1,
+      "justification": "IapTestScreen is Store tab only; dynamic import of missing react-native-iap (TS error + not in package.json), external book/Spotify links, no contextual inline paywalls or RevenueCat.",
+      "evidence": "IapTestScreen.tsx:45 (import react-native-iap error), package.json (no iap dep), Paywall.tsx (present but unused), premiumStore.ts:10"
+    },
+    {
+      "id": "authenticity_trust",
+      "score": 1,
+      "justification": "Dignified deity art, attributed verses in chalisaLessons+wisdom_core_50. Service key leaked in client; no privacy policy visible.",
+      "evidence": "app.json:55 (supabaseKey: \"sb_secret_...\"), supabase.ts:20 (service key comment), assets/images/deities/*, wisdom_core_50.json"
+    },
+    {
+      "id": "delight_share",
+      "score": 2,
+      "justification": "Holy-shit aarti drag+haptics+shankh micro-moments present. ShareableCard.tsx exists but no integration evidence for one-tap verse+art+audio cards to WhatsApp/IG.",
+      "evidence": "AartiPlate.tsx:60 (spring lift+haptics), ShareableCard.tsx:1, HomeScreen.tsx:160 (shankhButton)"
+    }
+  ],
+  "gate_passed": false,
+  "weighted_total": 49,
+  "top_improvements": [
+    {
+      "priority": 1,
+      "dimension": "offline_tech",
+      "action": "Fix all TS errors: remove invalid ref on GestureHandlerRootView (App.tsx:105), add expo-router types + explicit event types (external-link.tsx:1,13), fix DevotionalTrack arg (FloatingMusicButton.tsx:56,60), define CalendarEvent + LessonType.hindi (CalendarScreen.tsx:28, Lesson*.tsx:58), correct StyleSheet indexing (SettingsScreen.tsx:320)."
+    },
+    {
+      "priority": 2,
+      "dimension": "authenticity_trust",
+      "action": "Replace app.json:55 supabaseKey with anon/public key only; enable RLS on wisdom/festivals/image_library tables so client cannot bypass policies. Remove service-key comment from supabase.ts:15."
+    },
+    {
+      "priority": 3,
+      "dimension": "monetization",
+      "action": "Add 'react-native-iap' or expo-in-app-purchases to package.json, integrate Paywall.tsx with contextual triggers from LessonSelection/Home, replace IapTestScreen external Linking with native RevenueCat paywall using layered SKUs and original art."
+    },
+    {
+      "priority": 4,
+      "dimension": "darshan_loop",
+      "action": "Add Reanimated particle burst on aarti tap (using expo-particles or Lottie) synced to audioService; ensure MusicBottomSheet crossfades tracks without JS-thread blocking."
+    }
+  ],
+  "summary": "Immersive darshan loop with gesture aarti, parallax deities, shankh, streak and faith-personalized Home is the clear strength. Offline cache-first sync and sensory fidelity are solid. Gate fails on TS errors + leaked service key in app.json (plus weak monetization and limited deep learning modules) caps score at 49. Fix types and secrets first for a shippable build."
+}

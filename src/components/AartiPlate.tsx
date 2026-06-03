@@ -1,11 +1,21 @@
+import * as Haptics from 'expo-haptics';
 import React from 'react';
 import { Dimensions, Image, StyleSheet } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
+    runOnJS,
     useAnimatedStyle,
     useSharedValue,
     withSpring
 } from 'react-native-reanimated';
+
+// Fired from the UI thread via runOnJS; swallow errors (haptics absent on web).
+const liftHaptic = () => {
+  try { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); } catch { /* noop */ }
+};
+const settleHaptic = () => {
+  try { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft); } catch { /* noop */ }
+};
 
 const { width, height } = Dimensions.get('window');
 
@@ -66,6 +76,7 @@ export const AartiPlate: React.FC = () => {
       // Lift the plate gently
       scale.value = withSpring(LIFT_SCALE, { damping: 15, stiffness: 150 });
       liftY.value = withSpring(LIFT_TRANSLATION, { damping: 15, stiffness: 150 });
+      runOnJS(liftHaptic)();
     })
     .onUpdate((event) => {
       'worklet';
@@ -88,6 +99,7 @@ export const AartiPlate: React.FC = () => {
       // Reset lift effect
       scale.value = withSpring(1, { damping: 15, stiffness: 120 });
       liftY.value = withSpring(0, { damping: 15, stiffness: 120 });
+      runOnJS(settleHaptic)();
     })
     .minDistance(5)
     .maxPointers(1); // Only allow single touch to prevent conflicts

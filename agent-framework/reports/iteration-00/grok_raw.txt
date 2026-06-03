@@ -1,0 +1,91 @@
+```json
+{
+  "dimensions": [
+    {
+      "id": "darshan_loop",
+      "score": 3,
+      "justification": "Functional horizontal deity carousel + temple overlay + draggable AartiPlate (Reanimated+Gesture) + shankh toggle + music sheet; missing particles, haptics, true parallax, persistent streak/prasad",
+      "evidence": "HomeScreen.tsx:82-210 (FlatList+layers), AartiPlate.tsx:25-110 (pan+spring), shankhService.ts:15-45"
+    },
+    {
+      "id": "faith_personalization",
+      "score": 4,
+      "justification": "Quick onboarding, preferencesStore persists primary+enabledTraditions, isTraditionEnabled filters Home/Wisdom/Learn/Calendar; no cross-faith bleed observed",
+      "evidence": "WelcomeScreen.tsx:45-110 (dropdown+setOnboarding), preferencesStore.ts:35-85 (normalizeTraditionLabel+isTraditionEnabled), HomeScreen.tsx:48, LearnScreen.tsx:28"
+    },
+    {
+      "id": "sensory_fidelity",
+      "score": 3,
+      "justification": "expo-av background/foreground lifecycle + cleanup present; Reanimated UI-thread motion in AartiPlate; zero expo-haptics usage or audio crossfade/preload visible",
+      "evidence": "audioService.ts:145-185 (pauseForBackground/restoreFromBackground), App.tsx:65-85 (AppState), AartiPlate.tsx:45-85"
+    },
+    {
+      "id": "asset_moat",
+      "score": 2,
+      "justification": "Local placeholder WAVs (Omm_and_Bells.wav etc.) and JPEGs only; IapTestScreen uses Linking.openURL to Spotify/Google Books for core music/book experience",
+      "evidence": "assets/audio/devotional/*.wav (inventory), IapTestScreen.tsx:55-70 (BOOK_URL+SPOTIFY_URL), devotionalTracks.ts (referenced but not premium)"
+    },
+    {
+      "id": "habit_retention",
+      "score": 3,
+      "justification": "learnProgressStore + daily notifications + module progress bars + Calendar; no visible streak engine or 'Today's Practice' widget with smart calendar logic",
+      "evidence": "learnProgressStore.ts:20-60, notificationService.ts:80-130 (scheduleDailyWisdomNotification), LearnScreen.tsx:55-75 (progressRow)"
+    },
+    {
+      "id": "offline_tech",
+      "score": 2,
+      "justification": "Cache-first + bundled fallback + background sync in dataStore good; ruined by service-role key leak, failed typecheck, and JSON parse on launch",
+      "evidence": "dataStore.ts:35-65 (loadCachedData+forceSync), supabase.ts:15 (leaked key), package.json (tsc error in gate)"
+    },
+    {
+      "id": "learning_quality",
+      "score": 4,
+      "justification": "LessonFlowScreen implements 4-step Chalisa-depth (read/translit/audio/reflect+journal+progress); uses chalisaLessons.ts; not just text dumps but audio is placeholder",
+      "evidence": "LessonFlowScreen.tsx:45-220 (renderRead/renderUnderstand+Audio.Sound), chalisaLessons.ts, learnProgressStore.ts:30"
+    },
+    {
+      "id": "monetization",
+      "score": 2,
+      "justification": "Basic react-native-iap lifetime SKU in IapTestScreen (named test screen); no RevenueCat, no contextual inline paywalls, no original-art beautiful paywall, external links",
+      "evidence": "IapTestScreen.tsx:20-150 (PRODUCT_ID, purchaseUpdatedListener, premiumCard), premiumStore.ts:10-35"
+    },
+    {
+      "id": "authenticity_trust",
+      "score": 1,
+      "justification": "Leaked Supabase service-role key violates trust; verses attributed in JSON but secret exposure + placeholder audio compromise decency/authenticity",
+      "evidence": "supabase.ts:15 (SUPABASE_KEY='sb_secret_NSb4vFficZ00dlalq8vHlw_wQbVgUV'), wisdom_core_50.json, LessonFlowScreen.tsx:110"
+    },
+    {
+      "id": "delight_share",
+      "score": 2,
+      "justification": "Aarti plate drag with lift+spring is a nice micro-moment; zero one-tap sacred share cards (verse+art+audio) to WhatsApp/IG",
+      "evidence": "AartiPlate.tsx:50-95 (Gesture.Pan+withSpring), no Share or react-native-share anywhere"
+    }
+  ],
+  "gate_passed": false,
+  "weighted_total": 49,
+  "top_improvements": [
+    {
+      "priority": 1,
+      "dimension": "authenticity_trust",
+      "action": "Replace SUPABASE_KEY in src/services/supabase.ts:15 with anon/public key only; enforce RLS policies so client cannot use service role; remove key from git"
+    },
+    {
+      "priority": 2,
+      "dimension": "darshan_loop",
+      "action": "Add expo-haptics impact on AartiPlate drag end and shankh tap (src/components/AartiPlate.tsx:70); integrate Reanimated particles on plate lift; expose streak in HomeScreen.tsx:130"
+    },
+    {
+      "priority": 3,
+      "dimension": "asset_moat",
+      "action": "Replace all assets/audio/devotional/*.wav with production Suno/ElevenLabs tracks; remove Linking.openURL to Spotify/Play Books from IapTestScreen.tsx:55-70 and embed native content"
+    },
+    {
+      "priority": 4,
+      "dimension": "monetization",
+      "action": "Integrate RevenueCat via expo-in-app-purchases or official plugin; add contextual paywall in LessonFlowScreen.tsx after 2 free lessons using original temple art; remove IapTestScreen test UI"
+    }
+  ],
+  "summary": "Gate failed on leaked service-role key (supabase.ts:15) and typecheck errors, capping score at 49. Strong personalization and offline cache-first design exist, but placeholder assets, missing haptics/particles/share, basic IAP, and trust violation make this pre-ship. Core darshan loop and learning flow are promising but unpolished."
+}
+```

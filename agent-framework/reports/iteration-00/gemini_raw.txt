@@ -1,0 +1,89 @@
+{
+  "dimensions": [
+    {
+      "id": "darshan_loop",
+      "score": 3,
+      "justification": "Functional carousel and Aarti plate with Reanimated, but missing haptics, particles, and streak engine.",
+      "evidence": "src/components/AartiPlate.tsx:75"
+    },
+    {
+      "id": "faith_personalization",
+      "score": 4,
+      "justification": "Strong tradition filtering across Home, Wisdom, and Calendar, though lacks deep UI palette/voice transformations.",
+      "evidence": "src/screens/HomeScreen.tsx:43"
+    },
+    {
+      "id": "sensory_fidelity",
+      "score": 3,
+      "justification": "Good audio lifecycle management, but completely lacks expo-haptics integration for interactions.",
+      "evidence": "src/services/audioService.ts:14"
+    },
+    {
+      "id": "asset_moat",
+      "score": 3,
+      "justification": "Uses local assets but relies on Linking.openURL to Spotify for core music experience instead of native playback.",
+      "evidence": "src/screens/IapTestScreen.tsx:135"
+    },
+    {
+      "id": "habit_retention",
+      "score": 2,
+      "justification": "Has daily notifications and lesson progress, but lacks a streak engine or 'Today's Practice' dashboard.",
+      "evidence": "src/store/learnProgressStore.ts:10"
+    },
+    {
+      "id": "offline_tech",
+      "score": 4,
+      "justification": "Solid offline-first architecture with AsyncStorage caching and non-blocking Supabase background sync.",
+      "evidence": "src/services/dataSync.ts:77"
+    },
+    {
+      "id": "learning_quality",
+      "score": 4,
+      "justification": "Well-structured lesson flow (Read, Understand, Reflect) with audio integration.",
+      "evidence": "src/screens/LessonFlowScreen.tsx:135"
+    },
+    {
+      "id": "monetization",
+      "score": 3,
+      "justification": "Functional IAP via react-native-iap, but relegated to a generic Store tab rather than contextual inline paywalls.",
+      "evidence": "src/screens/IapTestScreen.tsx:154"
+    },
+    {
+      "id": "authenticity_trust",
+      "score": 1,
+      "justification": "Failed due to leaked Supabase service key in client source.",
+      "evidence": "src/services/supabase.ts:15"
+    },
+    {
+      "id": "delight_share",
+      "score": 0,
+      "justification": "No share functionality implemented for wisdom cards or lessons.",
+      "evidence": "src/screens/WisdomScreen.tsx:64"
+    }
+  ],
+  "gate_passed": false,
+  "weighted_total": 49,
+  "top_improvements": [
+    {
+      "priority": 1,
+      "dimension": "authenticity_trust",
+      "action": "Remove the hardcoded SUPABASE_KEY from src/services/supabase.ts and use environment variables."
+    },
+    {
+      "priority": 2,
+      "dimension": "habit_retention",
+      "action": "Implement a streak counter in AsyncStorage and display it on the HomeScreen."
+    },
+    {
+      "priority": 3,
+      "dimension": "sensory_fidelity",
+      "action": "Import expo-haptics and trigger Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light) during AartiPlate pan gestures."
+    },
+    {
+      "priority": 4,
+      "dimension": "delight_share",
+      "action": "Add a Share button to WisdomDetailScreen using React Native's Share API to share verse text and translation."
+    }
+  ],
+  "summary": "The app has a solid offline-first architecture and functional core loops, but fails the build gate due to a leaked secret. It requires polish in haptics, retention mechanics (streaks), and sharing capabilities to reach the desired quality bar."
+}

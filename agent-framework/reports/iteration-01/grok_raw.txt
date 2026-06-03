@@ -1,0 +1,96 @@
+```json
+{
+  "dimensions": [
+    {
+      "id": "darshan_loop",
+      "score": 3,
+      "justification": "Functional layered temple + swipe carousel + Aarti gesture with haptics/Reanimated springs + shankh + streak/prasad; lacks true 60fps Reanimated parallax, particles, tight audio sync.",
+      "evidence": "HomeScreen.tsx:130-280 (FlatList+overlays), AartiPlate.tsx:40-110 (Gesture+Animated), shankhService.ts:15, FloatingMusicButton.tsx:56"
+    },
+    {
+      "id": "faith_personalization",
+      "score": 4,
+      "justification": "WelcomeScreen onboarding <30s, preferencesStore primaryTradition+enabledTraditions correctly transforms Home deities/theme, Learn modules, Wisdom/Calendar filters; no obvious bleed.",
+      "evidence": "WelcomeScreen.tsx:45-85, preferencesStore.ts:35-75, HomeScreen.tsx:35-45 (deitiesForFaith+theme), LearnScreen.tsx:25-40, isTraditionEnabled helper"
+    },
+    {
+      "id": "sensory_fidelity",
+      "score": 3,
+      "justification": "expo-av background lifecycle via AppState listeners present; haptics on Aarti/shankh; UI-thread Reanimated; missing crossfade, over-use of same bell audio, no preload strategy.",
+      "evidence": "App.tsx:65-95 (AppState+AudioService calls), audioService.ts:110-160 (pauseForBackground/restore), AartiPlate.tsx:55-65 (Haptics.impactAsync)"
+    },
+    {
+      "id": "asset_moat",
+      "score": 2,
+      "justification": "Strong local painterly deities/temple/community images (23 lesson + 11 deity assets); music only 3 wav files, no Suno/ElevenLabs; IapTestScreen drives external Spotify/Play links for core promo.",
+      "evidence": "assets/images/deities/* + temple_screen.png, IapTestScreen.tsx:85-115 (Linking.openURL), devotionalTracks.ts + only 3 audio/devotional/*.wav"
+    },
+    {
+      "id": "habit_retention",
+      "score": 4,
+      "justification": "Streak engine + recordVisit on Home mount, visible Today's Prasad chip, daily timed notifications via notificationService, learnProgressStore persisted schema, progress bars.",
+      "evidence": "HomeScreen.tsx:48-55 (useStreakStore+recordVisit), streakStore.ts, notificationService.ts:90-130 (scheduleDailyWisdomNotification), LearnScreen.tsx:65-90"
+    },
+    {
+      "id": "offline_tech",
+      "score": 2,
+      "justification": "Cache-first + bundled JSON fallback + background Supabase sync in dataStore is excellent; ruined by many TS errors, leaked key, and non-clean architecture.",
+      "evidence": "dataStore.ts:35-85 (loadCachedData+isSyncNeeded), dataSync.ts:40-70, supabase.ts:15 (leaked key), multiple TS errors listed"
+    },
+    {
+      "id": "learning_quality",
+      "score": 3,
+      "justification": "LessonFlowScreen delivers Chalisa-depth 4-step (read/translit/meaning/reflect/audio) with retention mark; only one deep module evident, placeholder audio everywhere, TS errors on LessonType.hindi.",
+      "evidence": "LessonFlowScreen.tsx:80-280 (verseCard+steps+Audio.Sound), chalisaLessons.ts, LessonSelectionScreen.tsx:47 (TS error), learnProgressStore.ts:25"
+    },
+    {
+      "id": "monetization",
+      "score": 1,
+      "justification": "IapTestScreen is test/placeholder using react-native-iap (missing from package.json, TS error); drives external book/Spotify links instead of inline beautiful native paywalls; no SKUs or RevenueCat.",
+      "evidence": "IapTestScreen.tsx:10-200 (PRODUCT_ID, Linking, no RevenueCat), package.json (no iap/revenuecat deps), premiumStore.ts"
+    },
+    {
+      "id": "authenticity_trust",
+      "score": 1,
+      "justification": "Dignified deity art, attributed verses from wisdom_core_50, sane transliteration; fatally compromised by leaked service-role key in client source and no privacy policy surface.",
+      "evidence": "supabase.ts:15 (SUPABASE_KEY = 'sb_secret_...'), assets/images/deities/* + wisdom_core_50.json"
+    },
+    {
+      "id": "delight_share",
+      "score": 1,
+      "justification": "AartiPlate drag-to-offer with lift haptics+spring is a genuine micro-delight; complete absence of one-tap sacred share cards (verse+art+audio) to WhatsApp/IG.",
+      "evidence": "AartiPlate.tsx:1-120 (GestureDetector+withSpring+haptics), no Share or share-card code in WisdomDetailScreen.tsx or HomeScreen.tsx"
+    }
+  ],
+  "gate_passed": false,
+  "weighted_total": 49,
+  "top_improvements": [
+    {
+      "priority": 1,
+      "dimension": "authenticity_trust",
+      "action": "Move SUPABASE_KEY out of src/services/supabase.ts:15; replace with expo-constants extra.anonKey (anon-only) loaded from app.json; remove service-role key entirely."
+    },
+    {
+      "priority": 2,
+      "dimension": "offline_tech",
+      "action": "Fix every TS error (App.tsx:105 GestureHandlerRootView ref, HomeScreen.tsx:178 Image pointerEvents, FloatingMusicButton.tsx:56-60, Lesson*Screen.tsx hindi prop, SettingsScreen.tsx style keys, missing expo-router types)."
+    },
+    {
+      "priority": 3,
+      "dimension": "monetization",
+      "action": "Remove all Linking.openURL to Spotify/Google in IapTestScreen.tsx; integrate RevenueCat or expo-in-app-purchases with contextual inline paywall using original temple art; add layered SKUs."
+    },
+    {
+      "priority": 4,
+      "dimension": "darshan_loop",
+      "action": "Replace HomeScreen.tsx FlatList with Reanimated 3 Carousel + Gesture Handler for 60fps swipe; add layered parallax on temple_frame and particle burst on Aarti lift using react-native-reanimated."
+    },
+    {
+      "priority": 5,
+      "dimension": "delight_share",
+      "action": "Add one-tap share button in WisdomDetailScreen and Home wisdomOverlay that uses expo-sharing to generate dark-mode card (verse+matched deity art+audio preview) for WhatsApp/IG."
+    }
+  ],
+  "summary": "Strong spiritual core with delightful Aarti gestures, robust personalization/streak/notification systems, and excellent offline cache-first architecture using rich local assets. Gate failure from leaked Supabase service key (supabase.ts:15) plus pervasive TS errors across App.tsx, HomeScreen.tsx, LessonFlowScreen.tsx and others caps the build at 49. Monetization and sharing are non-functional placeholders; fix secrets, types, and add proper IAP + share cards before ship."
+}
+```

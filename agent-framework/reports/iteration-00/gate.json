@@ -1,0 +1,4 @@
+{
+  "passed": false,
+  "notes": "LEAKED SECRET in client source:\nsrc/services/supabase.ts:15:const SUPABASE_KEY = 'sb_secret_NSb4vFficZ00dlalq8vHlw_wQbVgUV';\n\ntypecheck: npm error npx canceled due to missing packages and no YES option: [\"tsc@2.0.4\"]\nnpm error A complete log of this run can be found in: /Users/kashyap/.npm/_logs/2026-06-03T04_46_01_821Z-debug-0.log"
+}

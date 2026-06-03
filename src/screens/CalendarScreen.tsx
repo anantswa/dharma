@@ -6,6 +6,8 @@ import { isTraditionEnabled, usePreferencesStore } from '../store/preferencesSto
 import { useDataStore } from '../store/dataStore';
 import type { FestivalEntry } from '../types/supabase';
 
+type CalendarEvent = FestivalEntry;
+
 type SectionData = {
   title: string;
   data: FestivalEntry[];

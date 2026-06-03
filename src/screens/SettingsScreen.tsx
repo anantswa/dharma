@@ -349,6 +349,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#020617',
   },
+  section: {
+    marginTop: 28,
+  },
+  sectionTitle: {
+    fontSize: 13,
+    letterSpacing: 1.2,
+    color: '#fbbf24',
+    fontFamily: 'Playfair_SemiBold',
+    textTransform: 'uppercase',
+    marginBottom: 12,
+  },
   content: {
     paddingHorizontal: 24,
     paddingTop: 60, // Adjusted for safe area

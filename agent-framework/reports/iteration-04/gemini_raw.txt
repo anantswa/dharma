@@ -1,0 +1,86 @@
+```json
+{
+  "dimensions": [
+    {
+      "id": "darshan_loop",
+      "score": 4,
+      "justification": "Smooth 60fps Reanimated gestures and parallax, but missing particle effects and specific audio sync for the Aarti plate.",
+      "evidence": "src/components/AartiPlate.tsx:63"
+    },
+    {
+      "id": "faith_personalization",
+      "score": 2,
+      "justification": "Cross-faith bleed occurs because DEFAULT_TRADITIONS enables all faiths by default, populating Wisdom and Calendar with unselected traditions.",
+      "evidence": "src/store/preferencesStore.ts:24"
+    },
+    {
+      "id": "sensory_fidelity",
+      "score": 4,
+      "justification": "Excellent use of UI-thread worklets and haptics, though audio crossfading is absent in the AudioService lifecycle.",
+      "evidence": "src/services/audioService.ts:60"
+    },
+    {
+      "id": "asset_moat",
+      "score": 4,
+      "justification": "Strong use of local, high-quality assets, but relies on Linking.openURL to Spotify for official music rather than in-app playback.",
+      "evidence": "src/screens/IapTestScreen.tsx:142"
+    },
+    {
+      "id": "habit_retention",
+      "score": 5,
+      "justification": "Comprehensive streak engine, Today's Prasad overlay, and smart local notifications are fully implemented.",
+      "evidence": "src/screens/HomeScreen.tsx:162"
+    },
+    {
+      "id": "offline_tech",
+      "score": 5,
+      "justification": "Robust offline-first architecture with AsyncStorage caching, background Supabase sync, and bundled JSON fallbacks.",
+      "evidence": "src/store/dataStore.ts:68"
+    },
+    {
+      "id": "learning_quality",
+      "score": 3,
+      "justification": "Lesson flow is functional with transliteration and meaning, but audio is a generic background track rather than synced chanting.",
+      "evidence": "src/screens/LessonFlowScreen.tsx:82"
+    },
+    {
+      "id": "monetization",
+      "score": 3,
+      "justification": "Native IAP is implemented, but lacks contextual inline paywalls and layered SKUs (only a single lifetime SKU exists).",
+      "evidence": "src/screens/IapTestScreen.tsx:19"
+    },
+    {
+      "id": "authenticity_trust",
+      "score": 4,
+      "justification": "Verses are well-attributed with clear transliterations and context. No dark patterns observed.",
+      "evidence": "src/screens/LessonFlowScreen.tsx:156"
+    },
+    {
+      "id": "delight_share",
+      "score": 1,
+      "justification": "Share functionality is completely absent from the main Wisdom and Lesson flows.",
+      "evidence": "src/screens/WisdomScreen.tsx:75"
+    }
+  ],
+  "gate_passed": true,
+  "weighted_total": 72.8,
+  "top_improvements": [
+    {
+      "priority": 1,
+      "dimension": "faith_personalization",
+      "action": "Update `setOnboarding` in preferencesStore to set `enabledTraditions` exclusively to the selected `primaryTradition` to prevent cross-faith bleed."
+    },
+    {
+      "priority": 2,
+      "dimension": "learning_quality",
+      "action": "Replace the generic background audio in LessonFlowScreen with verse-specific, synced chant audio."
+    },
+    {
+      "priority": 3,
+      "dimension": "delight_share",
+      "action": "Integrate the existing ShareableCard component into WisdomDetailScreen and LessonFlowScreen to enable one-tap social sharing."
+    }
+  ],
+  "summary": "The app demonstrates a strong technical foundation with excellent offline-first capabilities and smooth UI-thread animations. However, it falls short of the ship threshold due to cross-faith bleed in the content feeds and a lack of core shareability features."
+}
+```

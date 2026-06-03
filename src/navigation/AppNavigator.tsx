@@ -6,6 +6,7 @@ import { Platform, View } from 'react-native';
 
 import { CalendarScreen } from '../screens/CalendarScreen';
 import { FestivalDetailScreen } from '../screens/FestivalDetailScreen';
+import { GitaAudioScreen } from '../screens/GitaAudioScreen';
 import { HomeScreen } from '../screens/HomeScreen';
 import { IapTestScreen } from '../screens/IapTestScreen';
 import { LearnScreen } from '../screens/LearnScreen';
@@ -105,6 +106,7 @@ const AppNavigator: React.FC = () => {
       <Stack.Screen name="FestivalDetail" component={FestivalDetailScreen as any} />
       <Stack.Screen name="LessonSelection" component={LessonSelectionScreen} />
       <Stack.Screen name="LessonFlow" component={LessonFlowScreen as any} />
+      <Stack.Screen name="GitaAudio" component={GitaAudioScreen} />
     </Stack.Navigator>
   );
 };

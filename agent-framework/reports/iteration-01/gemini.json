@@ -1,0 +1,84 @@
+{
+  "dimensions": [
+    {
+      "id": "darshan_loop",
+      "score": 4,
+      "justification": "Strong implementation with Reanimated Aarti plate, haptics, and daily prasad, though lacks true scroll-linked parallax and particle effects.",
+      "evidence": "src/screens/HomeScreen.tsx:178, src/components/AartiPlate.tsx:55"
+    },
+    {
+      "id": "faith_personalization",
+      "score": 4,
+      "justification": "Primary tradition effectively filters deities, wisdom, and calendar events, though UI palette transformations are limited.",
+      "evidence": "src/screens/HomeScreen.tsx:47, src/screens/WisdomScreen.tsx:50"
+    },
+    {
+      "id": "sensory_fidelity",
+      "score": 4,
+      "justification": "Good audio lifecycle management and haptic integration, though Expo haptics require JS thread roundtrips.",
+      "evidence": "src/services/audioService.ts:160, src/components/AartiPlate.tsx:12"
+    },
+    {
+      "id": "asset_moat",
+      "score": 3,
+      "justification": "Includes local devotional audio and deity art, but relies on external Spotify links for core music experiences.",
+      "evidence": "src/screens/IapTestScreen.tsx:143"
+    },
+    {
+      "id": "habit_retention",
+      "score": 4,
+      "justification": "Solid streak engine and daily scheduled notifications based on user preferences.",
+      "evidence": "src/services/notificationService.ts:74, src/screens/HomeScreen.tsx:52"
+    },
+    {
+      "id": "offline_tech",
+      "score": 2,
+      "justification": "Excellent offline-first architecture with Supabase background sync, but marred by multiple TypeScript compilation errors.",
+      "evidence": "src/store/dataStore.ts:75, App.tsx:105"
+    },
+    {
+      "id": "learning_quality",
+      "score": 4,
+      "justification": "Structured multi-step learning flow (Read, Understand, Reflect) with synchronized audio.",
+      "evidence": "src/screens/LessonFlowScreen.tsx:125"
+    },
+    {
+      "id": "monetization",
+      "score": 3,
+      "justification": "Functional IAP integration via react-native-iap, but relegated to a generic store tab rather than contextual inline paywalls.",
+      "evidence": "src/screens/IapTestScreen.tsx:162"
+    },
+    {
+      "id": "authenticity_trust",
+      "score": 1,
+      "justification": "Severely compromised by a leaked Supabase secret key in the client source code.",
+      "evidence": "src/services/supabase.ts:15"
+    },
+    {
+      "id": "delight_share",
+      "score": 0,
+      "justification": "No shareability features or sacred share cards implemented.",
+      "evidence": "src/screens/WisdomScreen.tsx"
+    }
+  ],
+  "gate_passed": false,
+  "weighted_total": 49,
+  "top_improvements": [
+    {
+      "priority": 1,
+      "dimension": "authenticity_trust",
+      "action": "Remove the hardcoded SUPABASE_KEY from src/services/supabase.ts and use environment variables (e.g., EXPO_PUBLIC_SUPABASE_ANON_KEY)."
+    },
+    {
+      "priority": 2,
+      "dimension": "offline_tech",
+      "action": "Fix TypeScript errors across the codebase, specifically the GestureHandlerRootView ref in App.tsx and react-native-iap import in IapTestScreen.tsx."
+    },
+    {
+      "priority": 3,
+      "dimension": "delight_share",
+      "action": "Implement a native share feature in WisdomDetailScreen using react-native-view-shot and expo-sharing to generate and share sacred cards."
+    }
+  ],
+  "summary": "The app demonstrates a strong foundation with an excellent offline-first architecture, thoughtful learning flows, and a solid daily ritual loop. However, it fails the build health gate due to a leaked Supabase secret and several TypeScript errors, capping its score and preventing it from being ship-ready."
+}

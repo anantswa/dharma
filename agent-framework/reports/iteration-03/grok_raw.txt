@@ -1,0 +1,91 @@
+```json
+{
+  "dimensions": [
+    {
+      "id": "darshan_loop",
+      "score": 4,
+      "justification": "Strong layered parallax FlatList + Reanimated scrollX, gesture Aarti with lift/settle haptics+spring, shankh loop, streak+prasad, persistent MusicBottomSheet. Missing particles and perfect 60fps guarantee.",
+      "evidence": "HomeScreen.tsx:142-195 (carousel+parallax+templeFrame), AartiPlate.tsx:45-105 (Gesture.Pan+withSpring+haptics), FloatingMusicButton.tsx:1-70, shankhService.ts:20-55"
+    },
+    {
+      "id": "faith_personalization",
+      "score": 4,
+      "justification": "WelcomeScreen onboarding <30s, preferencesStore persists primaryTradition+enabledTraditions, Home/Learn/Wisdom/Calendar all transform via getFaithTheme+isTraditionEnabled+getModulesForUser. No obvious cross-faith bleed.",
+      "evidence": "WelcomeScreen.tsx:30-85, preferencesStore.ts:35-80 (setOnboarding+isTraditionEnabled), HomeScreen.tsx:45-65 (theme+deities+wisdom filter), LearnScreen.tsx:45-60"
+    },
+    {
+      "id": "sensory_fidelity",
+      "score": 4,
+      "justification": "expo-av background/foreground restore in App.tsx+AudioService, haptics on pan/swipe/selection, Reanimated on UI thread, clean unmount. No crossfade impl; occasional over-haptics possible.",
+      "evidence": "App.tsx:70-90 (AppState audio handlers), audioService.ts:80-130 (pauseForBackground+restoreFromBackground+cleanup), AartiPlate.tsx:60-85 (liftHaptic+settleHaptic)"
+    },
+    {
+      "id": "asset_moat",
+      "score": 3,
+      "justification": "19 deity images, 23 lesson panels, 12 real gita mp3s, temple/aarti assets used in core flow. Store tab uses external Spotify/Google Play links; no Suno/ElevenLabs integration.",
+      "evidence": "assets/images/deities/* (19 files), assets/audio/gita/*.mp3 (12 files), IapTestScreen.tsx:110-140 (Linking.openURL to Spotify+book), devotionalTracks.ts"
+    },
+    {
+      "id": "habit_retention",
+      "score": 4,
+      "justification": "Streak engine records visit on Home mount, visible chip+Today's Prasad, daily notificationService driven by reminderTime+primaryTradition, learnProgressStore with AsyncStorage schema.",
+      "evidence": "HomeScreen.tsx:35-40 (useStreakStore.load+recordVisit), streakStore.ts (implied), notificationService.ts:90-130 (scheduleDailyWisdomNotification), LearnScreen.tsx:25-35 (progress bars)"
+    },
+    {
+      "id": "offline_tech",
+      "score": 1,
+      "justification": "Cache-first dataStore with bundled fallback works offline, but gate failed on typecheck (multiple TS errors), service key in client bundle, big JSON parse risk on wisdom_core_50.",
+      "evidence": "dataStore.ts:60-110 (loadCachedData+forceSync), App.tsx:105 (GestureHandlerRootView ref TS2322), app.json:45-55 (supabaseKey), 15+ TS errors listed"
+    },
+    {
+      "id": "learning_quality",
+      "score": 3,
+      "justification": "LessonFlowScreen implements Chalisa-depth steps (original+translit+meaning+audio+reflection+progress mark), but placeholder audio, text-heavy, TS errors on hindi property, only one deep module evident.",
+      "evidence": "LessonFlowScreen.tsx:55-280 (4-step renderRead/Understand/Reflect/Done + CHALISA_LESSONS), chalisaLessons.ts, LessonSelectionScreen.tsx:47 (TS2339 hindi)"
+    },
+    {
+      "id": "monetization",
+      "score": 2,
+      "justification": "react-native-iap integration in IapTestScreen (Store tab) with lifetime SKU and restore, but no RevenueCat, no contextual inline paywalls, Paywall.tsx stub not used, no layered SKUs or original art paywall.",
+      "evidence": "IapTestScreen.tsx:40-200 (PRODUCT_ID, requestPurchase, no Paywall usage), premiumStore.ts:1-40, Paywall.tsx (exists but unreferenced)"
+    },
+    {
+      "id": "authenticity_trust",
+      "score": 2,
+      "justification": "Dignified deity images, attributed Gita/Chalisa verses, sane transliteration. Capped by leaked Supabase service-role key in client source and missing privacy policy surface.",
+      "evidence": "app.json:48 (supabaseKey: \"sb_secret_NSb4vFficZ00dlalq8vHlw_wQbVgUVf\"), gitaShlokas.ts+chalisaLessons.ts, WisdomScreen.tsx:80-100 (attribution)"
+    },
+    {
+      "id": "delight_share",
+      "score": 2,
+      "justification": "Aarti lift gesture and shankh dot pulse are delightful micro-moments; ShareableCard.tsx exists but not wired into WisdomDetail/LessonFlow for one-tap verse+art+audio cards.",
+      "evidence": "AartiPlate.tsx:70-90 (spring lift+haptic), ShareableCard.tsx (present in tree), HomeScreen.tsx:170 (shankhButton)"
+    }
+  ],
+  "gate_passed": false,
+  "weighted_total": 49,
+  "top_improvements": [
+    {
+      "priority": 1,
+      "dimension": "offline_tech",
+      "action": "Fix all TS errors: remove invalid ref on GestureHandlerRootView (App.tsx:105), add proper types for DevotionalTrack (FloatingMusicButton.tsx:56,60), import CalendarEvent or update CalendarScreen.tsx:28, fix LessonType.hindi (Lesson*.tsx:58,47), and correct SettingsScreen style keys (320-321)."
+    },
+    {
+      "priority": 2,
+      "dimension": "authenticity_trust",
+      "action": "Replace service-role key in app.json:48 with Supabase anon key, enable RLS on wisdom/festivals/image_library tables, and add privacy policy link in SettingsScreen."
+    },
+    {
+      "priority": 3,
+      "dimension": "monetization",
+      "action": "Replace IapTestScreen Store tab with contextual <Paywall> component using RevenueCat offerings; trigger inline on premium lesson attempts with original art layered SKUs; remove external Spotify/Play links from core flow."
+    },
+    {
+      "priority": 4,
+      "dimension": "darshan_loop",
+      "action": "Add Reanimated particle burst on AartiPlate tap (using expo-particles or Lottie) synced to shankh audio; ensure 60fps by removing FlatList getItemLayout hacks and testing on device."
+    }
+  ],
+  "summary": "Strong darshan loop, faith personalization, and sensory assets create an immersive offline spiritual experience, but the build is blocked by pervasive TypeScript errors, a leaked Supabase service key, placeholder monetization, and incomplete learning/share flows. Excellent foundation — fix gate issues and polish paywall/sharing to ship."
+}
+```

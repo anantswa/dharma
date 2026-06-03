@@ -9,6 +9,7 @@ export type LessonType = {
   title: string;
   type: 'doha' | 'chaupai';
   text: string;
+  hindi?: string;
   transliteration?: string;
   meaning?: string;
   image?: any;

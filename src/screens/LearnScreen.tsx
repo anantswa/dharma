@@ -194,6 +194,26 @@ export const LearnScreen: React.FC<Props> = ({ navigation }) => {
             <Text style={styles.headerSubtitle}>
               {ALL_MODULES.filter(m => m.available).length} modules across {7} traditions
             </Text>
+
+            {/* Featured: Gita audio learning pack (Kuber) */}
+            <Pressable style={styles.featuredCard} onPress={() => navigation.navigate('GitaAudio')}>
+              <LinearGradient
+                colors={['rgba(251,191,36,0.22)', 'rgba(251,191,36,0.06)']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={styles.featuredGradient}
+              >
+                <View style={styles.featuredIcon}>
+                  <Ionicons name="headset" size={26} color="#fbbf24" />
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.featuredKicker}>AUDIO · NEW</Text>
+                  <Text style={styles.featuredTitle}>Bhagavad Gita — Essential Shlokas</Text>
+                  <Text style={styles.featuredSub}>12 verses recited & explained by Kuber</Text>
+                </View>
+                <Ionicons name="play-circle" size={30} color="#fbbf24" />
+              </LinearGradient>
+            </Pressable>
           </View>
         }
       />
@@ -226,6 +246,27 @@ const styles = StyleSheet.create({
     fontFamily: 'Playfair_Regular',
     color: '#64748b',
   },
+  featuredCard: {
+    marginTop: 18,
+    borderRadius: 18,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: 'rgba(251,191,36,0.35)',
+  },
+  featuredGradient: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 16,
+    gap: 14,
+  },
+  featuredIcon: {
+    width: 52, height: 52, borderRadius: 14,
+    backgroundColor: 'rgba(251,191,36,0.18)',
+    alignItems: 'center', justifyContent: 'center',
+  },
+  featuredKicker: { color: '#fbbf24', fontSize: 10, fontWeight: '800', letterSpacing: 1.5, marginBottom: 3 },
+  featuredTitle: { color: '#f8fafc', fontSize: 16, fontFamily: 'Playfair_Bold', marginBottom: 3 },
+  featuredSub: { color: '#cbd5e1', fontSize: 12.5 },
   sectionHeader: {
     marginTop: 28,
     marginBottom: 14,

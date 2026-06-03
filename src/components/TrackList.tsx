@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { DEVOTIONAL_TRACKS } from '../data/devotionalTracks';
+import { DEVOTIONAL_TRACKS, DevotionalTrack } from '../data/devotionalTracks';
 import { AudioService } from '../services/audioService';
 import { useMusicStore } from '../store/musicStore';
 
@@ -62,7 +62,7 @@ export const TrackList: React.FC = () => {
     <BottomSheetFlatList
       data={DEVOTIONAL_TRACKS}
       renderItem={renderTrack}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item: DevotionalTrack) => item.id}
       contentContainerStyle={styles.listContent}
       showsVerticalScrollIndicator={true}
       style={styles.list}

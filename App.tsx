@@ -25,8 +25,7 @@ import { loadImageIndex } from './src/services/imageService';
 
 export default function App() {
   const navigationRef = useRef<any>(null);
-  const gestureRootRef = useRef<any>(null);
-  
+
   const remindersEnabled = usePreferencesStore((s) => s.remindersEnabled);
   const reminderTime = usePreferencesStore((s) => s.reminderTime);
   const primaryTradition = usePreferencesStore((s) => s.primaryTradition);
@@ -102,7 +101,7 @@ export default function App() {
   }
 
   return (
-    <GestureHandlerRootView ref={gestureRootRef} style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <BottomSheetModalProvider>
         <StatusBar style="light" />
         <NavigationContainer ref={navigationRef}>

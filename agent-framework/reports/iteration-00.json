@@ -1,0 +1,30 @@
+{
+  "iteration": 0,
+  "consolidated_by": "Claude 4.8",
+  "panel": ["Gemini 3.1 Pro", "Grok 4.2"],
+  "gate_passed": false,
+  "gate_reason": "Supabase service-role key hardcoded in src/services/supabase.ts:15",
+  "scores": {
+    "darshan_loop":        {"weight": 20, "gemini": 3, "grok": 3, "final": 3, "points": 12.0},
+    "faith_personalization":{"weight": 16, "gemini": 4, "grok": 4, "final": 3, "points": 9.6},
+    "sensory_fidelity":    {"weight": 12, "gemini": 3, "grok": 3, "final": 3, "points": 7.2},
+    "asset_moat":          {"weight": 12, "gemini": 3, "grok": 2, "final": 2, "points": 4.8},
+    "habit_retention":     {"weight": 10, "gemini": 2, "grok": 3, "final": 2, "points": 4.0},
+    "offline_tech":        {"weight": 8,  "gemini": 4, "grok": 2, "final": 3, "points": 4.8},
+    "learning_quality":    {"weight": 8,  "gemini": 4, "grok": 4, "final": 4, "points": 6.4},
+    "monetization":        {"weight": 8,  "gemini": 3, "grok": 2, "final": 2, "points": 3.2},
+    "authenticity_trust":  {"weight": 4,  "gemini": 1, "grok": 1, "final": 1, "points": 0.8},
+    "delight_share":       {"weight": 2,  "gemini": 0, "grok": 2, "final": 1, "points": 0.4}
+  },
+  "total_pre_gate": 53.2,
+  "total_final": 49,
+  "band": "iterate (<75)",
+  "top_improvements": [
+    "GATE: replace service-role key with anon key + RLS, purge from git",
+    "Darshan loop: haptics + particles + parallax + daily streak/prasad",
+    "Wire the moat: Suno tracks, ElevenLabs narration, native GN reader; stop linking out",
+    "Faith identity: primaryTradition drives palette/deity-set/voice/notifications",
+    "Monetization: contextual paywalls + layered SKUs, off the test screen",
+    "Shareable sacred cards (verse+art+audio, dark-mode native)"
+  ]
+}

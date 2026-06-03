@@ -53,11 +53,11 @@ export const FloatingMusicButton: React.FC = () => {
           console.log('🎵 Auto-playing signature track:', signatureTrack.title);
           
           // A. Play the audio
-          await AudioService.play(signatureTrack);
-          
+          await AudioService.loadAndPlay(signatureTrack);
+
           // B. Update the App State (so icons turn yellow immediately)
           setIsPlaying(true);
-          setCurrentTrack(signatureTrack);
+          setCurrentTrack(signatureTrack.id);
         }
       } catch (error) {
         console.error('Auto-play failed:', error);

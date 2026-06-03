@@ -1,0 +1,84 @@
+{
+  "dimensions": [
+    {
+      "id": "darshan_loop",
+      "score": 4,
+      "justification": "Strong parallax darshan with Reanimated, Aarti plate with haptics, and daily prasad overlay. Missing particle effects for Aarti.",
+      "evidence": "src/screens/HomeScreen.tsx:140, src/components/AartiPlate.tsx:50"
+    },
+    {
+      "id": "faith_personalization",
+      "score": 4,
+      "justification": "Primary tradition drives Home deities, Calendar events, and Learn modules. Theming is present but mostly limited to accent colors.",
+      "evidence": "src/screens/HomeScreen.tsx:43, src/screens/WelcomeScreen.tsx:40"
+    },
+    {
+      "id": "sensory_fidelity",
+      "score": 4,
+      "justification": "Good use of expo-av lifecycle and background audio handling. Haptics are well-integrated on swipe and Aarti interactions.",
+      "evidence": "src/services/audioService.ts:130, src/components/AartiPlate.tsx:12"
+    },
+    {
+      "id": "asset_moat",
+      "score": 3,
+      "justification": "Uses local images and some audio, but relies on Linking.openURL to Spotify for core music experience instead of native playback.",
+      "evidence": "src/screens/IapTestScreen.tsx:135"
+    },
+    {
+      "id": "habit_retention",
+      "score": 4,
+      "justification": "Streak engine and daily prasad are prominent on Home. Local notifications are scheduled based on user preference.",
+      "evidence": "src/screens/HomeScreen.tsx:160, src/services/notificationService.ts:70"
+    },
+    {
+      "id": "offline_tech",
+      "score": 2,
+      "justification": "Offline-first Supabase sync is implemented, but build fails due to multiple TypeScript errors across components.",
+      "evidence": "App.tsx:105, src/screens/SettingsScreen.tsx:320"
+    },
+    {
+      "id": "learning_quality",
+      "score": 3,
+      "justification": "Lesson flow has structured steps (Read, Understand, Reflect), but audio is just a generic background track, not synced to text.",
+      "evidence": "src/screens/LessonFlowScreen.tsx:75"
+    },
+    {
+      "id": "monetization",
+      "score": 3,
+      "justification": "Native IAP is implemented via react-native-iap, but it's isolated to a Store tab rather than contextually integrated into the app flow.",
+      "evidence": "src/screens/IapTestScreen.tsx:150"
+    },
+    {
+      "id": "authenticity_trust",
+      "score": 4,
+      "justification": "Verses are attributed, transliterations are provided, and no dark patterns or leaked secrets were found.",
+      "evidence": "src/screens/LessonFlowScreen.tsx:150"
+    },
+    {
+      "id": "delight_share",
+      "score": 2,
+      "justification": "ShareableCard component exists in the file tree but is not integrated into the Wisdom or Home screens for one-tap sharing.",
+      "evidence": "src/screens/WisdomScreen.tsx (missing share button)"
+    }
+  ],
+  "gate_passed": false,
+  "weighted_total": 49,
+  "top_improvements": [
+    {
+      "priority": 1,
+      "dimension": "offline_tech",
+      "action": "Fix TypeScript errors in App.tsx (GestureHandlerRootViewProps), SettingsScreen.tsx, and missing expo-router types to pass the build gate."
+    },
+    {
+      "priority": 2,
+      "dimension": "delight_share",
+      "action": "Integrate the ShareableCard component into WisdomScreen and LessonFlowScreen to enable native sharing to WhatsApp/IG."
+    },
+    {
+      "priority": 3,
+      "dimension": "learning_quality",
+      "action": "Enhance LessonFlowScreen to support precise audio-to-text synchronization for chants rather than just playing a generic background track."
+    }
+  ],
+  "summary": "The app demonstrates a strong foundation with its parallax darshan loop, offline-first architecture, and faith personalization. However, it fails the build gate due to multiple TypeScript errors and lacks contextual monetization and native sharing features."
+}

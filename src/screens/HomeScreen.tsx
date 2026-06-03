@@ -12,21 +12,27 @@ import {
   Text,
   View,
 } from 'react-native';
+import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
+import * as Haptics from 'expo-haptics';
 import { AartiPlate } from '../components/AartiPlate';
+import { DeityCard } from '../components/DeityCard';
 import { FloatingMusicButton } from '../components/FloatingMusicButton';
-import { Deity, FINAL_DEITIES } from '../data/deityImages';
+import { Deity } from '../data/deityImages';
+import { deitiesForFaith, getFaithTheme } from '../data/faiths';
 import { AudioService } from '../services/audioService';
 import { ShankhService } from '../services/shankhService';
 import { useDataStore } from '../store/dataStore';
 import { isTraditionEnabled, usePreferencesStore } from '../store/preferencesStore';
+import { useStreakStore } from '../store/streakStore';
 
 const { width, height } = Dimensions.get('window');
 
 // 🔵 APP THEME COLOR
 const THEME_COLOR = '#0f172a';
 
-// Use dynamically loaded deities
-const DEITIES = FINAL_DEITIES;
+const safeHaptic = (fn: () => void) => {
+  try { fn(); } catch { /* haptics unavailable (e.g. web) */ }
+};
 
 export const HomeScreen: React.FC = () => {
   const navigation = useNavigation<any>();
@@ -36,6 +42,16 @@ export const HomeScreen: React.FC = () => {
   const wisdom = useDataStore((s) => s.wisdom);
   const primaryTradition = usePreferencesStore((s) => s.primaryTradition);
   const enabledTraditions = usePreferencesStore((s) => s.enabledTraditions);
+
+  // Faith identity — drives the darshan figure set + accent colour.
+  const theme = useMemo(() => getFaithTheme(primaryTradition), [primaryTradition]);
+  const deities = useMemo(() => deitiesForFaith(primaryTradition), [primaryTradition]);
+
+  // Daily streak ("Prasad") — the habit engine.
+  const currentStreak = useStreakStore((s) => s.currentStreak);
+  useEffect(() => {
+    useStreakStore.getState().load().then(() => useStreakStore.getState().recordVisit());
+  }, []);
 
   // Today's wisdom — same rotation logic as old Dashboard
   const todaysWisdom = useMemo(() => {
@@ -76,6 +92,7 @@ export const HomeScreen: React.FC = () => {
   }, []);
 
   const toggleShankhLoop = async () => {
+    safeHaptic(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium));
     try {
       if (isShankhPlaying) {
         await ShankhService.pause();
@@ -90,10 +107,21 @@ export const HomeScreen: React.FC = () => {
     }
   };
 
+  // Parallax scroll position shared with each DeityCard.
+  const scrollX = useSharedValue(0);
+  const scrollHandler = useAnimatedScrollHandler((e) => {
+    scrollX.value = e.contentOffset.x;
+  });
+
   const onViewableItemsChanged = useRef(({ viewableItems }: any) => {
     if (viewableItems.length > 0) {
       const newIndex = viewableItems[0].index ?? 0;
-      setActiveIndex(newIndex);
+      setActiveIndex((prev) => {
+        if (prev !== newIndex) {
+          safeHaptic(() => Haptics.selectionAsync()); // gentle tick on each darshan
+        }
+        return newIndex;
+      });
     }
   }).current;
 
@@ -101,21 +129,9 @@ export const HomeScreen: React.FC = () => {
     itemVisiblePercentThreshold: 50,
   }).current;
 
-  // 🎨 RENDER FUNCTION (Maximized Deities)
-  const renderDeity = ({ item }: { item: Deity }) => (
-    <View style={styles.cardContainer}>
-      {/* 1. Background */}
-      <View style={styles.backgroundLayer} />
-
-      {/* 2. Safe Zone (Maximized) */}
-      <View style={styles.safeZone}>
-        <Image 
-          source={item.image} 
-          style={styles.deityImage}
-          resizeMode="contain"
-        />
-      </View>
-    </View>
+  // 🎨 RENDER FUNCTION — parallax deity card
+  const renderDeity = ({ item, index }: { item: Deity; index: number }) => (
+    <DeityCard item={item} index={index} scrollX={scrollX} />
   );
 
   return (
@@ -123,26 +139,27 @@ export const HomeScreen: React.FC = () => {
       <View style={styles.container}>
         <StatusBar hidden={true} backgroundColor={THEME_COLOR} />
         
-        {/* BOTTOM LAYER: Carousel */}
-        <FlatList
-          data={DEITIES}
+        {/* BOTTOM LAYER: Carousel (Reanimated parallax) */}
+        <Animated.FlatList
+          data={deities}
           renderItem={renderDeity}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item: Deity) => item.id}
           horizontal
           pagingEnabled
           showsHorizontalScrollIndicator={false}
+          onScroll={scrollHandler}
           onViewableItemsChanged={onViewableItemsChanged}
           viewabilityConfig={viewabilityConfig}
           decelerationRate="fast"
           disableIntervalMomentum={true}
-          scrollEventThrottle={32}
+          scrollEventThrottle={16}
           bounces={false}
           removeClippedSubviews={true}
           maxToRenderPerBatch={2}
           windowSize={3}
           initialNumToRender={1}
           style={styles.carousel}
-          getItemLayout={(data, index) => ({
+          getItemLayout={(_data: any, index: number) => ({
             length: width,
             offset: width * index,
             index,
@@ -150,12 +167,11 @@ export const HomeScreen: React.FC = () => {
         />
 
         {/* MIDDLE LAYER: Temple Frame */}
-        <View style={styles.templeFrame} pointerEvents="box-none">
+        <View style={styles.templeFrame} pointerEvents="none">
           <Image
             source={require('../../assets/images/temple/temple_screen.png')}
             style={{ width, height }}
             resizeMode="stretch"
-            pointerEvents="none" 
           />
         </View>
 
@@ -164,10 +180,21 @@ export const HomeScreen: React.FC = () => {
           {/* Today's Wisdom — subtle overlay at top */}
           {todaysWisdom && (
             <Pressable
-              style={styles.wisdomOverlay}
+              style={[styles.wisdomOverlay, { borderColor: theme.accentSoft }]}
               onPress={() => navigation.navigate('WisdomDetail', { wisdom: todaysWisdom })}
             >
-              <Text style={styles.wisdomOverlayLabel}>TODAY'S WISDOM</Text>
+              <View style={styles.wisdomHeaderRow}>
+                <Text style={[styles.wisdomOverlayLabel, { color: theme.accent }]}>
+                  TODAY'S PRASAD
+                </Text>
+                {currentStreak > 0 && (
+                  <View style={[styles.streakChip, { backgroundColor: theme.accentSoft, borderColor: theme.accent }]}>
+                    <Text style={[styles.streakChipText, { color: theme.accent }]}>
+                      {'\ud83d\udd25'} {currentStreak} day{currentStreak === 1 ? '' : 's'}
+                    </Text>
+                  </View>
+                )}
+              </View>
               <Text style={styles.wisdomOverlayText} numberOfLines={2}>
                 {todaysWisdom.translation_en || todaysWisdom.short_form || ''}
               </Text>
@@ -179,12 +206,13 @@ export const HomeScreen: React.FC = () => {
 
           {/* Pagination */}
           <View style={styles.paginationContainer} pointerEvents="none">
-            {DEITIES.map((_, index) => (
+            {deities.map((_, index) => (
               <View
                 key={index}
                 style={[
                   styles.paginationDot,
                   activeIndex === index && styles.paginationDotActive,
+                  activeIndex === index && { backgroundColor: theme.accent },
                 ]}
               />
             ))}
@@ -201,7 +229,7 @@ export const HomeScreen: React.FC = () => {
             accessibilityLabel="Play Shankh Om and Bells"
             accessibilityState={{ selected: isShankhPlaying }}
           >
-            <View style={[styles.shankhDot, isShankhPlaying && styles.shankhDotActive]} />
+            <View style={[styles.shankhDot, isShankhPlaying && styles.shankhDotActive, isShankhPlaying && { backgroundColor: theme.accent }]} />
           </Pressable>
         </View>
       </View>
@@ -269,12 +297,27 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(251, 191, 36, 0.2)',
     zIndex: 25,
   },
+  wisdomHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 6,
+  },
   wisdomOverlayLabel: {
     fontSize: 10,
     color: '#fbbf24',
     letterSpacing: 1.5,
     fontWeight: '700',
-    marginBottom: 6,
+  },
+  streakChip: {
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 999,
+    borderWidth: 1,
+  },
+  streakChipText: {
+    fontSize: 11,
+    fontWeight: '700',
   },
   wisdomOverlayText: {
     fontSize: 15,

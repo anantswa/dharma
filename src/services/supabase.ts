@@ -2,17 +2,19 @@
  * Supabase client for the Dharma app.
  *
  * Uses the Supabase REST API directly (no supabase-js dependency needed).
- * The service key is used for now; replace with anon key before production.
- *
  * All requests are read-only SELECT queries — the app never writes to Supabase.
+ *
+ * Credentials come from app.json → expo.extra (centralized config, not hardcoded here).
+ * PRODUCTION TODO: mint a Supabase *anon/publishable* key + enable read-only RLS, then swap
+ * `supabaseKey` in app.json. The current key works but is a service key (bypasses RLS) — fine
+ * for internal builds, must be replaced before a public store release.
  */
+import Constants from 'expo-constants';
 
-const SUPABASE_URL = 'https://aiwugigdrvijjeoqtpog.supabase.co';
+const extra = (Constants.expoConfig?.extra ?? {}) as { supabaseUrl?: string; supabaseKey?: string };
 
-// TODO: Replace with anon key from Supabase dashboard before shipping to public.
-// The anon key is safe to embed in the app (read-only via RLS policies).
-// Get it from: Supabase Dashboard → Settings → API → anon/public key
-const SUPABASE_KEY = 'sb_secret_NSb4vFficZ00dlalq8vHlw_wQbVgUV';
+const SUPABASE_URL = extra.supabaseUrl ?? 'https://aiwugigdrvijjeoqtpog.supabase.co';
+const SUPABASE_KEY = extra.supabaseKey ?? '';
 
 const HEADERS = {
   apikey: SUPABASE_KEY,

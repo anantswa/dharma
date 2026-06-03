@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "consolidated_by": "Claude 4.8",
+  "panel": ["Gemini 3.1 Pro", "Grok 4.2", "Claude 4.8"],
+  "scale": {"min": 0, "max": 5, "descriptors": {
+    "5": "Exemplary — matches the 2026 bar in PRODUCT_SPEC, nothing material missing",
+    "4": "Strong — works well, minor polish gaps",
+    "3": "Adequate — present and functional but generic/unoptimized",
+    "2": "Weak — partial or notable defect",
+    "1": "Poor — stub/placeholder/broken",
+    "0": "Absent"
+  }},
+  "gate": {
+    "name": "Build Health",
+    "cap_if_failed": 49,
+    "checks": [
+      "deps install + typecheck/lint with no fatal errors",
+      "launches without crash on first screen",
+      "no leaked secrets in client source (no service-role / private keys)"
+    ]
+  },
+  "dimensions": [
+    {"id": "darshan_loop", "name": "Darshan / Daily Ritual Loop", "weight": 20,
+     "inspect": "HomeScreen + temple/aarti/shankh/music components; 60fps Reanimated+Gesture Handler swipe; layered parallax temple; aarti haptics+particles+audio sync; persistent player; daily prasad + streak"},
+    {"id": "faith_personalization", "name": "Faith Personalization Depth", "weight": 16,
+     "inspect": "onboarding <45s + preferencesStore; primaryTradition transforms Home/Calendar/Wisdom/Learn/palette/voice/notifications; any cross-faith bleed caps this dim at 2"},
+    {"id": "sensory_fidelity", "name": "Sensory Fidelity", "weight": 12,
+     "inspect": "expo-av lifecycle (preload/crossfade/clean unmount/background); expo-haptics on swipe/tap/bell; UI-thread motion; no leaks or over-haptics"},
+    {"id": "asset_moat", "name": "Asset Moat Utilization", "weight": 12,
+     "inspect": "real Suno tracks / ElevenLabs narration / painterly art / GN panels / films vs placeholders; no Linking.openURL to YouTube/Spotify for core experience"},
+    {"id": "habit_retention", "name": "Habit & Retention Systems", "weight": 10,
+     "inspect": "streak engine, Today's Practice, smart non-spam notifications driven by calendar/time, visible progress, local progress schema"},
+    {"id": "offline_tech", "name": "Offline-First & Technical Excellence", "weight": 8,
+     "inspect": "airplane-mode core works; Supabase background sync not blocking read; no big-JSON parse on JS thread at launch; clean TypeScript; no obvious jank"},
+    {"id": "learning_quality", "name": "Learning Experience Quality", "weight": 8,
+     "inspect": ">=2 modules at Chalisa depth (synced text+translit+meaning+chant audio+art+retention check); text dumps <=2"},
+    {"id": "monetization", "name": "Monetization Taste & Flow", "weight": 8,
+     "inspect": "native IAP (RevenueCat/expo IAP); contextual inline paywalls not just Store tab; beautiful paywall w/ original art; layered SKUs; no dark patterns"},
+    {"id": "authenticity_trust", "name": "Scriptural Authenticity, Safety & Trust", "weight": 4,
+     "inspect": "verses correct & attributed; transliteration sane; decency canon (no horror, dignified deities, uplifting); honest privacy; no dark patterns; no leaked secrets"},
+    {"id": "delight_share", "name": "Delight & Shareability", "weight": 2,
+     "inspect": "holy-shit micro-moments; one-tap sacred share cards (verse+art+audio) native to WhatsApp/IG in dark mode"}
+  ],
+  "ship_thresholds": {"ship": 90, "fix_then_ship": 75, "iterate_below": 75}
+}
