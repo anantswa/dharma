@@ -49,7 +49,7 @@ export const WisdomScreen: React.FC = () => {
   const availableTraditions = useMemo(() => {
     const traditions: string[] = ['All'];
     if (enabledTraditions) {
-      const tradKeys: TraditionKey[] = ['Hindu', 'Sikh', 'Buddhist', 'Jain', 'Zen', 'Christian', 'Sufi'];
+      const tradKeys: TraditionKey[] = ['Hindu', 'Buddhist'];
       tradKeys.forEach((key) => {
         if (enabledTraditions[key]) {
           traditions.push(key);

@@ -42,7 +42,8 @@ const THEMES: Record<FaithKey, FaithTheme> = {
     blurb: 'Darshan of the devas, the Gita, and the sacred Panchang.',
     accent: '#fbbf24',
     accentSoft: 'rgba(251, 191, 36, 0.14)',
-    deityIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
+    // 16 Hindu: original set (regen pending) + new calibrated-register set (20–28).
+    deityIds: ['1', '2', '3', '5', '6', '7', '8', '20', '21', '22', '23', '24', '25', '26', '27', '28'],
     traditions: ['Hindu'],
   },
   Buddhist: {
@@ -52,7 +53,9 @@ const THEMES: Record<FaithKey, FaithTheme> = {
     blurb: 'The Buddha, the Dhammapada, and the path of stillness.',
     accent: '#e0853d',
     accentSoft: 'rgba(224, 133, 61, 0.16)',
-    deityIds: ['9', '11', '12', '13', '14'],
+    // 8 Buddhist: Shakyamuni + Avalokiteśvara (regen pending) + new set (30–35).
+    // (Dropped the 3 redundant old Buddha variants 9/11/14 — too weak beside the new art.)
+    deityIds: ['12', '13', '30', '31', '32', '33', '34', '35'],
     traditions: ['Buddhist', 'Zen'],
   },
 };
@@ -76,4 +79,37 @@ export function deitiesForFaith(faith?: string | null): Deity[] {
   const theme = getFaithTheme(faith);
   const picked = FINAL_DEITIES.filter((d) => theme.deityIds.includes(d.id));
   return picked.length >= 1 ? picked : FINAL_DEITIES;
+}
+
+/**
+ * The unified darshan carousel — Hindu figures first, Buddhist at the end.
+ * The app assumes a Hindu-primary experience (no faith picker), but keeps the
+ * Buddhist deities in, just not front-loaded.
+ */
+export function darshanDeities(): Deity[] {
+  const hindu = deitiesForFaith('Hindu');
+  const buddhist = deitiesForFaith('Buddhist');
+  const seen = new Set(hindu.map((d) => d.id));
+  return [...hindu, ...buddhist.filter((d) => !seen.has(d.id))];
+}
+
+// The traditional Hindu weekday (vāra) deity — so "today's darshan" is meaningful,
+// not random. Maps weekday → a deity id present in FINAL_DEITIES.
+const WEEKDAY_HINDU: { id: string; reason: string }[] = [
+  { id: '8', reason: 'Sunday · Lord Rāma' },          // sriram
+  { id: '7', reason: "Monday · Lord Shiva's day" },   // shiva
+  { id: '3', reason: "Tuesday · Hanuman's day" },     // hanuman
+  { id: '5', reason: 'Wednesday · Lord Krishna' },    // krishna
+  { id: '2', reason: 'Thursday · Lord Ganesha' },     // ganesha
+  { id: '6', reason: 'Friday · Goddess Lakshmi' },    // lakshmi
+  { id: '3', reason: "Saturday · Hanuman's day" },    // hanuman
+];
+
+/** Today's darshan figure + why. Index is into darshanDeities() (the temple's list). */
+export function todaysDarshan(_faith?: string | null): { deity: Deity; index: number; reason: string } {
+  const list = darshanDeities();
+  const pick = WEEKDAY_HINDU[new Date().getDay()];
+  const idx = list.findIndex((d) => d.id === pick.id);
+  if (idx >= 0) return { deity: list[idx], index: idx, reason: pick.reason };
+  return { deity: list[0], index: 0, reason: "Today's darshan" };
 }

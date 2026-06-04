@@ -16,7 +16,7 @@ import {
 } from '../services/notificationService';
 import { TraditionKey, usePreferencesStore } from '../store/preferencesStore';
 
-const TRADITIONS: TraditionKey[] = ['Hindu', 'Sikh', 'Buddhist', 'Jain', 'Zen', 'Christian', 'Sufi'];
+const TRADITIONS: TraditionKey[] = ['Hindu', 'Buddhist'];
 
  
 
@@ -38,7 +38,7 @@ export const SettingsScreen: React.FC = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [timePickerOpen, setTimePickerOpen] = useState(false);
   const [selectedTradition, setSelectedTradition] = useState<TraditionKey>(
-    primaryTradition ?? 'Sikh'
+    primaryTradition ?? 'Hindu'
   );
   const [reminderToggle, setReminderToggle] = useState(!!remindersEnabled);
   const [selectedTime, setSelectedTime] = useState(reminderTime || '07:00');

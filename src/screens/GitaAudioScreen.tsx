@@ -86,7 +86,7 @@ export const GitaAudioScreen: React.FC = () => {
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         <Text style={[styles.kicker, { color: theme.accent }]}>BHAGAVAD GITA</Text>
         <Text style={styles.title}>Essential Shlokas</Text>
-        <Text style={styles.subtitle}>{GITA_SHLOKAS.length} verses · recited & explained by Kuber</Text>
+        <Text style={styles.subtitle}>{GITA_SHLOKAS.length} verses · recited & explained by Agastya</Text>
 
         {GITA_SHLOKAS.map((item) => {
           const isPlaying = playingId === item.id;
@@ -127,7 +127,7 @@ export const GitaAudioScreen: React.FC = () => {
             </Pressable>
           );
         })}
-        <Text style={styles.footer}>🪔  All narration by Kuber · ElevenLabs</Text>
+        <Text style={styles.footer}>🪔  All narration by Agastya</Text>
       </ScrollView>
     </View>
   );

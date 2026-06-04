@@ -21,7 +21,12 @@ export const CalendarScreen: React.FC = () => {
   const sections = useMemo(() => {
     if (!enabledTraditions || !festivals.length) return [];
 
+    // Only today and upcoming — no past dates.
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+
     const filtered = festivals.filter(e => {
+      if (new Date(e.date) < todayStart) return false;
       if (e.faith === 'Secular') return true;
       return isTraditionEnabled(e.faith, enabledTraditions);
     });

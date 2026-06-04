@@ -15,7 +15,9 @@
       "buildNumber": "1",
       "infoPlist": {
         "NSCalendarsUsageDescription": "Dharma uses your calendar to remind you of sacred festivals.",
-        "UIBackgroundModes": ["audio"]
+        "UIBackgroundModes": [
+          "audio"
+        ]
       }
     },
     "android": {
@@ -57,7 +59,9 @@
           "color": "#fbbf24",
           "sounds": []
         }
-      ]
+      ],
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "reactCompiler": false

@@ -24,6 +24,12 @@ type PreferencesState = {
   }) => void;
   setReminderTime: (time: string) => void;
   toggleReminders: (enabled: boolean) => void;
+
+  // Voice + language preferences
+  meaningLang: 'hi' | 'en';
+  narrator: 'kuber' | 'shardul';
+  setMeaningLang: (l: 'hi' | 'en') => void;
+  setNarrator: (n: 'kuber' | 'shardul') => void;
 };
 
 const DEFAULT_TRADITIONS: Record<TraditionKey, boolean> = {
@@ -44,8 +50,10 @@ export const usePreferencesStore = create<PreferencesState>()(
         })),
       resetTraditions: () => set({ enabledTraditions: DEFAULT_TRADITIONS }),
       
-      hasCompletedOnboarding: false,
-      primaryTradition: undefined,
+      // No faith picker at launch — assume a Hindu-primary experience with
+      // Buddhist content included (shown toward the end of the darshan).
+      hasCompletedOnboarding: true,
+      primaryTradition: 'Hindu',
       remindersEnabled: false,
       reminderTime: '07:00', // Default 7:00 AM
       setOnboarding: (data) =>
@@ -56,6 +64,11 @@ export const usePreferencesStore = create<PreferencesState>()(
         }),
       setReminderTime: (time) => set({ reminderTime: time }),
       toggleReminders: (enabled) => set({ remindersEnabled: enabled }),
+
+      meaningLang: 'hi',
+      narrator: 'kuber',
+      setMeaningLang: (l) => set({ meaningLang: l }),
+      setNarrator: (n) => set({ narrator: n }),
     }),
     {
       name: 'dharma-preferences',

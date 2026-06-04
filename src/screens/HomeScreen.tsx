@@ -1,4 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   AppState,
@@ -16,14 +17,18 @@ import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native
 import * as Haptics from 'expo-haptics';
 import { AartiPlate } from '../components/AartiPlate';
 import { DeityCard } from '../components/DeityCard';
-import { FloatingMusicButton } from '../components/FloatingMusicButton';
+import { DeityMantraToggle } from '../components/DeityMantraToggle';
 import { Deity } from '../data/deityImages';
-import { deitiesForFaith, getFaithTheme } from '../data/faiths';
+import { darshanDeities, getFaithTheme } from '../data/faiths';
+import { resolveChant } from '../data/deityMantras';
+import { useDeityMantra } from '../hooks/useDeityMantra';
 import { AudioService } from '../services/audioService';
 import { ShankhService } from '../services/shankhService';
 import { useDataStore } from '../store/dataStore';
 import { isTraditionEnabled, usePreferencesStore } from '../store/preferencesStore';
 import { useStreakStore } from '../store/streakStore';
+import { buildTodayQueue, useMasteryStore } from '../store/masteryStore';
+import { getCourse } from '../data/courses';
 
 const { width, height } = Dimensions.get('window');
 
@@ -36,22 +41,54 @@ const safeHaptic = (fn: () => void) => {
 
 export const HomeScreen: React.FC = () => {
   const navigation = useNavigation<any>();
-  const [activeIndex, setActiveIndex] = useState(0);
+  const route = useRoute<any>();
+  const initialIndex: number = route.params?.deityIndex ?? 0;
+  const [activeIndex, setActiveIndex] = useState(initialIndex);
+  const [showSwipeHint, setShowSwipeHint] = useState(true);
   const [isReady, setIsReady] = useState(false);
   const [isShankhPlaying, setIsShankhPlaying] = useState(false);
+  const [mantraOn, setMantraOn] = useState(true); // soft chant on entering the temple
+  const [mantraManifest, setMantraManifest] = useState<Record<string, string>>({});
   const wisdom = useDataStore((s) => s.wisdom);
   const primaryTradition = usePreferencesStore((s) => s.primaryTradition);
   const enabledTraditions = usePreferencesStore((s) => s.enabledTraditions);
 
   // Faith identity — drives the darshan figure set + accent colour.
   const theme = useMemo(() => getFaithTheme(primaryTradition), [primaryTradition]);
-  const deities = useMemo(() => deitiesForFaith(primaryTradition), [primaryTradition]);
+  const deities = useMemo(() => darshanDeities(), []);
+
+  // Live deity-mantra manifest (key → loop url). Chants appear as folders are filled.
+  const MANTRAS_BASE = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/mantras';
+  useEffect(() => {
+    let alive = true;
+    fetch(`${MANTRAS_BASE}/catalog.json`)
+      .then((r) => r.json())
+      .then((d) => { if (alive && d && typeof d === 'object') setMantraManifest(d); })
+      .catch(() => {});
+    return () => { alive = false; };
+  }, []);
+
+  // The chant for the deity currently in view — crossfades on swipe via useDeityMantra.
+  const chant = useMemo(
+    () => resolveChant(deities[activeIndex]?.name, mantraManifest),
+    [deities, activeIndex, mantraManifest],
+  );
+  useDeityMantra(mantraOn ? chant?.url : undefined, mantraOn);
 
   // Daily streak ("Prasad") — the habit engine.
   const currentStreak = useStreakStore((s) => s.currentStreak);
   useEffect(() => {
     useStreakStore.getState().load().then(() => useStreakStore.getState().recordVisit());
   }, []);
+
+  // Mastery nudge — turns the daily darshan into the learning habit.
+  const masteryRecords = useMasteryStore((s) => s.records);
+  const newPerDay = useMasteryStore((s) => s.newPerDay);
+  useEffect(() => { useMasteryStore.getState().load(); }, []);
+  const sadhanaDue = useMemo(
+    () => buildTodayQueue(getCourse('chalisa').verses, masteryRecords as any, newPerDay).length,
+    [masteryRecords, newPerDay],
+  );
 
   // Today's wisdom — same rotation logic as old Dashboard
   const todaysWisdom = useMemo(() => {
@@ -108,7 +145,9 @@ export const HomeScreen: React.FC = () => {
   };
 
   // Parallax scroll position shared with each DeityCard.
-  const scrollX = useSharedValue(0);
+  // Seed it to the initial deity so the opened figure shows at full opacity
+  // (initialScrollIndex does not emit a scroll event).
+  const scrollX = useSharedValue(initialIndex * width);
   const scrollHandler = useAnimatedScrollHandler((e) => {
     scrollX.value = e.contentOffset.x;
   });
@@ -119,6 +158,7 @@ export const HomeScreen: React.FC = () => {
       setActiveIndex((prev) => {
         if (prev !== newIndex) {
           safeHaptic(() => Haptics.selectionAsync()); // gentle tick on each darshan
+          setShowSwipeHint(false); // they discovered the swipe
         }
         return newIndex;
       });
@@ -158,6 +198,7 @@ export const HomeScreen: React.FC = () => {
           maxToRenderPerBatch={2}
           windowSize={3}
           initialNumToRender={1}
+          initialScrollIndex={initialIndex}
           style={styles.carousel}
           getItemLayout={(_data: any, index: number) => ({
             length: width,
@@ -166,7 +207,7 @@ export const HomeScreen: React.FC = () => {
           })}
         />
 
-        {/* MIDDLE LAYER: Temple Frame */}
+        {/* MIDDLE LAYER: Temple Frame — locked to the original temple_screen art */}
         <View style={styles.templeFrame} pointerEvents="none">
           <Image
             source={require('../../assets/images/temple/temple_screen.png')}
@@ -177,6 +218,11 @@ export const HomeScreen: React.FC = () => {
 
         {/* TOP LAYER: UI Elements */}
         <View style={styles.topLayer} pointerEvents="box-none">
+          {navigation.canGoBack() && (
+            <Pressable style={styles.templeBack} onPress={() => navigation.goBack()} hitSlop={16}>
+              <Ionicons name="chevron-back" size={24} color="#f8fafc" />
+            </Pressable>
+          )}
           {/* Today's Wisdom — subtle overlay at top */}
           {todaysWisdom && (
             <Pressable
@@ -202,6 +248,27 @@ export const HomeScreen: React.FC = () => {
                 {todaysWisdom.source_text || ''} {'\u2022'} {todaysWisdom.tradition}
               </Text>
             </Pressable>
+          )}
+
+          {/* Sādhana nudge — daily darshan → daily learning */}
+          {sadhanaDue > 0 && (
+            <Pressable
+              style={[styles.sadhanaPill, { borderColor: theme.accent, backgroundColor: theme.accentSoft }]}
+              onPress={() => navigation.navigate('ChalisaPath', { courseId: 'chalisa' })}
+            >
+              <Text style={[styles.sadhanaPillText, { color: theme.accent }]}>
+                {'🪔'}  Continue your sādhana · {sadhanaDue}
+              </Text>
+            </Pressable>
+          )}
+
+          {/* Swipe cue — first-time hint that you can change deity */}
+          {showSwipeHint && deities.length > 1 && (
+            <View style={styles.swipeHint} pointerEvents="none">
+              <Ionicons name="chevron-back" size={16} color="rgba(255,255,255,0.85)" />
+              <Text style={styles.swipeHintText}>swipe to see the gods</Text>
+              <Ionicons name="chevron-forward" size={16} color="rgba(255,255,255,0.85)" />
+            </View>
           )}
 
           {/* Pagination */}
@@ -234,8 +301,13 @@ export const HomeScreen: React.FC = () => {
         </View>
       </View>
 
-      {/* Music Selection Button (Right) */}
-      <FloatingMusicButton />
+      {/* Deity-mantra: single on/off, crossfades to each god's chant as you swipe (Right) */}
+      <DeityMantraToggle
+        on={mantraOn}
+        onToggle={() => setMantraOn((v) => !v)}
+        accent={theme.accent}
+        caption={chant?.mantra.deva}
+      />
     </>
   );
 };
@@ -329,6 +401,40 @@ const styles = StyleSheet.create({
   wisdomOverlaySource: {
     fontSize: 11,
     color: '#64748b',
+  },
+  sadhanaPill: {
+    position: 'absolute',
+    top: 188,
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderRadius: 999,
+    paddingHorizontal: 16,
+    paddingVertical: 9,
+    zIndex: 26,
+  },
+  sadhanaPillText: { fontSize: 13, fontWeight: '700' },
+  templeBack: {
+    position: 'absolute', top: 48, left: 12, zIndex: 40,
+    width: 40, height: 40, borderRadius: 20,
+    backgroundColor: 'rgba(2,6,23,0.55)', alignItems: 'center', justifyContent: 'center',
+  },
+  swipeHint: {
+    position: 'absolute',
+    bottom: 74,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 6,
+    zIndex: 30,
+  },
+  swipeHintText: {
+    color: 'rgba(255,255,255,0.85)',
+    fontSize: 12.5,
+    fontWeight: '600',
+    textShadowColor: 'rgba(0,0,0,0.6)',
+    textShadowRadius: 4,
   },
   paginationContainer: {
     position: 'absolute',

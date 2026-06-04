@@ -11,6 +11,11 @@ export type Deity = {
   tradition?: string;
 };
 
+/** Streamed deity art (uploaded to dharma-art/deities/). Keeps the binary light. */
+const ART = (slug: string) => ({
+  uri: `https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/deities/${slug}.jpg`,
+});
+
 export const FINAL_DEITIES: Deity[] = [
   {
     id: '1',
@@ -22,13 +27,13 @@ export const FINAL_DEITIES: Deity[] = [
     id: '2',
     name: 'Lord Ganesha',
     filename: 'ganesha.jpeg',
-    image: require('../../assets/images/deities/ganesha.jpeg'), 
+    image: ART('ganesha'),
   },
   {
     id: '3',
     name: 'Lord Hanuman',
     filename: 'hanuman.jpg',
-    image: require('../../assets/images/deities/hanuman.jpg'), 
+    image: ART('hanuman'),
   },
   {
     id: '4',
@@ -41,25 +46,25 @@ export const FINAL_DEITIES: Deity[] = [
     name: 'Lord Krishna',
     filename: 'krishna.jpg',
     // ✅ UNCOMMENTED: Ensure 'krishna.jpg' is in the folder
-    image: require('../../assets/images/deities/krishna.jpg'), 
+    image: ART('krishna'),
   },
   {
     id: '6',
     name: 'Goddess Lakshmi',
     filename: 'lakshmi.jpg',
-    image: require('../../assets/images/deities/lakshmi.jpg'), 
+    image: ART('lakshmi'),
   },
   {
     id: '7',
     name: 'Lord Shiva',
     filename: 'shiva.jpg',
-    image: require('../../assets/images/deities/shiva.jpg'), 
+    image: ART('shiva'),
   },
   {
     id: '8',
     name: 'Lord Ram',
     filename: 'sriram.jpg',
-    image: require('../../assets/images/deities/sriram.jpg'), 
+    image: ART('rama'),
   },
   {
     id: '9',
@@ -82,14 +87,14 @@ export const FINAL_DEITIES: Deity[] = [
     name: 'Shakyamuni Buddha',
     filename: 'shakyamuni.jpg',
     tradition: 'Buddhist',
-    image: require('../../assets/images/deities/shakyamuni.jpg'),
+    image: ART('buddha'),
   },
   {
     id: '13',
     name: 'Avalokiteśvara',
     filename: 'avalokiteshvara.jpg',
     tradition: 'Buddhist',
-    image: require('../../assets/images/deities/avalokiteshvara.jpg'),
+    image: ART('avalokiteshvara'),
   },
   {
     id: '14',
@@ -99,35 +104,24 @@ export const FINAL_DEITIES: Deity[] = [
     image: require('../../assets/images/deities/buddha_udana.jpg'),
   },
 
-  // ── Christian darshan (added iteration-02) ──
-  {
-    id: '15',
-    name: 'Jesus Christ',
-    filename: 'jesus_john.jpg',
-    tradition: 'Christian',
-    image: require('../../assets/images/deities/jesus_john.jpg'),
-  },
-  {
-    id: '16',
-    name: 'Christ the Teacher',
-    filename: 'jesus_matthew.jpg',
-    tradition: 'Christian',
-    image: require('../../assets/images/deities/jesus_matthew.jpg'),
-  },
-  {
-    id: '17',
-    name: 'King David',
-    filename: 'king_david.jpg',
-    tradition: 'Christian',
-    image: require('../../assets/images/deities/king_david.jpg'),
-  },
-  {
-    id: '18',
-    name: 'Archangel Gabriel',
-    filename: 'gabriel.jpg',
-    tradition: 'Christian',
-    image: require('../../assets/images/deities/gabriel.jpg'),
-  },
+  // ── New calibrated-register set (streamed from dharma-art/deities/, 2026-06-04) ──
+  // Hindu
+  { id: '20', name: 'Lord Vishnu',        filename: 'vishnu.jpg',        tradition: 'Hindu', image: ART('vishnu') },
+  { id: '21', name: 'Lord Brahma',        filename: 'brahma.jpg',        tradition: 'Hindu', image: ART('brahma') },
+  { id: '22', name: 'Goddess Saraswati',  filename: 'saraswati.jpg',     tradition: 'Hindu', image: ART('saraswati') },
+  { id: '23', name: 'Goddess Kali',       filename: 'kali.jpg',          tradition: 'Hindu', image: ART('kali') },
+  { id: '24', name: 'Goddess Parvati',    filename: 'parvati.jpg',       tradition: 'Hindu', image: ART('parvati') },
+  { id: '25', name: 'Lord Kartikeya',     filename: 'kartikeya.jpg',     tradition: 'Hindu', image: ART('kartikeya') },
+  { id: '26', name: 'Radha-Krishna',      filename: 'radha_krishna.jpg', tradition: 'Hindu', image: ART('radha_krishna') },
+  { id: '27', name: 'Lord Venkateswara',  filename: 'venkateswara.jpg',  tradition: 'Hindu', image: ART('venkateswara') },
+  { id: '28', name: 'Surya Dev',          filename: 'surya.jpg',         tradition: 'Hindu', image: ART('surya') },
+  // Buddhist
+  { id: '30', name: 'Green Tārā',         filename: 'green_tara.jpg',     tradition: 'Buddhist', image: ART('green_tara') },
+  { id: '31', name: 'White Tārā',         filename: 'white_tara.jpg',     tradition: 'Buddhist', image: ART('white_tara') },
+  { id: '32', name: 'Padmasambhava',      filename: 'padmasambhava.jpg',  tradition: 'Buddhist', image: ART('padmasambhava') },
+  { id: '33', name: 'Medicine Buddha',    filename: 'medicine_buddha.jpg', tradition: 'Buddhist', image: ART('medicine_buddha') },
+  { id: '34', name: 'Amitābha',           filename: 'amitabha.jpg',       tradition: 'Buddhist', image: ART('amitabha') },
+  { id: '35', name: 'Mañjuśrī',           filename: 'manjushri.jpg',      tradition: 'Buddhist', image: ART('manjushri') },
 ];
 
 export const DEITIES = FINAL_DEITIES;
