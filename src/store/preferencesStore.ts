@@ -66,7 +66,7 @@ export const usePreferencesStore = create<PreferencesState>()(
       toggleReminders: (enabled) => set({ remindersEnabled: enabled }),
 
       meaningLang: 'hi',
-      narrator: 'kuber',
+      narrator: 'shardul', // default voice = Shardul → "Nachiketa" (young seeker)
       setMeaningLang: (l) => set({ meaningLang: l }),
       setNarrator: (n) => set({ narrator: n }),
     }),

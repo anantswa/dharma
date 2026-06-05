@@ -29,6 +29,7 @@ PREFIX = 'mantras'
 STUDIES = ('/Users/kashyap/Library/CloudStorage/GoogleDrive-kashyap@tara-ventures.com/'
            'Shared drives/DharmaWeave/Creative & Content/Music/Studies')
 SNDLIB = '/Users/kashyap/projects/Agentic-dharmaweave/Sound Library'
+DM = '/Users/kashyap/projects/Agentic-dharmaweave/output/deity_mantras'  # loop-engined app masters
 
 # key (== app manifest key == deityMantras.ts slug) -> finished master file.
 # Only FINISHED, loop-able masters belong here. Everything else is a gap (see below).
@@ -37,7 +38,20 @@ SOURCES = {
     'om_namo_bhagavate_vasudevaya': f'{STUDIES}/07_om_namo_bhagavate_vasudevaya/_seamless_loop_v2/vasudeva_take1_seamless_3min.mp3',
     'om_mani_padme_hum':           f'{STUDIES}/_loop_engine_AB_proof/NEW_om_mani_padme_hum_seamless_3min.mp3',
     'om_ah_hung_vajra_guru':       '/Users/kashyap/projects/Agentic-dharmaweave/output/deity_mantras/om_ah_hung_vajra_guru.mp3',  # Padmasambhava
-    'om':                          f'{SNDLIB}/ambient/om_chant_buddhist.mp3',  # universal fallback
+    # bīja ear-picks (take A, trimmed → seamless loop). Ganesha = Anant's exact 17–47s;
+    # the rest auto-windowed (energy-detected), spot-fix any in-app.
+    'om_gam_ganapataye_namah':     f'{DM}/om_gam_ganapataye_namah.mp3',   # Ganesha · A · 17–47s
+    'om_ham_hanumate_namah':       f'{DM}/om_ham_hanumate_namah.mp3',     # Hanuman
+    'om_shreem_mahalakshmiyei':    f'{DM}/om_shreem_mahalakshmiyei.mp3',  # Lakshmi
+    'navarna_chamundayai':         f'{DM}/navarna_chamundayai.mp3',       # Devi / Parvati
+    'om_aim_saraswatyai_namah':    f'{DM}/om_aim_saraswatyai_namah.mp3',  # Saraswati
+    'om_krim_kalyai_namah':        f'{DM}/om_krim_kalyai_namah.mp3',      # Kali
+    'om_sharavanabhavaya_namah':   f'{DM}/om_sharavanabhavaya_namah.mp3', # Kartikeya
+    'om_suryaya_namah':            f'{DM}/om_suryaya_namah.mp3',          # Surya
+    'om_brahmane_namah':           f'{DM}/om_brahmane_namah.mp3',         # Brahma
+    'buddham_saranam':             f'{DM}/buddham_saranam.mp3',           # Buddha
+    'shakyamuni':                  f'{DM}/shakyamuni.mp3',                # Shakyamuni
+    'om':                          f'{DM}/om.mp3',  # universal fallback — good group-Om seamless loop
 }
 
 
