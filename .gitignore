@@ -87,3 +87,5 @@ yarn-error.*
 google-play-key.json
 *.keystore
 *.jks
+credentials/
+credentials.json

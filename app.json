@@ -16,8 +16,10 @@
       "infoPlist": {
         "NSCalendarsUsageDescription": "Dharma uses your calendar to remind you of sacred festivals.",
         "UIBackgroundModes": [
+          "audio",
           "audio"
-        ]
+        ],
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {

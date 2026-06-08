@@ -18,6 +18,9 @@
       "autoIncrement": true,
       "android": {
         "buildType": "app-bundle"
+      },
+      "ios": {
+        "credentialsSource": "local"
       }
     }
   },
@@ -28,7 +31,14 @@
         "track": "production"
       },
       "ios": {
-        "ascAppId": "REPLACE_WITH_APP_STORE_CONNECT_APP_ID"
+        "ascApiKeyPath": "./credentials/AuthKey_TQAZ5JQ2LT.p8",
+        "ascApiKeyId": "TQAZ5JQ2LT",
+        "ascApiKeyIssuerId": "614cfe80-272d-48d3-b61a-87b4b96adc14",
+        "ascAppId": "6777929290",
+        "appName": "Dharma — Hindu Mantras & Gita",
+        "language": "en-US",
+        "sku": "dharma-taraventures-001",
+        "bundleIdentifier": "com.taraventures.dharma"
       }
     }
   }
