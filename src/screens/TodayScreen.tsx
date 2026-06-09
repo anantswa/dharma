@@ -9,6 +9,7 @@ import { getFaithTheme, todaysDarshan } from '../data/faiths';
 import { buildTodayQueue, masteredCount, useMasteryStore } from '../store/masteryStore';
 import { useStreakStore } from '../store/streakStore';
 import { rankFor, useScoreStore } from '../store/scoreStore';
+import { useAchievementsStore } from '../store/achievementsStore';
 import { usePreferencesStore } from '../store/preferencesStore';
 
 /**
@@ -29,6 +30,7 @@ export const TodayScreen: React.FC = () => {
     useMasteryStore.getState().load();
     useScoreStore.getState().load();
     useStreakStore.getState().load();
+    useAchievementsStore.getState().load().then(() => useAchievementsStore.getState().evaluate());
   }, []));
 
   // Per-course progress + due counts.
@@ -102,6 +104,7 @@ export const TodayScreen: React.FC = () => {
           { icon: 'film-outline', title: 'Films', meta: 'Cinematic kathas to watch', go: 'Films', params: undefined },
           { icon: 'images-outline', title: 'Illustrated comics', meta: 'Read the graphic novels', go: 'ComicReader', params: { comicId: 'hanuman-chalisa-illustrated' } },
           { icon: 'book-outline', title: 'Reflections', meta: 'Essays on the stories & their meaning', go: 'Articles', params: undefined },
+          { icon: 'ribbon-outline', title: 'Siddhis', meta: 'Milestones you’ve attained on the path', go: 'Achievements', params: undefined },
         ] as const).map((r) => (
           <Pressable key={r.title} style={styles.readRow} onPress={() => navigation.navigate(r.go as any, r.params as any)}>
             <View style={[styles.readIcon, { backgroundColor: theme.accentSoft }]}>

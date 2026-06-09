@@ -102,6 +102,12 @@ export const CalendarScreen: React.FC = () => {
         ListEmptyComponent={
           <Text style={styles.emptyText}>No events found for your active traditions.</Text>
         }
+        ListFooterComponent={
+          <Text style={styles.footer}>
+            Dates follow standard Drik panchang calculations; regional traditions may observe a day
+            earlier or later. For precise vrat muhurat, consult your local panchang.
+          </Text>
+        }
       />
     </View>
   );
@@ -112,6 +118,7 @@ const styles = StyleSheet.create({
   header: { paddingTop: 60, paddingHorizontal: 20, marginBottom: 10 },
   title: { fontSize: 32, color: '#fbbf24', fontFamily: 'Playfair_Bold' },
   subtitle: { fontSize: 16, color: '#94a3b8', marginTop: 4, fontFamily: 'System' },
+  footer: { color: '#64748b', fontSize: 12, fontStyle: 'italic', textAlign: 'center', lineHeight: 18, paddingHorizontal: 10, paddingTop: 20, paddingBottom: 12 },
   listContent: { paddingHorizontal: 20, paddingBottom: 100 },
   
   monthHeader: { flexDirection: 'row', alignItems: 'center', marginTop: 24, marginBottom: 12 },

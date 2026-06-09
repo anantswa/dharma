@@ -9,6 +9,27 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
+import * as Updates from 'expo-updates';
+
+/**
+ * Bump this on every OTA push so the "You" tab footer shows a value that visibly
+ * changes — the quickest way to confirm a device is running the latest bundle.
+ */
+const BUNDLE_TAG = 'W1.0 · Siddhis + streak insurance';
+
+/** A human-readable stamp of which JS bundle is actually running on this device. */
+const bundleStamp = (): string => {
+  try {
+    if (Updates.isEmbeddedLaunch) return 'base build · no OTA applied yet';
+    const id = Updates.updateId ? Updates.updateId.slice(0, 8) : '—';
+    const when = Updates.createdAt
+      ? Updates.createdAt.toISOString().slice(0, 16).replace('T', ' ') + ' UTC'
+      : '—';
+    return `OTA ${id} · published ${when}`;
+  } catch {
+    return 'update info unavailable';
+  }
+};
 import {
     cancelDailyWisdomNotification,
     initializeNotifications,
@@ -340,6 +361,8 @@ export const SettingsScreen: React.FC = () => {
       </View>
 
       <Text style={styles.footerNote}>v1.0.0 — Dharma by DharmaWeave</Text>
+      <Text style={styles.buildNote}>{BUNDLE_TAG}</Text>
+      <Text style={styles.buildNote}>{bundleStamp()}</Text>
     </ScrollView>
   );
 };
@@ -435,6 +458,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 12,
     color: '#64748b',
+  },
+  buildNote: {
+    marginTop: 6,
+    textAlign: 'center',
+    fontSize: 11,
+    color: '#475569',
   },
   // Dropdown styles
   dropdownButton: {

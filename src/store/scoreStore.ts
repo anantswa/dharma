@@ -17,6 +17,8 @@ type ScoreState = {
   loaded: boolean;
   load: () => Promise<void>;
   award: (jnana: number, diyas: number, gotCorrect?: boolean) => Promise<void>;
+  /** Spend diyas (e.g. to light a lamp / protect a streak). Returns false if not enough. */
+  spend: (diyas: number) => Promise<boolean>;
 };
 
 const persist = (s: { jnana: number; diyas: number; correct: number; attempts: number }) =>
@@ -45,6 +47,14 @@ export const useScoreStore = create<ScoreState>((set, get) => ({
     };
     set(next);
     await persist(next);
+  },
+  spend: async (diyas) => {
+    const s = get();
+    if (s.diyas < diyas) return false;
+    const next = { jnana: s.jnana, diyas: s.diyas - diyas, correct: s.correct, attempts: s.attempts };
+    set(next);
+    await persist(next);
+    return true;
   },
 }));
 

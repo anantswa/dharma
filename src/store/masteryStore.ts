@@ -21,10 +21,13 @@ type MasteryState = {
   newPerDay: number;
   load: () => Promise<void>;
   recordRecall: (verseId: string, grade: Grade) => Promise<void>;
+  /** Set the daily intention (Sankalpa): how many new verses to take on per day. */
+  setNewPerDay: (n: number) => Promise<void>;
   reset: () => Promise<void>;
 };
 
 const KEY = '@dharma:mastery';
+const NEW_PER_DAY_KEY = '@dharma:newPerDay';
 // Leitner intervals in days, indexed by box.
 const INTERVALS = [0, 1, 2, 4, 9, 21];
 
@@ -45,8 +48,16 @@ export const useMasteryStore = create<MasteryState>((set, get) => ({
 
   load: async () => {
     try {
-      const raw = await AsyncStorage.getItem(KEY);
-      set({ records: raw ? JSON.parse(raw) : {}, loaded: true });
+      const [raw, np] = await Promise.all([
+        AsyncStorage.getItem(KEY),
+        AsyncStorage.getItem(NEW_PER_DAY_KEY),
+      ]);
+      const parsedNp = np ? Number(np) : 3;
+      set({
+        records: raw ? JSON.parse(raw) : {},
+        newPerDay: Number.isFinite(parsedNp) && parsedNp > 0 ? parsedNp : 3,
+        loaded: true,
+      });
     } catch {
       set({ loaded: true });
     }
@@ -67,6 +78,11 @@ export const useMasteryStore = create<MasteryState>((set, get) => ({
     } catch {
       /* non-fatal */
     }
+  },
+
+  setNewPerDay: async (n) => {
+    set({ newPerDay: n });
+    try { await AsyncStorage.setItem(NEW_PER_DAY_KEY, String(n)); } catch { /* noop */ }
   },
 
   reset: async () => {

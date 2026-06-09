@@ -10,6 +10,7 @@ import { ArticleReaderScreen } from '../screens/ArticleReaderScreen';
 import { FilmsScreen } from '../screens/FilmsScreen';
 import { ComicReaderScreen } from '../screens/ComicReaderScreen';
 import { PathInfoScreen } from '../screens/PathInfoScreen';
+import { AchievementsScreen } from '../screens/AchievementsScreen';
 import { ChalisaPathScreen } from '../screens/ChalisaPathScreen';
 import { FestivalDetailScreen } from '../screens/FestivalDetailScreen';
 import { GitaAudioScreen } from '../screens/GitaAudioScreen';
@@ -127,6 +128,7 @@ const AppNavigator: React.FC = () => {
       <Stack.Screen name="Films" component={FilmsScreen} />
       <Stack.Screen name="ComicReader" component={ComicReaderScreen} />
       <Stack.Screen name="PathInfo" component={PathInfoScreen} />
+      <Stack.Screen name="Achievements" component={AchievementsScreen} />
     </Stack.Navigator>
   );
 };

@@ -25,6 +25,7 @@ import { getFaithTheme } from '../data/faiths';
 import { getPlayableUri } from '../services/streamCache';
 import { buildTodayQueue, Grade, useMasteryStore } from '../store/masteryStore';
 import { useStreakStore } from '../store/streakStore';
+import { getAchievement, useAchievementsStore } from '../store/achievementsStore';
 
 const haptic = (s: Haptics.ImpactFeedbackStyle = Haptics.ImpactFeedbackStyle.Light) => {
   try { Haptics.impactAsync(s); } catch { /* noop */ }
@@ -66,10 +67,11 @@ export const SadhanaScreen: React.FC = () => {
   const [graded, setGraded] = useState(0);
   const [masteredNow, setMasteredNow] = useState(0);
   const [justMastered, setJustMastered] = useState<CourseVerse[]>([]);
+  const [newSiddhis, setNewSiddhis] = useState<string[]>([]);
   const soundRef = useRef<Audio.Sound | null>(null);
   const cardRef = useRef<View>(null);
 
-  useEffect(() => { useMasteryStore.getState().load(); useScoreStore.getState().load(); }, []);
+  useEffect(() => { useMasteryStore.getState().load(); useScoreStore.getState().load(); useAchievementsStore.getState().load(); }, []);
   useEffect(() => () => { soundRef.current?.unloadAsync().catch(() => {}); }, []);
 
   const verse = queue[idx];
@@ -136,15 +138,23 @@ export const SadhanaScreen: React.FC = () => {
 
   useEffect(() => {
     if (done && graded > 0) {
-      // Completing a sādhana counts as today's darshan/streak.
-      useStreakStore.getState().load().then(() => useStreakStore.getState().recordVisit());
-      useScoreStore.getState().award(0, 5); // diyas for completing today's sādhana
-      // Triumphant haptic — the "bling".
-      try {
-        Haptics.notificationAsync(
-          masteredNow > 0 ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Warning,
-        );
-      } catch { /* noop */ }
+      (async () => {
+        // Completing a sādhana counts as today's darshan/streak.
+        await useStreakStore.getState().load();
+        await useStreakStore.getState().recordVisit();
+        await useScoreStore.getState().award(0, 5); // diyas for completing today's sādhana
+        // Now that streak + score are up to date, see which Siddhis were just earned.
+        const newly = useAchievementsStore.getState().evaluate();
+        if (newly.length) setNewSiddhis(newly);
+        // Triumphant haptic — the "bling".
+        try {
+          Haptics.notificationAsync(
+            masteredNow > 0 || newly.length > 0
+              ? Haptics.NotificationFeedbackType.Success
+              : Haptics.NotificationFeedbackType.Warning,
+          );
+        } catch { /* noop */ }
+      })();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [done]);
@@ -200,6 +210,27 @@ export const SadhanaScreen: React.FC = () => {
                 <Text style={[styles.statNum, { color: theme.accent }]}>🔥 {streak}</Text>
                 <Text style={styles.statLbl}>streak</Text>
               </View>
+            </View>
+          )}
+
+          {newSiddhis.length > 0 && (
+            <View style={[styles.siddhiCard, { borderColor: theme.accent }]}>
+              <Text style={[styles.siddhiKicker, { color: theme.accent }]}>
+                {newSiddhis.length === 1 ? 'NEW SIDDHI ATTAINED' : 'NEW SIDDHIS ATTAINED'}
+              </Text>
+              {newSiddhis.map((id) => {
+                const a = getAchievement(id);
+                if (!a) return null;
+                return (
+                  <View key={id} style={styles.siddhiRow}>
+                    <Text style={styles.siddhiIcon}>{a.icon}</Text>
+                    <View style={{ flex: 1 }}>
+                      <Text style={styles.siddhiTitle}>{a.title}</Text>
+                      <Text style={styles.siddhiDesc}>{a.desc}</Text>
+                    </View>
+                  </View>
+                );
+              })}
             </View>
           )}
 
@@ -389,6 +420,12 @@ const styles = StyleSheet.create({
   gradeBtn: { flex: 1, borderWidth: 1.5, borderRadius: 14, paddingVertical: 14, alignItems: 'center' },
   gradeBtnTxt: { fontSize: 14, fontWeight: '700' },
   doneWrap: { flexGrow: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 30, paddingVertical: 70 },
+  siddhiCard: { width: '100%', borderWidth: 1.5, borderRadius: 18, padding: 18, backgroundColor: 'rgba(15,23,42,0.5)', marginBottom: 24, gap: 12 },
+  siddhiKicker: { fontSize: 11, letterSpacing: 1.5, fontWeight: '800', textAlign: 'center' },
+  siddhiRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  siddhiIcon: { fontSize: 30 },
+  siddhiTitle: { color: '#f8fafc', fontSize: 16, fontFamily: 'Playfair_Bold' },
+  siddhiDesc: { color: '#94a3b8', fontSize: 12.5, lineHeight: 18, marginTop: 2 },
   rewardWrap: { alignItems: 'center', marginBottom: 26 },
   rewardLine: { color: '#e2e8f0', fontSize: 15, fontWeight: '600', marginBottom: 14, textAlign: 'center' },
   cardScale: { borderRadius: 18, overflow: 'hidden', marginBottom: 16 },

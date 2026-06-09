@@ -17,6 +17,8 @@
         "NSCalendarsUsageDescription": "Dharma uses your calendar to remind you of sacred festivals.",
         "UIBackgroundModes": [
           "audio",
+          "audio",
+          "audio",
           "audio"
         ],
         "ITSAppUsesNonExemptEncryption": false
@@ -30,6 +32,9 @@
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "permissions": [
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE",
+        "SCHEDULE_EXACT_ALARM",
         "RECEIVE_BOOT_COMPLETED",
         "VIBRATE",
         "SCHEDULE_EXACT_ALARM"
@@ -74,6 +79,12 @@
       },
       "supabaseUrl": "https://aiwugigdrvijjeoqtpog.supabase.co",
       "supabaseKey": "sb_secret_NSb4vFficZ00dlalq8vHlw_wQbVgUVf"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/84d77601-15e9-4ea8-af38-162cf1f96e34"
     }
   }
 }
