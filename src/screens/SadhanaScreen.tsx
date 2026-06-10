@@ -4,7 +4,7 @@ import { Audio } from 'expo-av';
 import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, Share, StyleSheet, Text, TextInput, View } from 'react-native';
 import * as Sharing from 'expo-sharing';
 import { Image as ExpoImage } from 'expo-image';
 import { CourseVerse, getCourse } from '../data/courses';
@@ -26,6 +26,8 @@ import { getPlayableUri } from '../services/streamCache';
 import { buildTodayQueue, Grade, useMasteryStore } from '../store/masteryStore';
 import { useStreakStore } from '../store/streakStore';
 import { getAchievement, useAchievementsStore } from '../store/achievementsStore';
+import { useDedicationStore } from '../store/dedicationStore';
+import { track } from '../services/analytics';
 
 const haptic = (s: Haptics.ImpactFeedbackStyle = Haptics.ImpactFeedbackStyle.Light) => {
   try { Haptics.impactAsync(s); } catch { /* noop */ }
@@ -68,10 +70,17 @@ export const SadhanaScreen: React.FC = () => {
   const [masteredNow, setMasteredNow] = useState(0);
   const [justMastered, setJustMastered] = useState<CourseVerse[]>([]);
   const [newSiddhis, setNewSiddhis] = useState<string[]>([]);
+  const [dedicatedTo, setDedicatedTo] = useState<string | null>(null);
+  const [dedicateName, setDedicateName] = useState('');
   const soundRef = useRef<Audio.Sound | null>(null);
   const cardRef = useRef<View>(null);
 
-  useEffect(() => { useMasteryStore.getState().load(); useScoreStore.getState().load(); useAchievementsStore.getState().load(); }, []);
+  useEffect(() => {
+    useMasteryStore.getState().load();
+    useScoreStore.getState().load();
+    useAchievementsStore.getState().load();
+    useDedicationStore.getState().load();
+  }, []);
   useEffect(() => () => { soundRef.current?.unloadAsync().catch(() => {}); }, []);
 
   const verse = queue[idx];
@@ -143,6 +152,7 @@ export const SadhanaScreen: React.FC = () => {
         await useStreakStore.getState().load();
         await useStreakStore.getState().recordVisit();
         await useScoreStore.getState().award(0, 5); // diyas for completing today's sādhana
+        track('sadhana_complete', { course: course.id, graded, mastered: masteredNow });
         // Now that streak + score are up to date, see which Siddhis were just earned.
         const newly = useAchievementsStore.getState().evaluate();
         if (newly.length) setNewSiddhis(newly);
@@ -159,9 +169,23 @@ export const SadhanaScreen: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [done]);
 
+  // Pariṇāmanā — dedicate the merit of this practice (kept on-device).
+  const dedicate = async (to: string) => {
+    const name = to.trim();
+    if (!name) return;
+    haptic(Haptics.ImpactFeedbackStyle.Medium);
+    await useDedicationStore.getState().dedicate(name);
+    setDedicatedTo(name);
+    setDedicateName('');
+    track('dedication', { course: course.id });
+    const newly = useAchievementsStore.getState().evaluate();
+    if (newly.length) setNewSiddhis((p) => [...p, ...newly.filter((id) => !p.includes(id))]);
+  };
+
   const reward = justMastered[0];
   const shareReward = async () => {
     haptic(Haptics.ImpactFeedbackStyle.Medium);
+    useScoreStore.getState().recordShare(); // Sevā — carrying the teaching outward
     try {
       const { captureRef } = require('react-native-view-shot');
       if (cardRef.current && (await Sharing.isAvailableAsync())) {
@@ -231,6 +255,49 @@ export const SadhanaScreen: React.FC = () => {
                   </View>
                 );
               })}
+            </View>
+          )}
+
+          {/* Pariṇāmanā — dedicate the merit */}
+          {graded > 0 && (
+            <View style={[styles.dedicateCard, { borderColor: theme.accentSoft }]}>
+              {dedicatedTo ? (
+                <Text style={styles.dedicatedLine}>
+                  🪷  The merit of this practice flows to{' '}
+                  <Text style={{ color: theme.accent, fontFamily: 'Playfair_Bold' }}>{dedicatedTo}</Text>
+                </Text>
+              ) : (
+                <>
+                  <Text style={[styles.dedicateKicker, { color: theme.accent }]}>🪷  PARIṆĀMANĀ</Text>
+                  <Text style={styles.dedicateAsk}>Dedicate this practice to someone?</Text>
+                  <View style={styles.dedicateChips}>
+                    <Pressable style={[styles.chip, { borderColor: theme.accent }]} onPress={() => dedicate('all beings')}>
+                      <Text style={[styles.chipTxt, { color: theme.accent }]}>All beings</Text>
+                    </Pressable>
+                    <Pressable style={[styles.chip, { borderColor: theme.accent }]} onPress={() => dedicate('my family')}>
+                      <Text style={[styles.chipTxt, { color: theme.accent }]}>My family</Text>
+                    </Pressable>
+                  </View>
+                  <View style={styles.dedicateRow}>
+                    <TextInput
+                      style={styles.dedicateInput}
+                      placeholder="…or a name, kept private"
+                      placeholderTextColor="#475569"
+                      value={dedicateName}
+                      onChangeText={setDedicateName}
+                      returnKeyType="done"
+                      onSubmitEditing={() => dedicate(dedicateName)}
+                    />
+                    <Pressable
+                      style={[styles.dedicateGo, { backgroundColor: theme.accent }, !dedicateName.trim() && { opacity: 0.4 }]}
+                      disabled={!dedicateName.trim()}
+                      onPress={() => dedicate(dedicateName)}
+                    >
+                      <Ionicons name="arrow-forward" size={16} color="#0b1220" />
+                    </Pressable>
+                  </View>
+                </>
+              )}
             </View>
           )}
 
@@ -426,6 +493,20 @@ const styles = StyleSheet.create({
   siddhiIcon: { fontSize: 30 },
   siddhiTitle: { color: '#f8fafc', fontSize: 16, fontFamily: 'Playfair_Bold' },
   siddhiDesc: { color: '#94a3b8', fontSize: 12.5, lineHeight: 18, marginTop: 2 },
+  dedicateCard: { width: '100%', borderWidth: 1, borderRadius: 18, padding: 18, backgroundColor: 'rgba(15,23,42,0.5)', marginBottom: 24 },
+  dedicateKicker: { fontSize: 11, letterSpacing: 1.5, fontWeight: '800', marginBottom: 8 },
+  dedicateAsk: { color: '#e2e8f0', fontSize: 15, fontFamily: 'Playfair_Bold', marginBottom: 12 },
+  dedicateChips: { flexDirection: 'row', gap: 8, marginBottom: 12 },
+  chip: { borderWidth: 1, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8 },
+  chipTxt: { fontSize: 13, fontWeight: '700' },
+  dedicateRow: { flexDirection: 'row', gap: 8, alignItems: 'center' },
+  dedicateInput: {
+    flex: 1, borderWidth: 1, borderColor: 'rgba(148,163,184,0.2)', borderRadius: 12,
+    paddingHorizontal: 14, paddingVertical: 10, color: '#f1f5f9', fontSize: 14,
+    backgroundColor: 'rgba(2,6,23,0.5)',
+  },
+  dedicateGo: { width: 40, height: 40, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
+  dedicatedLine: { color: '#e2e8f0', fontSize: 15, lineHeight: 23, textAlign: 'center' },
   rewardWrap: { alignItems: 'center', marginBottom: 26 },
   rewardLine: { color: '#e2e8f0', fontSize: 15, fontWeight: '600', marginBottom: 14, textAlign: 'center' },
   cardScale: { borderRadius: 18, overflow: 'hidden', marginBottom: 16 },

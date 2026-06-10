@@ -15,7 +15,7 @@ import * as Updates from 'expo-updates';
  * Bump this on every OTA push so the "You" tab footer shows a value that visibly
  * changes — the quickest way to confirm a device is running the latest bundle.
  */
-const BUNDLE_TAG = 'W1.0 · Siddhis + streak insurance';
+const BUNDLE_TAG = 'W2.0 · Sahāra + Pariṇāmanā + Pañchāṅg';
 
 /** A human-readable stamp of which JS bundle is actually running on this device. */
 const bundleStamp = (): string => {

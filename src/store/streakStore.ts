@@ -24,12 +24,16 @@ type StreakState = {
   freezes: number;
   /** True for one render after a freeze auto-saved the streak (so the UI can say so). */
   savedByFreeze: boolean;
+  /** Distinct deity ids the devotee has received darshan of (the Breadth collection). */
+  seenDeities: string[];
   loaded: boolean;
   load: () => Promise<void>;
   /** Call on Home mount / app foreground. Returns the (possibly updated) streak. */
   recordVisit: () => Promise<number>;
   /** Add streak-freezes (capped). Used after a Diya purchase. */
   addFreeze: (n?: number) => Promise<void>;
+  /** Record a darshan of a deity (unique). Feeds the Breadth Siddhis. */
+  recordDeity: (id: string) => Promise<void>;
 };
 
 const localDay = (d: Date) => {
@@ -50,8 +54,18 @@ const daysBetween = (a: string, b: string) => {
 /** Persist the durable fields (everything except transient UI flags). */
 const persist = (s: {
   currentStreak: number; longestStreak: number; lastVisit: string | null;
-  totalDarshans: number; freezes: number;
+  totalDarshans: number; freezes: number; seenDeities: string[];
 }) => AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(s)).catch(() => {});
+
+/** Read the current durable fields off state for a persist() call. */
+const durable = (s: StreakState) => ({
+  currentStreak: s.currentStreak,
+  longestStreak: s.longestStreak,
+  lastVisit: s.lastVisit,
+  totalDarshans: s.totalDarshans,
+  freezes: s.freezes,
+  seenDeities: s.seenDeities,
+});
 
 export const useStreakStore = create<StreakState>((set, get) => ({
   currentStreak: 0,
@@ -60,6 +74,7 @@ export const useStreakStore = create<StreakState>((set, get) => ({
   totalDarshans: 0,
   freezes: 1, // a welcome guard, so the feature is discovered before the first miss
   savedByFreeze: false,
+  seenDeities: [],
   loaded: false,
 
   load: async () => {
@@ -110,6 +125,7 @@ export const useStreakStore = create<StreakState>((set, get) => ({
       lastVisit: today,
       totalDarshans: totalDarshans + 1,
       freezes: heldFreezes,
+      seenDeities: get().seenDeities,
     };
     set({ ...payload, savedByFreeze: saved });
     await persist(payload);
@@ -120,12 +136,15 @@ export const useStreakStore = create<StreakState>((set, get) => ({
     const s = get();
     const freezes = Math.min(FREEZE_CAP, s.freezes + n);
     set({ freezes });
-    await persist({
-      currentStreak: s.currentStreak,
-      longestStreak: s.longestStreak,
-      lastVisit: s.lastVisit,
-      totalDarshans: s.totalDarshans,
-      freezes,
-    });
+    await persist({ ...durable(get()), freezes });
+  },
+
+  recordDeity: async (id) => {
+    if (!id) return;
+    const s = get();
+    if (s.seenDeities.includes(id)) return;
+    const seenDeities = [...s.seenDeities, id];
+    set({ seenDeities });
+    await persist({ ...durable(get()), seenDeities });
   },
 }));

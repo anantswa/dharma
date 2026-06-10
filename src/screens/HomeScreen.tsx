@@ -77,9 +77,18 @@ export const HomeScreen: React.FC = () => {
 
   // Daily streak ("Prasad") — the habit engine.
   const currentStreak = useStreakStore((s) => s.currentStreak);
+  const streakLoaded = useStreakStore((s) => s.loaded);
   useEffect(() => {
     useStreakStore.getState().load().then(() => useStreakStore.getState().recordVisit());
   }, []);
+
+  // Breadth — record the darshan of each deity the devotee sees (unique). Gated on the
+  // store being hydrated so we don't append before load() restores the saved set.
+  useEffect(() => {
+    if (!streakLoaded) return;
+    const d = deities[activeIndex];
+    if (d) useStreakStore.getState().recordDeity(d.id);
+  }, [activeIndex, deities, streakLoaded]);
 
   // Mastery nudge — turns the daily darshan into the learning habit.
   const masteryRecords = useMasteryStore((s) => s.records);

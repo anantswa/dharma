@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Image as ExpoImage } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { COURSE_LIST, getCourse } from '../data/courses';
 import { getFaithTheme, todaysDarshan } from '../data/faiths';
@@ -11,6 +11,9 @@ import { useStreakStore } from '../store/streakStore';
 import { rankFor, useScoreStore } from '../store/scoreStore';
 import { useAchievementsStore } from '../store/achievementsStore';
 import { usePreferencesStore } from '../store/preferencesStore';
+import { useDataStore } from '../store/dataStore';
+import { todaysPanchang, TodayPanchang } from '../services/panchang';
+import { track } from '../services/analytics';
 
 /**
  * "Today" — the habit-first launchpad. Opens to your streak + one clear next action
@@ -25,6 +28,8 @@ export const TodayScreen: React.FC = () => {
   const streak = useStreakStore((s) => s.currentStreak);
   const jnana = useScoreStore((s) => s.jnana);
   const diyas = useScoreStore((s) => s.diyas);
+  const festivals = useDataStore((s) => s.festivals);
+  const [panchang, setPanchang] = useState<TodayPanchang | null>(null);
 
   useFocusEffect(useCallback(() => {
     useMasteryStore.getState().load();
@@ -32,6 +37,18 @@ export const TodayScreen: React.FC = () => {
     useStreakStore.getState().load();
     useAchievementsStore.getState().load().then(() => useAchievementsStore.getState().evaluate());
   }, []));
+
+  useEffect(() => {
+    track('app_open');
+    todaysPanchang().then(setPanchang).catch(() => {});
+  }, []);
+
+  // Festival awareness — does today carry a festival? (one line, tappable)
+  const todaysFestival = useMemo(() => {
+    const today = new Date();
+    const key = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    return festivals.find((f) => f.date === key && f.faith !== 'Secular') ?? null;
+  }, [festivals]);
 
   // Per-course progress + due counts.
   const courses = useMemo(() => COURSE_LIST.map((c) => {
@@ -60,6 +77,22 @@ export const TodayScreen: React.FC = () => {
         <Text style={[styles.greeting, { color: theme.accent }]}>{theme.greeting}</Text>
         <Text style={styles.title}>Today</Text>
 
+        {/* pañchāṅg line — tithi from the verified drik engine; festival when one falls today */}
+        {(todaysFestival || panchang) && (
+          <Pressable
+            disabled={!todaysFestival}
+            onPress={() => todaysFestival && navigation.navigate('FestivalDetail', { festival: todaysFestival })}
+          >
+            <Text style={styles.panchang}>
+              {todaysFestival ? (
+                <Text style={{ color: theme.accent, fontWeight: '700' }}>🪔 Today is {todaysFestival.name}</Text>
+              ) : (
+                <>🌙 {panchang!.tithi} · {panchang!.masa}</>
+              )}
+            </Text>
+          </Pressable>
+        )}
+
         {/* status row — tap to learn how scoring works */}
         <Pressable onPress={() => navigation.navigate('PathInfo')}>
           <View style={styles.statusRow}>
@@ -81,6 +114,19 @@ export const TodayScreen: React.FC = () => {
             </Text>
           </View>
           <Ionicons name="arrow-forward" size={20} color="#0b1220" />
+        </Pressable>
+
+        {/* Sahāra — the doorway for the moment of need */}
+        <Pressable
+          style={({ pressed }) => [styles.sahara, pressed && { opacity: 0.85 }]}
+          onPress={() => navigation.navigate('Sahara')}
+        >
+          <Text style={styles.saharaLotus}>🪷</Text>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.saharaTitle}>What brings you today?</Text>
+            <Text style={styles.saharaSub}>A mantra, a breath, a verse — for this moment</Text>
+          </View>
+          <Ionicons name="chevron-forward" size={18} color="#64748b" />
         </Pressable>
 
         {/* darshan card → temple (today's weekday deity; opens temple to the same one) */}
@@ -149,6 +195,16 @@ const styles = StyleSheet.create({
   scroll: { paddingHorizontal: 18, paddingTop: 64, paddingBottom: 110 },
   greeting: { fontSize: 14, fontStyle: 'italic', marginBottom: 2 },
   title: { fontSize: 34, color: '#f8fafc', fontFamily: 'Playfair_Bold', marginBottom: 16 },
+  panchang: { color: '#94a3b8', fontSize: 13, marginTop: -12, marginBottom: 16 },
+  sahara: {
+    flexDirection: 'row', alignItems: 'center', gap: 12,
+    borderWidth: 1, borderColor: 'rgba(148,163,184,0.16)',
+    backgroundColor: 'rgba(15,23,42,0.5)', borderRadius: 16,
+    paddingHorizontal: 16, paddingVertical: 13, marginBottom: 16,
+  },
+  saharaLotus: { fontSize: 22 },
+  saharaTitle: { color: '#f1f5f9', fontSize: 15, fontFamily: 'Playfair_Bold' },
+  saharaSub: { color: '#94a3b8', fontSize: 12, marginTop: 2 },
   statusRow: { flexDirection: 'row', gap: 12, marginBottom: 8 },
   howLink: { color: '#64748b', fontSize: 12, textAlign: 'center', marginBottom: 18 },
   stat: { flex: 1, alignItems: 'center', backgroundColor: 'rgba(15,23,42,0.55)', borderRadius: 14, borderWidth: 1, borderColor: 'rgba(148,163,184,0.14)', paddingVertical: 14 },

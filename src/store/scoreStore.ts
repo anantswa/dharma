@@ -14,14 +14,18 @@ type ScoreState = {
   diyas: number;
   correct: number;
   attempts: number;
+  /** Times the devotee has shared a verse/milestone outward (the Sevā axis). */
+  shares: number;
   loaded: boolean;
   load: () => Promise<void>;
   award: (jnana: number, diyas: number, gotCorrect?: boolean) => Promise<void>;
   /** Spend diyas (e.g. to light a lamp / protect a streak). Returns false if not enough. */
   spend: (diyas: number) => Promise<boolean>;
+  /** Record that the devotee shared something outward. */
+  recordShare: () => Promise<void>;
 };
 
-const persist = (s: { jnana: number; diyas: number; correct: number; attempts: number }) =>
+const persist = (s: { jnana: number; diyas: number; correct: number; attempts: number; shares: number }) =>
   AsyncStorage.setItem(KEY, JSON.stringify(s)).catch(() => {});
 
 export const useScoreStore = create<ScoreState>((set, get) => ({
@@ -29,6 +33,7 @@ export const useScoreStore = create<ScoreState>((set, get) => ({
   diyas: 0,
   correct: 0,
   attempts: 0,
+  shares: 0,
   loaded: false,
   load: async () => {
     try {
@@ -44,6 +49,7 @@ export const useScoreStore = create<ScoreState>((set, get) => ({
       diyas: s.diyas + diyas,
       correct: s.correct + (gotCorrect ? 1 : 0),
       attempts: s.attempts + (gotCorrect === undefined ? 0 : 1),
+      shares: s.shares,
     };
     set(next);
     await persist(next);
@@ -51,10 +57,16 @@ export const useScoreStore = create<ScoreState>((set, get) => ({
   spend: async (diyas) => {
     const s = get();
     if (s.diyas < diyas) return false;
-    const next = { jnana: s.jnana, diyas: s.diyas - diyas, correct: s.correct, attempts: s.attempts };
+    const next = { jnana: s.jnana, diyas: s.diyas - diyas, correct: s.correct, attempts: s.attempts, shares: s.shares };
     set(next);
     await persist(next);
     return true;
+  },
+  recordShare: async () => {
+    const s = get();
+    const next = { jnana: s.jnana, diyas: s.diyas, correct: s.correct, attempts: s.attempts, shares: s.shares + 1 };
+    set(next);
+    await persist(next);
   },
 }));
 
