@@ -87,7 +87,7 @@ def main():
         print(f'  + {name}')
     cur.close(); conn.close()
 
-    payload = json.dumps({'generated_at': '2026-06-04', 'books': books}, ensure_ascii=False).encode()
+    payload = json.dumps({'generated_at': datetime.date.today().isoformat(), 'books': books}, ensure_ascii=False).encode()
     r = requests.post(f'{SUPA}/storage/v1/object/{BUCKET}/{PATH}',
                       headers={**H, 'Content-Type': 'application/json', 'x-upsert': 'true'},
                       data=payload, timeout=60)

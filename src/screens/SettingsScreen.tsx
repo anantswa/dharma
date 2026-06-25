@@ -15,7 +15,7 @@ import * as Updates from 'expo-updates';
  * Bump this on every OTA push so the "You" tab footer shows a value that visibly
  * changes — the quickest way to confirm a device is running the latest bundle.
  */
-const BUNDLE_TAG = 'W2.0 · Sahāra + Pariṇāmanā + Pañchāṅg';
+const BUNDLE_TAG = 'W2.2 · softened calendar disclaimer';
 
 /** A human-readable stamp of which JS bundle is actually running on this device. */
 const bundleStamp = (): string => {
@@ -360,6 +360,23 @@ export const SettingsScreen: React.FC = () => {
         </TouchableOpacity>
       </View>
 
+      {/* Feedback */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Get in Touch</Text>
+        <TouchableOpacity
+          style={styles.linkRow}
+          onPress={() => {
+            const { Linking } = require('react-native');
+            const subject = encodeURIComponent('Dharma App — Feedback');
+            const body = encodeURIComponent('\n\n— Sent from the Dharma app');
+            Linking.openURL(`mailto:contact@dharmaweave.com?subject=${subject}&body=${body}`);
+          }}
+        >
+          <Text style={styles.linkText}>✉️  Send us feedback</Text>
+          <Text style={styles.feedbackSub}>Tell us what you love, or what we can improve — contact@dharmaweave.com</Text>
+        </TouchableOpacity>
+      </View>
+
       <Text style={styles.footerNote}>v1.0.0 — Dharma by DharmaWeave</Text>
       <Text style={styles.buildNote}>{BUNDLE_TAG}</Text>
       <Text style={styles.buildNote}>{bundleStamp()}</Text>
@@ -452,6 +469,12 @@ const styles = StyleSheet.create({
   linkText: {
     fontSize: 15,
     color: '#fbbf24',
+  },
+  feedbackSub: {
+    fontSize: 12.5,
+    color: '#94a3b8',
+    marginTop: 4,
+    lineHeight: 18,
   },
   footerNote: {
     marginTop: 32,

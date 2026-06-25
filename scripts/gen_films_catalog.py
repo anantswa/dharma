@@ -6,7 +6,7 @@ and writes a public JSON to Storage. The app fetches it and deep-links to YouTub
 (we keep the views/ad revenue — no in-app streaming). New film → re-run / cron → appears.
 """
 from __future__ import annotations
-import os, re, json
+import os, re, json, datetime
 import requests
 from dotenv import load_dotenv
 
@@ -72,7 +72,7 @@ def main():
                 'duration': secs, 'published': sn.get('publishedAt', '')[:10],
             })
     films.sort(key=lambda f: f['published'], reverse=True)
-    payload = json.dumps({'generated_at': '2026-06-04', 'films': films}, ensure_ascii=False).encode()
+    payload = json.dumps({'generated_at': datetime.date.today().isoformat(), 'films': films}, ensure_ascii=False).encode()
     r = requests.post(f'{SUPA}/storage/v1/object/{BUCKET}/{PATH}',
                       headers={**H, 'Content-Type': 'application/json', 'x-upsert': 'true'},
                       data=payload, timeout=60)

@@ -99,13 +99,23 @@ export const CalendarScreen: React.FC = () => {
           </TouchableOpacity>
         )}
         
+        ListHeaderComponent={
+          <View style={styles.disclaimer}>
+            <Text style={styles.disclaimerText}>
+              <Text style={{ fontWeight: '800' }}>Please note:</Text> Dharma is a devotional learning app,
+              not a panchang. Festival and vrat dates can vary by region, tradition and city — please treat
+              these as a general guide and confirm the exact date for your location with your local panchang
+              or temple before observing a fast or vrat.
+            </Text>
+          </View>
+        }
         ListEmptyComponent={
           <Text style={styles.emptyText}>No events found for your active traditions.</Text>
         }
         ListFooterComponent={
           <Text style={styles.footer}>
-            Dates follow standard Drik panchang calculations; regional traditions may observe a day
-            earlier or later. For precise vrat muhurat, consult your local panchang.
+            Dates are indicative and may vary by region and tradition. For exact vrat timings, please
+            consult your local panchang.
           </Text>
         }
       />
@@ -119,6 +129,11 @@ const styles = StyleSheet.create({
   title: { fontSize: 32, color: '#fbbf24', fontFamily: 'Playfair_Bold' },
   subtitle: { fontSize: 16, color: '#94a3b8', marginTop: 4, fontFamily: 'System' },
   footer: { color: '#64748b', fontSize: 12, fontStyle: 'italic', textAlign: 'center', lineHeight: 18, paddingHorizontal: 10, paddingTop: 20, paddingBottom: 12 },
+  disclaimer: {
+    borderWidth: 1, borderColor: 'rgba(251,191,36,0.28)', backgroundColor: 'rgba(251,191,36,0.07)',
+    borderRadius: 14, padding: 14, marginBottom: 18, marginTop: 2,
+  },
+  disclaimerText: { color: '#cbd5e1', fontSize: 12.5, lineHeight: 19 },
   listContent: { paddingHorizontal: 20, paddingBottom: 100 },
   
   monthHeader: { flexDirection: 'row', alignItems: 'center', marginTop: 24, marginBottom: 12 },
