@@ -4,7 +4,7 @@ import { Image as ExpoImage } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Haptics from 'expo-haptics';
 import React, { useEffect, useState } from 'react';
-import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { getFaithTheme } from '../data/faiths';
 
 const FILMS_URL = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/films/catalog.json';
@@ -25,9 +25,10 @@ export const FilmsScreen: React.FC = () => {
     return () => { alive = false; };
   }, []);
 
-  const open = (url: string) => {
+  // Play in-app (embedded player) — never bounce the user out to a browser.
+  const open = (f: Film) => {
     try { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); } catch {}
-    Linking.openURL(url).catch(() => {});
+    navigation.navigate('FilmPlayer', { id: f.id, title: f.title, channel: f.channel });
   };
 
   return (
@@ -39,10 +40,10 @@ export const FilmsScreen: React.FC = () => {
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         <Text style={[styles.kicker, { color: theme.accent }]}>FILMS</Text>
         <Text style={styles.title}>Watch</Text>
-        <Text style={styles.sub}>{films.length} cinematic kathas · plays on YouTube</Text>
+        <Text style={styles.sub}>{films.length} cinematic kathas</Text>
 
         {films.map((f) => (
-          <Pressable key={f.id} style={styles.card} onPress={() => open(f.url)}>
+          <Pressable key={f.id} style={styles.card} onPress={() => open(f)}>
             <View style={styles.thumbWrap}>
               {!!f.thumb && <ExpoImage source={{ uri: f.thumb }} style={StyleSheet.absoluteFill as any} contentFit="cover" cachePolicy="memory-disk" />}
               <View style={styles.playOverlay}><Ionicons name="play" size={26} color="#fff" /></View>

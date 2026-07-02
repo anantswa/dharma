@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
     Modal,
+    Platform,
     Pressable,
     ScrollView,
     StyleSheet,
@@ -15,7 +16,7 @@ import * as Updates from 'expo-updates';
  * Bump this on every OTA push so the "You" tab footer shows a value that visibly
  * changes — the quickest way to confirm a device is running the latest bundle.
  */
-const BUNDLE_TAG = 'W2.2 · softened calendar disclaimer';
+const BUNDLE_TAG = 'W3.0 · in-app film player · iOS resubmission build';
 
 /** A human-readable stamp of which JS bundle is actually running on this device. */
 const bundleStamp = (): string => {
@@ -337,7 +338,8 @@ export const SettingsScreen: React.FC = () => {
         ))}
       </View>
 
-      {/* DharmaWeave Products */}
+      {/* DharmaWeave Products — external store links, hidden on iOS (App Review 4.2.2 / 3.1.1) */}
+      {Platform.OS !== 'ios' && (
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>DharmaWeave</Text>
         <TouchableOpacity
@@ -359,6 +361,7 @@ export const SettingsScreen: React.FC = () => {
           <Text style={styles.linkText}>DharmaWeave Chants on Spotify</Text>
         </TouchableOpacity>
       </View>
+      )}
 
       {/* Feedback */}
       <View style={styles.section}>

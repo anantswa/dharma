@@ -2,7 +2,7 @@
   "expo": {
     "name": "Dharma — Daily Wisdom",
     "slug": "dharma",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A daily spiritual companion across Hindu, Sikh, Buddhist, Jain, and Zen traditions. Temple darshan, sacred calendar, wisdom library, and learning modules — all offline-first.",
     "orientation": "portrait",
     "icon": "./assets/images/icon1.png",
@@ -10,15 +10,13 @@
     "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "com.taraventures.dharma",
       "buildNumber": "1",
       "infoPlist": {
+        "CFBundleDisplayName": "Dharma",
         "NSCalendarsUsageDescription": "Dharma uses your calendar to remind you of sacred festivals.",
         "UIBackgroundModes": [
-          "audio",
-          "audio",
-          "audio",
           "audio"
         ],
         "ITSAppUsesNonExemptEncryption": false

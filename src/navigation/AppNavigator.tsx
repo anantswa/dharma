@@ -8,6 +8,7 @@ import { CalendarScreen } from '../screens/CalendarScreen';
 import { ArticlesScreen } from '../screens/ArticlesScreen';
 import { ArticleReaderScreen } from '../screens/ArticleReaderScreen';
 import { FilmsScreen } from '../screens/FilmsScreen';
+import { FilmPlayerScreen } from '../screens/FilmPlayerScreen';
 import { ComicReaderScreen } from '../screens/ComicReaderScreen';
 import { PathInfoScreen } from '../screens/PathInfoScreen';
 import { AchievementsScreen } from '../screens/AchievementsScreen';
@@ -102,7 +103,8 @@ const MainTabs: React.FC = () => {
       <Tab.Screen name="Home" component={TodayScreen} />
       <Tab.Screen name="Learn" component={LearnScreen} />
       <Tab.Screen name="Calendar" component={CalendarScreen} />
-      <Tab.Screen name="Store" component={ShopScreen} />
+      {/* Shop links out to external stores — hidden on iOS (App Review 4.2.2 / 3.1.1). */}
+      {Platform.OS !== 'ios' && <Tab.Screen name="Store" component={ShopScreen} />}
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
@@ -128,6 +130,7 @@ const AppNavigator: React.FC = () => {
       <Stack.Screen name="Articles" component={ArticlesScreen} />
       <Stack.Screen name="ArticleReader" component={ArticleReaderScreen} />
       <Stack.Screen name="Films" component={FilmsScreen} />
+      <Stack.Screen name="FilmPlayer" component={FilmPlayerScreen} />
       <Stack.Screen name="ComicReader" component={ComicReaderScreen} />
       <Stack.Screen name="PathInfo" component={PathInfoScreen} />
       <Stack.Screen name="Achievements" component={AchievementsScreen} />
