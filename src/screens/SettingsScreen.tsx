@@ -16,7 +16,7 @@ import * as Updates from 'expo-updates';
  * Bump this on every OTA push so the "You" tab footer shows a value that visibly
  * changes — the quickest way to confirm a device is running the latest bundle.
  */
-const BUNDLE_TAG = 'W3.0 · in-app film player · iOS resubmission build';
+const BUNDLE_TAG = 'W3.1 · Varaha katha + wallpapers + japa mala';
 
 /** A human-readable stamp of which JS bundle is actually running on this device. */
 const bundleStamp = (): string => {

@@ -14,6 +14,9 @@ import { PathInfoScreen } from '../screens/PathInfoScreen';
 import { AchievementsScreen } from '../screens/AchievementsScreen';
 import { SaharaScreen } from '../screens/SaharaScreen';
 import { SaharaDetailScreen } from '../screens/SaharaDetailScreen';
+import { JapaScreen } from '../screens/JapaScreen';
+import { KathaReaderScreen } from '../screens/KathaReaderScreen';
+import { WallpapersScreen } from '../screens/WallpapersScreen';
 import { ChalisaPathScreen } from '../screens/ChalisaPathScreen';
 import { FestivalDetailScreen } from '../screens/FestivalDetailScreen';
 import { GitaAudioScreen } from '../screens/GitaAudioScreen';
@@ -136,6 +139,9 @@ const AppNavigator: React.FC = () => {
       <Stack.Screen name="Achievements" component={AchievementsScreen} />
       <Stack.Screen name="Sahara" component={SaharaScreen} />
       <Stack.Screen name="SaharaDetail" component={SaharaDetailScreen} />
+      <Stack.Screen name="Japa" component={JapaScreen} />
+      <Stack.Screen name="KathaReader" component={KathaReaderScreen} />
+      <Stack.Screen name="Wallpapers" component={WallpapersScreen} />
     </Stack.Navigator>
   );
 };

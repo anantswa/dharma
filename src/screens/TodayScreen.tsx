@@ -3,7 +3,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Image as ExpoImage } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { COURSE_LIST, getCourse } from '../data/courses';
 import { getFaithTheme, todaysDarshan } from '../data/faiths';
 import { buildTodayQueue, masteredCount, useMasteryStore } from '../store/masteryStore';
@@ -147,7 +147,11 @@ export const TodayScreen: React.FC = () => {
         {/* explore */}
         <Text style={[styles.section, { color: theme.accent }]}>EXPLORE</Text>
         {([
-          { icon: 'film-outline', title: 'Films', meta: 'Cinematic kathas to watch', go: 'Films', params: undefined },
+          { icon: 'flower-outline', title: 'Varaha — free graphic novel', meta: 'The boar who lifted the world · 52 pages', go: 'KathaReader', params: { kathaId: 'varaha' } },
+          { icon: 'ellipse-outline', title: 'Japa mala', meta: 'Count 108 — a practice of stillness', go: 'Japa', params: undefined },
+          { icon: 'phone-portrait-outline', title: 'Darshan wallpapers', meta: 'Free sacred art for your lock screen', go: 'Wallpapers', params: undefined },
+          // Films deep-link to video content — kept off iOS v1 per App Review; Android keeps them.
+          ...(Platform.OS === 'ios' ? [] : [{ icon: 'film-outline', title: 'Films', meta: 'Cinematic kathas to watch', go: 'Films', params: undefined } as const]),
           { icon: 'images-outline', title: 'Illustrated comics', meta: 'Read the graphic novels', go: 'ComicReader', params: { comicId: 'hanuman-chalisa-illustrated' } },
           { icon: 'book-outline', title: 'Reflections', meta: 'Essays on the stories & their meaning', go: 'Articles', params: undefined },
           { icon: 'ribbon-outline', title: 'Siddhis', meta: 'Milestones you’ve attained on the path', go: 'Achievements', params: undefined },
