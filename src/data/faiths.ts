@@ -82,15 +82,13 @@ export function deitiesForFaith(faith?: string | null): Deity[] {
 }
 
 /**
- * The unified darshan carousel — Hindu figures first, Buddhist at the end.
- * The app assumes a Hindu-primary experience (no faith picker), but keeps the
- * Buddhist deities in, just not front-loaded.
+ * DESIGN LAW (2026-07-28): darshan surfaces are single-tradition, always.
+ * A devotee never meets another tradition's deities mid-darshan — cross-tradition
+ * discovery is an explicit opt-in elsewhere, never interleaved here.
+ * The temple carousel for a user = deitiesForFaith(primaryTradition).
  */
-export function darshanDeities(): Deity[] {
-  const hindu = deitiesForFaith('Hindu');
-  const buddhist = deitiesForFaith('Buddhist');
-  const seen = new Set(hindu.map((d) => d.id));
-  return [...hindu, ...buddhist.filter((d) => !seen.has(d.id))];
+export function darshanDeities(faith?: string | null): Deity[] {
+  return deitiesForFaith(faith ?? 'Hindu');
 }
 
 // The traditional Hindu weekday (vāra) deity — so "today's darshan" is meaningful,
@@ -105,9 +103,21 @@ const WEEKDAY_HINDU: { id: string; reason: string }[] = [
   { id: '3', reason: "Saturday · Hanuman's day" },    // hanuman
 ];
 
-/** Today's darshan figure + why. Index is into darshanDeities() (the temple's list). */
-export function todaysDarshan(_faith?: string | null): { deity: Deity; index: number; reason: string } {
-  const list = darshanDeities();
+// Buddhist practice has no vāra deities — rotate the figures daily so each day
+// still brings a distinct darshan, with a dhamma-flavored reason line.
+const BUDDHIST_REASONS = ["Today's darshan", 'Sit with the Buddha', 'The path of stillness'];
+
+/** Today's darshan figure + why. Index is into darshanDeities(faith) (the temple's list). */
+export function todaysDarshan(faith?: string | null): { deity: Deity; index: number; reason: string } {
+  const list = darshanDeities(faith);
+  const theme = getFaithTheme(faith);
+  if (theme.key === 'Buddhist') {
+    // local-midnight day boundary (matching the Hindu weekday behavior), not UTC
+    const now = new Date();
+    const day = Math.floor((now.getTime() - now.getTimezoneOffset() * 60000) / 86400000);
+    const idx = day % list.length;
+    return { deity: list[idx], index: idx, reason: BUDDHIST_REASONS[day % BUDDHIST_REASONS.length] };
+  }
   const pick = WEEKDAY_HINDU[new Date().getDay()];
   const idx = list.findIndex((d) => d.id === pick.id);
   if (idx >= 0) return { deity: list[idx], index: idx, reason: pick.reason };

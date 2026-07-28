@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import { BlurView } from 'expo-blur';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { SectionList, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { isTraditionEnabled, usePreferencesStore } from '../store/preferencesStore';
+import { usePreferencesStore } from '../store/preferencesStore';
 import { useDataStore } from '../store/dataStore';
+import { getFaithTheme } from '../data/faiths';
 import type { FestivalEntry } from '../types/supabase';
 
 type CalendarEvent = FestivalEntry;
@@ -15,11 +16,14 @@ type SectionData = {
 
 export const CalendarScreen: React.FC = () => {
   const navigation = useNavigation<any>();
-  const enabledTraditions = usePreferencesStore((s) => s.enabledTraditions);
+  const primary = usePreferencesStore((s) => s.primaryTradition);
   const festivals = useDataStore((s) => s.festivals);
+  // tradition-pure by default: your own tradition's festivals; the other is explicit opt-in
+  const [showAll, setShowAll] = useState(false);
+  const theme = getFaithTheme(primary);
 
   const sections = useMemo(() => {
-    if (!enabledTraditions || !festivals.length) return [];
+    if (!festivals.length) return [];
 
     // Only today and upcoming — no past dates.
     const todayStart = new Date();
@@ -28,7 +32,8 @@ export const CalendarScreen: React.FC = () => {
     const filtered = festivals.filter(e => {
       if (new Date(e.date) < todayStart) return false;
       if (e.faith === 'Secular') return true;
-      return isTraditionEnabled(e.faith, enabledTraditions);
+      if (showAll) return true;
+      return theme.traditions.includes(e.faith);
     });
 
     // 3. Group by Month (e.g. "November 2025")
@@ -52,14 +57,19 @@ export const CalendarScreen: React.FC = () => {
         data: grouped[key].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
       }));
 
-  }, [enabledTraditions, festivals]);
+  }, [festivals, showAll, theme.traditions]);
 
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
       <View style={styles.header}>
         <Text style={styles.title}>Sacred Calendar</Text>
-        <Text style={styles.subtitle}>Click a Festival to Learn significance.</Text>
+        <Text style={styles.subtitle}>Tap a festival to learn its significance</Text>
+        <TouchableOpacity onPress={() => setShowAll((v) => !v)} style={{ marginTop: 8, alignSelf: 'flex-start' }}>
+          <Text style={{ color: theme.accent, fontSize: 12.5, fontWeight: '700' }}>
+            {showAll ? '✓ Showing all traditions — tap for yours only' : 'Show all traditions'}
+          </Text>
+        </TouchableOpacity>
       </View>
 
       <SectionList
@@ -83,7 +93,7 @@ export const CalendarScreen: React.FC = () => {
           >
             <BlurView intensity={30} tint="dark" style={styles.card}>
               <View style={styles.dateBox}>
-                <Text style={styles.dayText}>
+                <Text style={[styles.dayText, { color: theme.accent }]}>
                   {new Date(item.date).getDate()}
                 </Text>
                 <Text style={styles.weekdayText}>
@@ -126,7 +136,7 @@ export const CalendarScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#020617' },
   header: { paddingTop: 60, paddingHorizontal: 20, marginBottom: 10 },
-  title: { fontSize: 32, color: '#fbbf24', fontFamily: 'Playfair_Bold' },
+  title: { fontSize: 32, color: '#f8fafc', fontFamily: 'Playfair_Bold' },
   subtitle: { fontSize: 16, color: '#94a3b8', marginTop: 4, fontFamily: 'System' },
   footer: { color: '#64748b', fontSize: 12, fontStyle: 'italic', textAlign: 'center', lineHeight: 18, paddingHorizontal: 10, paddingTop: 20, paddingBottom: 12 },
   disclaimer: {

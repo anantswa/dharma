@@ -15,6 +15,11 @@ type PreferencesState = {
   resetTraditions: () => void;
   
   hasCompletedOnboarding: boolean;
+  /** True once the user has explicitly chosen their path (first-launch chooser). */
+  hasChosenFaith: boolean;
+  chooseFaith: (faith: TraditionKey) => void;
+  /** Close the chooser WITHOUT touching primaryTradition (Skip must never rewrite an existing choice). */
+  dismissChooser: () => void;
   primaryTradition?: TraditionKey;
   remindersEnabled: boolean;
   reminderTime: string;
@@ -28,8 +33,11 @@ type PreferencesState = {
   // Voice + language preferences
   meaningLang: 'hi' | 'en';
   narrator: 'kuber' | 'shardul';
+  /** Auto-play a verse's narration when its card appears in Sādhana. */
+  autoPlay: boolean;
   setMeaningLang: (l: 'hi' | 'en') => void;
   setNarrator: (n: 'kuber' | 'shardul') => void;
+  setAutoPlay: (v: boolean) => void;
 };
 
 const DEFAULT_TRADITIONS: Record<TraditionKey, boolean> = {
@@ -53,12 +61,23 @@ export const usePreferencesStore = create<PreferencesState>()(
       // No faith picker at launch — assume a Hindu-primary experience with
       // Buddhist content included (shown toward the end of the darshan).
       hasCompletedOnboarding: true,
+      // Faith is chosen explicitly on first launch (FaithChooser); Hindu is only
+      // the pre-choice render default, never a silent assumption.
+      hasChosenFaith: false,
+      chooseFaith: (faith) =>
+        set((state) => ({
+          hasChosenFaith: true,
+          primaryTradition: faith,
+          enabledTraditions: { ...state.enabledTraditions, [faith]: true },
+        })),
+      dismissChooser: () => set({ hasChosenFaith: true }),
       primaryTradition: 'Hindu',
       remindersEnabled: false,
       reminderTime: '07:00', // Default 7:00 AM
       setOnboarding: (data) =>
         set({
           hasCompletedOnboarding: true,
+          hasChosenFaith: true, // an explicit Settings choice counts as choosing
           primaryTradition: data.primaryTradition,
           remindersEnabled: data.remindersEnabled,
         }),
@@ -67,8 +86,10 @@ export const usePreferencesStore = create<PreferencesState>()(
 
       meaningLang: 'hi',
       narrator: 'shardul', // default voice = Shardul → "Nachiketa" (young seeker)
+      autoPlay: true,
       setMeaningLang: (l) => set({ meaningLang: l }),
       setNarrator: (n) => set({ narrator: n }),
+      setAutoPlay: (v) => set({ autoPlay: v }),
     }),
     {
       name: 'dharma-preferences',

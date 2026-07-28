@@ -11,7 +11,17 @@ type State = 'idle' | 'recording' | 'recorded';
  * aloud, then play it back to self-check against Kuber. Pure client (expo-av) — works
  * in Expo Go today. Pronunciation *scoring* is the planned server fast-follow.
  */
-export const ReciteRecorder: React.FC<{ accent: string }> = ({ accent }) => {
+type Props = {
+  accent: string;
+  /** Idle-state button copy (defaults to "Recite it aloud"). */
+  label?: string;
+  /** Fired when recording begins — lets the host stop any playing narration. */
+  onStart?: () => void;
+  /** Fired once a recording has been captured (honor-system gate for promotions). */
+  onRecorded?: () => void;
+};
+
+export const ReciteRecorder: React.FC<Props> = ({ accent, label, onStart, onRecorded }) => {
   const [state, setState] = useState<State>('idle');
   const recRef = useRef<Audio.Recording | null>(null);
   const uriRef = useRef<string | null>(null);
@@ -24,6 +34,7 @@ export const ReciteRecorder: React.FC<{ accent: string }> = ({ accent }) => {
 
   const start = async () => {
     try { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium); } catch {}
+    onStart?.(); // silence any narration before the mic opens
     try {
       const perm = await Audio.requestPermissionsAsync();
       if (!perm.granted) return;
@@ -43,6 +54,7 @@ export const ReciteRecorder: React.FC<{ accent: string }> = ({ accent }) => {
       uriRef.current = recRef.current?.getURI() ?? null;
       await Audio.setAudioModeAsync({ allowsRecordingIOS: false, playsInSilentModeIOS: true });
       setState(uriRef.current ? 'recorded' : 'idle');
+      if (uriRef.current) onRecorded?.();
     } catch { setState('idle'); }
   };
 
@@ -80,7 +92,7 @@ export const ReciteRecorder: React.FC<{ accent: string }> = ({ accent }) => {
   return (
     <Pressable style={[styles.btn, { borderColor: accent }]} onPress={start}>
       <Ionicons name="mic" size={16} color={accent} />
-      <Text style={[styles.txt, { color: accent }]}>Recite it aloud</Text>
+      <Text style={[styles.txt, { color: accent }]}>{label ?? 'Recite it aloud'}</Text>
     </Pressable>
   );
 };

@@ -38,7 +38,7 @@ export type Course = {
 const CHALISA: Course = {
   id: 'chalisa',
   title: 'Hanuman Chalisa',
-  subtitle: 'recited & explained by Agastya',
+  subtitle: 'recited & explained',
   verses: CHALISA_VERSES.map((v) => ({
     id: v.id,
     titleHi: v.titleHi,
@@ -55,7 +55,7 @@ const CHALISA: Course = {
 const GITA: Course = {
   id: 'gita',
   title: 'Bhagavad Gita — Essentials',
-  subtitle: 'iconic shlokas, narrated by Agastya',
+  subtitle: 'narrated verse by verse',
   verses: GITA_SHLOKAS.map((s) => ({
     id: s.id,
     titleHi: s.titleHi,

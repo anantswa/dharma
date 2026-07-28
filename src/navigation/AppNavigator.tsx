@@ -15,21 +15,22 @@ import { AchievementsScreen } from '../screens/AchievementsScreen';
 import { SaharaScreen } from '../screens/SaharaScreen';
 import { SaharaDetailScreen } from '../screens/SaharaDetailScreen';
 import { JapaScreen } from '../screens/JapaScreen';
-import { KathaReaderScreen } from '../screens/KathaReaderScreen';
+import { KathaScrollScreen } from '../screens/KathaScrollScreen';
 import { WallpapersScreen } from '../screens/WallpapersScreen';
+import { FeedbackScreen } from '../screens/FeedbackScreen';
 import { ChalisaPathScreen } from '../screens/ChalisaPathScreen';
 import { FestivalDetailScreen } from '../screens/FestivalDetailScreen';
-import { GitaAudioScreen } from '../screens/GitaAudioScreen';
 import { HomeScreen } from '../screens/HomeScreen';
 import { TodayScreen } from '../screens/TodayScreen';
+import { MandirScreen } from '../screens/MandirScreen';
 import { SadhanaScreen } from '../screens/SadhanaScreen';
 import { ShopScreen } from '../screens/ShopScreen';
 import { LearnScreen } from '../screens/LearnScreen';
-import { LessonFlowScreen } from '../screens/LessonFlowScreen';
-import { LessonSelectionScreen } from '../screens/LessonSelectionScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
 import { WisdomDetailScreen } from '../screens/WisdomDetailScreen';
-import { WisdomScreen } from '../screens/WisdomScreen';
+import { NoticeboardScreen } from '../screens/NoticeboardScreen';
+import { getFaithTheme } from '../data/faiths';
+import { usePreferencesStore } from '../store/preferencesStore';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator<any>();
@@ -38,6 +39,8 @@ const Stack = createNativeStackNavigator<any>();
  * Main bottom tab navigator
  */
 const MainTabs: React.FC = () => {
+  const primary = usePreferencesStore((s) => s.primaryTradition);
+  const accent = getFaithTheme(primary).accent;
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -45,7 +48,7 @@ const MainTabs: React.FC = () => {
         tabBarShowLabel: true,
         tabBarLabel: ({ focused, color }) => {
           const labels: Record<string, string> = {
-            Home: 'Today', Learn: 'Learn', Wisdom: 'Wisdom',
+            Home: 'Today', Mandir: 'Mandir',
             Calendar: 'Calendar', Store: 'Shop', Settings: 'You',
           };
           return (
@@ -54,7 +57,7 @@ const MainTabs: React.FC = () => {
             </Text>
           );
         },
-        tabBarActiveTintColor: '#fbbf24',
+        tabBarActiveTintColor: accent,
         tabBarInactiveTintColor: '#9ca3af',
         tabBarHideOnKeyboard: true,
         lazy: false,
@@ -82,8 +85,7 @@ const MainTabs: React.FC = () => {
           let iconName: keyof typeof Ionicons.glyphMap = 'ellipse-outline';
 
           if (route.name === 'Home') iconName = focused ? 'sunny' : 'sunny-outline';
-          if (route.name === 'Learn') iconName = focused ? 'school' : 'school-outline';
-          if (route.name === 'Wisdom') iconName = focused ? 'book' : 'book-outline';
+          if (route.name === 'Mandir') iconName = focused ? 'flame' : 'flame-outline';
           if (route.name === 'Calendar') iconName = focused ? 'calendar' : 'calendar-outline';
           if (route.name === 'Store') iconName = focused ? 'cart' : 'cart-outline';
           if (route.name === 'Settings') iconName = focused ? 'settings' : 'settings-outline';
@@ -94,7 +96,7 @@ const MainTabs: React.FC = () => {
                 paddingHorizontal: 10,
                 paddingVertical: 6,
                 borderRadius: 999,
-                backgroundColor: focused ? 'rgba(251, 191, 36, 0.12)' : 'transparent',
+                backgroundColor: focused ? getFaithTheme(primary).accentSoft : 'transparent',
               }}
             >
               <Ionicons name={iconName} size={22} color={color} />
@@ -104,7 +106,7 @@ const MainTabs: React.FC = () => {
       })}
     >
       <Tab.Screen name="Home" component={TodayScreen} />
-      <Tab.Screen name="Learn" component={LearnScreen} />
+      <Tab.Screen name="Mandir" component={MandirScreen} />
       <Tab.Screen name="Calendar" component={CalendarScreen} />
       {/* Shop links out to external stores — hidden on iOS (App Review 4.2.2 / 3.1.1). */}
       {Platform.OS !== 'ios' && <Tab.Screen name="Store" component={ShopScreen} />}
@@ -123,11 +125,10 @@ const AppNavigator: React.FC = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="MainTabs" component={MainTabs} />
       <Stack.Screen name="Temple" component={HomeScreen} />
+      {/* Learn moved from tab → stack: Mandir's Teachings "See all" is the way in */}
+      <Stack.Screen name="Learn" component={LearnScreen} />
       <Stack.Screen name="WisdomDetail" component={WisdomDetailScreen} />
       <Stack.Screen name="FestivalDetail" component={FestivalDetailScreen as any} />
-      <Stack.Screen name="LessonSelection" component={LessonSelectionScreen} />
-      <Stack.Screen name="LessonFlow" component={LessonFlowScreen as any} />
-      <Stack.Screen name="GitaAudio" component={GitaAudioScreen} />
       <Stack.Screen name="ChalisaPath" component={ChalisaPathScreen} />
       <Stack.Screen name="Sadhana" component={SadhanaScreen} />
       <Stack.Screen name="Articles" component={ArticlesScreen} />
@@ -140,8 +141,10 @@ const AppNavigator: React.FC = () => {
       <Stack.Screen name="Sahara" component={SaharaScreen} />
       <Stack.Screen name="SaharaDetail" component={SaharaDetailScreen} />
       <Stack.Screen name="Japa" component={JapaScreen} />
-      <Stack.Screen name="KathaReader" component={KathaReaderScreen} />
+      <Stack.Screen name="KathaScroll" component={KathaScrollScreen} />
       <Stack.Screen name="Wallpapers" component={WallpapersScreen} />
+      <Stack.Screen name="Feedback" component={FeedbackScreen} />
+      <Stack.Screen name="Noticeboard" component={NoticeboardScreen} />
     </Stack.Navigator>
   );
 };

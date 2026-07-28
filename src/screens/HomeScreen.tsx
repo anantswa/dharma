@@ -55,7 +55,7 @@ export const HomeScreen: React.FC = () => {
 
   // Faith identity — drives the darshan figure set + accent colour.
   const theme = useMemo(() => getFaithTheme(primaryTradition), [primaryTradition]);
-  const deities = useMemo(() => darshanDeities(), []);
+  const deities = useMemo(() => darshanDeities(primaryTradition), [primaryTradition]);
 
   // Live deity-mantra manifest (key → loop url). Chants appear as folders are filled.
   const MANTRAS_BASE = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/mantras';

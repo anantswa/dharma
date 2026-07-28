@@ -7,13 +7,15 @@ import * as Haptics from 'expo-haptics';
 import * as MediaLibrary from 'expo-media-library';
 import * as Sharing from 'expo-sharing';
 import React, { useEffect, useState } from 'react';
-import { Dimensions, FlatList, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { getFaithTheme } from '../data/faiths';
+import { showIstaLine } from '../data/featured';
+import { WALLPAPER_PACKS, packIdOf, packOrderForFaith } from '../data/wallpaperPacks';
 import { usePreferencesStore } from '../store/preferencesStore';
+import { useWallpaperCatalog } from '../store/wallpaperCatalogStore';
+import { useIstaInterest } from '../store/istaInterestStore';
 import { track } from '../services/analytics';
 
-const CATALOG_URL =
-  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/wallpapers/catalog.json';
 const { width: W } = Dimensions.get('window');
 const CELL = (W - 20 * 2 - 12) / 2;
 
@@ -26,20 +28,16 @@ type Wallpaper = { id: string; title: string; tradition?: string; url: string; t
  */
 export const WallpapersScreen: React.FC = () => {
   const navigation = useNavigation<any>();
-  const theme = getFaithTheme(usePreferencesStore.getState().primaryTradition);
-  const [walls, setWalls] = useState<Wallpaper[]>([]);
+  const theme = getFaithTheme(usePreferencesStore((s) => s.primaryTradition));
+  const walls = useWallpaperCatalog((s) => s.wallpapers);
   const [open, setOpen] = useState<Wallpaper | null>(null);
   const [saving, setSaving] = useState(false);
   const [savedId, setSavedId] = useState<string | null>(null);
+  const istaNoted = useIstaInterest((s) => Object.keys(s.noted).length > 0);
 
   useEffect(() => {
     track('wallpapers_open');
-    let alive = true;
-    fetch(CATALOG_URL)
-      .then((r) => r.json())
-      .then((d) => { if (alive && Array.isArray(d?.wallpapers)) setWalls(d.wallpapers); })
-      .catch(() => {});
-    return () => { alive = false; };
+    useWallpaperCatalog.getState().load();
   }, []);
 
   const save = async (w: Wallpaper) => {
@@ -72,30 +70,65 @@ export const WallpapersScreen: React.FC = () => {
         </Pressable>
       </View>
 
-      <FlatList
-        data={walls}
-        keyExtractor={(w) => w.id}
-        numColumns={2}
-        columnWrapperStyle={{ gap: 12, paddingHorizontal: 20 }}
-        contentContainerStyle={{ paddingBottom: 60 }}
-        ListHeaderComponent={
-          <View style={{ paddingHorizontal: 20, marginBottom: 16 }}>
-            <Text style={[styles.kicker, { color: theme.accent }]}>FREE · FOR YOUR LOCK SCREEN</Text>
-            <Text style={styles.title}>Darshan Wallpapers</Text>
-            <Text style={styles.sub}>Sacred art made for the phone — a one-second darshan, every time you look.</Text>
-          </View>
-        }
-        ListEmptyComponent={<Text style={styles.empty}>Loading wallpapers…</Text>}
-        renderItem={({ item }) => (
+      <ScrollView contentContainerStyle={{ paddingBottom: 60 }}>
+        <View style={{ paddingHorizontal: 20, marginBottom: 8 }}>
+          <Text style={[styles.kicker, { color: theme.accent }]}>FREE · FOR YOUR LOCK SCREEN</Text>
+          <Text style={styles.title}>Darshan Wallpapers</Text>
+          <Text style={styles.sub}>Sacred art made for the phone — a one-second darshan, every time you look.</Text>
+        </View>
+
+        {walls.length === 0 && <Text style={styles.empty}>Loading wallpapers…</Text>}
+
+        {packOrderForFaith(theme.key)
+          .map((pid) => WALLPAPER_PACKS.find((p) => p.id === pid)!)
+          .filter(Boolean)
+          .map((pack) => {
+          const items = walls.filter((w) => packIdOf(w) === pack.id);
+          if (items.length === 0) return null;
+          return (
+            <View key={pack.id} style={{ marginTop: 18 }}>
+              <View style={{ paddingHorizontal: 20, marginBottom: 10 }}>
+                <Text style={styles.packName}>{pack.name}</Text>
+                <Text style={styles.packBlurb}>{pack.blurb}</Text>
+              </View>
+              <View style={styles.grid}>
+                {items.map((item) => (
+                  <Pressable
+                    key={item.id}
+                    style={styles.cell}
+                    onPress={() => { setSavedId(null); setOpen(item); try { Haptics.selectionAsync(); } catch { /* noop */ } }}
+                  >
+                    <ExpoImage source={{ uri: item.thumb }} style={styles.cellImg} contentFit="cover" transition={200} />
+                    <Text style={styles.cellTitle} numberOfLines={1}>{item.title.replace(/^[^—]+—\s*/, '')}</Text>
+                  </Pressable>
+                ))}
+              </View>
+            </View>
+          );
+        })}
+
+        {/* iṣṭa packs teaser — interest signal for the paid line (Hindu imagery → faith-gated) */}
+        {walls.length > 0 && showIstaLine(theme.key) && (
           <Pressable
-            style={styles.cell}
-            onPress={() => { setSavedId(null); setOpen(item); try { Haptics.selectionAsync(); } catch { /* noop */ } }}
+            style={styles.teaser}
+            onPress={() => {
+              track('wallpaper_pack_teaser_tap');
+              try { Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success); } catch { /* noop */ }
+              useIstaInterest.getState().note('teaser');
+            }}
           >
-            <ExpoImage source={{ uri: item.thumb }} style={styles.cellImg} contentFit="cover" transition={200} />
-            <Text style={styles.cellTitle} numberOfLines={1}>{item.title}</Text>
+            <Ionicons name={istaNoted ? 'checkmark-circle' : 'lock-closed'} size={16} color={theme.accent} />
+            <View style={{ flex: 1 }}>
+              <Text style={styles.teaserTitle}>{istaNoted ? '🙏 Noted — opening soon' : 'Iṣṭa packs — coming soon'}</Text>
+              <Text style={styles.teaserSub}>
+                {istaNoted
+                  ? 'Your interest shapes what we make first.'
+                  : 'Hanuman · Mahadev · Krishna — tap to tell us you want them'}
+              </Text>
+            </View>
           </Pressable>
         )}
-      />
+      </ScrollView>
 
       {/* full-screen preview */}
       <Modal visible={!!open} animationType="fade" onRequestClose={() => setOpen(null)}>
@@ -138,6 +171,16 @@ const styles = StyleSheet.create({
   title: { fontSize: 30, color: '#f8fafc', fontFamily: 'Playfair_Bold', marginTop: 4 },
   sub: { fontSize: 13.5, color: '#94a3b8', marginTop: 6, lineHeight: 20 },
   empty: { color: '#64748b', textAlign: 'center', marginTop: 60 },
+  packName: { fontSize: 20, color: '#f8fafc', fontFamily: 'Playfair_Bold' },
+  packBlurb: { fontSize: 12.5, color: '#94a3b8', marginTop: 3 },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 12, paddingHorizontal: 20 },
+  teaser: {
+    flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 22, marginHorizontal: 20,
+    padding: 16, borderRadius: 16, backgroundColor: 'rgba(15,23,42,0.75)',
+    borderWidth: 1, borderColor: 'rgba(251,191,36,0.25)',
+  },
+  teaserTitle: { color: '#f1f5f9', fontSize: 14.5, fontWeight: '700' },
+  teaserSub: { color: '#94a3b8', fontSize: 12, marginTop: 2 },
   cell: { width: CELL, marginBottom: 16 },
   cellImg: { width: CELL, height: CELL * 1.9, borderRadius: 18, backgroundColor: 'rgba(15,23,42,0.6)' },
   cellTitle: { color: '#cbd5e1', fontSize: 12.5, marginTop: 8, textAlign: 'center' },

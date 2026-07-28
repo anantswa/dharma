@@ -68,7 +68,7 @@ export const useMasteryStore = create<MasteryState>((set, get) => ({
     const prev = records[verseId] ?? { box: 0, due: today(), reps: 0 };
     let box = prev.box;
     if (grade === 'forgot') box = 0;
-    else if (grade === 'okay') box = Math.max(box, 1);
+    else if (grade === 'okay') box = Math.max(box - 1, 1); // a shaky recall steps DOWN a box
     else box = Math.min(box + 1, INTERVALS.length - 1); // 'knew'
     const interval = grade === 'forgot' ? 0 : INTERVALS[box];
     records[verseId] = { box, due: addDays(interval), reps: prev.reps + 1, lastGrade: grade };

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
     Modal,
     Platform,
@@ -16,7 +17,7 @@ import * as Updates from 'expo-updates';
  * Bump this on every OTA push so the "You" tab footer shows a value that visibly
  * changes — the quickest way to confirm a device is running the latest bundle.
  */
-const BUNDLE_TAG = 'W3.1 · Varaha katha + wallpapers + japa mala';
+const BUNDLE_TAG = 'W4.5 · noticeboard on the Mandir wall';
 
 /** A human-readable stamp of which JS bundle is actually running on this device. */
 const bundleStamp = (): string => {
@@ -47,8 +48,7 @@ const HOURS = Array.from({ length: 24 }, (_, i) => i);
 const MINUTES = Array.from({ length: 60 }, (_, i) => i);
 
 export const SettingsScreen: React.FC = () => {
-  const enabledTraditions = usePreferencesStore((s) => s.enabledTraditions);
-  const toggleTradition = usePreferencesStore((s) => s.toggleTradition);
+  const navigation = useNavigation<any>();
   
   const primaryTradition = usePreferencesStore((s) => s.primaryTradition);
   const remindersEnabled = usePreferencesStore((s) => s.remindersEnabled);
@@ -312,31 +312,8 @@ export const SettingsScreen: React.FC = () => {
         </Pressable>
       </Modal>
 
-      {/* Traditions Filter */}
-      <View style={[styles.card, { marginTop: 16 }]}>
-        <Text style={styles.cardLabel}>Traditions to Surface</Text>
-        <Text style={styles.cardDescription}>
-          Choose which lineages you’d like to see in your Home and Library.
-        </Text>
-
-        <View style={styles.separator} />
-
-        {TRADITIONS.map((trad) => (
-          <View key={trad} style={styles.row}>
-            <View>
-              <Text style={styles.rowTitle}>{trad}</Text>
-              <Text style={styles.rowSubtitle}>Included in daily feed</Text>
-            </View>
-
-            <Switch
-              value={enabledTraditions[trad]}
-              onValueChange={() => toggleTradition(trad)}
-              trackColor={{ false: '#334155', true: '#f59e0b' }} // Saffron-ish active color
-              thumbColor={enabledTraditions[trad] ? '#fffbeb' : '#9ca3af'}
-            />
-          </View>
-        ))}
-      </View>
+      {/* Traditions toggles retired 2026-07-28 — primaryTradition ("Your Journey")
+          governs the whole experience now; cross-tradition is explicit opt-in per screen. */}
 
       {/* DharmaWeave Products — external store links, hidden on iOS (App Review 4.2.2 / 3.1.1) */}
       {Platform.OS !== 'ios' && (
@@ -368,14 +345,9 @@ export const SettingsScreen: React.FC = () => {
         <Text style={styles.sectionTitle}>Get in Touch</Text>
         <TouchableOpacity
           style={styles.linkRow}
-          onPress={() => {
-            const { Linking } = require('react-native');
-            const subject = encodeURIComponent('Dharma App — Feedback');
-            const body = encodeURIComponent('\n\n— Sent from the Dharma app');
-            Linking.openURL(`mailto:contact@dharmaweave.com?subject=${subject}&body=${body}`);
-          }}
+          onPress={() => navigation.navigate('Feedback')}
         >
-          <Text style={styles.linkText}>✉️  Send us feedback</Text>
+          <Text style={styles.linkText}>🪷  Share feedback & join the newsletter</Text>
           <Text style={styles.feedbackSub}>Tell us what you love, or what we can improve — contact@dharmaweave.com</Text>
         </TouchableOpacity>
       </View>
