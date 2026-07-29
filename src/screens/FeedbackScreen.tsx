@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import * as Haptics from 'expo-haptics';
+import * as Linking from 'expo-linking';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from 'react';
 import {
@@ -11,8 +12,10 @@ import { getFaithTheme } from '../data/faiths';
 import { usePreferencesStore } from '../store/preferencesStore';
 import { track } from '../services/analytics';
 
-const SUPABASE_URL = Constants.expoConfig?.extra?.supabaseUrl as string;
-const SUPABASE_KEY = Constants.expoConfig?.extra?.supabaseKey as string;
+// SECURITY (2026-07-28): the app carries NO backend credential — feedback goes
+// out as a mail compose (user-controlled, nothing stored by us), and only the
+// newsletter opt-in touches the network via our own public web endpoint.
+const FEEDBACK_EMAIL = 'contact@dharmaweave.com';
 const SUBSCRIBE_URL = 'https://dharmaweave.com/api/subscribe';
 
 const RATINGS = [
@@ -23,9 +26,9 @@ const RATINGS = [
 
 /**
  * Feedback — the improvement loop, in-app. A gentle form (no account needed):
- * how it feels + what to improve + optional email that doubles as newsletter
- * signup (posts to the dharmaweave.com subscriber list). Every message lands in
- * our own database and shapes the next release.
+ * how it feels + what to improve, composed into the user's own mail app to
+ * contact@dharmaweave.com. Optional email doubles as newsletter signup (posts
+ * to the dharmaweave.com subscriber list — our own public endpoint, no key).
  */
 export const FeedbackScreen: React.FC = () => {
   const navigation = useNavigation<any>();
@@ -45,17 +48,14 @@ export const FeedbackScreen: React.FC = () => {
     try { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium); } catch { /* noop */ }
     const cleanEmail = email.trim().toLowerCase();
     try {
-      await fetch(`${SUPABASE_URL}/rest/v1/app_feedback`, {
-        method: 'POST',
-        headers: {
-          apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`,
-          'Content-Type': 'application/json', Prefer: 'return=minimal',
-        },
-        body: JSON.stringify({
-          rating, message: message.trim() || null, email: cleanEmail || null,
-          app_version: Constants.expoConfig?.version ?? '0.0.0', platform: Platform.OS,
-        }),
-      });
+      // feedback = a mail compose in the user's own hands — no backend, no key
+      const ratingLabel = RATINGS.find((r) => r.id === rating)?.label ?? '—';
+      const body =
+        `How it feels: ${ratingLabel}\n\n${message.trim()}\n\n` +
+        `— Dharma v${Constants.expoConfig?.version ?? '0.0.0'} · ${Platform.OS}`;
+      await Linking.openURL(
+        `mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent('Dharma app feedback')}&body=${encodeURIComponent(body)}`,
+      );
       if (newsletter && cleanEmail.includes('@')) {
         fetch(SUBSCRIBE_URL, {
           method: 'POST',
@@ -66,7 +66,7 @@ export const FeedbackScreen: React.FC = () => {
       track('feedback_sent', { rating: rating ?? 'none', newsletter: newsletter && !!cleanEmail });
       setSent(true);
       try { Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success); } catch { /* noop */ }
-    } catch { /* offline — fail soft */ }
+    } catch { /* no mail client — fail soft */ }
     setSending(false);
   };
 
@@ -151,8 +151,8 @@ export const FeedbackScreen: React.FC = () => {
           <Text style={styles.sendTxt}>{sending ? 'Sending…' : '🪔  Send'}</Text>
         </Pressable>
         <Text style={styles.privacyNote}>
-          Feedback goes only to the DharmaWeave team. Email is used solely for replies and, if you opt in,
-          the newsletter.
+          Send opens your own mail app — your message goes directly to the DharmaWeave team and nothing is
+          stored by the app. Email is used solely for the newsletter if you opt in.
         </Text>
       </ScrollView>
     </KeyboardAvoidingView>

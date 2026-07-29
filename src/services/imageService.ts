@@ -7,7 +7,8 @@
  */
 
 import type { ImageEntry } from '../types/supabase';
-import { supabaseQuery } from './supabase';
+const IMAGE_INDEX_URL =
+  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/config/image_library.json';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const IMAGES_CACHE_KEY = '@dharma:images_cache';
@@ -34,11 +35,9 @@ export async function loadImageIndex(): Promise<void> {
 
   // Fetch from Supabase
   try {
-    const fields = 'id,file_url,thumbnail_url,tradition,source_text,primary_figure,mood,scene_description,tags,orientation';
-    const images = await supabaseQuery<ImageEntry>(
-      'image_library',
-      `select=${fields}&available=eq.true&order=created_at.desc&limit=500`,
-    );
+    const res = await fetch(IMAGE_INDEX_URL);
+    if (!res.ok) throw new Error(`image index: ${res.status}`);
+    const images: ImageEntry[] = (await res.json()).slice(0, 500);
     cachedImages = images;
     await AsyncStorage.setItem(IMAGES_CACHE_KEY, JSON.stringify(images));
   } catch (error) {

@@ -3,29 +3,28 @@ import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
 /**
- * Analytics — a deliberately tiny, privacy-light event log.
+ * Analytics — LOCAL-ONLY event log (privacy-first, zero credentials).
  *
- * No PII, no third-party SDK: an anonymous random install id + event name + small
- * props, batched into Supabase `app_events` via PostgREST. Fire-and-forget — it must
- * NEVER block or break the experience (every path swallows errors). This exists so
- * product waves can be measured (D1/D7 retention, feature usage) — the Wen loop
- * needs ground truth.
+ * SECURITY (2026-07-28, see SECURITY-NO-KEY-REWRITE.md): the app ships NO key of
+ * any kind, so nothing is sent over the network. Events are kept in a small
+ * rolling AsyncStorage buffer purely for on-device debugging. If server-side
+ * analytics are ever wanted back, the sanctioned designs are the publishable
+ * (anon) key + the insert-only RLS policies already on `app_events`, or a thin
+ * proxy endpoint — never a secret in the bundle.
+ *
+ * The public API (`track` / `flushAnalytics`) is unchanged so the 12 call sites
+ * need no edits.
  */
 
-const SUPABASE_URL = Constants.expoConfig?.extra?.supabaseUrl as string;
-const SUPABASE_KEY = Constants.expoConfig?.extra?.supabaseKey as string;
 const APP_VERSION = Constants.expoConfig?.version ?? '0.0.0';
 
 const ID_KEY = '@dharma:install_id';
 const QUEUE_KEY = '@dharma:analytics_queue';
-const FLUSH_AT = 8;          // flush when this many events are queued
-const FLUSH_MS = 30_000;     // …or at most this often
 
-type Ev = { install_id: string; event: string; props: Record<string, unknown>; app_version: string; platform: string };
+type Ev = { install_id: string; event: string; props: Record<string, unknown>; app_version: string; platform: string; at: string };
 
 let installId: string | null = null;
 let queue: Ev[] = [];
-let lastFlush = 0;
 let loaded = false;
 
 const rid = () =>
@@ -49,29 +48,7 @@ async function persistQueue(): Promise<void> {
   try { await AsyncStorage.setItem(QUEUE_KEY, JSON.stringify(queue.slice(-100))); } catch { /* noop */ }
 }
 
-async function flush(): Promise<void> {
-  if (!queue.length || !SUPABASE_URL || !SUPABASE_KEY) return;
-  const batch = queue.splice(0, queue.length);
-  lastFlush = Date.now();
-  try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/app_events`, {
-      method: 'POST',
-      headers: {
-        apikey: SUPABASE_KEY,
-        Authorization: `Bearer ${SUPABASE_KEY}`,
-        'Content-Type': 'application/json',
-        Prefer: 'return=minimal',
-      },
-      body: JSON.stringify(batch),
-    });
-    if (!res.ok) queue = [...batch, ...queue].slice(-100); // put back, capped
-  } catch {
-    queue = [...batch, ...queue].slice(-100);
-  }
-  await persistQueue();
-}
-
-/** Log an event. Safe to call from anywhere; never throws, never blocks. */
+/** Log an event locally. Safe to call from anywhere; never throws, never blocks. */
 export function track(event: string, props: Record<string, unknown> = {}): void {
   (async () => {
     await ensureLoaded();
@@ -81,13 +58,13 @@ export function track(event: string, props: Record<string, unknown> = {}): void 
       props,
       app_version: APP_VERSION,
       platform: Platform.OS,
+      at: new Date().toISOString(),
     });
     await persistQueue();
-    if (queue.length >= FLUSH_AT || Date.now() - lastFlush > FLUSH_MS) await flush();
   })().catch(() => {});
 }
 
-/** Force a flush (e.g. on app foreground). */
+/** Kept for API compatibility — network flush no longer exists. */
 export function flushAnalytics(): void {
-  (async () => { await ensureLoaded(); await flush(); })().catch(() => {});
+  /* local-only by design */
 }

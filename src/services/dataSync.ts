@@ -5,7 +5,17 @@
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { FestivalEntry, WisdomEntry } from '../types/supabase';
-import { supabaseQuery } from './supabase';
+// SECURITY (2026-07-28): the app holds no backend credential. Content tables are
+// published as static JSON in the PUBLIC storage bucket and fetched keylessly.
+const PUBLIC_CONFIG =
+  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/config';
+
+async function publicJson<T>(name: string): Promise<T[]> {
+  const res = await fetch(`${PUBLIC_CONFIG}/${name}`);
+  if (!res.ok) throw new Error(`${name}: ${res.status}`);
+  const data = await res.json();
+  return Array.isArray(data) ? data : [];
+}
 
 const WISDOM_CACHE_KEY = '@dharma:wisdom_cache';
 const FESTIVALS_CACHE_KEY = '@dharma:festivals_cache';
@@ -19,29 +29,14 @@ const SYNC_INTERVAL_MS = 24 * 60 * 60 * 1000;
  * Selects only the fields the app needs (reduces bandwidth).
  */
 async function fetchWisdom(): Promise<WisdomEntry[]> {
-  const fields = [
-    'id', 'tradition', 'source_text', 'source_location', 'speaker', 'listener',
-    'context', 'original_script', 'transliteration', 'translation_en', 'translation_hi',
-    'elaboration', 'themes', 'mood', 'era', 'short_form', 'importance',
-    'emotion_cluster', 'calendar_tags', 'series_id', 'series_order',
-    'audio_url', 'created_at',
-  ].join(',');
-
-  return supabaseQuery<WisdomEntry>('wisdom', `select=${fields}&order=importance.desc`);
+  return publicJson<WisdomEntry>('wisdom.json');
 }
 
 /**
  * Fetch all festivals from Supabase.
  */
 async function fetchFestivals(): Promise<FestivalEntry[]> {
-  const fields = [
-    'id', 'date', 'name', 'faith', 'category', 'description',
-    'significance', 'story', 'customs', 'regions', 'importance',
-    'tradition', 'alternate_names', 'lunar_date', 'duration_days',
-    'content_themes', 'suggested_mood', 'year',
-  ].join(',');
-
-  return supabaseQuery<FestivalEntry>('festivals', `select=${fields}&order=date.asc`);
+  return publicJson<FestivalEntry>('festivals.json');
 }
 
 /**

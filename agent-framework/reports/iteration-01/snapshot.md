@@ -3550,7 +3550,7 @@ const SUPABASE_URL = 'https://aiwugigdrvijjeoqtpog.supabase.co';
 // TODO: Replace with anon key from Supabase dashboard before shipping to public.
 // The anon key is safe to embed in the app (read-only via RLS policies).
 // Get it from: Supabase Dashboard → Settings → API → anon/public key
-const SUPABASE_KEY = 'sb_secret_NSb4vFficZ00dlalq8vHlw_wQbVgUV';
+const SUPABASE_KEY = '[REDACTED-ROTATED-2026-07-29]';
 
 const HEADERS = {
   apikey: SUPABASE_KEY,

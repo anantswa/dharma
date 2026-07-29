@@ -53,7 +53,7 @@
       "id": "authenticity_trust",
       "score": 1,
       "justification": "Leaked Supabase service-role key violates trust; verses attributed in JSON but secret exposure + placeholder audio compromise decency/authenticity",
-      "evidence": "supabase.ts:15 (SUPABASE_KEY='sb_secret_NSb4vFficZ00dlalq8vHlw_wQbVgUV'), wisdom_core_50.json, LessonFlowScreen.tsx:110"
+      "evidence": "supabase.ts:15 (SUPABASE_KEY='[REDACTED-ROTATED-2026-07-29]'), wisdom_core_50.json, LessonFlowScreen.tsx:110"
     },
     {
       "id": "delight_share",

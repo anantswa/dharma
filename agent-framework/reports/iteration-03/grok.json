@@ -52,7 +52,7 @@
       "id": "authenticity_trust",
       "score": 2,
       "justification": "Dignified deity images, attributed Gita/Chalisa verses, sane transliteration. Capped by leaked Supabase service-role key in client source and missing privacy policy surface.",
-      "evidence": "app.json:48 (supabaseKey: \"sb_secret_NSb4vFficZ00dlalq8vHlw_wQbVgUVf\"), gitaShlokas.ts+chalisaLessons.ts, WisdomScreen.tsx:80-100 (attribution)"
+      "evidence": "app.json:48 (supabaseKey: \"sb_secret_[REDACTED]\"), gitaShlokas.ts+chalisaLessons.ts, WisdomScreen.tsx:80-100 (attribution)"
     },
     {
       "id": "delight_share",

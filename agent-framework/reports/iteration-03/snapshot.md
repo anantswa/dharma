@@ -366,7 +366,7 @@ const styles = StyleSheet.create({
         "projectId": "84d77601-15e9-4ea8-af38-162cf1f96e34"
       },
       "supabaseUrl": "https://aiwugigdrvijjeoqtpog.supabase.co",
-      "supabaseKey": "sb_secret_NSb4vFficZ00dlalq8vHlw_wQbVgUVf"
+      "supabaseKey": "[REDACTED-ROTATED-2026-07-29]f"
     }
   }
 }
