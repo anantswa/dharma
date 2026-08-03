@@ -49,6 +49,8 @@ export const HomeScreen: React.FC = () => {
   const [isShankhPlaying, setIsShankhPlaying] = useState(false);
   const [mantraOn, setMantraOn] = useState(true); // soft chant on entering the temple
   const [mantraManifest, setMantraManifest] = useState<Record<string, string>>({});
+  // measured bottom of the prasad card — the sādhana pill sits under it whatever the verse length
+  const [prasadBottom, setPrasadBottom] = useState(188);
   const wisdom = useDataStore((s) => s.wisdom);
   const primaryTradition = usePreferencesStore((s) => s.primaryTradition);
   const enabledTraditions = usePreferencesStore((s) => s.enabledTraditions);
@@ -236,6 +238,7 @@ export const HomeScreen: React.FC = () => {
           {todaysWisdom && (
             <Pressable
               style={[styles.wisdomOverlay, { borderColor: theme.accentSoft }]}
+              onLayout={(e) => setPrasadBottom(e.nativeEvent.layout.y + e.nativeEvent.layout.height)}
               onPress={() => navigation.navigate('WisdomDetail', { wisdom: todaysWisdom })}
             >
               <View style={styles.wisdomHeaderRow}>
@@ -262,7 +265,7 @@ export const HomeScreen: React.FC = () => {
           {/* Sādhana nudge — daily darshan → daily learning */}
           {sadhanaDue > 0 && (
             <Pressable
-              style={[styles.sadhanaPill, { borderColor: theme.accent, backgroundColor: theme.accentSoft }]}
+              style={[styles.sadhanaPill, { top: prasadBottom + 12, borderColor: theme.accent, backgroundColor: theme.accentSoft }]}
               onPress={() => navigation.navigate('ChalisaPath', { courseId: 'chalisa' })}
             >
               <Text style={[styles.sadhanaPillText, { color: theme.accent }]}>
@@ -413,7 +416,6 @@ const styles = StyleSheet.create({
   },
   sadhanaPill: {
     position: 'absolute',
-    top: 188,
     alignSelf: 'center',
     borderWidth: 1,
     borderRadius: 999,

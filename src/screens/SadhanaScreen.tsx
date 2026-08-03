@@ -28,7 +28,10 @@ const BELL_URL = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/pub
 // Soft temple bell for ritual thresholds (sankalpa begin, completion). Cached through
 // the same stream-then-cache path as narration (pre-warmed on mount), fire-and-forget,
 // self-unloading, silent on failure — never touches the narration channel.
+/** Bell disabled 2026-08-02 (Anant) — the sound works, the moment needs more thought. */
+const BELL_ENABLED = false;
 const playBell = async () => {
+  if (!BELL_ENABLED) return;
   try {
     const uri = await getPlayableUri(BELL_URL);
     const { sound } = await Audio.Sound.createAsync({ uri }, { shouldPlay: true, volume: 0.6 });
@@ -124,7 +127,7 @@ export const SadhanaScreen: React.FC = () => {
     useScoreStore.getState().load();
     useAchievementsStore.getState().load();
     useDedicationStore.getState().load();
-    getPlayableUri(BELL_URL).catch(() => {}); // warm the bell cache before the sankalpa tap
+    if (BELL_ENABLED) getPlayableUri(BELL_URL).catch(() => {}); // warm the bell cache before the sankalpa tap
   }, []);
   useEffect(() => () => {
     chantStopRef.current = true; // halt any in-flight chant loop
@@ -239,8 +242,8 @@ export const SadhanaScreen: React.FC = () => {
       started && !!verse && autoPlay &&
       (stage === 'new' || (stage === 'quiz' && hasReciteOnly(verse)));
     if (!shouldAuto) return;
-    // On the first card, let the sankalpa bell ring clear before the narration.
-    const t = setTimeout(() => play(undefined, stage === 'new' ? pulseEcho : undefined), idx === 0 ? 1100 : 0);
+    // (bell disabled — no need to hold the narration back)
+    const t = setTimeout(() => play(undefined, stage === 'new' ? pulseEcho : undefined), 0);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idx, started]);
@@ -688,6 +691,25 @@ export const SadhanaScreen: React.FC = () => {
               </Animated.View>
               <Animated.View entering={FadeInDown.delay(550).duration(550)} style={styles.revealBox}>
                 <Text style={[styles.translit, { borderLeftColor: a }]}>{verse.transliteration}</Text>
+                {/* the language flip lives NEXT TO the meaning — nobody has to find the gear */}
+                <View style={styles.meaningHead}>
+                  <Text style={[styles.meaningKicker, { color: a }]}>MEANING</Text>
+                  <Pressable
+                    style={[styles.langChip, { borderColor: a }]}
+                    hitSlop={10}
+                    onPress={() => {
+                      const next = meaningLang === 'en' ? 'hi' : 'en';
+                      usePreferencesStore.getState().setMeaningLang(next);
+                      track('meaning_lang_switch', { to: next });
+                      try { Haptics.selectionAsync(); } catch { /* noop */ }
+                    }}
+                  >
+                    <Ionicons name="swap-horizontal" size={12} color={a} />
+                    <Text style={[styles.langChipTxt, { color: a }]}>
+                      {meaningLang === 'en' ? 'हिंदी में' : 'In English'}
+                    </Text>
+                  </Pressable>
+                </View>
                 <Text style={styles.meaning}>{meaningLang === 'en' ? verse.meaningEn : verse.meaningHi}</Text>
                 {!!meaningAudio && (
                   <Pressable style={[styles.meaningBtn, { borderColor: a }]} onPress={playMeaning}>
@@ -850,6 +872,10 @@ const styles = StyleSheet.create({
   revealBox: { gap: 14 },
   translit: { color: '#cbd5e1', fontSize: 15, fontStyle: 'italic', lineHeight: 23, borderLeftWidth: 2, paddingLeft: 14 },
   meaning: { color: '#e2e8f0', fontSize: 16.5, lineHeight: 26, fontFamily: 'Playfair_Regular' },
+  meaningHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 14, marginBottom: 6 },
+  meaningKicker: { fontSize: 10, letterSpacing: 2, fontWeight: '800' },
+  langChip: { flexDirection: 'row', alignItems: 'center', gap: 5, borderWidth: 1, borderRadius: 999, paddingHorizontal: 10, paddingVertical: 4, opacity: 0.9 },
+  langChipTxt: { fontSize: 11.5, fontWeight: '700' },
   reflectCard: { borderWidth: 1, borderRadius: 14, padding: 14, backgroundColor: 'rgba(15,23,42,0.5)', gap: 6 },
   reflectKicker: { fontSize: 10, letterSpacing: 1.5, fontWeight: '800' },
   reflectText: { color: '#e2e8f0', fontSize: 14.5, lineHeight: 21 },

@@ -266,7 +266,7 @@ export const TodayScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#020617' },
-  scroll: { paddingHorizontal: 18, paddingTop: 64, paddingBottom: 110 },
+  scroll: { paddingHorizontal: 18, paddingTop: 78, paddingBottom: 110 },
   greeting: { fontSize: 14, fontStyle: 'italic', marginBottom: 2 },
   title: { fontSize: 34, color: '#f8fafc', fontFamily: 'Playfair_Bold', marginBottom: 16 },
   panchang: { color: '#94a3b8', fontSize: 13, marginTop: -12, marginBottom: 16 },
@@ -299,7 +299,7 @@ const styles = StyleSheet.create({
   offerTitle: { color: '#f8fafc', fontSize: 21, fontFamily: 'Playfair_Bold' },
   offerSub: { color: '#cbd5e1', fontSize: 12, marginTop: 3 },
   offerBadge: { position: 'absolute', top: 12, left: 12, backgroundColor: '#16a34a', borderRadius: 8, paddingHorizontal: 9, paddingVertical: 4 },
-  offerBadgeInline: { backgroundColor: '#16a34a', borderRadius: 6, paddingHorizontal: 7, paddingVertical: 2 },
+  offerBadgeInline: { alignSelf: 'flex-start', backgroundColor: '#16a34a', borderRadius: 6, paddingHorizontal: 7, paddingVertical: 3 },
   offerBadgeTxt: { color: '#fff', fontSize: 10, fontWeight: '900', letterSpacing: 1 },
   bookRow: {
     flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: 'rgba(15,23,42,0.5)',

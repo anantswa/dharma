@@ -29,6 +29,7 @@ import { LearnScreen } from '../screens/LearnScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
 import { WisdomDetailScreen } from '../screens/WisdomDetailScreen';
 import { NoticeboardScreen } from '../screens/NoticeboardScreen';
+import { OfferingScreen } from '../screens/OfferingScreen';
 import { getFaithTheme } from '../data/faiths';
 import { usePreferencesStore } from '../store/preferencesStore';
 
@@ -145,6 +146,7 @@ const AppNavigator: React.FC = () => {
       <Stack.Screen name="Wallpapers" component={WallpapersScreen} />
       <Stack.Screen name="Feedback" component={FeedbackScreen} />
       <Stack.Screen name="Noticeboard" component={NoticeboardScreen} />
+      <Stack.Screen name="Offering" component={OfferingScreen} />
     </Stack.Navigator>
   );
 };

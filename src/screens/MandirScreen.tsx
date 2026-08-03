@@ -14,6 +14,8 @@ import { usePreferencesStore } from '../store/preferencesStore';
 import { useWallpaperCatalog } from '../store/wallpaperCatalogStore';
 import { useIstaInterest } from '../store/istaInterestStore';
 import { useNoticeboard } from '../store/noticeboardStore';
+import { fetchLibrary, type LibraryBook } from '../data/library';
+import { canRead, useOwnership } from '../store/ownershipStore';
 import { track } from '../services/analytics';
 
 const { width: W } = Dimensions.get('window');
@@ -33,10 +35,16 @@ export const MandirScreen: React.FC = () => {
   const istaNotedMap = useIstaInterest((s) => s.noted);
   const istaNoted = Object.keys(istaNotedMap).length > 0;
 
+  const [library, setLibrary] = useState<LibraryBook[]>([]);
+  const ownedMap = useOwnership((s) => s.owned);
+
   useEffect(() => {
     track('mandir_open');
     useWallpaperCatalog.getState().load();
     useNoticeboard.getState().load();
+    let alive = true;
+    fetchLibrary().then((b) => { if (alive) setLibrary(b); }).catch(() => {});
+    return () => { alive = false; };
   }, []);
 
   // latest undismissed notice → one quiet card on the Mandir wall (never on Today)
@@ -122,6 +130,38 @@ export const MandirScreen: React.FC = () => {
             </View>
           </View>
         </Pressable>
+
+        {/* the rest of the library — streamed, so new books need no app release */}
+        {library.filter((b) => b.id !== 'varaha').map((b) => {
+          const readable = canRead(b.access, b.id, ownedMap);
+          return (
+            <Pressable
+              key={b.id}
+              style={styles.bookRow}
+              onPress={() => {
+                track('library_book_tap', { book: b.id, access: b.access });
+                if (readable) navigation.navigate('KathaScroll', { kathaId: b.id });
+                else { try { Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning); } catch { /* noop */ } }
+              }}
+            >
+              <ExpoImage source={{ uri: b.cover }} style={styles.bookThumb} contentFit="cover" transition={200} />
+              <View style={{ flex: 1 }}>
+                {b.access === 'free' ? (
+                  <View style={styles.rowBadge}><Text style={styles.rowBadgeTxt}>FREE</Text></View>
+                ) : (
+                  <View style={[styles.rowBadge, { backgroundColor: theme.accentSoft }]}>
+                    <Text style={[styles.rowBadgeTxt, { color: theme.accent }]}>
+                      {readable ? 'YOURS' : b.access === 'soon' ? 'SOON' : (b.price ?? 'UNLOCK')}
+                    </Text>
+                  </View>
+                )}
+                <Text style={styles.rowTitle}>{b.title}</Text>
+                <Text style={styles.rowSub} numberOfLines={1}>{b.subtitle ?? `${b.sceneCount} painted scenes`}</Text>
+              </View>
+              <Ionicons name={readable ? 'chevron-forward' : 'lock-closed'} size={readable ? 18 : 15} color="#64748b" />
+            </Pressable>
+          );
+        })}
 
         {showChalisaComic(theme.key) && (
           <Pressable
@@ -319,5 +359,10 @@ const styles = StyleSheet.create({
   },
   istaName: { color: '#f8fafc', fontSize: 14, fontFamily: 'Playfair_Bold' },
   istaPrice: { color: '#cbd5e1', fontSize: 10.5, marginTop: 1 },
+  supportRow: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
+    paddingVertical: 16, marginTop: 26, opacity: 0.75,
+  },
+  supportTxt: { color: '#94a3b8', fontSize: 13, fontWeight: '600' },
   istaNote: { color: '#64748b', fontSize: 11.5, marginBottom: 4, lineHeight: 16 },
 });

@@ -5,7 +5,7 @@ import { Image as ExpoImage } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Haptics from 'expo-haptics';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Dimensions, NativeScrollEvent, NativeSyntheticEvent, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, NativeScrollEvent, NativeSyntheticEvent, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import Animated, {
   Extrapolation, interpolate, SharedValue, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue,
 } from 'react-native-reanimated';
@@ -38,10 +38,17 @@ const SceneView: React.FC<{
 }> = ({ scene, index, scrollY, showText, accent, near, onTap }) => {
   const range = [(index - 1) * H, index * H, (index + 1) * H];
 
+  // backdrop: full parallax (it is blurred, so cropping is invisible)
   const imgStyle = useAnimatedStyle(() => {
     const translateY = interpolate(scrollY.value, range, [-H * 0.12, 0, H * 0.12], Extrapolation.CLAMP);
     const scale = interpolate(scrollY.value, range, [1.12, 1.02, 1.12], Extrapolation.CLAMP);
     return { transform: [{ translateY }, { scale }] };
+  });
+
+  // the painting itself: drift only, never scaled — so no face is ever cut off
+  const artStyle = useAnimatedStyle(() => {
+    const translateY = interpolate(scrollY.value, range, [-H * 0.05, 0, H * 0.05], Extrapolation.CLAMP);
+    return { transform: [{ translateY }] };
   });
 
   const textStyle = useAnimatedStyle(() => {
@@ -52,16 +59,28 @@ const SceneView: React.FC<{
 
   return (
     <Pressable style={styles.scene} onPress={onTap}>
+      {/* blurred backdrop fills the screen so off-ratio panels never sit on dead black */}
       <Animated.View style={[StyleSheet.absoluteFill, imgStyle]}>
-        {/* thumb always mounted (instant paint); full art only when near the viewport */}
+        <ExpoImage
+          source={{ uri: scene.thumb ?? scene.img }}
+          style={StyleSheet.absoluteFill as any}
+          contentFit="cover"
+          blurRadius={38}
+          cachePolicy="memory-disk"
+        />
+        <View style={styles.backdropDim} pointerEvents="none" />
+      </Animated.View>
+
+      {/* the painting, whole — `contain` keeps every face and edge on screen */}
+      <Animated.View style={[StyleSheet.absoluteFill, artStyle]}>
         {!!scene.thumb && (
-          <ExpoImage source={{ uri: scene.thumb }} style={StyleSheet.absoluteFill as any} contentFit="cover" cachePolicy="memory-disk" />
+          <ExpoImage source={{ uri: scene.thumb }} style={StyleSheet.absoluteFill as any} contentFit="contain" cachePolicy="memory-disk" />
         )}
         {near && (
           <ExpoImage
             source={{ uri: scene.img }}
             style={StyleSheet.absoluteFill as any}
-            contentFit="cover"
+            contentFit="contain"
             transition={200}
             cachePolicy="memory-disk"
           />
@@ -98,6 +117,8 @@ export const KathaScrollScreen: React.FC = () => {
   const [showText, setShowText] = useState(true);
   const [chrome, setChrome] = useState(true);
   const [finished, setFinished] = useState(false);
+  const [inviteDone, setInviteDone] = useState(false);
+  const [email, setEmail] = useState('');
   const scrollY = useSharedValue(0);
   const resumeKey = `@dharma:kathascroll:${comicId ?? kathaId}`;
   const idxRef = useRef(0);
@@ -215,6 +236,45 @@ export const KathaScrollScreen: React.FC = () => {
 
       {finished && idx >= scenes.length - 1 && <PetalShower />}
 
+      {/* post-delight invitation — never a gate, only offered once the book is finished */}
+      {finished && idx >= scenes.length - 1 && !inviteDone && (
+        <View style={styles.invite}>
+          <Text style={[styles.inviteKicker, { color: theme.accent }]}>🪷  THE NEXT KATHA</Text>
+          <Text style={styles.inviteTitle}>If this moved you</Text>
+          <Text style={styles.inviteSub}>We paint a new one every few weeks. Leave an email and it will find you — nothing else, ever.</Text>
+          <TextInput
+            style={styles.inviteInput}
+            placeholder="you@example.com"
+            placeholderTextColor="#475569"
+            value={email}
+            onChangeText={setEmail}
+            autoCapitalize="none"
+            keyboardType="email-address"
+          />
+          <View style={{ flexDirection: 'row', gap: 10 }}>
+            <Pressable
+              style={[styles.inviteBtn, { backgroundColor: theme.accent, flex: 1, opacity: email.includes('@') ? 1 : 0.45 }]}
+              disabled={!email.includes('@')}
+              onPress={() => {
+                track('katha_newsletter_join', { katha: katha.id });
+                fetch('https://dharmaweave.com/api/subscribe', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ email: email.trim().toLowerCase(), source_slug: `katha-${katha.id}` }),
+                }).catch(() => {});
+                try { Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success); } catch { /* noop */ }
+                setInviteDone(true);
+              }}
+            >
+              <Text style={styles.inviteBtnTxt}>Send it to me</Text>
+            </Pressable>
+            <Pressable style={styles.inviteSkip} onPress={() => setInviteDone(true)}>
+              <Text style={styles.inviteSkipTxt}>Not now</Text>
+            </Pressable>
+          </View>
+        </View>
+      )}
+
       {chrome && (
         <View style={styles.topBar} pointerEvents="box-none">
           <Pressable style={styles.roundBtn} onPress={() => navigation.goBack()} hitSlop={12}>
@@ -241,6 +301,7 @@ const styles = StyleSheet.create({
   centerAll: { alignItems: 'center', justifyContent: 'center' },
   loading: { color: '#94a3b8', fontSize: 15 },
   scene: { width: W, height: H, overflow: 'hidden', backgroundColor: '#000' },
+  backdropDim: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(2,6,23,0.55)' },
   scrim: { position: 'absolute', left: 0, right: 0, bottom: 0, height: H * 0.42 },
   textWrap: { position: 'absolute', left: 22, right: 22, bottom: 46 },
   heading: { fontSize: 13, letterSpacing: 2, fontWeight: '800', marginBottom: 8, textTransform: 'uppercase' },
@@ -256,5 +317,21 @@ const styles = StyleSheet.create({
   pill: { borderWidth: 1, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6, backgroundColor: 'rgba(2,6,23,0.6)' },
   pillTxt: { color: '#e2e8f0', fontSize: 12.5, fontWeight: '700' },
   swipeHint: { position: 'absolute', bottom: 18, left: 0, right: 0, alignItems: 'center' },
+  invite: {
+    position: 'absolute', left: 18, right: 18, bottom: 44,
+    backgroundColor: 'rgba(2,6,23,0.94)', borderRadius: 20, borderWidth: 1,
+    borderColor: 'rgba(148,163,184,0.2)', padding: 18,
+  },
+  inviteKicker: { fontSize: 10.5, letterSpacing: 2, fontWeight: '800' },
+  inviteTitle: { color: '#f8fafc', fontSize: 21, fontFamily: 'Playfair_Bold', marginTop: 5 },
+  inviteSub: { color: '#94a3b8', fontSize: 12.5, lineHeight: 18, marginTop: 5, marginBottom: 12 },
+  inviteInput: {
+    borderWidth: 1, borderColor: 'rgba(148,163,184,0.25)', borderRadius: 12,
+    paddingHorizontal: 13, paddingVertical: 11, color: '#f1f5f9', fontSize: 14.5, marginBottom: 10,
+  },
+  inviteBtn: { borderRadius: 12, paddingVertical: 12, alignItems: 'center' },
+  inviteBtnTxt: { color: '#0b1220', fontSize: 14.5, fontWeight: '800' },
+  inviteSkip: { paddingVertical: 12, paddingHorizontal: 14, alignItems: 'center', justifyContent: 'center' },
+  inviteSkipTxt: { color: '#64748b', fontSize: 13.5, fontWeight: '600' },
   swipeHintTxt: { color: 'rgba(248,250,252,0.75)', fontSize: 11.5, fontWeight: '600', letterSpacing: 0.5 },
 });

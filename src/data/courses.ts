@@ -52,11 +52,25 @@ const CHALISA: Course = {
   })),
 };
 
+
+/**
+ * Gita sādhana backdrops — bespoke art painted for the verse cards (subject in the
+ * upper two-thirds, calm dark lower 45% where the text and scrim sit). Assigned
+ * deterministically per verse so a verse always wears the same backdrop.
+ */
+const GITA_ART_BASE =
+  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/courses/gita/';
+const GITA_BACKDROPS = [
+  'gita_chariot.jpg', 'gita_vishwaroop.jpg', 'gita_soul_flame.jpg', 'gita_lotus_detach.jpg',
+  'gita_yogi_still.jpg', 'gita_flute_dusk.jpg', 'gita_kurukshetra_dusk.jpg', 'gita_hands_offering.jpg',
+];
+const gitaArt = (i: number) => GITA_ART_BASE + GITA_BACKDROPS[i % GITA_BACKDROPS.length];
+
 const GITA: Course = {
   id: 'gita',
   title: 'Bhagavad Gita — Essentials',
   subtitle: 'narrated verse by verse',
-  verses: GITA_SHLOKAS.map((s) => ({
+  verses: GITA_SHLOKAS.map((s, i) => ({
     id: s.id,
     titleHi: s.titleHi,
     titleEn: s.titleEn,
@@ -65,6 +79,7 @@ const GITA: Course = {
     meaningHi: s.meaningHi,
     meaningEn: s.meaningEn,
     audio: s.audio, // bundled require()
+    artUrl: gitaArt(i),
   })),
 };
 
@@ -73,11 +88,12 @@ type Streamed = {
   id: string; titleHi: string; titleEn: string; sanskrit: string;
   transliteration: string; meaningHi: string; meaningEn: string; audioUrl: string;
 };
-const fromStreamed = (rows: Streamed[]): CourseVerse[] =>
-  rows.map((v) => ({
+const fromStreamed = (rows: Streamed[], art?: (i: number) => string): CourseVerse[] =>
+  rows.map((v, i) => ({
     id: v.id, titleHi: v.titleHi, titleEn: v.titleEn, sanskrit: v.sanskrit,
     transliteration: v.transliteration, meaningHi: v.meaningHi, meaningEn: v.meaningEn,
     audio: v.audioUrl,
+    ...(art ? { artUrl: art(i) } : {}),
   }));
 
 const DHAMMAPADA: Course = {
@@ -86,11 +102,11 @@ const DHAMMAPADA: Course = {
 };
 const GITA2: Course = {
   id: 'gita2', title: 'Bhagavad Gita — Chapter 2', subtitle: 'Sānkhya Yoga',
-  verses: fromStreamed(GITA2_VERSES as Streamed[]),
+  verses: fromStreamed(GITA2_VERSES as Streamed[], gitaArt),
 };
 const GITACORE: Course = {
   id: 'gitacore', title: 'Bhagavad Gita — Core', subtitle: 'the essential shlokas',
-  verses: fromStreamed(GITACORE_VERSES as Streamed[]),
+  verses: fromStreamed(GITACORE_VERSES as Streamed[], gitaArt),
 };
 const ZEN: Course = {
   id: 'zen', title: 'Zen — Koans & Mind', subtitle: 'the gateless gate',
