@@ -4,6 +4,7 @@ import { Image as ExpoImage } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COURSE_LIST, getCourse } from '../data/courses';
 import { getFaithTheme, todaysDarshan } from '../data/faiths';
 import { buildTodayQueue, masteredCount, useMasteryStore } from '../store/masteryStore';
@@ -38,6 +39,7 @@ export const TodayScreen: React.FC = () => {
   const malas = useJapaStore((s) => s.malas);
   const [panchang, setPanchang] = useState<TodayPanchang | null>(null);
   const catalogWalls = useWallpaperCatalog((s) => s.wallpapers);
+  const insets = useSafeAreaInsets();
 
   useFocusEffect(useCallback(() => {
     useMasteryStore.getState().load();
@@ -99,7 +101,7 @@ export const TodayScreen: React.FC = () => {
     <View style={styles.container}>
       <LinearGradient colors={['#020617', '#0b1220', '#020617']} style={StyleSheet.absoluteFill} />
       <FaithChooser />
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={[styles.scroll, { paddingTop: insets.top + 18 }]} showsVerticalScrollIndicator={false}>
         <Text style={[styles.greeting, { color: theme.accent }]}>{theme.greeting}</Text>
         <Text style={styles.title}>Today</Text>
 

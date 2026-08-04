@@ -6,6 +6,7 @@ import {
   useFonts,
 } from '@expo-google-fonts/playfair-display';
 import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as Notifications from 'expo-notifications';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useRef } from 'react';
@@ -104,9 +105,11 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <BottomSheetModalProvider>
         <StatusBar style="light" />
+        <SafeAreaProvider>
         <NavigationContainer ref={navigationRef}>
           <AppNavigator />
         </NavigationContainer>
+        </SafeAreaProvider>
         <MusicBottomSheet />
       </BottomSheetModalProvider>
     </GestureHandlerRootView>

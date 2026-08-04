@@ -96,9 +96,20 @@ const fromStreamed = (rows: Streamed[], art?: (i: number) => string): CourseVers
     ...(art ? { artUrl: art(i) } : {}),
   }));
 
+
+/** Buddhist course backdrops — Dhammapada in devotional blue-gold, Zen in ink-wash. */
+const BUDDHIST_ART_BASE =
+  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/courses/';
+const DHAMMA_BACKDROPS = ['dhamma_bodhi_night.jpg', 'dhamma_dawn_walk.jpg', 'dhamma_lotus_water.jpg',
+  'dhamma_footprint.jpg', 'dhamma_alms_bowl.jpg'];
+const ZEN_BACKDROPS = ['zen_enso.jpg', 'zen_moon_bamboo.jpg', 'zen_stone_garden.jpg',
+  'zen_empty_room.jpg', 'zen_heron_mist.jpg'];
+const dhammaArt = (i: number) => BUDDHIST_ART_BASE + 'dhammapada/' + DHAMMA_BACKDROPS[i % DHAMMA_BACKDROPS.length];
+const zenArt = (i: number) => BUDDHIST_ART_BASE + 'zen/' + ZEN_BACKDROPS[i % ZEN_BACKDROPS.length];
+
 const DHAMMAPADA: Course = {
   id: 'dhammapada', title: 'Dhammapada', subtitle: "the Buddha's path of truth",
-  verses: fromStreamed(DHAMMAPADA_VERSES as Streamed[]),
+  verses: fromStreamed(DHAMMAPADA_VERSES as Streamed[], dhammaArt),
 };
 const GITA2: Course = {
   id: 'gita2', title: 'Bhagavad Gita — Chapter 2', subtitle: 'Sānkhya Yoga',
@@ -110,7 +121,7 @@ const GITACORE: Course = {
 };
 const ZEN: Course = {
   id: 'zen', title: 'Zen — Koans & Mind', subtitle: 'the gateless gate',
-  verses: fromStreamed(ZEN_VERSES as Streamed[]),
+  verses: fromStreamed(ZEN_VERSES as Streamed[], zenArt),
 };
 const UPANISHADS: Course = {
   id: 'upanishads', title: 'Upanishads — Mahāvākyas', subtitle: 'the great sayings',
