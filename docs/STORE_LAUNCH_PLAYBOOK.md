@@ -147,6 +147,23 @@ One tag per surface per campaign, never reused across purposes.
   IG +65% CPC; Audience Network junk-prone. FB-only placements won.
 - Insights lag up to ~1h — "no delivery" right after activation means nothing.
 
+**Download-optimised ads WITHOUT an SDK** (added after the click-campaign
+lesson: ~13k clicks → 20 devices at ~0.15%):
+- Click/traffic campaigns buy the cheapest tappers; they do not buy installers.
+- **Meta**: fire a server-side CAPI `Lead` from the smart-link function on
+  every store handoff (fbclid + IP + UA matching; no cookies, no page render —
+  the 302 stays). Then run `OUTCOME_LEADS` with
+  `promoted_object={pixel_id, custom_event_type: LEAD}` — Meta optimises for
+  people who reach the store, the deepest signal available SDK-free. Reuse the
+  book funnel's pixel + token (already in Cloudflare env).
+- **Google App Campaigns** optimise on real Play installs with NO SDK — link
+  Play Console ↔ Google Ads (customer 394-214-6529) once.
+- **Apple Search Ads** optimise on real App Store installs with NO SDK, and
+  target store searches (highest intent that exists). Enrollment needs the
+  account holder at ads.apple.com.
+- True Meta/YouTube install objectives need their SDK/Firebase in the app —
+  a privacy-posture decision, not a checkbox.
+
 **YouTube:**
 - Upload Short via Data API (pattern:
   `scripts/upload_app_reel_to_dharmaweave.py`). Canon: `categoryId: '1'`,
