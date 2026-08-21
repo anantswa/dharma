@@ -93,6 +93,16 @@ The app ships **no credentials at all**:
 - Client: `src/services/analytics.ts` — offline queue, session split on 30-min
   gap, flush on background.
 
+**Outage armor (added after the 21 Aug Supabase stall blanked every image in
+the app for ~1h):** never let the app hit the storage origin directly. Put a
+Cloudflare edge cache in front (`DharmaWeave/functions/cdn/[[path]].js`):
+media cached 1y immutable; `*.json` manifests get a 5-min fresh TTL plus a
+long-lived stale copy served when the origin fails; manifest bodies get the
+origin URL prefix rewritten to the CDN on the fly so embedded URLs route
+through the cache too. App asset URLs point at `dharmaweave.com/cdn/…` from
+day one. Pair with `dharma_uptime_watch.py` (cron 10-min, WhatsApp on state
+change only) so an outage is known in minutes, not from users.
+
 **Pitfall that cost us all launch-day click data:** the Supabase key stored in
 Cloudflare env had been rotated (`eyJ…` JWT era → `sb_secret_…`), every insert
 401'd, and the `catch(()=>{})` swallowed it. Rules:

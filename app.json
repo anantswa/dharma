@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "Dharma — Daily Wisdom",
+    "name": "Dharma \u2014 Daily Wisdom",
     "slug": "dharma",
     "version": "1.0.5",
-    "description": "A daily spiritual companion across Hindu, Sikh, Buddhist, Jain, and Zen traditions. Temple darshan, sacred calendar, wisdom library, and learning modules — all offline-first.",
+    "description": "A daily spiritual companion across Hindu, Sikh, Buddhist, Jain, and Zen traditions. Temple darshan, sacred calendar, wisdom library, and learning modules \u2014 all offline-first.",
     "orientation": "portrait",
     "icon": "./assets/images/icon1.png",
     "scheme": "dharma",
