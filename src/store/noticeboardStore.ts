@@ -8,7 +8,7 @@ import { createJSONStorage, persist } from 'zustand/middleware';
  * user has waved away on Today.
  */
 const BOARD_URL =
-  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/config/noticeboard.json';
+  'https://dharmaweave.com/cdn/dharma-art/config/noticeboard.json';
 
 export type Notice = { id: string; date: string; title: string; body: string };
 

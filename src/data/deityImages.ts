@@ -13,7 +13,7 @@ export type Deity = {
 
 /** Streamed deity art (uploaded to dharma-art/deities/). Keeps the binary light. */
 const ART = (slug: string) => ({
-  uri: `https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/deities/${slug}.jpg`,
+  uri: `https://dharmaweave.com/cdn/dharma-art/deities/${slug}.jpg`,
 });
 
 export const FINAL_DEITIES: Deity[] = [

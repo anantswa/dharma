@@ -59,7 +59,7 @@ const CHALISA: Course = {
  * deterministically per verse so a verse always wears the same backdrop.
  */
 const GITA_ART_BASE =
-  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/courses/gita/';
+  'https://dharmaweave.com/cdn/dharma-art/courses/gita/';
 const GITA_BACKDROPS = [
   'gita_chariot.jpg', 'gita_vishwaroop.jpg', 'gita_soul_flame.jpg', 'gita_lotus_detach.jpg',
   'gita_yogi_still.jpg', 'gita_flute_dusk.jpg', 'gita_kurukshetra_dusk.jpg', 'gita_hands_offering.jpg',
@@ -99,7 +99,7 @@ const fromStreamed = (rows: Streamed[], art?: (i: number) => string): CourseVers
 
 /** Buddhist course backdrops — Dhammapada in devotional blue-gold, Zen in ink-wash. */
 const BUDDHIST_ART_BASE =
-  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/courses/';
+  'https://dharmaweave.com/cdn/dharma-art/courses/';
 const DHAMMA_BACKDROPS = ['dhamma_bodhi_night.jpg', 'dhamma_dawn_walk.jpg', 'dhamma_lotus_water.jpg',
   'dhamma_footprint.jpg', 'dhamma_alms_bowl.jpg'];
 const ZEN_BACKDROPS = ['zen_enso.jpg', 'zen_moon_bamboo.jpg', 'zen_stone_garden.jpg',

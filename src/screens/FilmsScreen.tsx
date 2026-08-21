@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { getFaithTheme } from '../data/faiths';
 
-const FILMS_URL = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/films/catalog.json';
+const FILMS_URL = 'https://dharmaweave.com/cdn/dharma-art/films/catalog.json';
 type Film = { id: string; title: string; channel: string; thumb: string; url: string; duration: number; published: string };
 
 const mins = (s: number) => `${Math.round(s / 60)} min`;

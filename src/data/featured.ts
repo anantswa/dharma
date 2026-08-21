@@ -5,7 +5,7 @@
  */
 import type { FaithKey } from './faiths';
 
-const ART = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art';
+const ART = 'https://dharmaweave.com/cdn/dharma-art';
 
 export type FeaturedHero = {
   title: string;

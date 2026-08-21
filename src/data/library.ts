@@ -27,7 +27,7 @@ export type LibraryBook = {
 };
 
 const CATALOG_URL =
-  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/kathas/catalog.json';
+  'https://dharmaweave.com/cdn/dharma-art/kathas/catalog.json';
 
 export async function fetchLibrary(): Promise<LibraryBook[]> {
   const res = await fetch(CATALOG_URL);

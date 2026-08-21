@@ -7,7 +7,7 @@ import { PRIMARY_FAITHS, getFaithTheme } from '../data/faiths';
 import { usePreferencesStore } from '../store/preferencesStore';
 import { track } from '../services/analytics';
 
-const ART = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art';
+const ART = 'https://dharmaweave.com/cdn/dharma-art';
 const CARD_ART: Record<string, string> = {
   Hindu: `${ART}/featured/temple_hero.jpg`,
   Buddhist: `${ART}/featured/bodhi_hero.jpg`,

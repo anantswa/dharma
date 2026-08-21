@@ -60,7 +60,7 @@ export const HomeScreen: React.FC = () => {
   const deities = useMemo(() => darshanDeities(primaryTradition), [primaryTradition]);
 
   // Live deity-mantra manifest (key → loop url). Chants appear as folders are filled.
-  const MANTRAS_BASE = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/mantras';
+  const MANTRAS_BASE = 'https://dharmaweave.com/cdn/dharma-audio/mantras';
   useEffect(() => {
     let alive = true;
     fetch(`${MANTRAS_BASE}/catalog.json`)

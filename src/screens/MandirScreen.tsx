@@ -19,7 +19,7 @@ import { canRead, useOwnership } from '../store/ownershipStore';
 import { track } from '../services/analytics';
 
 const { width: W } = Dimensions.get('window');
-const ART = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art';
+const ART = 'https://dharmaweave.com/cdn/dharma-art';
 
 /**
  * Mandir — the temple treasury. The destination surface: everything the temple

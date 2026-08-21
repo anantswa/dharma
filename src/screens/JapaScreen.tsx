@@ -14,7 +14,7 @@ import { useJapaStore } from '../store/japaStore';
 import { track } from '../services/analytics';
 
 const MANTRAS_BASE =
-  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/mantras';
+  'https://dharmaweave.com/cdn/dharma-audio/mantras';
 const MALA = 108;
 
 /**

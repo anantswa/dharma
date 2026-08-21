@@ -8,7 +8,7 @@ import { getFaithTheme } from '../data/faiths';
 
 // Live catalog — regenerated from the products DB on every launch (scripts/gen_shop_catalog.py).
 // New products appear here with no app update; bundled BOOKS is the offline fallback.
-const CATALOG_URL = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/shop/catalog.json';
+const CATALOG_URL = 'https://dharmaweave.com/cdn/dharma-art/shop/catalog.json';
 
 const open = (url?: string) => {
   if (!url) return;

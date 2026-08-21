@@ -13,7 +13,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Shri Guru Charan Saroj Raj, Nij Manu Mukuru Sudhaari. Baranau Raghubar Bimal Jasu, Jo Daayaku Phal Chaari. Buddhiheen Tanu Jaanike, Sumirau Pavan-Kumaar. Bal Budhi Bidya Dehu Mohi, Harahu Kalesh Bikaar.",
     meaningHi: "श्री गुरु के चरण कमलों की धूल से अपने मन रूपी दर्पण को स्वच्छ करके, मैं श्री रघुवर के उस निर्मल यश का वर्णन करता हूँ, जो धर्म, अर्थ, काम और मोक्ष—इन चारों फलों को देने वाला है।",
     meaningEn: "Cleansing the mirror of my mind with the dust from the Lotus-feet of Divine Guru, I describe the unblemished glory of Lord Rama, which bestows four fruits of Righteousness, Wealth, Pleasure, and Liberation. Knowing this body to be devoid of intelligence, I remember Hanuman, the son of Vayu. Bestow upon me strength, intelligence, and knowledge, and remove my afflictions and impurities.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/doha_1.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/doha_1.mp3",
   },
   {
     id: "chalisa_doha_2", order: 1,
@@ -22,7 +22,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Pavanatanaya sankat haran, mangal moorati roop. Raam Lakhan Seetaa sahit, hriday basahu sur bhoop.",
     meaningHi: "हे पवनपुत्र, संकटों को हरने वाले और मंगल के स्वरूप! आप श्री राम, लक्ष्मण और सीता सहित मेरे हृदय में निवास करें।",
     meaningEn: "O Son of the Wind, destroyer of sorrows, embodiment of auspiciousness! Reside in my heart along with Rama, Lakshmana, and Sita, O King of Gods.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/doha_2.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/doha_2.mp3",
   },
   {
     id: "chalisa_chaupai_1", order: 2,
@@ -31,7 +31,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Jai Hanuman gyan gun saagar. Jai Kapis tihun lok ujaagar.",
     meaningHi: "ज्ञान और गुणों के सागर श्री हनुमान जी की जय हो। तीनों लोकों को प्रकाशित करने वाले वानर राज की जय हो।",
     meaningEn: "Victory to Hanuman, the ocean of wisdom and virtue. Victory to the Lord of the monkeys, who illuminates the three worlds.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_1.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_1.mp3",
   },
   {
     id: "chalisa_chaupai_2", order: 3,
@@ -40,7 +40,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Ram doot atulit bal dhama.\nAnjani-putra Pavansut nama.",
     meaningHi: "आप श्री राम के दूत और अतुलनीय शक्ति के धाम हैं। आप अंजनी पुत्र और पवनसुत के नाम से जाने जाते हैं।",
     meaningEn: "You are the messenger of Rama, the abode of incomparable strength. You are known as the son of Anjani and the son of the wind god.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_2.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_2.mp3",
   },
   {
     id: "chalisa_chaupai_3", order: 4,
@@ -49,7 +49,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Mahabeer bikram bajarangi. Kumati nivaar sumati ke sangi.",
     meaningHi: "आप महान वीर और अत्यंत पराक्रमी हैं, जिनका शरीर वज्र के समान शक्तिशाली है। आप कुबुद्धि का नाश करने वाले और सुबुद्धि के साथी हैं।",
     meaningEn: "You are the great hero, valiant and with a body as strong as a thunderbolt. You dispel evil intellect and are the companion of good sense.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_3.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_3.mp3",
   },
   {
     id: "chalisa_chaupai_4", order: 5,
@@ -58,7 +58,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Kanchan baran biraj subesa. Kanan kundal kunchit kesa.",
     meaningHi: "आपका रंग स्वर्ण के समान है और आप सुंदर वस्त्रों से सुसज्जित हैं। आपके कानों में कुंडल और बाल घुंघराले हैं।",
     meaningEn: "Your complexion is golden, and you are beautifully attired. You wear earrings and have curly hair.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_4.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_4.mp3",
   },
   {
     id: "chalisa_chaupai_5", order: 6,
@@ -67,7 +67,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Haath bajra au dhvajaa biraajai. Kaandhe moonj janeu saajai.",
     meaningHi: "आपके हाथों में वज्र और ध्वजा सुशोभित है। आपके कंधे पर मूंज की घास का बना जनेऊ शोभा देता है।",
     meaningEn: "You hold a thunderbolt and a flag in your hands. A sacred thread of munja grass adorns your shoulder.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_5.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_5.mp3",
   },
   {
     id: "chalisa_chaupai_6", order: 7,
@@ -76,7 +76,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Sankar suvan kesarinandan. Tej prataap mahaa jag bandan.",
     meaningHi: "आप शिव के अवतार और केसरी के पुत्र हैं। आपके तेज और प्रताप की वंदना समस्त संसार करता है।",
     meaningEn: "You are the incarnation of Shiva and the son of Kesari. Your aura and majesty are revered by the whole world.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_6.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_6.mp3",
   },
   {
     id: "chalisa_chaupai_7", order: 8,
@@ -85,7 +85,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Bidyaavaan gunee ati chaatur. Raam kaaj karibe ko aatur.",
     meaningHi: "आप अत्यंत विद्वान, गुणी और चतुर हैं। आप श्री राम के कार्यों को करने के लिए सदैव तत्पर रहते हैं।",
     meaningEn: "You are highly learned, virtuous, and extremely clever. You are always eager to accomplish Lord Rama's tasks.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_7.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_7.mp3",
   },
   {
     id: "chalisa_chaupai_8", order: 9,
@@ -94,7 +94,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Prabhu charitra sunibe ko rasiya.\nRam Lakhan Sita man basiya.",
     meaningHi: "आपको प्रभु की महिमा सुनने में आनंद आता है। राम, लक्ष्मण और सीता आपके हृदय में निवास करते हैं।",
     meaningEn: "You delight in listening to the glories of the Lord. Rama, Lakshmana, and Sita reside in your heart.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_8.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_8.mp3",
   },
   {
     id: "chalisa_chaupai_9", order: 10,
@@ -103,7 +103,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Sukshma roop dhari Siyahin dikhava.\nBikat roop dhari Lank jarava.",
     meaningHi: "आपने सूक्ष्म रूप धारण करके सीता जी को दर्शन दिए और विकराल रूप धारण करके लंका को जलाया।",
     meaningEn: "You assumed a microscopic form to appear before Sita. You assumed a terrifying form to burn down Lanka.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_9.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_9.mp3",
   },
   {
     id: "chalisa_chaupai_10", order: 11,
@@ -112,7 +112,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Bhim roop dhari asur sanhare.\nRamachandra ke kaj sanvare.",
     meaningHi: "आपने विशाल रूप धारण करके राक्षसों का संहार किया और श्री रामचंद्र जी के कार्यों को सफल बनाया।",
     meaningEn: "You assumed a colossal form to destroy the demons. You successfully completed the missions of Lord Rama.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_10.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_10.mp3",
   },
   {
     id: "chalisa_chaupai_11", order: 12,
@@ -121,7 +121,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Laay sajeevan Lakhan jiyaaye. Shri Raghubeer harashi ur laaye.",
     meaningHi: "आप संजीवनी बूटी लेकर आए और लक्ष्मण जी के प्राण बचाए, जिससे श्री राम ने अत्यंत प्रसन्न होकर आपको गले लगा लिया।",
     meaningEn: "You brought the Sanjeevani herb and revived Lakshmana. Lord Rama joyfully embraced you.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_11.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_11.mp3",
   },
   {
     id: "chalisa_chaupai_12", order: 13,
@@ -130,7 +130,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Raghupati kinhi bahut badai.\nTum mam priya Bharatahi sam bhai.",
     meaningHi: "श्री राम ने आपकी बहुत प्रशंसा की और कहा कि आप उन्हें अपने भाई भरत के समान ही प्रिय हैं।",
     meaningEn: "Lord Rama praised you highly, saying, 'You are as dear to me as my brother Bharata.'",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_12.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_12.mp3",
   },
   {
     id: "chalisa_chaupai_13", order: 14,
@@ -139,7 +139,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Sahas badan tumharo jas gavain.\nAs kahi Shripati kanth lagavain.",
     meaningHi: "'हजारों मुखों वाले शेषनाग आपके यश का गान करते हैं', ऐसा कहकर लक्ष्मीपति श्री राम ने आपको हृदय से लगा लिया।",
     meaningEn: "'The thousand-headed serpent Shesha sings your glory,' saying this, the Lord of Lakshmi embraced you.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_13.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_13.mp3",
   },
   {
     id: "chalisa_chaupai_14", order: 15,
@@ -148,7 +148,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Sanakaadik Brahmaaadi muneesaa. Naarad Saarad sahit aheesaa.",
     meaningHi: "सनक आदि ऋषि, ब्रह्मा आदि देवता, मुनीश्वर, नारद, सरस्वती और शेषनाग सभी आपका गुणगान करते हैं।",
     meaningEn: "Sages like Sanaka, gods like Brahma, and the great hermits, along with Narada, Saraswati, and Sheshnag sing your glory.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_14.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_14.mp3",
   },
   {
     id: "chalisa_chaupai_15", order: 16,
@@ -157,7 +157,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Jam Kuber Digpal jahan te.\nKabi kobid kahi sake kahan te.",
     meaningHi: "यम, कुबेर और दसों दिशाओं के रक्षक, यहाँ तक कि कवि और विद्वान भी आपकी महिमा का पूर्ण वर्णन नहीं कर सकते।",
     meaningEn: "...Yama, Kubera, and the guardians of the directions; even poets and scholars cannot adequately describe your glory.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_15.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_15.mp3",
   },
   {
     id: "chalisa_chaupai_16", order: 17,
@@ -166,7 +166,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Tum upkar Sugreevahin keenha.\nRam milay raj pad deenha.",
     meaningHi: "आपने सुग्रीव पर महान उपकार किया, उन्हें श्री राम से मिलाया और उन्हें राज्य दिलाया।",
     meaningEn: "You did a great favor for Sugriva. You introduced him to Rama and bestowed the kingdom upon him.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_16.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_16.mp3",
   },
   {
     id: "chalisa_chaupai_17", order: 18,
@@ -175,7 +175,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Tumharo mantra Bibheeshan maanaa. Lankesvar bhae sab jag jaanaa.",
     meaningHi: "आपके परामर्श को विभीषण ने माना और वे लंका के राजा बने, यह बात सारा संसार जानता है।",
     meaningEn: "Vibhishana heeded your advice and became the King of Lanka, as the whole world knows.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_17.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_17.mp3",
   },
   {
     id: "chalisa_chaupai_18", order: 19,
@@ -184,7 +184,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Yug sahasra yojan par bhanu. Lilyo tahi madhur phal janu.",
     meaningHi: "आपने हजारों मील की दूरी पर स्थित सूर्य को एक मीठा फल समझकर निगल लिया था।",
     meaningEn: "You swallowed the sun, which is millions of miles away, thinking it to be a sweet fruit.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_18.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_18.mp3",
   },
   {
     id: "chalisa_chaupai_19", order: 20,
@@ -193,7 +193,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Prabhu mudrikaa meli mukh maaheen. Jaladhi laanghi gaye acharaj naaheen.",
     meaningHi: "प्रभु श्री राम की अंगूठी को मुँह में रखकर आपने समुद्र को लाँघ लिया, इसमें कोई आश्चर्य नहीं है।",
     meaningEn: "Keeping the Lord's ring in your mouth, you crossed the ocean. It is no wonder.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_19.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_19.mp3",
   },
   {
     id: "chalisa_chaupai_20", order: 21,
@@ -202,7 +202,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Durgam kaj jagat ke jete.\nSugam anugrah tumhare tete.",
     meaningHi: "संसार के जितने भी कठिन कार्य हैं, वे आपकी कृपा से अत्यंत सरल हो जाते हैं।",
     meaningEn: "All the difficult tasks in the world become easy by your grace.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_20.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_20.mp3",
   },
   {
     id: "chalisa_chaupai_21", order: 22,
@@ -211,7 +211,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Ram duare tum rakhvare.\nHot na agya binu paisare.",
     meaningHi: "आप श्री राम के दरबार के द्वारपाल हैं, आपकी अनुमति के बिना कोई भी वहां प्रवेश नहीं कर सकता।",
     meaningEn: "You are the gatekeeper at the door of Rama's divine abode. No one can enter without your permission.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_21.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_21.mp3",
   },
   {
     id: "chalisa_chaupai_22", order: 23,
@@ -220,7 +220,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Sab sukh lahai tumhari sarna. Tum rakshak kahu ko dar na.",
     meaningHi: "आपकी शरण में आने पर सभी सुख प्राप्त होते हैं, और जब आप रक्षक हैं तो किसी बात का डर नहीं रहता।",
     meaningEn: "All happiness is found in your shelter. With you as the protector, there is nothing to fear.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_22.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_22.mp3",
   },
   {
     id: "chalisa_chaupai_23", order: 24,
@@ -229,7 +229,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Aapan tej samharo aapai.\nTeenon lok hank te kanpai.",
     meaningHi: "अपने तेज और वेग को केवल आप ही संभाल सकते हैं, आपकी एक गर्जना से तीनों लोक कांप उठते हैं।",
     meaningEn: "Only you can control your immense power. The three worlds tremble at your roar.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_23.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_23.mp3",
   },
   {
     id: "chalisa_chaupai_24", order: 25,
@@ -238,7 +238,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Bhoot pisach nikat nahin aavai.\nMahabir jab naam sunavai.",
     meaningHi: "जब 'महावीर' हनुमान का नाम जपा जाता है, तो भूत-प्रेत और बुरी शक्तियां पास भी नहीं फटकतीं।",
     meaningEn: "Ghosts and evil spirits do not come near when the name of the great hero, Mahabir, is chanted.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_24.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_24.mp3",
   },
   {
     id: "chalisa_chaupai_25", order: 26,
@@ -247,7 +247,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Nasai rog harai sab peera.\nJapat nirantar Hanumat beera.",
     meaningHi: "वीर हनुमान के नाम का निरंतर जप करने से सभी रोग नष्ट हो जाते हैं और सारे कष्ट मिट जाते हैं।",
     meaningEn: "All diseases are destroyed and all pains vanish by constantly chanting the name of the brave Hanuman.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_25.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_25.mp3",
   },
   {
     id: "chalisa_chaupai_26", order: 27,
@@ -256,7 +256,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Sankat ten Hanumaan chhudaavai. Man kram bachan dhyaan jo laavai.",
     meaningHi: "जो व्यक्ति मन, वचन और कर्म से हनुमान जी का ध्यान करता है, उन्हें वे सभी संकटों से मुक्त कर देते हैं।",
     meaningEn: "Hanuman rescues from all troubles those who meditate on him in thought, word, and deed.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_26.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_26.mp3",
   },
   {
     id: "chalisa_chaupai_27", order: 28,
@@ -265,7 +265,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Sab par Ram tapasvee raja.\nTin ke kaj sakal tum saja.",
     meaningHi: "तपस्वी राजा श्री राम सर्वोपरि हैं और आपने उनके सभी कार्यों को सिद्ध किया है।",
     meaningEn: "Lord Rama is the ascetic king over all, and you have accomplished all his tasks.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_27.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_27.mp3",
   },
   {
     id: "chalisa_chaupai_28", order: 29,
@@ -274,7 +274,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Aur manorath jo koi lavai.\nSoi amit jeevan phal pavai.",
     meaningHi: "जो कोई भी आपके पास अपनी कोई इच्छा लेकर आता है, उसे जीवन का असीमित और अक्षय फल प्राप्त होता है।",
     meaningEn: "Whoever brings any desire to you obtains the boundless fruits of life.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_28.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_28.mp3",
   },
   {
     id: "chalisa_chaupai_29", order: 30,
@@ -283,7 +283,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Charon yug partap tumhara.\nHai parasiddh jagat ujiyara.",
     meaningHi: "आपका प्रताप चारों युगों (सतयुग, त्रेता, द्वापर और कलियुग) में फैला हुआ है और आपकी कीर्ति पूरे संसार में प्रसिद्ध है।",
     meaningEn: "Your glory spans across all four ages (Yugas), and your radiant fame is renowned throughout the world.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_29.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_29.mp3",
   },
   {
     id: "chalisa_chaupai_30", order: 31,
@@ -292,7 +292,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Saadhu sant ke tum rakhavaare. Asur nikandan Raam dulaare.",
     meaningHi: "आप सज्जनों की रक्षा करते हैं, दुष्टों का संहार करते हैं और श्री राम के दुलारे हैं।",
     meaningEn: "You are the protector of sages and saints. You are the destroyer of demons and the beloved of Rama.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_30.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_30.mp3",
   },
   {
     id: "chalisa_chaupai_31", order: 32,
@@ -301,7 +301,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Ashta siddhi nav nidhi ke data.\nAs bar deen Janaki Mata.",
     meaningHi: "आप आठों सिद्धियों और नौ निधियों को देने वाले हैं, यह वरदान आपको माता सीता से प्राप्त हुआ है।",
     meaningEn: "You are the bestower of the eight supernatural powers and the nine divine treasures. Mother Sita granted you this boon.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_31.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_31.mp3",
   },
   {
     id: "chalisa_chaupai_32", order: 33,
@@ -310,7 +310,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Ram rasayan tumhare pasa.\nSada raho Raghupati ke dasa.",
     meaningHi: "आप राम-नाम रूपी औषधि के स्वामी हैं और निरंतर श्री राम की सेवा में लीन रहते हैं।",
     meaningEn: "You hold the elixir of Rama's name. May you always remain the servant of Lord Rama.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_32.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_32.mp3",
   },
   {
     id: "chalisa_chaupai_33", order: 34,
@@ -319,7 +319,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Tumhare bhajan Ram ko pavai.\nJanam janam ke dukh bisravai.",
     meaningHi: "आपके गुणगान से भक्त श्री राम को पा लेता है और उसके अनेक जन्मों के दुख समाप्त हो जाते हैं।",
     meaningEn: "By singing your praises, one attains Lord Rama and forgets the sorrows of countless lifetimes.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_33.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_33.mp3",
   },
   {
     id: "chalisa_chaupai_34", order: 35,
@@ -328,7 +328,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Anta kaal Raghubar pur jai. Jahan janma Hari-bhakt kahai.",
     meaningHi: "अंत समय में भक्त श्री राम के परम धाम को जाता है और जहाँ भी उसका जन्म होता है, वह हरि-भक्त कहलाता है।",
     meaningEn: "At the end of life, your devotee goes to the eternal abode of Lord Rama, and wherever born, is known as a devotee of Hari.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_34.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_34.mp3",
   },
   {
     id: "chalisa_chaupai_35", order: 36,
@@ -337,7 +337,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Aur devata chitt na dharayi.\nHanumat sei sarba sukh karayi.",
     meaningHi: "अन्य किसी देव का ध्यान किए बिना भी, केवल हनुमान जी की सेवा से पूर्ण आनंद मिलता है।",
     meaningEn: "There is no need to keep any other deity in mind; serving Hanuman brings all happiness.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_35.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_35.mp3",
   },
   {
     id: "chalisa_chaupai_36", order: 37,
@@ -346,7 +346,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Sankat katai mitai sab peera.\nJo sumirai Hanumat balbeera.",
     meaningHi: "महावीर हनुमान को याद करने से सभी विपत्तियाँ दूर होती हैं और कष्टों का नाश होता है।",
     meaningEn: "All crises are resolved and all pains are eradicated for those who remember the mighty Hanuman.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_36.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_36.mp3",
   },
   {
     id: "chalisa_chaupai_37", order: 38,
@@ -355,7 +355,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Jai Jai Jai Hanuman Gosain.\nKripa karahu Gurudev ki nain.",
     meaningHi: "हे गोसाईं हनुमान! आपकी जय-जयकार हो। आप मुझ पर परम गुरु के रूप में कृपा बरसाएं।",
     meaningEn: "Victory, victory, victory to Lord Hanuman! Bestow your grace upon me as my supreme Guru.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_37.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_37.mp3",
   },
   {
     id: "chalisa_chaupai_38", order: 39,
@@ -364,7 +364,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Jo sat baar paath kar koi.\nChhutahi bandi maha sukh hoi.",
     meaningHi: "जो व्यक्ति सौ बार इसका पाठ करेगा, वह कारागार से मुक्त होगा और उसे महान आनंद मिलेगा।",
     meaningEn: "Whoever recites this a hundred times is freed from bondage and experiences immense bliss.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_38.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_38.mp3",
   },
   {
     id: "chalisa_chaupai_39", order: 40,
@@ -373,7 +373,7 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Jo yah padhai Hanuman Chalisa.\nHoy siddhi sakhi Gaureesa.",
     meaningHi: "जो इस हनुमान चालीसा को पढ़ता है उसे सिद्धि प्राप्त होती है, इसके साक्षी स्वयं भगवान शिव (गौरीश) हैं।",
     meaningEn: "Whoever reads this Hanuman Chalisa attains perfection, as Lord Shiva (Gaurisa) is the witness.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_39.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_39.mp3",
   },
   {
     id: "chalisa_chaupai_40", order: 41,
@@ -382,6 +382,6 @@ export const CHALISA_VERSES: ChalisaVerse[] = [
     transliteration: "Tulsidas sada hari chera.\nKeejai Nath hriday mahan dera.",
     meaningHi: "तुलसीदास सदैव श्री हरि के सेवक हैं। हे प्रभु हनुमान, आप मेरे हृदय में निवास कीजिए।",
     meaningEn: "Tulsidas is the eternal servant of Lord Hari. O Lord Hanuman, please make your abode in my heart.",
-    audioUrl: "https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/chalisa/chaupai_40.mp3",
+    audioUrl: "https://dharmaweave.com/cdn/dharma-audio/chalisa/chaupai_40.mp3",
   },
 ];

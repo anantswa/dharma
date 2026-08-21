@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  */
 
 const URL =
-  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/config/tithi.json';
+  'https://dharmaweave.com/cdn/dharma-art/config/tithi.json';
 const CACHE_KEY = '@dharma:tithi_config';
 const CACHE_AT_KEY = '@dharma:tithi_config_at';
 const WEEK_MS = 7 * 24 * 3600 * 1000;

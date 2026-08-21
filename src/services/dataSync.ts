@@ -8,7 +8,7 @@ import type { FestivalEntry, WisdomEntry } from '../types/supabase';
 // SECURITY (2026-07-28): the app holds no backend credential. Content tables are
 // published as static JSON in the PUBLIC storage bucket and fetched keylessly.
 const PUBLIC_CONFIG =
-  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/config';
+  'https://dharmaweave.com/cdn/dharma-art/config';
 
 async function publicJson<T>(name: string): Promise<T[]> {
   const res = await fetch(`${PUBLIC_CONFIG}/${name}`);

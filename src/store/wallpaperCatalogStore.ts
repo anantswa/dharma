@@ -7,7 +7,7 @@ import type { WallpaperRow } from '../data/wallpaperPacks';
  * on later screens). No alive-flag races: state lives outside components.
  */
 const CATALOG_URL =
-  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/wallpapers/catalog.json';
+  'https://dharmaweave.com/cdn/dharma-art/wallpapers/catalog.json';
 
 type CatalogState = {
   wallpapers: WallpaperRow[];

@@ -22,7 +22,7 @@ import { usePreferencesStore } from '../store/preferencesStore';
 import { track } from '../services/analytics';
 
 const MANTRAS_BASE =
-  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/mantras';
+  'https://dharmaweave.com/cdn/dharma-audio/mantras';
 
 const BREATH_SEC = 4; // in 4s, out 4s — matches the practice instructions
 

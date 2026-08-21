@@ -39,7 +39,7 @@ export type SaharaNeed = {
 };
 
 const ART = (slug: string) =>
-  `https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/deities/${slug}.jpg`;
+  `https://dharmaweave.com/cdn/dharma-art/deities/${slug}.jpg`;
 
 export const saharaArtUrl = ART;
 

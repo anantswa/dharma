@@ -22,8 +22,8 @@ import { NARRATORS } from '../data/narrators';
 import { REFLECTIONS } from '../data/reflections';
 
 type VoiceVariant = { reciteKuber?: string; reciteShardul?: string; meaningHi?: string; meaningEn?: string };
-const VOICES_BASE = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/voices';
-const BELL_URL = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-audio/sfx/bell_soft.mp3';
+const VOICES_BASE = 'https://dharmaweave.com/cdn/dharma-audio/voices';
+const BELL_URL = 'https://dharmaweave.com/cdn/dharma-audio/sfx/bell_soft.mp3';
 
 // Soft temple bell for ritual thresholds (sankalpa begin, completion). Cached through
 // the same stream-then-cache path as narration (pre-warmed on mount), fire-and-forget,

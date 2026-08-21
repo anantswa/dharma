@@ -16,7 +16,7 @@ import { usePreferencesStore } from '../store/preferencesStore';
 import { track } from '../services/analytics';
 
 const CATALOG_URL =
-  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/kathas/catalog.json';
+  'https://dharmaweave.com/cdn/dharma-art/kathas/catalog.json';
 const { width: W, height: H } = Dimensions.get('window');
 
 type Scene = { img: string; thumb?: string; heading?: string; text?: string };

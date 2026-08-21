@@ -8,11 +8,11 @@
 
 import type { ImageEntry } from '../types/supabase';
 const IMAGE_INDEX_URL =
-  'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-art/config/image_library.json';
+  'https://dharmaweave.com/cdn/dharma-art/config/image_library.json';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const IMAGES_CACHE_KEY = '@dharma:images_cache';
-const SUPABASE_STORAGE_BASE = 'https://aiwugigdrvijjeoqtpog.supabase.co/storage/v1/object/public/dharma-images';
+const SUPABASE_STORAGE_BASE = 'https://dharmaweave.com/cdn/dharma-images';
 
 let cachedImages: ImageEntry[] = [];
 
