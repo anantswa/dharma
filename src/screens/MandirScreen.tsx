@@ -202,6 +202,18 @@ export const MandirScreen: React.FC = () => {
           accent={theme.accent} title="Teachings" sub="Learn the scriptures, verse by verse"
           onMore={() => navigation.navigate('Learn')}
         />
+        {theme.key === 'Hindu' && (
+          <Pressable style={styles.teachRow} onPress={() => { track('jyotish_entry_mandir'); navigation.navigate('JyotishHome'); }}>
+            <View style={[styles.teachIcon, { backgroundColor: theme.accentSoft }]}>
+              <Ionicons name="planet-outline" size={19} color={theme.accent} />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.rowTitle}>Path of the Sky · ज्योतिष</Text>
+              <Text style={styles.rowSub}>NEW — learn to read a birth chart, as a game</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color="#64748b" />
+          </Pressable>
+        )}
         {teachings.map((c) => (
           <Pressable key={c.id} style={styles.teachRow} onPress={() => navigation.navigate('ChalisaPath', { courseId: c.id })}>
             <View style={[styles.teachIcon, { backgroundColor: theme.accentSoft }]}>

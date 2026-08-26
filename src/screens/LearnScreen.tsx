@@ -71,6 +71,12 @@ export const LearnScreen: React.FC<Props> = ({ navigation }) => {
         <Text style={styles.title}>Learn</Text>
         <Text style={styles.headerSub}>Learn the scriptures by heart — one verse a day.</Text>
 
+        <Pressable style={styles.card} onPress={() => navigation.navigate('JyotishHome')}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.cardTitle}>Path of the Sky · ज्योतिष  <Text style={{ color: '#fbbf24', fontSize: 11 }}>NEW</Text></Text>
+            <Text style={styles.cardSub}>Vedic astrology from first principles — houses, grahas, daśās, as a game</Text>
+          </View>
+        </Pressable>
         {groups.map((g) => g.courses.length > 0 && (
           <View key={g.faith}>
             <Text style={[styles.section, { color: g.accent }]}>{g.faith.toUpperCase()}</Text>

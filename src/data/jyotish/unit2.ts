@@ -1,0 +1,198 @@
+/**
+ * Unit 2 — The Nine Grahas.
+ * Sun through Saturn + Rāhu/Ketu. Geometry first for the nodes, mythology
+ * second. Significations, the royal court model, natural benefic/malefic —
+ * with the Unit-4 teaser that "good/bad" is not the whole story.
+ */
+import type { Unit } from './types';
+
+export const UNIT2: Unit = {
+  id: 'nine-grahas',
+  n: 2,
+  title: 'The Nine Grahas',
+  titleHi: 'नवग्रह',
+  tagline: 'Nine hands that grasp a life',
+  glyph: '☉',
+  cards: [
+    {
+      kind: 'story',
+      title: 'Not "planets"',
+      text: 'Graha means "that which grasps." The nine grahas are not rocks in space being worshipped — they are nine principles that grasp at a human life, each holding one domain. Seven you can see in the sky. Two you cannot — and those two may be the most interesting.',
+      truth: 'classical',
+      bigGlyph: '९',
+    },
+    {
+      kind: 'story',
+      title: 'The court',
+      text: 'The classics arrange them as a royal court. Sūrya the king. Chandra the queen. Mangala the commander. Budha the prince and messenger. Guru the royal teacher. Shukra the minister of pleasures and arts. Shani the servant who becomes the judge. Hold this image — it makes every signification easy to remember.',
+      truth: 'classical',
+      bigGlyph: '👑',
+    },
+    {
+      kind: 'story',
+      title: 'Sūrya — the Sun',
+      text: 'The king: self, soul, vitality, father, authority, the center everything orbits. A strong Sun stands tall without arrogance; an afflicted one either shrinks or burns others. In the sky it is fact: everything in the chart is positioned relative to its light.',
+      truth: 'classical',
+      bigGlyph: '☉',
+    },
+    {
+      kind: 'story',
+      title: 'Chandra — the Moon',
+      text: 'The queen: mind, emotion, mother, the inner tide. Jyotish weights the Moon above everything — "as the Moon, so the mind." It is also the fastest graha, crossing a whole rāśi in about 2¼ days, which is why your birth TIME matters so much.',
+      truth: 'classical',
+      bigGlyph: '☾',
+    },
+    {
+      kind: 'quiz',
+      prompt: 'Why does jyotish care so much about your exact birth time?',
+      choices: ['Ritual tradition', 'The Moon and lagna move fast enough to change within hours', 'It doesn\'t, date is enough'],
+      answer: 1,
+      why: 'The lagna changes sign every ~2 hours and the Moon every ~2¼ days. Hours move your chart. That\'s computed fact, not custom.',
+    },
+    {
+      kind: 'story',
+      title: 'Mangala — Mars',
+      text: 'The commander: energy, courage, blood, brothers, land, the drive that cuts. Well-placed, it is discipline and protection. Ill-placed, it is the argument you didn\'t need to have. Mars doesn\'t do subtle.',
+      truth: 'classical',
+      bigGlyph: '♂',
+    },
+    {
+      kind: 'story',
+      title: 'Budha — Mercury',
+      text: 'The prince: speech, intellect, trade, wit, the nervous system. Budha is famously impressionable — he tends to take the color of whoever he stands with. A messenger is only as good as his company.',
+      truth: 'classical',
+      bigGlyph: '☿',
+    },
+    {
+      kind: 'match',
+      prompt: 'Seat the court — match each graha to its role.',
+      pairs: [
+        ['Sūrya', 'King — the self'],
+        ['Chandra', 'Queen — the mind'],
+        ['Mangala', 'Commander — the drive'],
+        ['Budha', 'Prince — the messenger'],
+      ],
+      why: 'The court is a memory palace: once seated, every signification hangs off a face.',
+    },
+    {
+      kind: 'story',
+      title: 'Guru — Jupiter',
+      text: 'The teacher: wisdom, expansion, children, fortune, dharma. The biggest planet for the biggest job. Where Guru sits and looks, things tend to grow — knowledge first, everything else after.',
+      truth: 'classical',
+      bigGlyph: '♃',
+    },
+    {
+      kind: 'story',
+      title: 'Shukra — Venus',
+      text: 'The minister: love, beauty, art, vehicles, comforts, and the guru of a different court entirely. Shukra knows what makes life sweet — and what makes sweetness a trap. Refinement is his gift; indulgence his shadow.',
+      truth: 'classical',
+      bigGlyph: '♀',
+    },
+    {
+      kind: 'story',
+      title: 'Shani — Saturn',
+      text: 'The slow one: discipline, delay, labor, old age, truth arriving on its own schedule. Shani takes ~29 years to circle the wheel — the longest road of the seven. He does not punish; he invoices. What was skipped gets billed, with time as interest. Feared everywhere, and yet the classics call him the great giver — through work.',
+      truth: 'classical',
+      bigGlyph: '♄',
+    },
+    {
+      kind: 'quiz',
+      prompt: 'Match the court: who is the royal TEACHER?',
+      choices: ['Budha (Mercury)', 'Guru (Jupiter)', 'Shukra (Venus)'],
+      answer: 1,
+      why: 'Guru literally means teacher. Budha is the prince-messenger; Shukra teaches a rival court — a story for a later unit.',
+    },
+    {
+      kind: 'match',
+      prompt: 'The inner circle — match again, faster this time.',
+      pairs: [
+        ['Guru', 'Teacher — wisdom, expansion'],
+        ['Shukra', 'Minister — love, art, sweetness'],
+        ['Shani', 'Judge — time, labor, invoices'],
+      ],
+      why: 'Seven seated. Two remain — and they are not planets at all.',
+    },
+    {
+      kind: 'story',
+      title: 'Now the invisible two',
+      text: 'The Moon\'s orbit is tilted 5° against the Sun\'s road. Two orbits, two crossing points — exactly two, always opposite each other. Those crossing points are Rāhu (north) and Ketu (south). They are geometry: points, not bodies. And they drift backward through the wheel, one full circle every 18.6 years.',
+      truth: 'computed',
+      bigGlyph: '☊',
+    },
+    {
+      kind: 'story',
+      title: 'Why the ancients took points seriously',
+      text: 'Because eclipses happen ONLY when Sun and Moon meet at these points. The two invisible spots in the sky that can swallow the Sun — no wonder the tradition drew them as a shadow-serpent\'s head and tail. The myth is a memory of real astronomy: Rāhu the head that swallows, Ketu the tail that lets go.',
+      truth: 'classical',
+      bigGlyph: '☋',
+    },
+    {
+      kind: 'quiz',
+      prompt: 'What ARE Rāhu and Ketu, physically?',
+      choices: ['Two dark planets beyond Saturn', 'The two points where the Moon\'s path crosses the Sun\'s path', 'The Moon\'s shadow on Earth'],
+      answer: 1,
+      why: 'Orbital intersection points — pure geometry, drifting backward ~18.6 yr/cycle. Eclipses occur only there, which is why they were never ignored.',
+    },
+    {
+      kind: 'wheel',
+      prompt: 'Rāhu stands in Mesha (1). The nodes walk BACKWARD through the wheel — tap the sign Rāhu enters next.',
+      answerSign: 11,
+      why: 'Meena (Pisces, 12th). Backward means against the zodiac order — a fact that will matter for every transit chapter ahead.',
+    },
+    {
+      kind: 'story',
+      title: 'Rāhu and Ketu in a life',
+      text: 'Classically, Rāhu is hunger without a stomach — obsession, ambition, the foreign and the new, wanting MORE. Ketu is the already-digested — detachment, instinct, the mastered thing you no longer chase. One inflates, the other releases. Most lives swing between their two ends of the axis.',
+      truth: 'interpretation',
+      bigGlyph: '∞',
+    },
+    {
+      kind: 'story',
+      title: 'Benefic and malefic — with honesty',
+      text: 'The classics sort the grahas by natural temperament: Guru, Shukra, a bright Moon, and well-accompanied Budha are gentle (benefic). Shani, Mangala, Rāhu, Ketu, and the Sun\'s harsh glare are hard (malefic). But hard is not evil — a surgeon\'s knife is malefic and saves lives. Hold the labels loosely.',
+      truth: 'classical',
+      bigGlyph: '⚖',
+    },
+    {
+      kind: 'story',
+      title: 'The twist that changes everything',
+      text: 'Here is the secret Unit 4 will detonate: whether a graha acts as friend or trouble in YOUR chart depends on your lagna — not on its universal reputation. There are charts where Saturn is the single best ally and Jupiter causes mischief. If a book says "Jupiter is always good," it has told you it stopped at page one.',
+      truth: 'classical',
+      bigGlyph: '🗝',
+    },
+    {
+      kind: 'personal',
+      template: 'moon-nakshatra',
+      fallback: 'With your birth details set, this card would name YOUR Moon\'s nakshatra and its planetary lord — the graha whose period your life began under. Add them from the module home when you\'re ready.',
+    },
+    {
+      kind: 'quiz',
+      prompt: 'A "malefic" graha in jyotish is best understood as…',
+      choices: ['An evil force to be feared', 'A hard-natured principle — a knife that can harm or heal', 'A god demanding remedies'],
+      answer: 1,
+      why: 'Hard, not evil. And Unit 4 will show even the labels flip by lagna. Fear is a reading error.',
+    },
+    {
+      kind: 'story',
+      title: 'Gate Two stands open',
+      text: 'Nine grahas, one court, two of them pure geometry with a serpent\'s story. You can now name what grasps. Next gate: WHERE they grasp — the twelve houses of a life.',
+      bigGlyph: '🪔',
+    },
+  ],
+  trial: {
+    intro: 'The Gate Trial: the court must answer to you now. Quick — no notes.',
+    seconds: 75,
+    passCount: 7,
+    items: [
+      { prompt: '"Graha" literally means…', choices: ['Shining one', 'That which grasps', 'Wanderer'], answer: 1 },
+      { prompt: 'The queen of the court, ruling mind and tide:', choices: ['Chandra (Moon)', 'Shukra (Venus)', 'Budha (Mercury)'], answer: 0 },
+      { prompt: 'Which graha crosses a rāśi in ~2¼ days?', choices: ['Budha', 'Chandra', 'Mangala'], answer: 1 },
+      { prompt: 'Saturn\'s full lap of the wheel takes about…', choices: ['12 years', '18.6 years', '29 years'], answer: 2 },
+      { prompt: 'Rāhu and Ketu are…', choices: ['Invisible planets', 'Orbit-crossing points', 'Fixed stars'], answer: 1 },
+      { prompt: 'Eclipses can only happen near…', choices: ['The nodes', 'Jupiter', 'The lagna'], answer: 0 },
+      { prompt: 'The impressionable prince who takes his company\'s color:', choices: ['Budha (Mercury)', 'Guru (Jupiter)', 'Sūrya (Sun)'], answer: 0 },
+      { prompt: 'Natural benefics include…', choices: ['Guru and Shukra', 'Shani and Mangala', 'Rāhu and Ketu'], answer: 0 },
+      { prompt: 'Whether a graha helps or harms YOUR chart is finally decided by…', choices: ['Its universal nature', 'Your lagna', 'The day of the week'], answer: 1 },
+    ],
+  },
+};
