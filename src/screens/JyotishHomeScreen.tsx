@@ -4,6 +4,7 @@
  */
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image as ExpoImage } from 'expo-image';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { JYOTISH_UNITS, getUnit } from '../data/jyotish/units';
 import { useJyotishStore, isUnitUnlocked, localDay } from '../store/jyotishStore';
@@ -11,6 +12,11 @@ import { SIGNS, SIGNS_DEV, NAKSHATRAS, NAK_LORDS } from '../services/jyotishEngi
 import { track } from '../services/analytics';
 
 const GOLD = '#fbbf24';
+const ART = 'https://dharmaweave.com/cdn/dharma-art/jyotish';
+const GATE_COVERS: Record<string, string> = {
+  'sky-wheel': `${ART}/gate1_cover.jpg`,
+  'nine-grahas': `${ART}/gate2_cover.jpg`,
+};
 
 /** One-line hooks for locked gates — the road ahead should look worth walking. */
 const TEASERS: Record<number, string> = {
@@ -52,6 +58,8 @@ export function JyotishHomeScreen({ navigation }: any) {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={{ paddingTop: insets.top + 14, paddingBottom: 60 }}>
         <Pressable onPress={() => navigation.goBack()} style={styles.back}><Text style={styles.backTxt}>‹</Text></Pressable>
+        <ExpoImage source={{ uri: `${ART}/cover.jpg` }} style={styles.cover}
+          contentFit="cover" transition={350} cachePolicy="memory-disk" />
         <Text style={styles.kicker}>JYOTISH · ज्योतिष</Text>
         <Text style={styles.title}>Path of the Sky</Text>
         <Text style={styles.sub}>Learn to read a birth chart from first principles — as a game, honestly.</Text>
@@ -131,6 +139,10 @@ export function JyotishHomeScreen({ navigation }: any) {
                 {i < JYOTISH_UNITS.length - 1 && <View style={styles.thread} />}
               </View>
               <View style={{ flex: 1 }}>
+                {unlocked && GATE_COVERS[u.id] && (
+                  <ExpoImage source={{ uri: GATE_COVERS[u.id] }} style={styles.gateCover}
+                    contentFit="cover" transition={300} cachePolicy="memory-disk" />
+                )}
                 <Text style={styles.gateN}>GATE {u.n}</Text>
                 <Text style={[styles.gateTitle, (comingSoon || !unlocked) && { color: '#64748b' }]}>
                   {u.title} <Text style={styles.dev}>{u.titleHi}</Text>
@@ -157,6 +169,10 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#020617' },
   back: { paddingHorizontal: 20, marginBottom: 2, width: 60 },
   backTxt: { color: '#94a3b8', fontSize: 30 },
+  cover: { width: '100%', aspectRatio: 16 / 9, borderRadius: 18, marginBottom: 18,
+    backgroundColor: '#0f172a' },
+  gateCover: { width: '100%', aspectRatio: 21 / 9, borderRadius: 12, marginBottom: 8,
+    backgroundColor: '#0f172a' },
   kicker: { color: GOLD, fontSize: 12, letterSpacing: 2, paddingHorizontal: 20 },
   title: { fontSize: 32, fontFamily: 'Playfair_Bold', color: '#f8fafc', paddingHorizontal: 20, marginTop: 2 },
   sub: { fontSize: 13.5, color: '#94a3b8', paddingHorizontal: 20, marginTop: 4, marginBottom: 14 },

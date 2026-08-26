@@ -16,6 +16,7 @@ export const UNIT1: Unit = {
   cards: [
     {
       kind: 'story',
+      art: 'https://dharmaweave.com/cdn/dharma-art/jyotish/story_watchers.jpg',
       title: 'Stand under the night sky',
       text: 'Watch the sky for a year and you notice something strange: the Sun, the Moon, and the five visible planets never wander freely. They all walk the SAME narrow road across the stars — the same belt of sky, again and again.',
       bigGlyph: '✦',
@@ -29,6 +30,7 @@ export const UNIT1: Unit = {
     },
     {
       kind: 'story',
+      art: 'https://dharmaweave.com/cdn/dharma-art/jyotish/story_ecliptic.jpg',
       title: '12 × 30 = 360',
       text: 'Each 30° arc is a rāśi — a sign. Mesha (Aries) begins the wheel, Meena (Pisces) closes it. A planet is always in exactly one rāśi, at some degree between 0° and 30°. That single sentence is half of chart-reading.',
       truth: 'classical',
@@ -95,6 +97,7 @@ export const UNIT1: Unit = {
     },
     {
       kind: 'story',
+      art: 'https://dharmaweave.com/cdn/dharma-art/jyotish/story_sidereal.jpg',
       title: 'One honest screen',
       text: 'Western astrology starts its wheel where the Sun crosses the equator in March (tropical). Jyotish pins the wheel to the stars themselves (sidereal). Earth wobbles once every ~26,000 years, so the two starting lines drift apart — today they differ by about 24°. Neither is a lie; they measure different things. This app uses sidereal, Lahiri line — the standard of Indian astronomy.',
       truth: 'computed',

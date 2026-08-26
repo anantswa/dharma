@@ -23,6 +23,7 @@ export const UNIT2: Unit = {
     },
     {
       kind: 'story',
+      art: 'https://dharmaweave.com/cdn/dharma-art/jyotish/graha_chandra.jpg',
       title: 'The court',
       text: 'The classics arrange them as a royal court. Sūrya the king. Chandra the queen. Mangala the commander. Budha the prince and messenger. Guru the royal teacher. Shukra the minister of pleasures and arts. Shani the servant who becomes the judge. Hold this image — it makes every signification easy to remember.',
       truth: 'classical',
@@ -30,6 +31,7 @@ export const UNIT2: Unit = {
     },
     {
       kind: 'story',
+      art: 'https://dharmaweave.com/cdn/dharma-art/jyotish/graha_surya.jpg',
       title: 'Sūrya — the Sun',
       text: 'The king: self, soul, vitality, father, authority, the center everything orbits. A strong Sun stands tall without arrogance; an afflicted one either shrinks or burns others. In the sky it is fact: everything in the chart is positioned relative to its light.',
       truth: 'classical',
@@ -51,6 +53,7 @@ export const UNIT2: Unit = {
     },
     {
       kind: 'story',
+      art: 'https://dharmaweave.com/cdn/dharma-art/jyotish/graha_mangala.jpg',
       title: 'Mangala — Mars',
       text: 'The commander: energy, courage, blood, brothers, land, the drive that cuts. Well-placed, it is discipline and protection. Ill-placed, it is the argument you didn\'t need to have. Mars doesn\'t do subtle.',
       truth: 'classical',
@@ -58,6 +61,7 @@ export const UNIT2: Unit = {
     },
     {
       kind: 'story',
+      art: 'https://dharmaweave.com/cdn/dharma-art/jyotish/graha_budha.jpg',
       title: 'Budha — Mercury',
       text: 'The prince: speech, intellect, trade, wit, the nervous system. Budha is famously impressionable — he tends to take the color of whoever he stands with. A messenger is only as good as his company.',
       truth: 'classical',
@@ -76,6 +80,7 @@ export const UNIT2: Unit = {
     },
     {
       kind: 'story',
+      art: 'https://dharmaweave.com/cdn/dharma-art/jyotish/graha_guru.jpg',
       title: 'Guru — Jupiter',
       text: 'The teacher: wisdom, expansion, children, fortune, dharma. The biggest planet for the biggest job. Where Guru sits and looks, things tend to grow — knowledge first, everything else after.',
       truth: 'classical',
@@ -83,6 +88,7 @@ export const UNIT2: Unit = {
     },
     {
       kind: 'story',
+      art: 'https://dharmaweave.com/cdn/dharma-art/jyotish/graha_shukra.jpg',
       title: 'Shukra — Venus',
       text: 'The minister: love, beauty, art, vehicles, comforts, and the guru of a different court entirely. Shukra knows what makes life sweet — and what makes sweetness a trap. Refinement is his gift; indulgence his shadow.',
       truth: 'classical',
@@ -90,6 +96,7 @@ export const UNIT2: Unit = {
     },
     {
       kind: 'story',
+      art: 'https://dharmaweave.com/cdn/dharma-art/jyotish/graha_shani.jpg',
       title: 'Shani — Saturn',
       text: 'The slow one: discipline, delay, labor, old age, truth arriving on its own schedule. Shani takes ~29 years to circle the wheel — the longest road of the seven. He does not punish; he invoices. What was skipped gets billed, with time as interest. Feared everywhere, and yet the classics call him the great giver — through work.',
       truth: 'classical',
@@ -121,6 +128,7 @@ export const UNIT2: Unit = {
     },
     {
       kind: 'story',
+      art: 'https://dharmaweave.com/cdn/dharma-art/jyotish/story_eclipse.jpg',
       title: 'Why the ancients took points seriously',
       text: 'Because eclipses happen ONLY when Sun and Moon meet at these points. The two invisible spots in the sky that can swallow the Sun — no wonder the tradition drew them as a shadow-serpent\'s head and tail. The myth is a memory of real astronomy: Rāhu the head that swallows, Ketu the tail that lets go.',
       truth: 'classical',

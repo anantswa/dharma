@@ -14,6 +14,7 @@ import { useStreakStore } from '../store/streakStore';
 import { SIGNS, SIGNS_DEV, NAKSHATRAS, NAK_LORDS, DASHA_YEARS } from '../services/jyotishEngine';
 import { track } from '../services/analytics';
 import * as Haptics from 'expo-haptics';
+import { Image as ExpoImage } from 'expo-image';
 
 /** Unbiased Fisher–Yates; reshuffles once if the order came out identical. */
 function shuffle<T>(arr: T[]): T[] {
@@ -422,7 +423,11 @@ export function JyotishLessonScreen({ route, navigation }: any) {
           <ScrollView contentContainerStyle={styles.cardWrap} showsVerticalScrollIndicator={false}>
             {card.kind === 'story' && (
               <>
-                {card.bigGlyph && <Text style={styles.bigGlyph}>{card.bigGlyph}</Text>}
+                {card.art && (
+                  <ExpoImage source={{ uri: card.art }} style={styles.storyArt}
+                    contentFit="cover" transition={300} cachePolicy="memory-disk" />
+                )}
+                {!card.art && card.bigGlyph && <Text style={styles.bigGlyph}>{card.bigGlyph}</Text>}
                 {card.truth && (
                   <Text style={[styles.truth, { color: TRUTH_LABEL[card.truth][1] }]}>{TRUTH_LABEL[card.truth][0]}</Text>
                 )}
@@ -519,6 +524,8 @@ const styles = StyleSheet.create({
   progressFill: { height: 6, borderRadius: 3, backgroundColor: GOLD },
   hudTxt: { color: '#94a3b8', fontSize: 13 },
   cardWrap: { padding: 24, paddingTop: 30, paddingBottom: 60, flexGrow: 1, justifyContent: 'center' },
+  storyArt: { width: '100%', aspectRatio: 16 / 11, borderRadius: 16, marginBottom: 16,
+    backgroundColor: '#0f172a' },
   bigGlyph: { fontSize: 56, textAlign: 'center', color: GOLD, marginBottom: 14 },
   truth: { fontSize: 10.5, letterSpacing: 1.6, textAlign: 'center', marginBottom: 10 },
   storyTitle: { fontSize: 24, fontFamily: 'Playfair_Bold', color: '#f8fafc', textAlign: 'center', marginBottom: 12 },
