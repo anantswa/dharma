@@ -97,10 +97,16 @@ export const PathScreen: React.FC = () => {
         <Text style={styles.title}>The Path</Text>
         <Text style={styles.headerSub}>Learn the scriptures by heart — one verse a day.</Text>
 
-        {/* ── slot 2: Dhyāna room (reserved) ──────────────────────────────
-            The meditative half of this category lands HERE when it ships
-            (Phase 3) — reserved so this reorg is the last one. Do not fill
-            this slot with anything else. */}
+        {/* ── slot 2: Dhyāna — the meditative half of the category ─────── */}
+        <Pressable style={styles.linkRow} onPress={() => navigation.navigate('Dhyana')}>
+          <Text style={styles.linkIcon}>🪔</Text>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.cardTitle}>Dhyāna · ध्यान</Text>
+            <Text style={styles.cardSub}>A meditation room in the Mandir</Text>
+          </View>
+          <Ionicons name="chevron-forward" size={20} color="#475569" />
+        </Pressable>
+
 
         {/* scorecard — progress is Path's subject */}
         <View style={styles.statusRow}>

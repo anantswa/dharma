@@ -15,6 +15,8 @@ import { AchievementsScreen } from '../screens/AchievementsScreen';
 import { SaharaScreen } from '../screens/SaharaScreen';
 import { SaharaDetailScreen } from '../screens/SaharaDetailScreen';
 import { JapaScreen } from '../screens/JapaScreen';
+import { DhyanaScreen } from '../screens/DhyanaScreen';
+import { DhyanaPlayerScreen } from '../screens/DhyanaPlayerScreen';
 import { KathaScrollScreen } from '../screens/KathaScrollScreen';
 import { WallpapersScreen } from '../screens/WallpapersScreen';
 import { FeedbackScreen } from '../screens/FeedbackScreen';
@@ -148,6 +150,9 @@ const AppNavigator: React.FC = () => {
       <Stack.Screen name="Sahara" component={SaharaScreen} />
       <Stack.Screen name="SaharaDetail" component={SaharaDetailScreen} />
       <Stack.Screen name="Japa" component={JapaScreen} />
+      {/* Dhyāna — the meditation room (Path slot #2) */}
+      <Stack.Screen name="Dhyana" component={DhyanaScreen} />
+      <Stack.Screen name="DhyanaPlayer" component={DhyanaPlayerScreen} />
       <Stack.Screen name="KathaScroll" component={KathaScrollScreen} />
       <Stack.Screen name="Wallpapers" component={WallpapersScreen} />
       <Stack.Screen name="Feedback" component={FeedbackScreen} />

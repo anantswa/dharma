@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "updated": "2026-09-02",
+  "tracks": [
+    {
+      "id": "first_sit",
+      "order": 1,
+      "title": "If You Have Never Done This",
+      "sanskrit": "Prathama Dhyāna",
+      "collection": "Dvāra",
+      "minutes": 7,
+      "voice": "Drew",
+      "line": "A chair, seven minutes, and no vocabulary required. The front door.",
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/first_sit_v1.mp3"
+    },
+    {
+      "id": "crown_of_light",
+      "order": 2,
+      "title": "The Crown of Light",
+      "sanskrit": "Sahasrāra Jyoti",
+      "collection": "Antar Jyoti",
+      "minutes": 15,
+      "voice": "Drew",
+      "line": "Release the body, empty the breath, and look up: a light has been waiting all day.",
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/crown_of_light_v1.mp3"
+    },
+    {
+      "id": "diya_trataka",
+      "order": 3,
+      "title": "The Lamp",
+      "sanskrit": "Diyā Trāṭaka",
+      "collection": "Mandir",
+      "minutes": 12,
+      "voice": "Theo",
+      "line": "Light a real diya. Tonight the teacher is a flame the size of a thumbnail.",
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/diya_trataka_v1.mp3"
+    },
+    {
+      "id": "cave_snowline",
+      "order": 4,
+      "title": "The Cave Above the Snowline",
+      "sanskrit": "Himālaya Guhā",
+      "collection": "Yātrā",
+      "minutes": 15,
+      "voice": "Theo",
+      "line": "Seven stone steps down to a fire that was lit for you. A journey, not a lesson.",
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/cave_snowline_v1.mp3"
+    },
+    {
+      "id": "boat_at_night",
+      "order": 5,
+      "title": "The Boat at Night",
+      "sanskrit": "Nidrā Yātrā",
+      "collection": "Dvāra",
+      "minutes": 25,
+      "voice": "Drew",
+      "sleep": true,
+      "line": "Do not sit up for this one. The voice will not come back; that is the point.",
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/boat_at_night_v1.mp3"
+    }
+  ]
+}
