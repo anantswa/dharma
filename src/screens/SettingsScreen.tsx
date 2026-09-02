@@ -17,7 +17,7 @@ import * as Updates from 'expo-updates';
  * Bump this on every OTA push so the "You" tab footer shows a value that visibly
  * changes — the quickest way to confirm a device is running the latest bundle.
  */
-const BUNDLE_TAG = 'W6.0 · Buddhist parity';
+const BUNDLE_TAG = 'W7.0 · The rearranged temple';
 
 /** A human-readable stamp of which JS bundle is actually running on this device. */
 const bundleStamp = (): string => {
@@ -33,10 +33,12 @@ const bundleStamp = (): string => {
   }
 };
 import {
-    cancelDailyWisdomNotification,
+    disableAratiBell,
+    enableAratiBell,
     initializeNotifications,
-    scheduleDailyWisdomNotification,
+    refreshAratiBell,
 } from '../services/notificationService';
+import { track } from '../services/analytics';
 import { TraditionKey, usePreferencesStore } from '../store/preferencesStore';
 
 const TRADITIONS: TraditionKey[] = ['Hindu', 'Buddhist'];
@@ -89,18 +91,25 @@ export const SettingsScreen: React.FC = () => {
   const handleReminderToggle = async (value: boolean) => {
     setReminderToggle(value);
     toggleReminders(value);
-    
+
     // Save to store
     setOnboarding({
       primaryTradition: selectedTradition,
       remindersEnabled: value,
     });
 
-    // Update notifications
+    // One pipeline: the ārati bell (permission → prefs → deterministic 10-day window)
     if (value) {
-      await scheduleDailyWisdomNotification(selectedTime, selectedTradition);
+      const ok = await enableAratiBell(selectedTime, selectedTradition);
+      if (ok) {
+        track('bell_optin', { hour: parseInt(selectedTime.split(':')[0], 10), from: 'settings' });
+      } else {
+        // permission denied — reflect reality in the toggle + store
+        setReminderToggle(false);
+        toggleReminders(false);
+      }
     } else {
-      await cancelDailyWisdomNotification();
+      await disableAratiBell();
     }
   };
 
@@ -110,9 +119,9 @@ export const SettingsScreen: React.FC = () => {
     setReminderTime(formattedTime);
     setTimePickerOpen(false);
     
-    // Reschedule notification if enabled
+    // Reschedule the bell if it is ringing
     if (reminderToggle) {
-      scheduleDailyWisdomNotification(formattedTime, selectedTradition);
+      refreshAratiBell(formattedTime, selectedTradition);
     }
   };
 
@@ -164,11 +173,11 @@ export const SettingsScreen: React.FC = () => {
 
         
 
-        {/* Reminders */}
+        {/* Ārati bell — the one notification, the one toggle */}
         <View style={[styles.row, { marginTop: 16 }]}>
           <View style={{ flex: 1 }}>
-            <Text style={styles.rowTitle}>Reminders</Text>
-            <Text style={styles.rowSubtitle}>Get a gentle daily nudge</Text>
+            <Text style={styles.rowTitle}>Ārati bell</Text>
+            <Text style={styles.rowSubtitle}>Today’s darshan, each morning</Text>
           </View>
           <Switch
             value={reminderToggle}
@@ -183,8 +192,8 @@ export const SettingsScreen: React.FC = () => {
           <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 1, borderTopColor: 'rgba(255,255,255,0.06)' }}>
             <View style={styles.row}>
               <View style={{ flex: 1 }}>
-                <Text style={styles.rowTitle}>Reminder Time</Text>
-                <Text style={styles.rowSubtitle}>When to receive daily wisdom</Text>
+                <Text style={styles.rowTitle}>Bell time</Text>
+                <Text style={styles.rowSubtitle}>When the bell rings</Text>
               </View>
               <TouchableOpacity
                 style={styles.timeButton}
@@ -315,10 +324,29 @@ export const SettingsScreen: React.FC = () => {
       {/* Traditions toggles retired 2026-07-28 — primaryTradition ("Your Journey")
           governs the whole experience now; cross-tradition is explicit opt-in per screen. */}
 
-      {/* DharmaWeave Products — external store links, hidden on iOS (App Review 4.2.2 / 3.1.1) */}
+      {/* Support the creators — the Offering's home (was an orphan screen) */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Support</Text>
+        <TouchableOpacity
+          style={styles.linkRow}
+          onPress={() => navigation.navigate('Offering')}
+        >
+          <Text style={styles.linkText}>🪔  Support the creators</Text>
+          <Text style={styles.feedbackSub}>A small offering helps the temple keep giving freely</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* DharmaWeave Products — external store links, hidden on iOS (App Review 4.2.2 / 3.1.1).
+          The old Store tab folded in here: Shop keeps its full catalog one row away. */}
       {Platform.OS !== 'ios' && (
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>DharmaWeave</Text>
+        <TouchableOpacity
+          style={styles.linkRow}
+          onPress={() => navigation.navigate('Shop')}
+        >
+          <Text style={styles.linkText}>🛍  Shop — books & music</Text>
+        </TouchableOpacity>
         <TouchableOpacity
           style={styles.linkRow}
           onPress={() => {

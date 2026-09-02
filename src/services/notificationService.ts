@@ -2,9 +2,8 @@
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 import * as FileSystem from 'expo-file-system/legacy';
-import wisdomData from '../data/wisdom_core_50.json';
 import { TraditionKey, usePreferencesStore } from '../store/preferencesStore';
-import { getDailyDarshan, dailyWisdom } from './dailyDarshan';
+import { getDailyDarshan } from './dailyDarshan';
 
 // Configure how notifications are presented when the app is in the foreground
 Notifications.setNotificationHandler({
@@ -16,15 +15,6 @@ Notifications.setNotificationHandler({
     shouldShowList: true,
   }),
 });
-
-export interface WisdomNotificationData {
-  wisdomId: string;
-  text: string;
-  tradition: string;
-  source: string;
-  lineage?: string;
-  original?: string;
-}
 
 /**
  * Request notification permissions
@@ -56,88 +46,6 @@ export async function registerForPushNotificationsAsync(): Promise<boolean> {
   }
 
   return granted;
-}
-
-/**
- * Get a random wisdom based on the user's primary tradition
- */
-function getRandomWisdom(primaryTradition?: TraditionKey) {
-  const allWisdom = wisdomData as any[];
-  
-  // Filter by primary tradition if set
-  let filteredWisdom = allWisdom;
-  if (primaryTradition) {
-    filteredWisdom = allWisdom.filter((w) => {
-      const tradition = w.tradition?.toLowerCase() || '';
-      const primary = primaryTradition.toLowerCase();
-      return tradition.includes(primary);
-    });
-  }
-
-  // Fallback to all wisdom if none match
-  const wisdomList = filteredWisdom.length > 0 ? filteredWisdom : allWisdom;
-  const randomIndex = Math.floor(Math.random() * wisdomList.length);
-  return wisdomList[randomIndex];
-}
-
-/**
- * Schedule a daily notification at the specified time
- */
-export async function scheduleDailyWisdomNotification(
-  time: string, // Format: "HH:MM" (24-hour)
-  primaryTradition?: TraditionKey
-): Promise<string | null> {
-  try {
-    // Cancel existing notifications first
-    await Notifications.cancelAllScheduledNotificationsAsync();
-
-    // Parse the time
-    const [hours, minutes] = time.split(':').map(Number);
-    
-    // Get a random wisdom
-    const wisdom = getRandomWisdom(primaryTradition);
-    
-    if (!wisdom) {
-      console.warn('No wisdom found for notification');
-      return null;
-    }
-
-    // Prepare notification content
-    const wisdomText = wisdom.translation_en || wisdom.text || '';
-    const notificationData = {
-      wisdomId: wisdom.id || `wisdom-${Date.now()}`,
-      text: wisdomText,
-      tradition: wisdom.tradition || '',
-      source: wisdom.source || '',
-      lineage: wisdom.lineage || '',
-      original: wisdom.original_transliteration || '',
-    };
-
-    const traditionEmoji = getTraditionEmoji(wisdom.tradition);
-
-    // Schedule the notification
-    const notificationId = await Notifications.scheduleNotificationAsync({
-      content: {
-        title: `${traditionEmoji} Daily Wisdom`,
-        body: wisdomText.substring(0, 120) + (wisdomText.length > 120 ? '...' : ''),
-        data: notificationData,
-        sound: true,
-        priority: Notifications.AndroidNotificationPriority.HIGH,
-      },
-      trigger: {
-        type: Notifications.SchedulableTriggerInputTypes.DAILY,
-        hour: hours,
-        minute: minutes,
-        channelId: 'daily-wisdom',
-      },
-    });
-
-    console.log('Scheduled daily notification:', notificationId);
-    return notificationId;
-  } catch (error) {
-    console.error('Error scheduling notification:', error);
-    return null;
-  }
 }
 
 /* ── The Ārati Bell (Move 2) ────────────────────────────────────────────
@@ -210,31 +118,13 @@ export async function enableAratiBell(
   return true;
 }
 
-/**
- * Cancel all scheduled notifications
- */
-export async function cancelDailyWisdomNotification(): Promise<void> {
+/** Silence the bell — cancels every scheduled notification (there is only the one pipeline now). */
+export async function disableAratiBell(): Promise<void> {
   try {
     await Notifications.cancelAllScheduledNotificationsAsync();
-    console.log('Cancelled all notifications');
   } catch (error) {
     console.error('Error cancelling notifications:', error);
   }
-}
-
-/**
- * Get emoji for tradition
- */
-function getTraditionEmoji(tradition?: string): string {
-  const lower = tradition?.toLowerCase() || '';
-  
-  if (lower.includes('hindu')) return '🕉️';
-  if (lower.includes('sikh')) return '☬';
-  if (lower.includes('buddh')) return '☸️';
-  if (lower.includes('jain')) return '☸️';
-  if (lower.includes('zen')) return '🧘';
-  
-  return '✨';
 }
 
 /**
@@ -263,9 +153,9 @@ export async function initializeNotifications(
   armBellOpenTracking();
   // Request permissions
   const granted = await registerForPushNotificationsAsync();
-  
+
   if (!granted || !remindersEnabled) {
-    await cancelDailyWisdomNotification();
+    await disableAratiBell();
     return;
   }
 

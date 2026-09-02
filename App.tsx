@@ -7,7 +7,6 @@ import {
 } from '@expo-google-fonts/playfair-display';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import * as Notifications from 'expo-notifications';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useRef } from 'react';
 import { ActivityIndicator, AppState, StyleSheet, View } from 'react-native';
@@ -18,7 +17,6 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { MusicBottomSheet } from './src/components/MusicBottomSheet';
 import AppNavigator from './src/navigation/AppNavigator';
 import { AudioService } from './src/services/audioService';
-import type { WisdomNotificationData } from './src/services/notificationService';
 import { initializeNotifications } from './src/services/notificationService';
 import { usePreferencesStore } from './src/store/preferencesStore';
 import { useDataStore } from './src/store/dataStore';
@@ -49,28 +47,9 @@ export default function App() {
     initializeNotifications(remindersEnabled, reminderTime, primaryTradition);
   }, []);
 
-  // Handle notification taps
-  useEffect(() => {
-    const subscription = Notifications.addNotificationResponseReceivedListener((response) => {
-      const data = response.notification.request.content.data as unknown as WisdomNotificationData;
-      
-      if (data && navigationRef.current) {
-        navigationRef.current.navigate('WisdomDetail', {
-          wisdom: {
-            id: data.wisdomId,
-            translation_en: data.text,
-            text: data.text,
-            tradition: data.tradition,
-            source: data.source,
-            lineage: data.lineage || '',
-            original_transliteration: data.original || '',
-          },
-        });
-      }
-    });
-
-    return () => subscription.remove();
-  }, []);
+  // Notification taps: the legacy daily-wisdom handler is gone with its pipeline —
+  // an ārati-bell tap simply opens the app (Today's strip holds the same darshan),
+  // and notificationService's own listener tracks bell_open.
 
   // Handle app state changes
   useEffect(() => {
