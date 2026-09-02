@@ -6,10 +6,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Dimensions, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { COMICS } from '../data/comics';
-import { COURSE_LIST } from '../data/courses';
 import { getFaithTheme, templeEntryIndex } from '../data/faiths';
 import { getDailyDarshan } from '../services/dailyDarshan';
-import { DailyDarshanCard } from '../components/DailyDarshanCard';
 import { FINAL_DEITIES } from '../data/deityImages';
 import { IstaPicker } from '../components/IstaPicker';
 import { FEATURED_HERO, showChalisaComic, showIstaLine } from '../data/featured';
@@ -20,6 +18,7 @@ import { useIstaInterest } from '../store/istaInterestStore';
 import { useNoticeboard } from '../store/noticeboardStore';
 import { fetchLibrary, booksForFaith, type LibraryBook } from '../data/library';
 import { canRead, useOwnership } from '../store/ownershipStore';
+import { enableAratiBell } from '../services/notificationService';
 import { track } from '../services/analytics';
 
 const { width: W } = Dimensions.get('window');
@@ -41,6 +40,9 @@ export const MandirScreen: React.FC = () => {
 
   const [library, setLibrary] = useState<LibraryBook[]>([]);
   const ownedMap = useOwnership((s) => s.owned);
+  const remindersEnabled = usePreferencesStore((s) => s.remindersEnabled);
+  const reminderTime = usePreferencesStore((s) => s.reminderTime);
+  const [bellBusy, setBellBusy] = useState(false);
 
   useEffect(() => {
     track('mandir_open');
@@ -63,10 +65,6 @@ export const MandirScreen: React.FC = () => {
     [walls, theme.key, istaName],
   );
 
-  const teachings = useMemo(
-    () => COURSE_LIST.filter((c) => c.faith === theme.key).slice(0, 4),
-    [theme.key],
-  );
   const comic = COMICS[0];
   const hero = FEATURED_HERO[theme.key];
   const darshan = getDailyDarshan(primary);
@@ -75,6 +73,17 @@ export const MandirScreen: React.FC = () => {
     track('ista_pack_tap', { pack });
     try { Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success); } catch { /* noop */ }
     useIstaInterest.getState().note(pack);
+  };
+
+  // Second calm bell surface (after the sheet's row) toward the >=20% WAU opt-in target.
+  const onBellTap = async () => {
+    if (remindersEnabled) { navigation.navigate('Settings' as any); return; } // already ringing → adjust in You
+    if (bellBusy) return;
+    setBellBusy(true);
+    const time = reminderTime || '07:00';
+    const ok = await enableAratiBell(time, primary);
+    if (ok) track('bell_optin', { hour: parseInt(time.split(':')[0], 10), from: 'mandir_card' });
+    setBellBusy(false);
   };
 
   return (
@@ -114,13 +123,34 @@ export const MandirScreen: React.FC = () => {
           <View style={styles.heroInner}>
             <Text style={[styles.templeKicker, { color: theme.accent }]}>🪔  {darshan.reason.toUpperCase()}</Text>
             <Text style={styles.heroTitle}>Enter the temple</Text>
-            <Text style={styles.heroSub}>Darshan, chants, and the day's wisdom</Text>
+            <Text style={styles.heroSub}>Darshan, chants, and the day’s wisdom</Text>
           </View>
         </Pressable>
 
-        <DailyDarshanCard />
-
         <IstaPicker accent={theme.accent} />
+
+        {/* ── MANTRAS & PRACTICE ─────────────────────────── */}
+        <SectionHead accent={theme.accent} title="Mantras & practice" sub="The daily ritual, in your pocket" />
+        <View style={{ flexDirection: 'row', gap: 12, marginBottom: 26 }}>
+          <Pressable style={[styles.practiceCard, { borderColor: theme.accentSoft }]} onPress={() => navigation.navigate('Japa')}>
+            <Text style={styles.practiceEmoji}>📿</Text>
+            <Text style={styles.rowTitle}>Japa mala</Text>
+            <Text style={styles.rowSub}>Count 108 with haptic beads</Text>
+          </Pressable>
+          <Pressable
+            style={[styles.practiceCard, { borderColor: theme.accentSoft }]}
+            onPress={onBellTap}
+            disabled={bellBusy}
+          >
+            <Text style={styles.practiceEmoji}>🔔</Text>
+            <Text style={styles.rowTitle}>Ārati bell</Text>
+            <Text style={styles.rowSub}>
+              {remindersEnabled
+                ? `Rings each morning at ${reminderTime || '07:00'}`
+                : 'Ring the morning ārati bell'}
+            </Text>
+          </Pressable>
+        </View>
 
         {/* ── BOOKS & KATHAS (faith-gated hero) ──────────── */}
         <SectionHead accent={theme.accent} title={theme.key === 'Buddhist' ? 'Teachings & stories' : 'Books & kathas'} sub="Painted stories, made for the phone" />
@@ -189,6 +219,21 @@ export const MandirScreen: React.FC = () => {
         )}
         {!showChalisaComic(theme.key) && <View style={{ height: 14 }} />}
 
+        {/* Films — Android only (App Review keeps video off iOS v1) */}
+        {Platform.OS !== 'ios' && (
+          <Pressable style={styles.teachRow} onPress={() => navigation.navigate('Films')}>
+            <View style={[styles.teachIcon, { backgroundColor: theme.accentSoft }]}>
+              <Ionicons name="film-outline" size={19} color={theme.accent} />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.rowTitle}>Films</Text>
+              <Text style={styles.rowSub}>Cinematic kathas to watch</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color="#64748b" />
+          </Pressable>
+        )}
+        {Platform.OS !== 'ios' && <View style={{ height: 14 }} />}
+
         {/* ── WALLPAPERS ─────────────────────────────────── */}
         <SectionHead
           accent={theme.accent} title="Darshan wallpapers" sub="Free sacred art for your lock screen"
@@ -207,74 +252,18 @@ export const MandirScreen: React.FC = () => {
           </Pressable>
         </ScrollView>
 
-        {/* ── TEACHINGS ──────────────────────────────────── */}
-        <SectionHead
-          accent={theme.accent} title="Teachings" sub="Learn the scriptures, verse by verse"
-          onMore={() => navigation.navigate('Learn')}
-        />
-        {theme.key === 'Hindu' && (
-          <Pressable style={styles.teachRow} onPress={() => { track('jyotish_entry_mandir'); navigation.navigate('JyotishHome'); }}>
-            <View style={[styles.teachIcon, { backgroundColor: theme.accentSoft }]}>
-              <Ionicons name="planet-outline" size={19} color={theme.accent} />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.rowTitle}>Path of the Sky · ज्योतिष</Text>
-              <Text style={styles.rowSub}>NEW — learn to read a birth chart, as a game</Text>
-            </View>
-            <Ionicons name="chevron-forward" size={18} color="#64748b" />
-          </Pressable>
-        )}
-        {teachings.map((c) => (
-          <Pressable key={c.id} style={styles.teachRow} onPress={() => navigation.navigate('ChalisaPath', { courseId: c.id })}>
-            <View style={[styles.teachIcon, { backgroundColor: theme.accentSoft }]}>
-              <Ionicons name="school-outline" size={19} color={theme.accent} />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.rowTitle}>{c.title}</Text>
-              <Text style={styles.rowSub}>{c.subtitle}</Text>
-            </View>
-            <Ionicons name="chevron-forward" size={18} color="#64748b" />
-          </Pressable>
-        ))}
-        <Pressable style={styles.teachRow} onPress={() => navigation.navigate('Articles')}>
+        {/* Teachings live on Path now — one link, not a copy (learning is a category) */}
+        <Pressable style={styles.teachRow} onPress={() => navigation.navigate('Path' as any)}>
           <View style={[styles.teachIcon, { backgroundColor: theme.accentSoft }]}>
-            <Ionicons name="reader-outline" size={19} color={theme.accent} />
+            <Ionicons name="school-outline" size={19} color={theme.accent} />
           </View>
           <View style={{ flex: 1 }}>
-            <Text style={styles.rowTitle}>Reflections</Text>
-            <Text style={styles.rowSub}>Essays on the stories & their meaning</Text>
+            <Text style={styles.rowTitle}>Teachings & courses</Text>
+            <Text style={styles.rowSub}>Learn the scriptures, verse by verse — on the Path tab</Text>
           </View>
           <Ionicons name="chevron-forward" size={18} color="#64748b" />
         </Pressable>
-
-        {/* ── MANTRAS & PRACTICE ─────────────────────────── */}
-        <SectionHead accent={theme.accent} title="Mantras & practice" sub="The daily ritual, in your pocket" />
-        <View style={{ flexDirection: 'row', gap: 12, marginBottom: 26 }}>
-          <Pressable style={[styles.practiceCard, { borderColor: theme.accentSoft }]} onPress={() => navigation.navigate('Japa')}>
-            <Text style={styles.practiceEmoji}>📿</Text>
-            <Text style={styles.rowTitle}>Japa mala</Text>
-            <Text style={styles.rowSub}>Count 108 with haptic beads</Text>
-          </Pressable>
-          <Pressable style={[styles.practiceCard, { borderColor: theme.accentSoft }]} onPress={() => navigation.navigate('Sahara')}>
-            <Text style={styles.practiceEmoji}>🪷</Text>
-            <Text style={styles.rowTitle}>Sahāra</Text>
-            <Text style={styles.rowSub}>A mantra for this moment</Text>
-          </Pressable>
-        </View>
-
-        {/* Films — Android only (App Review keeps video off iOS v1) */}
-        {Platform.OS !== 'ios' && (
-          <Pressable style={styles.teachRow} onPress={() => navigation.navigate('Films')}>
-            <View style={[styles.teachIcon, { backgroundColor: theme.accentSoft }]}>
-              <Ionicons name="film-outline" size={19} color={theme.accent} />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.rowTitle}>Films</Text>
-              <Text style={styles.rowSub}>Cinematic kathas to watch</Text>
-            </View>
-            <Ionicons name="chevron-forward" size={18} color="#64748b" />
-          </Pressable>
-        )}
+        <View style={{ height: 14 }} />
 
         {/* ── THE IṢṬA LINE (paid, Hindu-only imagery → faith-gated) ── */}
         {showIstaLine(theme.key) && (

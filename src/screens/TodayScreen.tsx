@@ -129,7 +129,7 @@ export const TodayScreen: React.FC = () => {
           onPress={() => navigation.navigate('Sadhana', { courseId: target?.id ?? faithCourses[0]?.id ?? courses[0]?.id })}>
           <Ionicons name="sparkles" size={20} color="#0b1220" />
           <View style={{ flex: 1 }}>
-            <Text style={styles.ctaTitle}>Begin today's sādhana</Text>
+            <Text style={styles.ctaTitle}>Begin today’s sādhana</Text>
             <Text style={styles.ctaSub}>
               {totalDue > 0 ? `${totalDue} verse${totalDue === 1 ? '' : 's'} ready · ${target?.title}` : 'Start learning a new verse'}
             </Text>

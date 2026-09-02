@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import { Image as ExpoImage } from 'expo-image';
 import * as Haptics from 'expo-haptics';
 import React, { useEffect, useState } from 'react';
@@ -17,6 +18,7 @@ const open = (url?: string) => {
 };
 
 export const ShopScreen: React.FC = () => {
+  const navigation = useNavigation<any>();
   const theme = getFaithTheme('Hindu');
   const [books, setBooks] = useState<Book[]>(BOOKS);
 
@@ -32,6 +34,10 @@ export const ShopScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+        {/* stack screen now (was the Android Store tab) — needs its own way back */}
+        <Pressable onPress={() => navigation.goBack()} hitSlop={16} style={{ marginBottom: 6 }}>
+          <Ionicons name="chevron-back" size={26} color="#e2e8f0" />
+        </Pressable>
         <Text style={styles.title}>Shop</Text>
         <Text style={styles.subtitle}>Sacred stories & sound from DharmaWeave</Text>
 

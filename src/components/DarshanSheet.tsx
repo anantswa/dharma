@@ -49,7 +49,7 @@ export const DarshanSheet: React.FC<Props> = ({ visible, onClose }) => {
           showsVerticalScrollIndicator={false}
         >
           <View style={styles.topBar}>
-            <Text style={[styles.kicker, { color: theme.accent }]}>TODAY'S DARSHAN</Text>
+            <Text style={[styles.kicker, { color: theme.accent }]}>TODAY’S DARSHAN</Text>
             <Pressable
               onPress={onClose}
               hitSlop={14}

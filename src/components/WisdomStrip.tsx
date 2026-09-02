@@ -74,7 +74,7 @@ export const WisdomStrip: React.FC = () => {
         <View style={{ flex: 1 }}>
           <Text style={styles.quote} numberOfLines={bigType ? 2 : 1}>“{daily.wisdom.text}”</Text>
           {firstRun && (
-            <Text style={[styles.hint, { color: theme.accent }]}>tap for today's darshan card</Text>
+            <Text style={[styles.hint, { color: theme.accent }]}>tap for today’s darshan card</Text>
           )}
         </View>
         <Text style={styles.diya}>🪔</Text>
