@@ -59,10 +59,11 @@ export const DailyDarshanCard: React.FC = () => {
         [
           { text: 'Not now', style: 'cancel' },
           {
-            text: 'Ring at 6:30 am',
+            // unified bell default: 07:00 everywhere (store default, Settings, sheet row)
+            text: 'Ring at 7:00 am',
             onPress: async () => {
-              const ok = await enableAratiBell('06:30', usePreferencesStore.getState().primaryTradition);
-              if (ok) track('bell_optin', { hour: 6, from: 'card_prompt' });
+              const ok = await enableAratiBell('07:00', usePreferencesStore.getState().primaryTradition);
+              if (ok) track('bell_optin', { hour: 7, from: 'card_prompt' });
             },
           },
         ],
