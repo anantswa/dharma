@@ -32,11 +32,15 @@ export function packOrderForFaith(faithKey?: string): string[] {
 }
 
 /** Sort catalog rows into faith-led pack order (unknown packs last, stable). */
-export function sortWallpapersForFaith(rows: WallpaperRow[], faithKey?: string): WallpaperRow[] {
+export function sortWallpapersForFaith(rows: WallpaperRow[], faithKey?: string, istaName?: string): WallpaperRow[] {
   const order = packOrderForFaith(faithKey);
   const rank = (r: WallpaperRow) => {
     const i = order.indexOf(packIdOf(r));
     return i === -1 ? order.length : i;
   };
-  return [...rows].sort((a, b) => rank(a) - rank(b));
+  // The iṣṭa's own images lead the rail — "my temple" before the gallery.
+  const ista = (istaName ?? '').toLowerCase().split(' ').pop() ?? '';
+  const istaRank = (r: WallpaperRow) =>
+    ista && (r.id.toLowerCase().includes(ista) || r.title.toLowerCase().includes(ista)) ? 0 : 1;
+  return [...rows].sort((a, b) => (istaRank(a) - istaRank(b)) || (rank(a) - rank(b)));
 }

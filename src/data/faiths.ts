@@ -87,6 +87,16 @@ export function deitiesForFaith(faith?: string | null): Deity[] {
  * discovery is an explicit opt-in elsewhere, never interleaved here.
  * The temple carousel for a user = deitiesForFaith(primaryTradition).
  */
+/** Index of the iṣṭa within the faith's darshan list, or the day's default. */
+export function templeEntryIndex(faith?: string | null, istaId?: string): number {
+  const list = darshanDeities(faith);
+  if (istaId) {
+    const i = list.findIndex((d) => d.id === istaId);
+    if (i >= 0) return i;
+  }
+  return todaysDarshan(faith).index;
+}
+
 export function darshanDeities(faith?: string | null): Deity[] {
   return deitiesForFaith(faith ?? 'Hindu');
 }

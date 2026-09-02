@@ -6,7 +6,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn, useAnimatedStyle, useSharedValue, withSequence, withTiming } from 'react-native-reanimated';
 import { PetalShower } from '../components/PetalShower';
-import { UNIVERSAL_OM } from '../data/deityMantras';
+import { UNIVERSAL_OM, MANTRA_BY_KEY, mantraForDeity } from '../data/deityMantras';
+import { FINAL_DEITIES } from '../data/deityImages';
 import { getFaithTheme } from '../data/faiths';
 import { useDeityMantra } from '../hooks/useDeityMantra';
 import { usePreferencesStore } from '../store/preferencesStore';
@@ -44,7 +45,16 @@ export const JapaScreen: React.FC = () => {
     return () => { alive = false; };
   }, []);
 
-  const omUrl = manifest[UNIVERSAL_OM.key];
+  // The chant follows the chosen path: a Buddhist's mālā opens on the Triple
+  // Refuge, not a Hindu Om — the day-2 churn fix, not a cosmetic (falls back
+  // to Om if the refuge track is missing from the live manifest).
+  const isBuddhist = usePreferencesStore.getState().primaryTradition === 'Buddhist';
+  const istaId = usePreferencesStore.getState().ista;
+  const istaName = FINAL_DEITIES.find((d) => d.id === istaId)?.name;
+  const japaMantra = isBuddhist
+    ? (MANTRA_BY_KEY['buddham_saranam'] ?? UNIVERSAL_OM)
+    : istaName ? mantraForDeity(istaName) : UNIVERSAL_OM;
+  const omUrl = manifest[japaMantra.key] ?? manifest[UNIVERSAL_OM.key];
   useDeityMantra(chantOn ? omUrl : undefined, chantOn);
 
   const ringStyle = useAnimatedStyle(() => ({ transform: [{ scale: pulse.value }] }));

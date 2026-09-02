@@ -6,7 +6,9 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COURSE_LIST, getCourse } from '../data/courses';
-import { getFaithTheme, todaysDarshan } from '../data/faiths';
+import { getFaithTheme, templeEntryIndex } from '../data/faiths';
+import { getDailyDarshan } from '../services/dailyDarshan';
+import { DailyDarshanCard } from '../components/DailyDarshanCard';
 import { buildTodayQueue, masteredCount, useMasteryStore } from '../store/masteryStore';
 import { useStreakStore } from '../store/streakStore';
 import { useJapaStore } from '../store/japaStore';
@@ -95,7 +97,7 @@ export const TodayScreen: React.FC = () => {
   const rank = rankFor(jnana);
 
   // Today's darshan — the traditional weekday deity (meaningful, not random).
-  const darshan = todaysDarshan(primary);
+  const darshan = getDailyDarshan(primary);
 
   return (
     <View style={styles.container}>
@@ -151,7 +153,7 @@ export const TodayScreen: React.FC = () => {
         </Pressable>
 
         {/* darshan card → temple — the temple is the heart, it comes first */}
-        <Pressable style={styles.darshan} onPress={() => navigation.navigate('Temple', { deityIndex: darshan.index })}>
+        <Pressable style={styles.darshan} onPress={() => navigation.navigate('Temple', { deityIndex: templeEntryIndex(primary, usePreferencesStore.getState().ista) })}>
           <ExpoImage source={darshan.deity.image} style={StyleSheet.absoluteFill as any} contentFit="cover" contentPosition={{ top: '7%' }} transition={250} />
           <LinearGradient colors={[`${theme.accent}55`, 'transparent']} style={styles.darshanGlow} pointerEvents="none" />
           <LinearGradient colors={['rgba(2,6,23,0.0)', 'rgba(2,6,23,0.45)', '#020617']} locations={[0, 0.55, 1]} style={StyleSheet.absoluteFill} />
@@ -164,6 +166,9 @@ export const TodayScreen: React.FC = () => {
             </View>
           </View>
         </Pressable>
+
+        {/* today's prasad — the visit ends with something to take home */}
+        <DailyDarshanCard />
 
         {/* ── the temple gives freely — real art, above the fold ── */}
         <Text style={[styles.section, { color: theme.accent }]}>THE TEMPLE GIVES FREELY</Text>

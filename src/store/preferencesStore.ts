@@ -21,6 +21,9 @@ type PreferencesState = {
   /** Close the chooser WITHOUT touching primaryTradition (Skip must never rewrite an existing choice). */
   dismissChooser: () => void;
   primaryTradition?: TraditionKey;
+  /** Chosen iṣṭa-devatā (deity id from FINAL_DEITIES). On-device only, reversible. */
+  ista?: string;
+  setIsta: (id?: string) => void;
   remindersEnabled: boolean;
   reminderTime: string;
   setOnboarding: (data: {
@@ -70,6 +73,7 @@ export const usePreferencesStore = create<PreferencesState>()(
           primaryTradition: faith,
           enabledTraditions: { ...state.enabledTraditions, [faith]: true },
         })),
+      setIsta: (id) => set({ ista: id }),
       dismissChooser: () => set({ hasChosenFaith: true }),
       primaryTradition: 'Hindu',
       remindersEnabled: false,

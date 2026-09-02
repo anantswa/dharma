@@ -7,14 +7,18 @@ import { Dimensions, Platform, Pressable, ScrollView, StyleSheet, Text, View } f
 import * as Haptics from 'expo-haptics';
 import { COMICS } from '../data/comics';
 import { COURSE_LIST } from '../data/courses';
-import { getFaithTheme, todaysDarshan } from '../data/faiths';
+import { getFaithTheme, templeEntryIndex } from '../data/faiths';
+import { getDailyDarshan } from '../services/dailyDarshan';
+import { DailyDarshanCard } from '../components/DailyDarshanCard';
+import { FINAL_DEITIES } from '../data/deityImages';
+import { IstaPicker } from '../components/IstaPicker';
 import { FEATURED_HERO, showChalisaComic, showIstaLine } from '../data/featured';
 import { sortWallpapersForFaith } from '../data/wallpaperPacks';
 import { usePreferencesStore } from '../store/preferencesStore';
 import { useWallpaperCatalog } from '../store/wallpaperCatalogStore';
 import { useIstaInterest } from '../store/istaInterestStore';
 import { useNoticeboard } from '../store/noticeboardStore';
-import { fetchLibrary, type LibraryBook } from '../data/library';
+import { fetchLibrary, booksForFaith, type LibraryBook } from '../data/library';
 import { canRead, useOwnership } from '../store/ownershipStore';
 import { track } from '../services/analytics';
 
@@ -52,9 +56,11 @@ export const MandirScreen: React.FC = () => {
   const dismissedNotices = useNoticeboard((s) => s.dismissed);
   const notice = notices.find((n) => !dismissedNotices[n.id]) ?? null;
 
+  const ista = usePreferencesStore((s) => s.ista);
+  const istaName = useMemo(() => FINAL_DEITIES.find((d) => d.id === ista)?.name, [ista]);
   const wallRail = useMemo(
-    () => sortWallpapersForFaith(walls, theme.key).slice(0, 8),
-    [walls, theme.key],
+    () => sortWallpapersForFaith(walls, theme.key, istaName).slice(0, 8),
+    [walls, theme.key, istaName],
   );
 
   const teachings = useMemo(
@@ -63,7 +69,7 @@ export const MandirScreen: React.FC = () => {
   );
   const comic = COMICS[0];
   const hero = FEATURED_HERO[theme.key];
-  const darshan = todaysDarshan(primary);
+  const darshan = getDailyDarshan(primary);
 
   const onIstaTap = (pack: string) => {
     track('ista_pack_tap', { pack });
@@ -101,7 +107,7 @@ export const MandirScreen: React.FC = () => {
         {/* the inner sanctum first — darshan is the heart of the temple */}
         <Pressable
           style={styles.templeCard}
-          onPress={() => { track('mandir_temple_tap'); navigation.navigate('Temple', { deityIndex: darshan.index }); }}
+          onPress={() => { track('mandir_temple_tap'); navigation.navigate('Temple', { deityIndex: templeEntryIndex(primary, usePreferencesStore.getState().ista) }); }}
         >
           <ExpoImage source={darshan.deity.image} style={StyleSheet.absoluteFill as any} contentFit="cover" contentPosition={{ top: '7%' }} transition={250} />
           <LinearGradient colors={['transparent', 'rgba(2,6,23,0.5)', 'rgba(2,6,23,0.95)']} locations={[0, 0.55, 1]} style={StyleSheet.absoluteFill} />
@@ -111,6 +117,10 @@ export const MandirScreen: React.FC = () => {
             <Text style={styles.heroSub}>Darshan, chants, and the day's wisdom</Text>
           </View>
         </Pressable>
+
+        <DailyDarshanCard />
+
+        <IstaPicker accent={theme.accent} />
 
         {/* ── BOOKS & KATHAS (faith-gated hero) ──────────── */}
         <SectionHead accent={theme.accent} title={theme.key === 'Buddhist' ? 'Teachings & stories' : 'Books & kathas'} sub="Painted stories, made for the phone" />
@@ -132,7 +142,7 @@ export const MandirScreen: React.FC = () => {
         </Pressable>
 
         {/* the rest of the library — streamed, so new books need no app release */}
-        {library.filter((b) => b.id !== 'varaha').map((b) => {
+        {booksForFaith(library, primary).filter((b) => b.id !== 'varaha').map((b) => {
           const readable = canRead(b.access, b.id, ownedMap);
           return (
             <Pressable

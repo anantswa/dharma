@@ -14,6 +14,8 @@ export type BookAccess = 'free' | 'paid' | 'soon';
 
 export type LibraryBook = {
   id: string;
+  /** Which tradition's shelf this belongs on; absent = shown to everyone. */
+  faith?: 'Hindu' | 'Buddhist';
   title: string;
   subtitle?: string;
   blurb?: string;
@@ -29,6 +31,13 @@ export type LibraryBook = {
 const CATALOG_URL =
   'https://dharmaweave.com/cdn/dharma-art/kathas/catalog.json';
 
+/** Shelf filter: a Buddhist reader must not find Hindu books under a Vihāra
+ * header (the day-2 churn we measured). Untagged books show to everyone. */
+export function booksForFaith(books: LibraryBook[], faith?: string | null): LibraryBook[] {
+  if (!faith) return books;
+  return books.filter((b) => !b.faith || b.faith === faith);
+}
+
 export async function fetchLibrary(): Promise<LibraryBook[]> {
   const res = await fetch(CATALOG_URL);
   const data = await res.json();
@@ -42,6 +51,7 @@ export async function fetchLibrary(): Promise<LibraryBook[]> {
       blurb: k.blurb,
       cover: k.cover ?? k.scroll.scenes[0]?.img,
       access: (k.access as BookAccess) ?? 'free',
+      faith: k.faith,
       productId: k.productId,
       price: k.price,
       sceneCount: k.scroll.scenes.length,

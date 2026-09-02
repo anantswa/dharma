@@ -135,6 +135,11 @@ export const SadhanaScreen: React.FC = () => {
   }, []);
 
   const verse = queue[idx];
+  // Funnel step 2: each verse faced. With step 3 below, the dashboard can
+  // finally name WHERE the 21-of-27 who begin but never finish fall off.
+  useEffect(() => {
+    if (started && verse) track('lesson_start', { course: course.id, index: idx });
+  }, [idx, started]);
   const rec = verse ? records[verse.id] : undefined;
   const isNew = verse ? !rec : false;
   const box = rec?.box ?? 0;
@@ -304,6 +309,7 @@ export const SadhanaScreen: React.FC = () => {
       setQueue((q) => [...q, verse]);
     }
     setGraded((n) => n + 1);
+    track('lesson_complete', { course: course.id, index: idx, grade: g });
     await stopSound();
     setIdx((i) => i + 1);
   };
@@ -319,6 +325,9 @@ export const SadhanaScreen: React.FC = () => {
     setRevealed(true);
     if (autoPlay) play();
   };
+
+  // Funnel step 1: the deck was opened (seen), whether or not it is begun.
+  useEffect(() => { track('deck_open', { course: course.id }); }, []);
 
   const beginSession = () => {
     haptic();
@@ -336,6 +345,7 @@ export const SadhanaScreen: React.FC = () => {
         await useStreakStore.getState().recordVisit();
         await useScoreStore.getState().award(0, 5); // diyas for completing today's sādhana
         track('sadhana_complete', { course: course.id, graded, mastered: masteredNow });
+        track('deck_complete', { course: course.id, graded });
         // Now that streak + score are up to date, see which Siddhis were just earned.
         const newly = useAchievementsStore.getState().evaluate();
         if (newly.length) setNewSiddhis(newly);

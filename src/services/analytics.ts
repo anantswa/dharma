@@ -60,7 +60,16 @@ function touchSession(): void {
   const now = Date.now();
   if (!sessionId || now - lastEventAt > SESSION_GAP_MS) {
     sessionId = rid();
-    queue.push({ event: 'session_start', props: {}, at: new Date().toISOString() });
+    // Tradition on the session (not the person): lets the dashboard measure
+    // Buddhist retention instead of inferring it. Still non-PII — it is a
+    // theme choice, same posture as platform. Lazy require avoids an import
+    // cycle (preferencesStore has no analytics dependency, but stay safe).
+    let tradition: string | undefined;
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      tradition = require('../store/preferencesStore').usePreferencesStore.getState().primaryTradition;
+    } catch { /* store not ready at first tick — fine, next session carries it */ }
+    queue.push({ event: 'session_start', props: tradition ? { tradition } : {}, at: new Date().toISOString() });
   }
   lastEventAt = now;
 }
