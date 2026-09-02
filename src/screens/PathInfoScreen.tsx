@@ -44,14 +44,15 @@ export const PathInfoScreen: React.FC = () => {
   };
 
   const items = [
-    { icon: '🔥', name: 'Streak', value: `${streak} day${streak === 1 ? '' : 's'}`,
-      what: 'The number of days in a row you’ve done your sādhana. Practice every day to keep it alive — miss a day and it resets.',
-      how: 'Earn it: complete any sādhana today.' },
+    // reframed per canon: "day N of practice" — the count is kept, the fire and the fear are not
+    { icon: '🪷', name: 'Practice', value: `day ${streak}`,
+      what: 'How many days in a row you’ve sat with your sādhana. Each day you practice, the count grows.',
+      how: 'Grow it: complete any sādhana today.' },
     { icon: '✦', name: 'Jñāna', value: `${jnana}`,
       what: 'Knowledge points — your overall progress on the path. The more you understand and remember, the more Jñāna you gather, and the higher your rank.',
       how: 'Earn it: +20 for each verse you answer correctly in review, +10 for learning a new verse.' },
     { icon: '🪔', name: 'Diyas', value: `${diyas}`,
-      what: 'Lamps you light through devotion. Each completed sādhana adds a diya — and you can offer them to light a guarding lamp that protects your streak.',
+      what: 'Lamps you light through devotion. Each completed sādhana adds a diya — and you can offer them to light a guarding lamp that keeps your practice unbroken.',
       how: 'Earn it: +1 per correct review, +5 for finishing a day’s sādhana. Spend it: guarding lamps, above.' },
   ];
 
@@ -116,8 +117,8 @@ export const PathInfoScreen: React.FC = () => {
           <Text style={styles.actionKicker}>🪔  KEEP THE LAMP LIT</Text>
           <Text style={styles.actionTitle}>Guarding lamps · {freezes}/{FREEZE_CAP}</Text>
           <Text style={styles.actionDesc}>
-            Life happens. A guarding lamp keeps your streak alive through a missed day — automatically.
-            You earn one every 7-day streak, and can light one with diyas.
+            Life happens. A guarding lamp carries your practice through a missed day — automatically.
+            You earn one every seventh day of practice, and can light one with diyas.
           </Text>
           <Pressable
             style={[
