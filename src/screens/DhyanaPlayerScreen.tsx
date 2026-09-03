@@ -81,7 +81,9 @@ export const DhyanaPlayerScreen: React.FC = () => {
         );
         if (!alive) { await sound.unloadAsync().catch(() => {}); return; }
         soundRef.current = sound;
-      } catch { /* stream failed — the play button below simply stays idle */ }
+      } catch (e) {
+        console.warn('[dhyana] load/play failed:', e);
+      }
     })();
 
     return () => {

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-09-02",
-  "note": "v2 mix — speech-anchored levels, bed -25 LUFS",
+  "note": "v3 — DSP breathing-drone beds (no Suno), speech-anchored mix",
   "tracks": [
     {
       "id": "first_sit",
@@ -12,7 +12,7 @@
       "minutes": 7,
       "voice": "Drew",
       "line": "A chair, seven minutes, and no vocabulary required. The front door.",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/first_sit_v2.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/first_sit_v3.mp3"
     },
     {
       "id": "crown_of_light",
@@ -23,7 +23,7 @@
       "minutes": 15,
       "voice": "Drew",
       "line": "Release the body, empty the breath, and look up: a light has been waiting all day.",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/crown_of_light_v2.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/crown_of_light_v3.mp3"
     },
     {
       "id": "diya_trataka",
@@ -34,7 +34,7 @@
       "minutes": 12,
       "voice": "Theo",
       "line": "Light a real diya. Tonight the teacher is a flame the size of a thumbnail.",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/diya_trataka_v2.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/diya_trataka_v3.mp3"
     },
     {
       "id": "cave_snowline",
@@ -45,7 +45,7 @@
       "minutes": 15,
       "voice": "Theo",
       "line": "Seven stone steps down to a fire that was lit for you. A journey, not a lesson.",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/cave_snowline_v2.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/cave_snowline_v3.mp3"
     },
     {
       "id": "boat_at_night",
@@ -57,7 +57,7 @@
       "voice": "Drew",
       "sleep": true,
       "line": "Do not sit up for this one. The voice will not come back; that is the point.",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/boat_at_night_v2.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/boat_at_night_v3.mp3"
     }
   ]
 }
