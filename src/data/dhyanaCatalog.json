@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-09-02",
-  "note": "v3 — DSP breathing-drone beds (no Suno), speech-anchored mix",
+  "note": "v4 — bilingual: EN (Drew/Theo) + HI (Ridaan), DSP beds",
   "tracks": [
     {
       "id": "first_sit",
@@ -11,6 +11,7 @@
       "collection": "Dvāra",
       "minutes": 7,
       "voice": "Drew",
+      "language": "en",
       "line": "A chair, seven minutes, and no vocabulary required. The front door.",
       "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/first_sit_v3.mp3"
     },
@@ -22,6 +23,7 @@
       "collection": "Antar Jyoti",
       "minutes": 15,
       "voice": "Drew",
+      "language": "en",
       "line": "Release the body, empty the breath, and look up: a light has been waiting all day.",
       "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/crown_of_light_v3.mp3"
     },
@@ -33,6 +35,7 @@
       "collection": "Mandir",
       "minutes": 12,
       "voice": "Theo",
+      "language": "en",
       "line": "Light a real diya. Tonight the teacher is a flame the size of a thumbnail.",
       "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/diya_trataka_v3.mp3"
     },
@@ -44,6 +47,7 @@
       "collection": "Yātrā",
       "minutes": 15,
       "voice": "Theo",
+      "language": "en",
       "line": "Seven stone steps down to a fire that was lit for you. A journey, not a lesson.",
       "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/cave_snowline_v3.mp3"
     },
@@ -56,8 +60,70 @@
       "minutes": 25,
       "voice": "Drew",
       "sleep": true,
+      "language": "en",
       "line": "Do not sit up for this one. The voice will not come back; that is the point.",
       "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/boat_at_night_v3.mp3"
+    },
+    {
+      "id": "first_sit_hi",
+      "order": 1,
+      "language": "hi",
+      "title": "अगर आपने यह कभी नहीं किया",
+      "sanskrit": "The First Sit",
+      "collection": "Dvāra",
+      "minutes": 7,
+      "voice": "Ridaan",
+      "line": "एक कुर्सी, सात मिनट — बस। शुरुआत का दरवाज़ा।",
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/first_sit_v1.mp3"
+    },
+    {
+      "id": "crown_of_light_hi",
+      "order": 2,
+      "language": "hi",
+      "title": "सहस्रार ज्योति",
+      "sanskrit": "The Crown of Light",
+      "collection": "Antar Jyoti",
+      "minutes": 15,
+      "voice": "Ridaan",
+      "line": "शरीर ढीला, साँस खाली — और सिर के ऊपर एक रोशनी, जो दिन-भर से आपकी राह देख रही है।",
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/crown_of_light_v1.mp3"
+    },
+    {
+      "id": "diya_trataka_hi",
+      "order": 3,
+      "language": "hi",
+      "title": "दीया त्राटक",
+      "sanskrit": "The Lamp",
+      "collection": "Mandir",
+      "minutes": 12,
+      "voice": "Ridaan",
+      "line": "एक असली दीया जलाइए। आज रात गुरु है एक लौ — नाख़ून जितनी छोटी।",
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/diya_trataka_v1.mp3"
+    },
+    {
+      "id": "cave_snowline_hi",
+      "order": 4,
+      "language": "hi",
+      "title": "हिमालय गुहा",
+      "sanskrit": "The Cave Above the Snowline",
+      "collection": "Yātrā",
+      "minutes": 15,
+      "voice": "Ridaan",
+      "line": "सात पत्थर की सीढ़ियाँ नीचे — एक आग तक, जो आपके लिए जलाई गई है।",
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/cave_snowline_v1.mp3"
+    },
+    {
+      "id": "boat_at_night_hi",
+      "order": 5,
+      "language": "hi",
+      "title": "रात की नाव",
+      "sanskrit": "Sleep Yātrā",
+      "collection": "Dvāra",
+      "minutes": 25,
+      "voice": "Ridaan",
+      "sleep": true,
+      "line": "इसके लिए उठकर मत बैठिए। आवाज़ लौटेगी नहीं — यही तो बात है।",
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/boat_at_night_v1.mp3"
     }
   ]
 }
