@@ -4,8 +4,16 @@ import { LinearGradient } from 'expo-linear-gradient';
 import * as Haptics from 'expo-haptics';
 import React, { useEffect, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getFaithTheme } from '../data/faiths';
-import { BUNDLED_DHYANA_TRACKS, DhyanaTrack, fetchDhyanaTracks } from '../data/dhyana';
+import {
+  BUNDLED_DHYANA_TRACKS, DhyanaLanguage, DhyanaTrack,
+  dhyanaLanguages, fetchDhyanaTracks, trackLanguage,
+} from '../data/dhyana';
+import { track as trackEvent } from '../services/analytics';
+
+const LANG_KEY = 'dharma.dhyanaLanguage';
+const LANG_LABEL: Record<DhyanaLanguage, string> = { en: 'English', hi: 'हिन्दी' };
 
 /**
  * Dhyāna — a meditation room in the Mandir. Five guided sits, everything free,
@@ -17,12 +25,25 @@ export const DhyanaScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const theme = getFaithTheme('Hindu');
   const [tracks, setTracks] = useState<DhyanaTrack[]>(BUNDLED_DHYANA_TRACKS);
+  const [lang, setLang] = useState<DhyanaLanguage>('en');
 
   useEffect(() => {
     let alive = true;
     fetchDhyanaTracks().then((t) => { if (alive) setTracks(t); });
+    AsyncStorage.getItem(LANG_KEY)
+      .then((v) => { if (alive && (v === 'en' || v === 'hi')) setLang(v); })
+      .catch(() => {});
     return () => { alive = false; };
   }, []);
+
+  const languages = dhyanaLanguages(tracks);
+  const shown = tracks.filter((t) => trackLanguage(t) === lang);
+
+  const chooseLang = (l: DhyanaLanguage) => {
+    setLang(l);
+    AsyncStorage.setItem(LANG_KEY, l).catch(() => {});
+    trackEvent('dhyana_language', { language: l });
+  };
 
   const open = (t: DhyanaTrack) => {
     try { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); } catch { /* noop */ }
@@ -40,7 +61,21 @@ export const DhyanaScreen: React.FC = () => {
         <Text style={styles.title}>The Meditation Room</Text>
         <Text style={styles.sub}>Sit down. A voice will keep you company, then leave you in the quiet.</Text>
 
-        {tracks.map((t) => (
+        {languages.length > 1 && (
+          <View style={styles.langRow}>
+            {languages.map((l) => (
+              <Pressable
+                key={l}
+                onPress={() => chooseLang(l)}
+                style={[styles.langChip, lang === l && { backgroundColor: `${theme.accent}22`, borderColor: theme.accent }]}
+              >
+                <Text style={[styles.langTxt, lang === l && { color: theme.accent }]}>{LANG_LABEL[l]}</Text>
+              </Pressable>
+            ))}
+          </View>
+        )}
+
+        {shown.map((t) => (
           <Pressable key={t.id} style={styles.card} onPress={() => open(t)}>
             <LinearGradient
               colors={[`${theme.accent}18`, `${theme.accent}05`]}
@@ -86,4 +121,10 @@ const styles = StyleSheet.create({
   chipTxt: { fontSize: 10.5, fontWeight: '800', letterSpacing: 0.5 },
   minutes: { fontSize: 11.5, color: '#64748b', fontWeight: '700' },
   line: { fontSize: 13, color: '#94a3b8', lineHeight: 19, marginTop: 10 },
+  langRow: { flexDirection: 'row', gap: 10, marginBottom: 16 },
+  langChip: {
+    borderRadius: 999, paddingHorizontal: 16, paddingVertical: 8, minHeight: 36,
+    borderWidth: 1, borderColor: 'rgba(148,163,184,0.3)', justifyContent: 'center',
+  },
+  langTxt: { fontSize: 13.5, fontWeight: '700', color: '#94a3b8' },
 });

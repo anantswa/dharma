@@ -18,6 +18,18 @@ export type DhyanaTrack = {
   line: string;
   url: string;
   sleep?: boolean;
+  /** 'en' (default when absent) or 'hi' — same sits, two voices. */
+  language?: 'en' | 'hi';
+};
+
+export type DhyanaLanguage = 'en' | 'hi';
+
+export const trackLanguage = (t: DhyanaTrack): DhyanaLanguage => t.language ?? 'en';
+
+/** Languages actually present in a catalog (the toggle only shows with ≥2). */
+export const dhyanaLanguages = (tracks: DhyanaTrack[]): DhyanaLanguage[] => {
+  const langs = new Set(tracks.map(trackLanguage));
+  return (['en', 'hi'] as DhyanaLanguage[]).filter((l) => langs.has(l));
 };
 
 export const DHYANA_CATALOG_URL =
