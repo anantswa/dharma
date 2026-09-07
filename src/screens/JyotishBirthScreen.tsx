@@ -11,7 +11,14 @@
  */
 import React, { useState } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
+// Lazy: the picker's native module is absent from binaries ≤1.0.4, and this
+// screen ships to those runtimes over the air. A top-level import would crash
+// the whole app at launch; a guarded require just degrades this one screen.
+let DateTimePicker: any = null;
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  DateTimePicker = require('@react-native-community/datetimepicker').default;
+} catch { /* old binary — fallback below */ }
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useJyotishStore } from '../store/jyotishStore';
 import { SIGNS, NAKSHATRAS } from '../services/jyotishEngine';
@@ -113,12 +120,12 @@ export function JyotishBirthScreen({ navigation }: any) {
         </Text>
 
         <Text style={styles.label}>Birth date</Text>
-        {Platform.OS === 'ios' ? (
+        {Platform.OS === 'ios' && DateTimePicker ? (
           <View style={styles.pickerWrap}>
             <DateTimePicker
               value={picked} mode="date" display="spinner"
               themeVariant="dark" maximumDate={new Date()}
-              onChange={(_, d) => d && setPicked((prev) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), prev.getHours(), prev.getMinutes()))}
+              onChange={(_: unknown, d?: Date) => d && setPicked((prev) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), prev.getHours(), prev.getMinutes()))}
             />
           </View>
         ) : (
@@ -130,12 +137,12 @@ export function JyotishBirthScreen({ navigation }: any) {
         )}
 
         <Text style={styles.label}>Birth time (local at birthplace)</Text>
-        {Platform.OS === 'ios' ? (
+        {Platform.OS === 'ios' && DateTimePicker ? (
           <View style={styles.pickerWrap}>
             <DateTimePicker
               value={picked} mode="time" display="spinner"
               themeVariant="dark"
-              onChange={(_, d) => d && setPicked((prev) => new Date(prev.getFullYear(), prev.getMonth(), prev.getDate(), d.getHours(), d.getMinutes()))}
+              onChange={(_: unknown, d?: Date) => d && setPicked((prev) => new Date(prev.getFullYear(), prev.getMonth(), prev.getDate(), d.getHours(), d.getMinutes()))}
             />
           </View>
         ) : (
@@ -145,10 +152,13 @@ export function JyotishBirthScreen({ navigation }: any) {
             </Text>
           </Pressable>
         )}
-        {androidShow && (
+        {androidShow && !DateTimePicker && (
+          <Text style={styles.hint}>Update Dharma from the store to set your birth date and time on this version.</Text>
+        )}
+        {androidShow && DateTimePicker && (
           <DateTimePicker
             value={picked} mode={androidShow} display="default" maximumDate={androidShow === 'date' ? new Date() : undefined}
-            onChange={(_, d) => {
+            onChange={(_: unknown, d?: Date) => {
               setAndroidShow(null);
               if (!d) return;
               setPicked((prev) => androidShow === 'date'
