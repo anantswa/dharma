@@ -231,7 +231,7 @@ lesson: ~13k clicks → 20 devices at ~0.15%):
 *Origin: Dharma launch, Aug 2026. Owner: Maya. Update this file when the next
 launch teaches something new.*
 
-## v2 release (2026-09-09) — lessons added
+## v2 release (2026-09-07) — lessons added
 
 - **OTA native-drift gate (do this EVERY time before `eas update` to old runtimes):** diff `package.json` and `app.json` plugins between each live runtime's build commit and HEAD (`git log -S'"version": "X"' -- app.json` finds the commit). Any native module added since that binary must be lazy-required with try/catch, or that runtime crashes at launch. v2 caught `@react-native-community/datetimepicker` (missing from 1.0.4 — 1,383 devices) this way. Also confirm Expo SDK / RN / reanimated versions are identical across runtimes.
 - **Which runtimes to publish:** query `app_events` for distinct `app_version` over 30 days; skip dead runtimes. v2 published 1.0.4 / 1.0.6 / 1.0.7 / 1.0.8 (1.0.3 and 1.0.5 had zero devices).
