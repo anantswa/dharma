@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-09-02",
-  "note": "v6 — affirmative register both languages (EN v4, HI v2)",
+  "note": "v7 — EN v5: exact pauses + tempo (141-149 wpm), HI v2",
   "tracks": [
     {
       "id": "first_sit",
@@ -13,7 +13,7 @@
       "voice": "Drew",
       "language": "en",
       "line": "A chair, seven minutes, and no vocabulary required. The front door.",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/first_sit_v4.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/first_sit_v5.mp3"
     },
     {
       "id": "crown_of_light",
@@ -25,7 +25,7 @@
       "voice": "Drew",
       "language": "en",
       "line": "Release the body, empty the breath, and look up: a light has been waiting all day.",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/crown_of_light_v4.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/crown_of_light_v5.mp3"
     },
     {
       "id": "diya_trataka",
@@ -37,7 +37,7 @@
       "voice": "Theo",
       "language": "en",
       "line": "Light a real diya. Tonight the teacher is a flame the size of a thumbnail.",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/diya_trataka_v4.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/diya_trataka_v5.mp3"
     },
     {
       "id": "cave_snowline",
@@ -49,7 +49,7 @@
       "voice": "Theo",
       "language": "en",
       "line": "Seven stone steps down to a fire that was lit for you. A journey, not a lesson.",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/cave_snowline_v4.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/cave_snowline_v5.mp3"
     },
     {
       "id": "boat_at_night",
@@ -62,7 +62,7 @@
       "sleep": true,
       "language": "en",
       "line": "Do not sit up for this one. The voice will not come back; that is the point.",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/boat_at_night_v4.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/boat_at_night_v5.mp3"
     },
     {
       "id": "first_sit_hi",
