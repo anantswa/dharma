@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-09-02",
-  "note": "v5 — EN affirmative-register sweep (founder canon 9/8); HI mirror pending",
+  "note": "v6 — affirmative register both languages (EN v4, HI v2)",
   "tracks": [
     {
       "id": "first_sit",
@@ -74,7 +74,7 @@
       "minutes": 7,
       "voice": "Ridaan",
       "line": "एक कुर्सी, सात मिनट — बस। शुरुआत का दरवाज़ा।",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/first_sit_v1.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/first_sit_v2.mp3"
     },
     {
       "id": "crown_of_light_hi",
@@ -86,7 +86,7 @@
       "minutes": 15,
       "voice": "Ridaan",
       "line": "शरीर ढीला, साँस खाली — और सिर के ऊपर एक रोशनी, जो दिन-भर से आपकी राह देख रही है।",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/crown_of_light_v1.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/crown_of_light_v2.mp3"
     },
     {
       "id": "diya_trataka_hi",
@@ -98,7 +98,7 @@
       "minutes": 12,
       "voice": "Ridaan",
       "line": "एक असली दीया जलाइए। आज रात गुरु है एक लौ — नाख़ून जितनी छोटी।",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/diya_trataka_v1.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/diya_trataka_v2.mp3"
     },
     {
       "id": "cave_snowline_hi",
@@ -110,7 +110,7 @@
       "minutes": 15,
       "voice": "Ridaan",
       "line": "सात पत्थर की सीढ़ियाँ नीचे — एक आग तक, जो आपके लिए जलाई गई है।",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/cave_snowline_v1.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/cave_snowline_v2.mp3"
     },
     {
       "id": "boat_at_night_hi",
@@ -123,7 +123,7 @@
       "voice": "Ridaan",
       "sleep": true,
       "line": "इसके लिए उठकर मत बैठिए। आवाज़ लौटेगी नहीं — यही तो बात है।",
-      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/boat_at_night_v1.mp3"
+      "url": "https://dharmaweave.com/cdn/dharma-audio/dhyana/hi/boat_at_night_v2.mp3"
     }
   ]
 }
