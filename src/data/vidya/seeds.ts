@@ -52,11 +52,17 @@ export function buildSeedPairs(lesson: MantraLesson, pool: MantraLesson[]): Seed
     seen.add(d.id); seen.add(seed);
     out.push({ seed, iast, deityId: d.id, deityName: d.name, image: d.image });
   };
+  // A dedicated seed card owns its seed: Navārṇa's second word ऐं must not
+  // pair ऐं with Devī when mv_aim teaches "Aiṃ is Sarasvatī" (grader note).
+  const ownedByBijaCard = new Set(
+    [lesson, ...pool].filter((l) => l.class === 'bija' && l.deityId).map((l) => strip(l.sanskrit)),
+  );
   const contribute = (l: MantraLesson) => {
     if (l.class === 'bija' && l.deityId) push(strip(l.sanskrit), l.transliteration, l.deityId);
     else if (l.class === 'mula' && l.deityId && l.words.length >= 3) {
       const w = l.words[1];
-      if (w && isSeedToken(strip(w.deva))) push(strip(w.deva), w.iast, l.deityId);
+      const seed = w ? strip(w.deva) : '';
+      if (w && isSeedToken(seed) && !ownedByBijaCard.has(seed)) push(seed, w.iast, l.deityId);
     }
   };
   contribute(lesson);
