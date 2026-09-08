@@ -67,6 +67,10 @@ export function mantraOfDay(
   istaId: string | undefined,
   d = new Date(),
 ): MantraOfDay | null {
+  // stay inside the user's own wing — a Buddhist Today never carries a Hindu
+  // card (darshan law); with no Buddhist cards loaded the row simply hides
+  const wing = faith === 'Buddhist' ? 'Buddhist' : 'Hindu';
+  lessons = lessons.filter((l) => l.tradition === wing);
   if (!lessons.length) return null;
   const pickWord = (l: MantraLesson): MantraWord | undefined =>
     l.words.length ? l.words[localDayOrdinal(d) % l.words.length] : undefined;

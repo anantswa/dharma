@@ -9,6 +9,7 @@ import { COURSE_LIST, getCourse } from '../data/courses';
 import { getFaithTheme, templeEntryIndex } from '../data/faiths';
 import { getDailyDarshan } from '../services/dailyDarshan';
 import { WisdomStrip } from '../components/WisdomStrip';
+import { MantraOfDayRow } from '../components/MantraOfDayRow';
 import { buildTodayQueue, masteredCount, useMasteryStore } from '../store/masteryStore';
 import { useStreakStore } from '../store/streakStore';
 import { useJapaStore } from '../store/japaStore';
@@ -108,6 +109,9 @@ export const TodayScreen: React.FC = () => {
 
         {/* today's wisdom — one line; tap opens the full darshan card */}
         <WisdomStrip />
+
+        {/* mantra of the day — one word, the whole lesson one tap away (§2.4) */}
+        <MantraOfDayRow />
 
         {/* practice line — feedback, not a destination; the full scorecard lives on Path */}
         <View style={styles.practiceStrip}>
