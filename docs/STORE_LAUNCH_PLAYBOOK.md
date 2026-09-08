@@ -254,7 +254,8 @@ Once a version (e.g. 1.0.8) is approved/released, Apple closes that "train": any
 - JS + content + one bundled mp3, zero native change → OTA only. Four `eas update --branch production` runs (1.0.8 / 1.0.7 / 1.0.6 / 1.0.4), swapping `app.json` version per run and restoring it after (a `trap` guards the restore). Preview runtime 1.0.9 got its own push via `--branch preview` for TestFlight first; production never needed the 1.0.9 binary.
 - Drift gate re-run before pushing: 1.0.4 still differs only by datetimepicker (lazy-guarded) + astronomy-engine (pure JS).
 
-### In-app purchases — "Support the creators" (2026-09-08)
+### In-app purchases — "Support the creators" (2026-09-08) — WITHDRAWN the same evening
+**Founder: "a support-for-creators on a religious app is not clean — let's not go there." No tip jar, ever. Payments only as a clean product (subscription / book). The recipe below is kept for that future case only.**
 - Rule: tips to the developer for digital content = IAP on both stores (App Store 3.1.1; Play billing policy). Never a web link, never framed as a donation (Tara Ventures is not a charity).
 - Library: `expo-iap` (config plugin auto-added; StoreKit 2 / Play Billing 8). Consumable tiers, ids identical on both stores: `com.taraventures.dharma.support.{small,medium,large}` = $0.29 / $0.99 / $2.99 USD base. `finishTransaction({isConsumable:true})` after every success so the tip can repeat.
 - ASC via API: `POST /v2/inAppPurchases` (CONSUMABLE) → `/v1/inAppPurchaseLocalizations` (en-US) → `/v1/inAppPurchasePriceSchedules` (inline price id MUST be `${price-0}`; pick the price point from `/v2/inAppPurchases/{id}/pricePoints?filter[territory]=USA`) → `/v1/inAppPurchaseAvailabilities` (all territories). Transient 500s happen on create — retry.

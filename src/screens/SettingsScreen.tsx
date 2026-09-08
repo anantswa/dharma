@@ -324,17 +324,8 @@ export const SettingsScreen: React.FC = () => {
       {/* Traditions toggles retired 2026-07-28 — primaryTradition ("Your Journey")
           governs the whole experience now; cross-tradition is explicit opt-in per screen. */}
 
-      {/* Support the creators — the Offering's home (was an orphan screen) */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Support</Text>
-        <TouchableOpacity
-          style={styles.linkRow}
-          onPress={() => navigation.navigate('Offering')}
-        >
-          <Text style={styles.linkText}>🪔  Support the creators</Text>
-          <Text style={styles.feedbackSub}>A small offering helps the temple keep giving freely</Text>
-        </TouchableOpacity>
-      </View>
+      {/* 'Support the creators' removed 2026-09-08 — founder: tips on a religious app are not clean;
+          monetise only through clean products (a subscription, a book). Never re-add a tip jar. */}
 
       {/* DharmaWeave Products — external store links, hidden on iOS (App Review 4.2.2 / 3.1.1).
           The old Store tab folded in here: Shop keeps its full catalog one row away. */}

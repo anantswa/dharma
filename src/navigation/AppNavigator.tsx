@@ -32,7 +32,6 @@ import { LearnScreen } from '../screens/LearnScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
 import { WisdomDetailScreen } from '../screens/WisdomDetailScreen';
 import { NoticeboardScreen } from '../screens/NoticeboardScreen';
-import { OfferingScreen } from '../screens/OfferingScreen';
 import { JyotishHomeScreen } from '../screens/JyotishHomeScreen';
 import { JyotishLessonScreen } from '../screens/JyotishLessonScreen';
 import { JyotishBirthScreen } from '../screens/JyotishBirthScreen';
@@ -162,7 +161,6 @@ const AppNavigator: React.FC = () => {
       <Stack.Screen name="Wallpapers" component={WallpapersScreen} />
       <Stack.Screen name="Feedback" component={FeedbackScreen} />
       <Stack.Screen name="Noticeboard" component={NoticeboardScreen} />
-      <Stack.Screen name="Offering" component={OfferingScreen} />
       <Stack.Screen name="JyotishHome" component={JyotishHomeScreen} />
       <Stack.Screen name="JyotishLesson" component={JyotishLessonScreen} />
       <Stack.Screen name="JyotishBirth" component={JyotishBirthScreen} />
