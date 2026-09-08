@@ -5,7 +5,7 @@ import type { MantraLesson } from '../data/vidya/types';
 /**
  * VidyaStore — the loaded Mantra Vidyā catalog. Opens on the bundled copy at
  * once; the CDN copy replaces it when it arrives. "Lesson exists in the loaded
- * catalog" (the Mantra-of-the-Day precondition) always means THIS list.
+ * catalog" always means THIS list.
  */
 type VidyaState = {
   lessons: MantraLesson[];
