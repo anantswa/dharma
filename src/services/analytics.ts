@@ -19,6 +19,13 @@ import { AppState, Platform } from 'react-native';
 
 const ENDPOINT = 'https://dharmaweave.com/api/events/app';
 const APP_VERSION = Constants.expoConfig?.version ?? '0.0.0';
+/** Which JS is running: the OTA update id (first 8 chars) or 'embedded' for the binary's own bundle. */
+const JS_BUILD: string = (() => {
+  try {
+    const u = require('expo-updates') as { updateId?: string | null; isEmbeddedLaunch?: boolean };
+    return u.isEmbeddedLaunch || !u.updateId ? 'embedded' : String(u.updateId).slice(0, 8);
+  } catch { return 'unknown'; }
+})();
 
 const ID_KEY = '@dharma:install_id';
 const QUEUE_KEY = '@dharma:analytics_queue';
@@ -69,7 +76,7 @@ function touchSession(): void {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       tradition = require('../store/preferencesStore').usePreferencesStore.getState().primaryTradition;
     } catch { /* store not ready at first tick — fine, next session carries it */ }
-    queue.push({ event: 'session_start', props: tradition ? { tradition } : {}, at: new Date().toISOString() });
+    queue.push({ event: 'session_start', props: { js: JS_BUILD, ...(tradition ? { tradition } : {}) }, at: new Date().toISOString() });
   }
   lastEventAt = now;
 }
