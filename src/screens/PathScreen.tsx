@@ -17,7 +17,9 @@ import { track } from '../services/analytics';
 /**
  * Path — learning + meditative growth as its own tab (IA reorg, Phase 1).
  * Your scorecard, the one course catalog (absorbs the Today/Mandir copies),
- * Reflections, and Jyotish last — deliberately unannounced, Hindu-gated.
+ * Reflections, and a quiet "Deep Dive" section last — Understanding Astrology
+ * (Hindu-gated) and Mantra Vidyā — deliberately unannounced while they are
+ * works in progress (founder's v2 rule 1).
  * Promoted from the old Learn stack screen; the "Learn" route now redirects
  * here so old deep links keep working.
  */
@@ -107,16 +109,6 @@ export const PathScreen: React.FC = () => {
           <Ionicons name="chevron-forward" size={20} color="#475569" />
         </Pressable>
 
-        {/* ── slot 3: Mantra Vidyā — learn the mantras you already say ──── */}
-        <Pressable style={styles.linkRow} onPress={() => navigation.navigate('VidyaShelf')}>
-          <Text style={styles.linkIcon}>🕉️</Text>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.cardTitle}>Mantra Vidyā · मन्त्र विद्या</Text>
-            <Text style={styles.cardSub}>The words you already say — and what they mean</Text>
-          </View>
-          <Ionicons name="chevron-forward" size={20} color="#475569" />
-        </Pressable>
-
         {/* scorecard — progress is Path's subject */}
         <View style={styles.statusRow}>
           <Pressable style={styles.stat} onPress={() => navigation.navigate('PathInfo')}>
@@ -160,18 +152,29 @@ export const PathScreen: React.FC = () => {
           <Ionicons name="chevron-forward" size={20} color="#475569" />
         </Pressable>
 
-        {/* Jyotish — last, no badge, deliberately unannounced; Hindu-gated
-            (never shown to Buddhist users, carried from MandirScreen) */}
+        {/* Deep Dive — quiet, last, no badges: the longer studies while they
+            are works in progress. Astrology stays Hindu-gated (never shown to
+            Buddhist users, carried from MandirScreen). */}
+        <Text style={[styles.section, styles.deepDive]}>DEEP DIVE</Text>
+        <Text style={styles.deepDiveSub}>longer studies — take them slowly</Text>
         {theme.key === 'Hindu' && (
           <Pressable style={styles.linkRow} onPress={() => { track('jyotish_entry_path'); navigation.navigate('JyotishHome'); }}>
             <Text style={styles.linkIcon}>🪐</Text>
             <View style={{ flex: 1 }}>
-              <Text style={styles.cardTitle}>Path of the Sky · ज्योतिष</Text>
+              <Text style={styles.cardTitle}>Understanding Astrology · ज्योतिष</Text>
               <Text style={styles.cardSub}>Learn to read a birth chart, as a game</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="#475569" />
           </Pressable>
         )}
+        <Pressable style={styles.linkRow} onPress={() => { track('vidya_entry_path'); navigation.navigate('VidyaShelf'); }}>
+          <Text style={styles.linkIcon}>🕉️</Text>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.cardTitle}>Mantra Vidyā · मन्त्र विद्या</Text>
+            <Text style={styles.cardSub}>The words you already say — and what they mean</Text>
+          </View>
+          <Ionicons name="chevron-forward" size={20} color="#475569" />
+        </Pressable>
 
         <View style={{ height: 40 }} />
       </ScrollView>
@@ -190,6 +193,8 @@ const styles = StyleSheet.create({
   statNum: { color: '#f8fafc', fontSize: 16.5, fontWeight: '800' },
   statLbl: { color: '#94a3b8', fontSize: 10.5, marginTop: 4, textAlign: 'center' },
   section: { fontSize: 12, letterSpacing: 1.5, fontWeight: '800', marginTop: 22, marginBottom: 12 },
+  deepDive: { color: '#64748b', marginTop: 30, marginBottom: 2 },
+  deepDiveSub: { color: '#475569', fontSize: 12.5, fontStyle: 'italic', marginBottom: 12 },
   card: { borderRadius: 18, overflow: 'hidden', marginBottom: 10, borderWidth: 1, borderColor: 'rgba(255,255,255,0.07)' },
   cardGrad: { flexDirection: 'row', alignItems: 'center', padding: 16, gap: 14 },
   icon: { width: 50, height: 50, borderRadius: 14, alignItems: 'center', justifyContent: 'center' },

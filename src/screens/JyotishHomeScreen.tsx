@@ -1,12 +1,13 @@
 /**
- * Path of the Sky — module home. The nine gates as a vertical journey, the
- * learner's own sky as a live card up top once birth details are set.
+ * Understanding Astrology (Jyotish) — module home. The nine gates as a
+ * vertical journey, the learner's own sky as a live card up top once birth
+ * details are set. Lives under Path → Deep Dive.
  */
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Image as ExpoImage } from 'expo-image';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { JYOTISH_UNITS, getUnit } from '../data/jyotish/units';
+import { JYOTISH_UNITS } from '../data/jyotish/units';
 import { useJyotishStore, isUnitUnlocked, localDay } from '../store/jyotishStore';
 import { SIGNS, SIGNS_DEV, NAKSHATRAS, NAK_LORDS } from '../services/jyotishEngine';
 import { track } from '../services/analytics';
@@ -60,8 +61,8 @@ export function JyotishHomeScreen({ navigation }: any) {
         <Pressable onPress={() => navigation.goBack()} style={styles.back}><Text style={styles.backTxt}>‹</Text></Pressable>
         <ExpoImage source={{ uri: `${ART}/cover.jpg` }} style={styles.cover}
           contentFit="cover" transition={350} cachePolicy="memory-disk" />
-        <Text style={styles.kicker}>JYOTISH · ज्योतिष</Text>
-        <Text style={styles.title}>Path of the Sky</Text>
+        <Text style={styles.kicker}>DEEP DIVE · JYOTISH · ज्योतिष</Text>
+        <Text style={styles.title}>Understanding Astrology</Text>
         <Text style={styles.sub}>Learn to read a birth chart from first principles — as a game, honestly.</Text>
 
         {/* Own-sky card */}
