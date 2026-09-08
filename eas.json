@@ -25,6 +25,10 @@
         "credentialsSource": "local"
       },
       "channel": "production"
+    },
+    "testflight": {
+      "extends": "production",
+      "channel": "preview"
     }
   },
   "submit": {
@@ -38,7 +42,7 @@
         "ascApiKeyId": "TQAZ5JQ2LT",
         "ascApiKeyIssuerId": "614cfe80-272d-48d3-b61a-87b4b96adc14",
         "ascAppId": "6777929290",
-        "appName": "Dharma — Hindu Mantras & Gita",
+        "appName": "Dharma \u2014 Hindu Mantras & Gita",
         "language": "en-US",
         "sku": "dharma-taraventures-001",
         "bundleIdentifier": "com.taraventures.dharma"
