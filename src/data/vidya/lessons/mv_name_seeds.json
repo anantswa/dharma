@@ -1,0 +1,115 @@
+{
+  "id": "mv_name_seeds",
+  "titleHi": "गं · दुं · हं",
+  "titleEn": "Gaṃ is Gaṇeśa. Duṃ is Durgā. Haṃ is Hanumān. The name's first sound, with a hum.",
+  "sanskrit": "गं · दुं · हं",
+  "transliteration": "gaṃ · duṃ · haṃ",
+  "meaningEn": "Three seeds you can see through at once: gaṃ is the ga of Gaṇeśa, duṃ the du of Durgā, haṃ the ha of Hanumān — the deity's first sound, closed with a hum. Each opens its deity's short mantra: oṃ gaṃ gaṇapataye namaḥ, oṃ duṃ durgāyai namaḥ, oṃ haṃ hanumate namaḥ. This first-sound logic works for name-seeds like these, and no further. The great seeds — hrīṃ, klīṃ, aiṃ, śrīṃ — are given by the Tantras, not built from a name.",
+  "meaningHi": "तीन बीज जो एक नज़र में समझ आ जाते हैं: गं गणेश का ग है, दुं दुर्गा का दु, हं हनुमान का ह — देवता की पहली आवाज़, गूँज के साथ बंद। हर एक अपने देवता का छोटा मंत्र खोलता है: ॐ गं गणपतये नमः, ॐ दुं दुर्गायै नमः, ॐ हं हनुमते नमः। पहली-आवाज़ वाला यह हिसाब ऐसे नाम-बीजों पर चलता है, उससे आगे नहीं। बड़े बीज — ह्रीं, क्लीं, ऐं, श्रीं — तंत्रों ने दिए हैं, नाम से नहीं बने।",
+  "class": "bija",
+  "tradition": "Hindu",
+  "importance": 3,
+  "gap": 5,
+  "shelf": "bija",
+  "sayItLike": "gum · doom (short 'oo') · hum — each ending in a nasal hum",
+  "words": [
+    {
+      "deva": "गं",
+      "iast": "gaṃ",
+      "glossEn": "Gaṇeśa — the ga of Gaṇa, with a hum",
+      "glossHi": "गणेश — गण का ग, गूँज के साथ",
+      "root": "the one name-seed a text actually derives (Gaṇapati Atharvaśīrṣa §8)",
+      "alsoIn": [
+        "mv_ganapati",
+        "mv_bija_anatomy"
+      ],
+      "t0": 99,
+      "t1": 419
+    },
+    {
+      "deva": "दुं",
+      "iast": "duṃ",
+      "glossEn": "Durgā — the du of Durgā, with a hum",
+      "glossHi": "दुर्गा — दुर्गा का दु, गूँज के साथ",
+      "grammar": "attested in the Tantras (Śāradā-tilaka, Durgā section); not explained by them",
+      "t0": 1459,
+      "t1": 1759
+    },
+    {
+      "deva": "हं",
+      "iast": "haṃ",
+      "glossEn": "Hanumān — the ha of Hanumān, with a hum",
+      "glossHi": "हनुमान — हनुमान का ह, गूँज के साथ",
+      "grammar": "attested in Mantra-mahodadhi (Hanumat section). The same sound is also the space-element seed in the cakra map — one syllable, two traditional uses",
+      "t0": 2720,
+      "t1": 3099
+    }
+  ],
+  "audio": {
+    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_name_seeds_slow_v1.mp3",
+    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_name_seeds_natural_v1.mp3",
+    "voice": "kuber"
+  },
+  "source": {
+    "text": "Gaṇapati Atharvaśīrṣa §8 (gaṃ); Śāradā-tilaka Tantra, Durgā paṭala (duṃ); Mantra-mahodadhi (1588), Hanumat taraṅga (haṃ)",
+    "ref": "gaṃ is derived at Atharvaśīrṣa §8; duṃ and haṃ are given, not derived, in the tantric handbooks",
+    "confidence": "traditional",
+    "note": "Only gaṃ is explained by a text. Duṃ and haṃ are attested but not derived; the 'first sound' pattern is something a learner can see, not a rule the Tantras state."
+  },
+  "significance": {
+    "textSays": "Atharvaśīrṣa §8: ga + a + ṃ is the Gaṇeśa-vidyā. The Śāradā-tilaka and Mantra-mahodadhi simply hand over duṃ for Durgā and haṃ for Hanumān.",
+    "traditionSays": "Each of the three opens its deity's short mantra: oṃ gaṃ gaṇapataye namaḥ · oṃ duṃ durgāyai namaḥ · oṃ haṃ hanumate namaḥ. Haṃ doubles, in a different use, as the seed of space in the cakra map.",
+    "weDoNotClaim": "That first-sound is a rule to extend. It fits name-seeds; hrīṃ, klīṃ, aiṃ and śrīṃ are not made this way."
+  },
+  "practice": {
+    "count": 108,
+    "timeOfDay": "as part of the deity's mantra, not alone",
+    "mode": [
+      "aloud",
+      "whispered",
+      "mental"
+    ]
+  },
+  "quiz": [
+    {
+      "prompt": "Duṃ is the seed of —",
+      "options": [
+        "Lakṣmī",
+        "Durgā",
+        "Sarasvatī",
+        "Kālī"
+      ],
+      "correct": 1
+    },
+    {
+      "prompt": "Which seed opens 'oṃ ___ hanumate namaḥ'?",
+      "options": [
+        "hrīṃ",
+        "hūṃ",
+        "haṃ",
+        "gaṃ"
+      ],
+      "correct": 2
+    },
+    {
+      "prompt": "Which of these seeds is NOT built from the deity's first sound?",
+      "options": [
+        "gaṃ",
+        "duṃ",
+        "haṃ",
+        "hrīṃ"
+      ],
+      "correct": 3
+    },
+    {
+      "prompt": "Only one name-seed is actually derived by a text. Which?",
+      "options": [
+        "gaṃ — Gaṇapati Atharvaśīrṣa",
+        "duṃ — Devī Māhātmya",
+        "haṃ — Rāmāyaṇa",
+        "none of them"
+      ],
+      "correct": 0
+    }
+  ]
+}

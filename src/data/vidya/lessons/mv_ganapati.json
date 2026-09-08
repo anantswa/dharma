@@ -1,0 +1,143 @@
+{
+  "id": "mv_ganapati",
+  "titleHi": "गणेश मूल मन्त्र",
+  "titleEn": "Gaṃ is Gaṇeśa's own sound. The mantra is: Oṃ, gaṃ, to Gaṇapati — a bow.",
+  "sanskrit": "ॐ गं गणपतये नमः",
+  "transliteration": "oṃ gaṃ gaṇapataye namaḥ",
+  "meaningEn": "Oṃ. Gaṃ — Gaṇeśa's own seed-sound, the first sound of his name with a hum. To Gaṇapati, the lord of Śiva's hosts, a bow. Four words: the opening syllable, the seed, the name, and the bow — and that is the pattern most seed-mantras follow.",
+  "meaningHi": "ॐ। गं — गणेश जी की अपनी आवाज़, उनके नाम की पहली आवाज़ और एक गूँज। गणों के मालिक गणपति को प्रणाम। चार शब्द: ॐ, बीज, नाम, और नमः — और यही साँचा ज़्यादातर बीज-मंत्रों में है।",
+  "class": "mula",
+  "tradition": "Hindu",
+  "deityId": "2",
+  "importance": 4,
+  "gap": 4,
+  "shelf": "start",
+  "sayItLike": "Om gum ga-na-pa-ta-ye na-mah — 'gum' short, like 'gun' ending in a hum",
+  "words": [
+    {
+      "deva": "ॐ",
+      "iast": "oṃ",
+      "glossEn": "the one syllable",
+      "glossHi": "एक अक्षर — ॐ",
+      "alsoIn": [
+        "mv_om"
+      ],
+      "t0": 219,
+      "t1": 699
+    },
+    {
+      "deva": "गं",
+      "iast": "gaṃ",
+      "glossEn": "Gaṇeśa's seed — ga, his first sound, with a hum",
+      "glossHi": "गणेश का बीज — ग, उनकी पहली आवाज़, गूँज के साथ",
+      "root": "ga (of Gaṇa) + a + anusvāra — built out loud in Gaṇapati Atharvaśīrṣa §8",
+      "alsoIn": [
+        "mv_bija_anatomy",
+        "mv_name_seeds"
+      ],
+      "t0": 1339,
+      "t1": 1659
+    },
+    {
+      "deva": "गणपतये",
+      "iast": "gaṇapataye",
+      "glossEn": "to Gaṇapati — the lord of the gaṇas, Śiva's hosts",
+      "glossHi": "गणपति को — गणों के मालिक",
+      "root": "gaṇa (troop, host) + pati (lord)",
+      "grammar": "to Gaṇapati — dative, hence -aye (an -i name takes -aye for 'to')",
+      "t0": 2419,
+      "t1": 3359
+    },
+    {
+      "deva": "नमः",
+      "iast": "namaḥ",
+      "glossEn": "a bow — homage",
+      "glossHi": "प्रणाम",
+      "root": "√nam — to bend, to bow",
+      "grammar": "the closing word; 'a bow' to whoever is named in the dative",
+      "alsoIn": [
+        "mv_closers"
+      ],
+      "t0": 3720,
+      "t1": 4159
+    }
+  ],
+  "audio": {
+    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_ganapati_slow_v1.mp3",
+    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_ganapati_natural_v1.mp3",
+    "loopKey": "om_gam_ganapataye_namah",
+    "voice": "kuber"
+  },
+  "source": {
+    "text": "Gaṇapati Atharvaśīrṣa §8 (the seed gaṃ); Mantra-mahodadhi, Gaṇeśa taraṅga (the full mantra)",
+    "ref": "Atharvaśīrṣa §8: ga-kāra + a-kāra + anusvāra + bindu + nāda = the Gaṇeśa-vidyā; Mantra-mahodadhi (Mahīdhara, 1588) for oṃ gaṃ gaṇapataye namaḥ",
+    "confidence": "located (tantric text, dated)",
+    "note": "The Atharvaśīrṣa is a late Upaniṣad (c. 16th–17th c.); it builds the seed gaṃ and stops there. The full four-word mantra is the handbook (paddhati) form found in the Mantra-mahodadhi."
+  },
+  "significance": {
+    "textSays": "Gaṇapati Atharvaśīrṣa §8 builds the seed in front of you: 'the letter ga is the first form, a the middle, the anusvāra the last; the dot above, the nāda joining — this is the Gaṇeśa-vidyā.'",
+    "traditionSays": "Said before any beginning — a journey, a wedding, a new ledger; Gaṇeśa is worshipped first by custom. 108 times on a mālā.",
+    "weDoNotClaim": "That saying it removes obstacles. Tradition asks Gaṇeśa; the outcome is not ours to promise."
+  },
+  "practice": {
+    "count": 108,
+    "timeOfDay": "morning, or before starting anything new; Thursday's mantra in this app",
+    "mode": [
+      "aloud",
+      "whispered",
+      "mental"
+    ]
+  },
+  "quiz": [
+    {
+      "prompt": "Which word is Gaṇeśa's seed?",
+      "options": [
+        "ॐ oṃ",
+        "नमः namaḥ",
+        "गणपतये gaṇapataye",
+        "गं gaṃ"
+      ],
+      "correct": 3
+    },
+    {
+      "prompt": "गणपतये (gaṇapataye) means —",
+      "options": [
+        "to Gaṇapati",
+        "of Gaṇapati",
+        "Gaṇapati (the name alone)",
+        "O Gaṇapati!"
+      ],
+      "correct": 0
+    },
+    {
+      "prompt": "Why does the name end in -aye?",
+      "options": [
+        "it is the plural",
+        "it is the dative — 'to'",
+        "it is a Tamil ending",
+        "it marks the seed"
+      ],
+      "correct": 1
+    },
+    {
+      "prompt": "Build the mantra: Oṃ + ___ + gaṇapataye + namaḥ",
+      "options": [
+        "hrīṃ",
+        "klīṃ",
+        "gaṃ",
+        "duṃ"
+      ],
+      "correct": 2
+    },
+    {
+      "prompt": "Which text takes the seed gaṃ apart letter by letter?",
+      "options": [
+        "Ṛgveda 3.62.10",
+        "Māṇḍūkya Upaniṣad",
+        "Devī Māhātmya",
+        "Gaṇapati Atharvaśīrṣa"
+      ],
+      "correct": 3
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "id": "mv_purnamadah",
+  "titleHi": "पूर्णमदः",
+  "titleEn": "Pūrṇamadaḥ: the unseen is whole, this world is whole — take one from the other and nothing is lost.",
+  "sanskrit": "ॐ पूर्णमदः पूर्णमिदं पूर्णात्पूर्णमुदच्यते । पूर्णस्य पूर्णमादाय पूर्णमेवावशिष्यते ॥",
+  "transliteration": "oṃ pūrṇam adaḥ pūrṇam idaṃ pūrṇāt pūrṇam udacyate · pūrṇasya pūrṇam ādāya pūrṇam evāvaśiṣyate",
+  "meaningEn": "That is whole; this is whole. From the whole, the whole comes forth. Take the whole out of the whole — and the whole alone is left. 'That' is what cannot be seen; 'this' is the world in front of you. The verse says both are complete, and that nothing is lost when one comes out of the other.",
+  "meaningHi": "वह पूरा है; यह पूरा है। पूरे से पूरा निकलता है। पूरे में से पूरा निकाल लो — तो भी पूरा ही बचता है। 'वह' जो दिखता नहीं; 'यह' सामने की दुनिया। श्लोक कहता है दोनों पूरे हैं, और एक से दूसरा निकलने पर कुछ घटता नहीं।",
+  "class": "vedic",
+  "tradition": "Hindu",
+  "importance": 4,
+  "gap": 5,
+  "shelf": "start",
+  "sayItLike": "Om poor-nam a-dah poor-nam i-dam · poor-naat poor-nam u-dach-ya-te · poor-nas-ya poor-nam aa-daa-ya · poor-nam e-vaa-va-shish-ya-te",
+  "words": [
+    {
+      "deva": "ॐ",
+      "iast": "oṃ",
+      "glossEn": "the one syllable",
+      "glossHi": "एक अक्षर — ॐ",
+      "alsoIn": [
+        "mv_om"
+      ],
+      "t0": 439,
+      "t1": 1079
+    },
+    {
+      "deva": "पूर्णम्",
+      "iast": "pūrṇam",
+      "glossEn": "whole, full",
+      "glossHi": "पूरा",
+      "root": "√pṝ — to fill"
+    },
+    {
+      "deva": "अदः",
+      "iast": "adaḥ",
+      "glossEn": "that — the far one, what is not seen",
+      "glossHi": "वह — दूर वाला, जो दिखता नहीं",
+      "grammar": "'that' (over there) — the Upaniṣads use it for Brahman, the unseen"
+    },
+    {
+      "deva": "पूर्णम्",
+      "iast": "pūrṇam",
+      "glossEn": "whole, full",
+      "glossHi": "पूरा",
+      "root": "√pṝ — to fill"
+    },
+    {
+      "deva": "इदम्",
+      "iast": "idam",
+      "glossEn": "this — the near one, the world here",
+      "glossHi": "यह — पास वाला, सामने की दुनिया",
+      "grammar": "'this' (right here) — the visible world"
+    },
+    {
+      "deva": "पूर्णात्",
+      "iast": "pūrṇāt",
+      "glossEn": "from the whole",
+      "glossHi": "पूरे से",
+      "grammar": "from — ablative, hence -āt"
+    },
+    {
+      "deva": "पूर्णम्",
+      "iast": "pūrṇam",
+      "glossEn": "whole, full",
+      "glossHi": "पूरा",
+      "root": "√pṝ — to fill"
+    },
+    {
+      "deva": "उदच्यते",
+      "iast": "udacyate",
+      "glossEn": "comes forth, rises",
+      "glossHi": "निकलता है, उठता है",
+      "root": "ud + √añc — to rise up",
+      "grammar": "is-raised — passive; the whole comes out of the whole"
+    },
+    {
+      "deva": "पूर्णस्य",
+      "iast": "pūrṇasya",
+      "glossEn": "of the whole",
+      "glossHi": "पूरे का",
+      "grammar": "of — genitive, hence -asya",
+      "t0": 9679,
+      "t1": 10619
+    },
+    {
+      "deva": "पूर्णम्",
+      "iast": "pūrṇam",
+      "glossEn": "whole, full",
+      "glossHi": "पूरा",
+      "root": "√pṝ — to fill"
+    },
+    {
+      "deva": "आदाय",
+      "iast": "ādāya",
+      "glossEn": "having taken",
+      "glossHi": "लेकर",
+      "root": "ā + √dā — to take",
+      "grammar": "having-taken — a gerund; 'taking the whole of the whole'"
+    },
+    {
+      "deva": "पूर्णम्",
+      "iast": "pūrṇam",
+      "glossEn": "whole, full",
+      "glossHi": "पूरा",
+      "root": "√pṝ — to fill"
+    },
+    {
+      "deva": "एव",
+      "iast": "eva",
+      "glossEn": "only, just — nothing but",
+      "glossHi": "ही, सिर्फ़",
+      "grammar": "stresses the word before it: 'the whole, and only the whole'"
+    },
+    {
+      "deva": "अवशिष्यते",
+      "iast": "avaśiṣyate",
+      "glossEn": "remains, is left over",
+      "glossHi": "बचता है, बाक़ी रहता है",
+      "root": "ava + √śiṣ — to leave behind",
+      "grammar": "is-left — passive; eva + avaśiṣyate join as evāvaśiṣyate"
+    }
+  ],
+  "audio": {
+    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_purnamadah_slow_v1.mp3",
+    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_purnamadah_natural_v1.mp3",
+    "voice": "kuber"
+  },
+  "source": {
+    "text": "Bṛhadāraṇyaka Upaniṣad",
+    "ref": "5.1.1; the same verse is the peace-chant (śānti-pāṭha) of the Īśa Upaniṣad",
+    "confidence": "located",
+    "note": "'That' and 'this' are the Upaniṣad's own words; the reading 'that = the unseen Brahman, this = the world' is the standard commentary (Śaṅkara) and is how the verse has been chanted for a thousand years."
+  },
+  "significance": {
+    "textSays": "Bṛhadāraṇyaka 5.1.1: 'oṃ — that is whole, this is whole; from the whole the whole comes forth; taking the whole of the whole, the whole alone remains.'",
+    "traditionSays": "Chanted before and after Upaniṣad study and at the close of Vedāntic satsaṅg, followed by oṃ śāntiḥ śāntiḥ śāntiḥ; loved as the one verse that says the world and its source are both complete.",
+    "weDoNotClaim": "Any effect. It is a statement about reality, chanted as peace; it is quoted here and left to stand."
+  },
+  "practice": {
+    "count": "once",
+    "timeOfDay": "before and after study, or at the close of a gathering",
+    "mode": [
+      "aloud",
+      "whispered"
+    ]
+  },
+  "quiz": [
+    {
+      "prompt": "What does पूर्णम् (pūrṇam) mean?",
+      "options": [
+        "that",
+        "peace",
+        "from",
+        "whole, full"
+      ],
+      "correct": 3
+    },
+    {
+      "prompt": "In the verse, अदः (adaḥ, 'that') and इदम् (idam, 'this') point to —",
+      "options": [
+        "the unseen and the world in front of you",
+        "the sun and the moon",
+        "the teacher and the student",
+        "death and the deathless"
+      ],
+      "correct": 0
+    },
+    {
+      "prompt": "अवशिष्यते (avaśiṣyate) means —",
+      "options": [
+        "comes forth",
+        "remains, is left over",
+        "having taken",
+        "we meditate"
+      ],
+      "correct": 1
+    },
+    {
+      "prompt": "Where is the verse found?",
+      "options": [
+        "Ṛgveda 3.62.10",
+        "Māṇḍūkya Upaniṣad 12",
+        "Bṛhadāraṇyaka Upaniṣad 5.1.1",
+        "Devī Māhātmya 11.10"
+      ],
+      "correct": 2
+    }
+  ]
+}

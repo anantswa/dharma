@@ -1,0 +1,114 @@
+{
+  "id": "mv_om",
+  "titleHi": "ॐ",
+  "titleEn": "Oṃ is a, u, m — and the silence after. Waking, dream, deep sleep, and the one who watches.",
+  "sanskrit": "ॐ",
+  "transliteration": "oṃ",
+  "meaningEn": "Oṃ is not a word; it is one sound that holds three. A, U and M run together into one, and then there is a silence. The Māṇḍūkya Upaniṣad says: A is the waking world, U is the dream, M is dreamless sleep — and the silence after is the fourth, the awareness in which all three come and go.",
+  "meaningHi": "ॐ कोई शब्द नहीं, एक आवाज़ है जिसमें तीन आवाज़ें हैं — अ, उ, म — और फिर चुप्पी। माण्डूक्य उपनिषद कहता है: अ जागना है, उ सपना है, म गहरी नींद है — और उसके बाद की चुप्पी चौथी है, वह जो तीनों को आते-जाते देखता है।",
+  "class": "bija",
+  "tradition": "Hindu",
+  "importance": 5,
+  "gap": 4,
+  "shelf": "start",
+  "sayItLike": "om — 'o' as in 'home', then let the m hum, then stop and stay quiet a moment",
+  "words": [
+    {
+      "deva": "अ",
+      "iast": "a",
+      "glossEn": "the first sound — the waking world",
+      "glossHi": "पहली आवाज़ — जागती दुनिया",
+      "grammar": "Māṇḍūkya 9: a-kāra is Vaiśvānara, the waking self"
+    },
+    {
+      "deva": "उ",
+      "iast": "u",
+      "glossEn": "the second sound — the dream",
+      "glossHi": "दूसरी आवाज़ — सपना",
+      "grammar": "Māṇḍūkya 10: u-kāra is Taijasa, the dreaming self"
+    },
+    {
+      "deva": "म",
+      "iast": "m",
+      "glossEn": "the third sound — deep, dreamless sleep",
+      "glossHi": "तीसरी आवाज़ — गहरी नींद",
+      "grammar": "Māṇḍūkya 11: ma-kāra is Prājña, the self in deep sleep"
+    },
+    {
+      "deva": "अमात्र",
+      "iast": "amātra",
+      "glossEn": "the fourth — no sound at all; the silence after",
+      "glossHi": "चौथा — कोई आवाज़ नहीं; बाद की चुप्पी",
+      "root": "a + mātrā — 'without measure', the text's own word for the soundless fourth",
+      "grammar": "Māṇḍūkya 12: the part with no measure is Turīya, the fourth"
+    }
+  ],
+  "audio": {
+    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_om_slow_v1.mp3",
+    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_om_natural_v1.mp3",
+    "loopKey": "om",
+    "voice": "kuber"
+  },
+  "source": {
+    "text": "Māṇḍūkya Upaniṣad",
+    "ref": "1 and 8–12 (a = waking, u = dream, m = deep sleep; the measureless fourth); also Kaṭha 1.2.15–16, Taittirīya 1.8, Bhagavad Gītā 8.13",
+    "confidence": "located",
+    "note": "The three-sounds-and-silence reading is the Māṇḍūkya's own, not a later gloss. That a + u + m sound as 'o' is ordinary Sanskrit sandhi — which is why the letter is written ओ with a mark, not अउम."
+  },
+  "significance": {
+    "textSays": "Māṇḍūkya 1: 'Oṃ — this syllable is all this.' Verses 9–12 lay a, u, m over waking, dream and deep sleep, and the soundless fourth over the Self that knows all three.",
+    "traditionSays": "Said before every mantra and before every reading of scripture; the Gītā (8.13) names it the syllable to hold in the mind at the end of life. Chanted alone as japa, or drawn out long in meditation.",
+    "weDoNotClaim": "That the sound does anything on its own. The text teaches what to notice while saying it; that is quoted here, and no more."
+  },
+  "practice": {
+    "count": 108,
+    "timeOfDay": "any time; by custom the first sound of the morning",
+    "mode": [
+      "aloud",
+      "whispered",
+      "mental"
+    ]
+  },
+  "quiz": [
+    {
+      "prompt": "In the Māṇḍūkya Upaniṣad, the sound 'u' in Oṃ stands for —",
+      "options": [
+        "the dream",
+        "the waking world",
+        "deep sleep",
+        "the silence after"
+      ],
+      "correct": 0
+    },
+    {
+      "prompt": "What does the Upaniṣad call the part of Oṃ that has no sound?",
+      "options": [
+        "bindu — the dot",
+        "amātra — the measureless fourth",
+        "svāhā — the offering",
+        "nāda — the tone"
+      ],
+      "correct": 1
+    },
+    {
+      "prompt": "Oṃ is written as ओ with a mark, not अउम, because —",
+      "options": [
+        "the vowel a is silent",
+        "it is a Tamil spelling",
+        "a + u + m fuse into 'o' by ordinary Sanskrit sandhi",
+        "the Vedas forbid writing it"
+      ],
+      "correct": 2
+    },
+    {
+      "prompt": "Which text says 'oṃ — this syllable is all this'?",
+      "options": [
+        "Ṛgveda 3.62.10",
+        "Devī Māhātmya",
+        "Gaṇapati Atharvaśīrṣa",
+        "Māṇḍūkya Upaniṣad"
+      ],
+      "correct": 3
+    }
+  ]
+}

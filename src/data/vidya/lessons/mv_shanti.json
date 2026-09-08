@@ -1,0 +1,122 @@
+{
+  "id": "mv_shanti",
+  "titleHi": "ॐ शान्तिः शान्तिः शान्तिः",
+  "titleEn": "Śāntiḥ three times: peace from fate, from other beings, and from your own body and mind.",
+  "sanskrit": "ॐ शान्तिः शान्तिः शान्तिः",
+  "transliteration": "oṃ śāntiḥ śāntiḥ śāntiḥ",
+  "meaningEn": "Peace, peace, peace. The Upaniṣads end every peace-chant with the word said three times. Tradition says why: trouble reaches a person from three directions — from what no one controls (storm, accident, fate), from other living beings, and from one's own body and mind. One śāntiḥ for each. In the living teaching the first is said full-voiced, for what is farthest, and the last softest, for what is nearest — one's own mind. No text fixes which śāntiḥ is which; the three-fold reading itself is the commentators'.",
+  "meaningHi": "शांति, शांति, शांति। उपनिषद हर शांति-पाठ को यह शब्द तीन बार कहकर पूरा करते हैं। परंपरा बताती है क्यों: दुख आदमी तक तीन तरफ़ से आता है — उससे जो किसी के बस में नहीं (आँधी, हादसा, किस्मत), दूसरे जीवों से, और अपने शरीर और मन से। हर एक के लिए एक शांति। चलन में पहली ऊँची आवाज़ में कही जाती है, सबसे दूर वाले के लिए, और आख़िरी सबसे धीरे, सबसे पास वाले के लिए — अपना मन। कौन-सी शांति किसके लिए, यह कोई ग्रंथ तय नहीं करता; तीन का यह हिसाब भी टीकाकारों का है।",
+  "class": "vedic",
+  "tradition": "Hindu",
+  "importance": 3,
+  "gap": 5,
+  "shelf": "start",
+  "sayItLike": "Om shaan-tih · shaan-tih · shaan-tih — a soft breath after each 'tih'",
+  "words": [
+    {
+      "deva": "ॐ",
+      "iast": "oṃ",
+      "glossEn": "the one syllable",
+      "glossHi": "एक अक्षर — ॐ",
+      "alsoIn": [
+        "mv_om"
+      ],
+      "t0": 319,
+      "t1": 839
+    },
+    {
+      "deva": "शान्तिः",
+      "iast": "śāntiḥ",
+      "glossEn": "peace — from what no one controls: weather, accident, fate",
+      "glossHi": "शांति — उससे जो किसी के बस में नहीं: मौसम, हादसा, किस्मत",
+      "root": "√śam — to become quiet",
+      "grammar": "the -ḥ (visarga) is a soft breath after the i; tradition: ādhidaivika — trouble from the gods, the elements, chance; said full-voiced",
+      "t0": 1439,
+      "t1": 3139
+    },
+    {
+      "deva": "शान्तिः",
+      "iast": "śāntiḥ",
+      "glossEn": "peace — from other living beings",
+      "glossHi": "शांति — दूसरे जीवों से",
+      "grammar": "tradition: ādhibhautika — trouble from other creatures and people",
+      "t0": 3220,
+      "t1": 3939
+    },
+    {
+      "deva": "शान्तिः",
+      "iast": "śāntiḥ",
+      "glossEn": "peace — from what is inside: one's own body and mind",
+      "glossHi": "शांति — अंदर से: अपने शरीर और मन से",
+      "grammar": "tradition: ādhyātmika — the trouble that is one's own; said softest. Which śāntiḥ is which is not fixed by any text",
+      "t0": 4900,
+      "t1": 5739
+    }
+  ],
+  "audio": {
+    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_shanti_slow_v1.mp3",
+    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_shanti_natural_v1.mp3",
+    "voice": "kuber"
+  },
+  "source": {
+    "text": "The closing formula of every Vedic peace-chant (śānti-pāṭha) — e.g. the Īśa, Kaṭha and Taittirīya Upaniṣads",
+    "ref": "oṃ śāntiḥ śāntiḥ śāntiḥ closes the śānti-pāṭha of each Upaniṣad; the three-troubles reading is an old commentarial reading (Sāṃkhya-kārikā 1 onward)",
+    "confidence": "located",
+    "note": "The chant itself is Vedic and everywhere. The three-times reading (ādhyātmika, ādhibhautika, ādhidaivika) is an old commentarial reading (Sāṃkhya-kārikā 1 onward), not stated in the Upaniṣads — near-universal, and labelled here as tradition. No text fixes which śāntiḥ answers which trouble."
+  },
+  "significance": {
+    "textSays": "Every Upaniṣad's peace-chant ends 'oṃ śāntiḥ śāntiḥ śāntiḥ' — peace, said three times, and nothing else.",
+    "traditionSays": "One for each of the three sources of trouble — the powers beyond anyone's hand, other beings, the self; said at the close of prayer, study and meditation, the first full-voiced and the last softest.",
+    "weDoNotClaim": "That saying it brings peace. It asks for peace, three ways; the asking is the practice."
+  },
+  "practice": {
+    "count": "once",
+    "timeOfDay": "the close of any prayer, reading or meditation",
+    "mode": [
+      "aloud",
+      "whispered"
+    ]
+  },
+  "quiz": [
+    {
+      "prompt": "Why is śāntiḥ said three times?",
+      "options": [
+        "one for each of the three sources of trouble — self, other beings, fate",
+        "for the three Vedas",
+        "for morning, noon and night",
+        "for the three seeds"
+      ],
+      "correct": 0
+    },
+    {
+      "prompt": "The -ḥ at the end of śāntiḥ is —",
+      "options": [
+        "a hum (anusvāra)",
+        "a soft breath (visarga)",
+        "silent",
+        "a stop like phaṭ"
+      ],
+      "correct": 1
+    },
+    {
+      "prompt": "ādhidaivika trouble means —",
+      "options": [
+        "one's own body and mind",
+        "other living beings",
+        "what no one controls: weather, accident, fate",
+        "the three seeds"
+      ],
+      "correct": 2
+    },
+    {
+      "prompt": "Where does the three-troubles explanation come from?",
+      "options": [
+        "the Ṛgveda",
+        "the Devī Māhātmya",
+        "the Gaṇapati Atharvaśīrṣa",
+        "an old commentarial reading (Sāṃkhya-kārikā 1 onward), labelled as tradition"
+      ],
+      "correct": 3
+    }
+  ]
+}

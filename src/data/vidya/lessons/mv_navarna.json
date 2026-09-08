@@ -1,0 +1,163 @@
+{
+  "id": "mv_navarna",
+  "titleHi": "नवार्ण मन्त्र",
+  "titleEn": "Aiṃ, hrīṃ, klīṃ are Sarasvatī, Lakṣmī and Kālī — the Devī's three faces, one syllable each.",
+  "sanskrit": "ॐ ऐं ह्रीं क्लीं चामुण्डायै विच्चे",
+  "transliteration": "oṃ aiṃ hrīṃ klīṃ cāmuṇḍāyai vicce",
+  "meaningEn": "Oṃ. Then three seeds — aiṃ, hrīṃ, klīṃ — and then a name: to Cāmuṇḍā, the Devī who took the heads of the demons Caṇḍa and Muṇḍa. Vicce closes it; tradition hears it as 'for knowing'. The ritual frame says the three seeds are the mantra's seed, its power and its peg. Later teachers read them as Sarasvatī, Lakṣmī and Kālī — the three faces of one Mother, the three Devīs of the Devī Māhātmya. Modern teachers also pair the three with the work of creating, sustaining and dissolving — much as the Devī Māhātmya's own Prādhānika Rahasya pairs the three Mahā-devīs with the three guṇas. And klīṃ here is the same klīṃ that is Kṛṣṇa's seed of longing — here read as the Mother's pull, Kālī, by modern teachers. Nine syllables, counted without the oṃ.",
+  "meaningHi": "ॐ। फिर तीन बीज — ऐं, ह्रीं, क्लीं — और फिर एक नाम: चामुण्डा को, उस देवी को जिसने चण्ड और मुण्ड राक्षसों के सिर उतारे। विच्चे से मंत्र पूरा होता है; परंपरा इसे 'जानने के लिए' सुनती है। पाठ-विधि कहती है कि तीन बीज मंत्र का बीज, शक्ति और कीलक हैं। बाद के गुरु इन्हें सरस्वती, लक्ष्मी और काली पढ़ते हैं — एक माँ के तीन चेहरे, देवी माहात्म्य की तीन देवियाँ। आज के गुरु इन तीनों को बनाने, पालने और समेटने के काम से भी जोड़ते हैं — जैसे देवी माहात्म्य का अपना प्राधानिक रहस्य तीन महादेवियों को तीन गुणों से जोड़ता है। और यहाँ का क्लीं वही क्लीं है जो कृष्ण का चाह-बीज है — यहाँ आज के गुरु इसे माँ का खिंचाव, काली, पढ़ते हैं। नौ अक्षर, ॐ को छोड़कर गिने जाते हैं।",
+  "class": "mula",
+  "tradition": "Hindu",
+  "deityId": "1",
+  "importance": 4,
+  "gap": 5,
+  "shelf": "start",
+  "sayItLike": "Om aim hreem kleem chaa-mun-daa-yai vich-chay",
+  "words": [
+    {
+      "deva": "ॐ",
+      "iast": "oṃ",
+      "glossEn": "the one syllable — not counted in the nine",
+      "glossHi": "एक अक्षर — नौ में नहीं गिना जाता",
+      "alsoIn": [
+        "mv_om"
+      ],
+      "t0": 39,
+      "t1": 259
+    },
+    {
+      "deva": "ऐं",
+      "iast": "aiṃ",
+      "glossEn": "Sarasvatī's seed — the vidhi calls it the bīja, the seed of the mantra",
+      "glossHi": "सरस्वती का बीज — विधि इसे मंत्र का बीज कहती है",
+      "grammar": "modern teachers: Mahāsarasvatī",
+      "alsoIn": [
+        "mv_aim"
+      ],
+      "t0": 340,
+      "t1": 459
+    },
+    {
+      "deva": "ह्रीं",
+      "iast": "hrīṃ",
+      "glossEn": "the Devī's seed — the vidhi calls it the śakti, the mantra's power",
+      "glossHi": "देवी का बीज — विधि इसे शक्ति कहती है",
+      "grammar": "modern teachers: Mahālakṣmī",
+      "alsoIn": [
+        "mv_hrim"
+      ],
+      "t0": 479,
+      "t1": 740
+    },
+    {
+      "deva": "क्लीं",
+      "iast": "klīṃ",
+      "glossEn": "the seed of longing — the same klīṃ that is Kṛṣṇa's, here read as the Mother's pull, Kālī, by modern teachers; the vidhi calls it the kīlaka, the peg that fastens the mantra",
+      "glossHi": "खिंचाव का बीज — विधि इसे कीलक कहती है, मंत्र की खूँटी",
+      "grammar": "modern teachers: Mahākālī",
+      "alsoIn": [
+        "mv_klim"
+      ],
+      "t0": 759,
+      "t1": 1059
+    },
+    {
+      "deva": "चामुण्डायै",
+      "iast": "cāmuṇḍāyai",
+      "glossEn": "to Cāmuṇḍā — the Devī who slew Caṇḍa and Muṇḍa",
+      "glossHi": "चामुण्डा को — जिसने चण्ड और मुण्ड को मारा",
+      "root": "Caṇḍa + Muṇḍa — the two demons; the name is given in Devī Māhātmya 7.27",
+      "grammar": "to Cāmuṇḍā — dative, hence -āyai (an -ā name takes -āyai for 'to'); the same 'to' as śivāya, gaṇapataye",
+      "t0": 1100,
+      "t1": 1759
+    },
+    {
+      "deva": "विच्चे",
+      "iast": "vicce",
+      "glossEn": "traditionally 'for consciousness, for knowing' — no settled grammar",
+      "glossHi": "परंपरा में 'जानने के लिए' — पक्का व्याकरण नहीं",
+      "grammar": "not analysable by ordinary Sanskrit grammar; the gloss is tradition's and is shown as such",
+      "t0": 1819,
+      "t1": 2219
+    }
+  ],
+  "audio": {
+    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_navarna_slow_v1.mp3",
+    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_navarna_natural_v1.mp3",
+    "loopKey": "navarna_chamundayai",
+    "voice": "devi_female"
+  },
+  "source": {
+    "text": "Durgā Saptaśatī pāṭha-vidhi — the ritual frame of the Devī Māhātmya (kavaca, argalā, kīlaka); the name Cāmuṇḍā from Devī Māhātmya 7.27 (Mārkaṇḍeya Purāṇa)",
+    "ref": "Gita Press vidhi: aiṃ bījam · hrīṃ śaktiḥ · klīṃ kīlakam; devatās Mahākālī, Mahālakṣmī, Mahāsarasvatī. The mantra is not in the 700 verses themselves.",
+    "confidence": "located",
+    "note": "The vidhi names aiṃ the bīja, hrīṃ the śakti, klīṃ the kīlaka. The three-Devīs reading (aiṃ = Mahāsarasvatī, hrīṃ = Mahālakṣmī, klīṃ = Mahākālī) is the modern commentators' gloss (Satyananda Saraswati, Chaṇḍī Pāṭh; Devadatta Kali, 2003) — and it runs opposite to the text's own order, Mahākālī → Mahālakṣmī → Mahāsarasvatī. The create / sustain / dissolve pairing is likewise modern commentary, echoing the Prādhānika Rahasya's guṇa scheme, not the vidhi's wording."
+  },
+  "significance": {
+    "textSays": "The Saptaśatī vidhi: 'aiṃ is the seed, hrīṃ the power, klīṃ the peg; the deities are Mahākālī, Mahālakṣmī, Mahāsarasvatī.' Devī Māhātmya 7.27 gives the name: because she brought Caṇḍa and Muṇḍa, she shall be known in the world as Cāmuṇḍā.",
+    "traditionSays": "The mantra of Navarātri and of every Saptaśatī reading; 108 times on a mālā, morning and evening during the nine nights. In Śākta lineages it is received from a guru, and its three seeds are read as the Mother's three forms.",
+    "weDoNotClaim": "That the mantra protects, defeats enemies or grants power. It calls the Devī by three seeds and her name; what she does is hers."
+  },
+  "practice": {
+    "count": 108,
+    "timeOfDay": "Navarātri, morning and evening; otherwise morning",
+    "mode": [
+      "aloud",
+      "whispered",
+      "mental"
+    ],
+    "dikshaNote": "Many lineages receive the Navārṇa from a guru; here you learn its meaning."
+  },
+  "quiz": [
+    {
+      "prompt": "Aiṃ, hrīṃ, klīṃ — in the modern seed-by-seed reading, which Devīs are they?",
+      "options": [
+        "Kālī, Lakṣmī, Sarasvatī",
+        "Sarasvatī, Lakṣmī, Kālī",
+        "Durgā, Pārvatī, Gaurī",
+        "Gaṅgā, Yamunā, Sarasvatī"
+      ],
+      "correct": 1
+    },
+    {
+      "prompt": "चामुण्डायै (cāmuṇḍāyai) means —",
+      "options": [
+        "of Cāmuṇḍā",
+        "O Cāmuṇḍā!",
+        "to Cāmuṇḍā",
+        "Cāmuṇḍā's seed"
+      ],
+      "correct": 2
+    },
+    {
+      "prompt": "Why is the Devī called Cāmuṇḍā?",
+      "options": [
+        "she was born on a mountain",
+        "she rides a lion",
+        "she holds a lotus",
+        "she slew the demons Caṇḍa and Muṇḍa"
+      ],
+      "correct": 3
+    },
+    {
+      "prompt": "In the ritual frame, which seed is the kīlaka — the peg?",
+      "options": [
+        "klīṃ",
+        "aiṃ",
+        "hrīṃ",
+        "oṃ"
+      ],
+      "correct": 0
+    },
+    {
+      "prompt": "Build it: oṃ + aiṃ + hrīṃ + klīṃ + ___ + vicce",
+      "options": [
+        "cāmuṇḍāyāḥ",
+        "cāmuṇḍāyai",
+        "cāmuṇḍā",
+        "kālikāyai"
+      ],
+      "correct": 1
+    }
+  ]
+}

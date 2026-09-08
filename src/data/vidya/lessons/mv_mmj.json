@@ -1,0 +1,199 @@
+{
+  "id": "mv_mmj",
+  "titleHi": "महामृत्युञ्जय मन्त्र",
+  "titleEn": "Mahāmṛtyuñjaya asks Śiva: let me fall from death's grip like a ripe cucumber from its stem.",
+  "sanskrit": "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम् । उर्वारुकमिव बन्धनान् मृत्योर्मुक्षीय मामृतात् ॥",
+  "transliteration": "oṃ tryambakaṃ yajāmahe sugandhiṃ puṣṭi-vardhanam · urvārukam iva bandhanān mṛtyor mukṣīya mā'mṛtāt",
+  "meaningEn": "We worship the three-eyed one — fragrant, the one who makes all that lives grow strong. As a ripe cucumber drops from its stem on its own, may I be freed from the grip of death — but not from the deathless. The picture is the whole teaching: not torn away, but ripe and released.",
+  "meaningHi": "हम तीन आँखों वाले शिव की पूजा करते हैं — जो सुगंध हैं, जो सबको पालते और बढ़ाते हैं। जैसे पका हुआ खीरा बेल से अपने-आप छूट जाता है, वैसे ही मैं मौत की पकड़ से छूट जाऊँ — पर अमृत से नहीं। यही तस्वीर पूरी सीख है: तोड़ा नहीं गया, पका और छूटा।",
+  "class": "vedic",
+  "tradition": "Hindu",
+  "deityId": "7",
+  "importance": 5,
+  "gap": 5,
+  "shelf": "start",
+  "sayItLike": "Om tryam-ba-kam ya-jaa-ma-he · su-gan-dhim push-ti-var-dha-nam · ur-vaa-ru-kam iva ban-dha-naan · mrit-yor muk-shee-ya maa-mri-taat",
+  "words": [
+    {
+      "deva": "ॐ",
+      "iast": "oṃ",
+      "glossEn": "the one syllable",
+      "glossHi": "एक अक्षर — ॐ",
+      "alsoIn": [
+        "mv_om"
+      ],
+      "t0": 379,
+      "t1": 1220
+    },
+    {
+      "deva": "त्र्यम्बकं",
+      "iast": "tryambakaṃ",
+      "glossEn": "the three-eyed one — Śiva",
+      "glossHi": "तीन आँखों वाले — शिव",
+      "root": "tri + ambaka — three + eye",
+      "grammar": "the one we worship — object of yajāmahe",
+      "t0": 1899,
+      "t1": 2960
+    },
+    {
+      "deva": "यजामहे",
+      "iast": "yajāmahe",
+      "glossEn": "we worship, we make offering to",
+      "glossHi": "हम पूजा करते हैं",
+      "root": "√yaj — to worship, to offer",
+      "grammar": "we-worship — first person plural",
+      "t0": 3099,
+      "t1": 4219
+    },
+    {
+      "deva": "सुगन्धिं",
+      "iast": "sugandhiṃ",
+      "glossEn": "fragrant — sweet-scented",
+      "glossHi": "सुगंध वाले, महकते",
+      "root": "su + gandha — good + scent",
+      "grammar": "describes the three-eyed one; matching -ṃ ending",
+      "t0": 5079,
+      "t1": 5980
+    },
+    {
+      "deva": "पुष्टिवर्धनम्",
+      "iast": "puṣṭi-vardhanam",
+      "glossEn": "who makes nourishment grow — who feeds all life",
+      "glossHi": "जो सबको पालते और बढ़ाते हैं",
+      "root": "puṣṭi (nourishment) + √vṛdh (to grow)",
+      "grammar": "also describes Śiva; matching ending",
+      "t0": 6179,
+      "t1": 7519
+    },
+    {
+      "deva": "उर्वारुकम्",
+      "iast": "urvārukam",
+      "glossEn": "a cucumber — a ripe cucumber",
+      "glossHi": "खीरा — पका हुआ खीरा",
+      "grammar": "the picture of the whole mantra"
+    },
+    {
+      "deva": "इव",
+      "iast": "iva",
+      "glossEn": "like, as",
+      "glossHi": "जैसे"
+    },
+    {
+      "deva": "बन्धनान्",
+      "iast": "bandhanān",
+      "glossEn": "from its stem — from what binds it",
+      "glossHi": "बेल से — जो बाँधे रखता है उससे",
+      "root": "√bandh — to bind",
+      "grammar": "bandhanāt, 'from the binding' — ablative; -t becomes -n before m (sandhi)",
+      "t0": 9859,
+      "t1": 10880
+    },
+    {
+      "deva": "मृत्योः",
+      "iast": "mṛtyor",
+      "glossEn": "from death",
+      "glossHi": "मौत से",
+      "grammar": "from death — ablative; mṛtyoḥ becomes mṛtyor before a voiced sound"
+    },
+    {
+      "deva": "मुक्षीय",
+      "iast": "mukṣīya",
+      "glossEn": "may I be freed",
+      "glossHi": "मैं छूट जाऊँ",
+      "root": "√muc — to release, let go",
+      "grammar": "may-I-be-freed — first person, a wish; the only ask in the mantra"
+    },
+    {
+      "deva": "मा",
+      "iast": "mā",
+      "glossEn": "not",
+      "glossHi": "नहीं",
+      "grammar": "'not' — joins the next word: mā + amṛtāt = māmṛtāt"
+    },
+    {
+      "deva": "अमृतात्",
+      "iast": "amṛtāt",
+      "glossEn": "from the deathless — from immortality",
+      "glossHi": "अमृत से — जो कभी नहीं मरता उससे",
+      "root": "a + mṛta — not-dead",
+      "grammar": "from the deathless — ablative; 'freed from death, not from the deathless'"
+    }
+  ],
+  "audio": {
+    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_mmj_slow_v1.mp3",
+    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_mmj_natural_v1.mp3",
+    "voice": "kuber"
+  },
+  "source": {
+    "text": "Ṛgveda",
+    "ref": "7.59.12; also Taittirīya Saṃhitā 1.8.6.2 and Vājasaneyi Saṃhitā 3.60",
+    "confidence": "located",
+    "note": "Ṛgveda 7.59.12 is widely held to be a late addition to its hymn — a question about date, not about the words. The opening oṃ is liturgical and is not part of the Ṛgveda line."
+  },
+  "significance": {
+    "textSays": "Ṛgveda 7.59.12: a plea to the three-eyed one to be loosed from death's bond as a cucumber from its stem — and 'not from the deathless' (mā'mṛtāt). The wish is for a ripe, unforced release.",
+    "traditionSays": "Chanted at Śivarātri, for the sick and for the dying — 108 times, often by a whole family together. Called the great death-conquering mantra.",
+    "weDoNotClaim": "That it heals, lengthens life or shields from harm. It is a prayer, quoted exactly; what tradition hopes from it is labelled as tradition."
+  },
+  "practice": {
+    "count": 108,
+    "timeOfDay": "morning; at Śivarātri; by tradition at a sickbed; Monday's mantra in this app",
+    "mode": [
+      "aloud",
+      "whispered",
+      "mental"
+    ]
+  },
+  "quiz": [
+    {
+      "prompt": "What does मुक्षीय (mukṣīya) mean?",
+      "options": [
+        "we worship",
+        "fragrant",
+        "may I be freed",
+        "from death"
+      ],
+      "correct": 2
+    },
+    {
+      "prompt": "Which word is the cucumber?",
+      "options": [
+        "बन्धनान् bandhanān",
+        "पुष्टिवर्धनम् puṣṭi-vardhanam",
+        "त्र्यम्बकं tryambakaṃ",
+        "उर्वारुकम् urvārukam"
+      ],
+      "correct": 3
+    },
+    {
+      "prompt": "मामृतात् (mā'mṛtāt) says —",
+      "options": [
+        "not from the deathless",
+        "from death",
+        "from its stem",
+        "we worship"
+      ],
+      "correct": 0
+    },
+    {
+      "prompt": "'Tryambaka' means —",
+      "options": [
+        "the three worlds",
+        "the three-eyed one",
+        "the three seeds",
+        "the three-times peace"
+      ],
+      "correct": 1
+    },
+    {
+      "prompt": "Where is the mantra first found?",
+      "options": [
+        "Devī Māhātmya 7.27",
+        "Māṇḍūkya Upaniṣad 12",
+        "Ṛgveda 7.59.12",
+        "Mantra-mahodadhi"
+      ],
+      "correct": 2
+    }
+  ]
+}

@@ -21,12 +21,23 @@ export const vidyaLessonUrl = (id: string) => `${VIDYA_BASE}/lessons/${encodeURI
 /** Sung loops — the japa layer's live manifest (key → mp3), unchanged by this module. */
 export const MANTRA_LOOPS_URL = 'https://dharmaweave.com/cdn/dharma-audio/mantras/catalog.json';
 
-// ── FIXTURE ─────────────────────────────────────────────────────────────────
-// Two hand-made development cards (one verse, one seed). NOT graded content.
-// Replace with the content agent's lessons/*.json when Batch 1 lands.
+// ── BUNDLED LESSONS ─────────────────────────────────────────────────────────
+// Batch 1 (13 cards), graded 9.1; identical to the CDN copies under vidya/lessons/.
+// The CDN catalog wins at runtime; this is the offline / failure fallback.
 const FIXTURE_LESSONS: unknown[] = [
-  require('./fixtures/mv_gayatri.json'),
-  require('./fixtures/mv_hrim.json'),
+  require('./lessons/mv_om.json'),
+  require('./lessons/mv_gayatri.json'),
+  require('./lessons/mv_mmj.json'),
+  require('./lessons/mv_ganapati.json'),
+  require('./lessons/mv_bija_anatomy.json'),
+  require('./lessons/mv_name_seeds.json'),
+  require('./lessons/mv_aim.json'),
+  require('./lessons/mv_hrim.json'),
+  require('./lessons/mv_klim.json'),
+  require('./lessons/mv_navarna.json'),
+  require('./lessons/mv_closers.json'),
+  require('./lessons/mv_purnamadah.json'),
+  require('./lessons/mv_shanti.json'),
 ];
 // ────────────────────────────────────────────────────────────────────────────
 

@@ -1,0 +1,123 @@
+{
+  "id": "mv_klim",
+  "titleHi": "क्लीं",
+  "titleEn": "Klīṃ is Kṛṣṇa. The seed of longing — the pull of the flute.",
+  "sanskrit": "क्लीं",
+  "transliteration": "klīṃ",
+  "meaningEn": "Klīṃ is the seed of longing — the Tantras' kāma-bīja, the seed of desire and of being drawn. In the Navārṇa it is the third seed, aiṃ hrīṃ klīṃ, where the ritual frame calls it the kīlaka — the peg that fastens the mantra — and modern teachers read it as Mahākālī, the Mother's pull. It belongs to Kṛṣṇa: his eighteen-syllable mantra in the Gopāla-tāpanī Upaniṣad opens klīṃ kṛṣṇāya govindāya…, and it is Kāmadeva's seed too.",
+  "meaningHi": "क्लीं चाह का बीज है — तंत्र इसे काम-बीज कहते हैं, चाह का और खिंचे चले आने का बीज। नवार्ण में यह तीसरा बीज है, ऐं ह्रीं क्लीं, जहाँ पाठ-विधि इसे कीलक कहती है — मंत्र को बाँधने वाली खूँटी — और आज के गुरु इसे महाकाली पढ़ते हैं, माँ का खिंचाव। यह कृष्ण का है: गोपाल-तापनी उपनिषद में उनका अठारह अक्षर का मंत्र क्लीं कृष्णाय गोविन्दाय… से शुरू होता है, और यह कामदेव का बीज भी है।",
+  "class": "bija",
+  "tradition": "Hindu",
+  "deityId": "5",
+  "importance": 3,
+  "gap": 4,
+  "shelf": "bija",
+  "sayItLike": "kleem — 'k' + 'l' run together, long 'ee', then a hum",
+  "words": [
+    {
+      "deva": "क",
+      "iast": "ka",
+      "glossEn": "Kāma — and Kṛṣṇa — in the Tantras' reading",
+      "glossHi": "काम — और कृष्ण — तंत्र की पढ़त में",
+      "grammar": "Varada Tantra kośa via Woodroffe: ka = Kāmadeva / Kṛṣṇa"
+    },
+    {
+      "deva": "ल",
+      "iast": "la",
+      "glossEn": "Indra — lordship, in the same reading",
+      "glossHi": "इंद्र — प्रभुता, उसी पढ़त में",
+      "grammar": "kośa: la = Indra"
+    },
+    {
+      "deva": "ई",
+      "iast": "ī",
+      "glossEn": "contentment — tuṣṭi, in the same reading",
+      "glossHi": "संतोष — तुष्टि, उसी पढ़त में",
+      "grammar": "kośa: ī = tuṣṭi"
+    },
+    {
+      "deva": "अं",
+      "iast": "-ṃ",
+      "glossEn": "the dot (ं) — the closing hum, bindu and nāda",
+      "glossHi": "बिंदी (ं) — अंत की गूँज, बिन्दु और नाद",
+      "grammar": "kośa: 'the giver of joy' — tradition's attribution, not a meaning"
+    }
+  ],
+  "audio": {
+    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_klim_slow_v1.mp3",
+    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_klim_natural_v1.mp3",
+    "loopKey": "navarna_chamundayai",
+    "voice": "devi_female"
+  },
+  "source": {
+    "text": "Gopāla-tāpanī Upaniṣad (Kṛṣṇa's eighteen-syllable mantra); Śāradā-tilaka Tantra (11th c.); Varada Tantra as quoted in Woodroffe, Garland of Letters (1922)",
+    "ref": "the kāma-bīja; opens klīṃ kṛṣṇāya govindāya gopījanavallabhāya svāhā; third seed of the Navārṇa, where the Saptaśatī vidhi names it 'klīṃ kīlakam'",
+    "confidence": "traditional",
+    "note": "The Gopāla-tāpanī is a late Vaiṣṇava Upaniṣad. The letter reading is the Tantras' kośa method, not etymology. 'Klīṃ = Mahākālī' inside the Navārṇa is modern commentary (Satyananda Saraswati; Devadatta Kali, 2003), not the vidhi's wording."
+  },
+  "significance": {
+    "textSays": "Gopāla-tāpanī: Kṛṣṇa's mantra begins klīṃ. The Saptaśatī vidhi: 'klīṃ kīlakam' — klīṃ is the Navārṇa's peg. The Varada Tantra's kośa reads ka as Kāma, la as Indra, ī as contentment.",
+    "traditionSays": "Kṛṣṇa's and Kāmadeva's seed — the sound of being drawn, the way the gopīs were drawn by the flute; middle of the Bālā triad aiṃ klīṃ sauḥ; read by modern teachers as Mahākālī within the Navārṇa. Received from a guru in Śākta and Vaiṣṇava tantric lines.",
+    "weDoNotClaim": "That it attracts a person, a partner or wealth. It names a pull toward the Lord; what is given is his."
+  },
+  "practice": {
+    "count": 108,
+    "mode": [
+      "mental",
+      "whispered"
+    ],
+    "dikshaNote": "Many lineages receive seed mantras from a guru; here you learn what the seed means and whom it calls."
+  },
+  "quiz": [
+    {
+      "prompt": "Klīṃ is the seed of —",
+      "options": [
+        "Kṛṣṇa (and Kāmadeva)",
+        "Gaṇeśa",
+        "Śiva",
+        "Hanumān"
+      ],
+      "correct": 0
+    },
+    {
+      "prompt": "The Tantras' name for klīṃ is —",
+      "options": [
+        "vāg-bīja",
+        "kāma-bīja — the seed of longing",
+        "māyā-bīja",
+        "kūrca-bīja"
+      ],
+      "correct": 1
+    },
+    {
+      "prompt": "In the Saptaśatī ritual frame, klīṃ is the Navārṇa's —",
+      "options": [
+        "bīja — the seed",
+        "śakti — the power",
+        "kīlaka — the peg",
+        "devatā — the deity"
+      ],
+      "correct": 2
+    },
+    {
+      "prompt": "Which mantra opens with klīṃ?",
+      "options": [
+        "oṃ namo bhagavate vāsudevāya",
+        "oṃ gaṃ gaṇapataye namaḥ",
+        "oṃ namaḥ śivāya",
+        "klīṃ kṛṣṇāya govindāya…"
+      ],
+      "correct": 3
+    },
+    {
+      "prompt": "Order the Navārṇa's three seeds:",
+      "options": [
+        "aiṃ hrīṃ klīṃ",
+        "klīṃ hrīṃ aiṃ",
+        "hrīṃ aiṃ klīṃ",
+        "aiṃ klīṃ hrīṃ"
+      ],
+      "correct": 0
+    }
+  ]
+}

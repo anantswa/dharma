@@ -1,0 +1,220 @@
+{
+  "id": "mv_gayatri",
+  "titleHi": "गायत्री मन्त्र",
+  "titleEn": "The Gāyatrī asks the Sun for one thing — light up our thinking. That is the whole prayer.",
+  "sanskrit": "ॐ भूर्भुवः स्वः । तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि । धियो यो नः प्रचोदयात् ॥",
+  "transliteration": "oṃ bhūr bhuvaḥ svaḥ · tat savitur vareṇyaṃ bhargo devasya dhīmahi · dhiyo yo naḥ pracodayāt",
+  "meaningEn": "Oṃ. Earth, sky, heaven. On that finest light of Savitṛ — the Sun who sets everything moving — we meditate. May he set our thoughts moving too. It asks for one thing only: a lit-up mind.",
+  "meaningHi": "ॐ। धरती, आकाश, स्वर्ग। उस सूरज देवता की — जो सबको चलाता है — सबसे बढ़िया रोशनी पर हम ध्यान लगाते हैं। वह हमारी सोच को भी आगे बढ़ाए। बस एक चीज़ माँगी है — रोशन दिमाग़।",
+  "class": "vedic",
+  "tradition": "Hindu",
+  "deityId": "28",
+  "importance": 5,
+  "gap": 5,
+  "shelf": "start",
+  "sayItLike": "Om bhoor bhu-vah svah · tat sa-vi-tur va-ren-yam · bhar-go de-vas-ya dhee-ma-hi · dhi-yo yo nah pra-cho-da-yaat",
+  "words": [
+    {
+      "deva": "ॐ",
+      "iast": "oṃ",
+      "glossEn": "the one syllable",
+      "glossHi": "एक अक्षर — ॐ",
+      "alsoIn": [
+        "mv_om"
+      ],
+      "t0": 439,
+      "t1": 1199
+    },
+    {
+      "deva": "भूः",
+      "iast": "bhūr",
+      "glossEn": "earth",
+      "glossHi": "धरती",
+      "grammar": "bhūḥ — the -ḥ turns to -r before the next vowel (sandhi); first of the three 'worlds' (vyāhṛti)",
+      "t0": 1839,
+      "t1": 3000
+    },
+    {
+      "deva": "भुवः",
+      "iast": "bhuvaḥ",
+      "glossEn": "sky — the air between",
+      "glossHi": "आकाश — बीच की हवा",
+      "grammar": "second vyāhṛti",
+      "t0": 3359,
+      "t1": 3899
+    },
+    {
+      "deva": "स्वः",
+      "iast": "svaḥ",
+      "glossEn": "heaven — the bright world above",
+      "glossHi": "स्वर्ग — ऊपर की उजली दुनिया",
+      "grammar": "third vyāhṛti; the three together are the Yajurvedic prefix, not part of the Ṛgveda verse",
+      "t0": 3939,
+      "t1": 3959
+    },
+    {
+      "deva": "तत्",
+      "iast": "tat",
+      "glossEn": "that",
+      "glossHi": "वह",
+      "grammar": "that (light) — points forward to 'bhargo'",
+      "t0": 5019,
+      "t1": 7259
+    },
+    {
+      "deva": "सवितुः",
+      "iast": "savitur",
+      "glossEn": "of Savitṛ — the Sun as the one who sets all things going",
+      "glossHi": "सविता का — सूरज, जो सबको चलाता है",
+      "root": "√sū — to impel, set in motion; Savitṛ is 'the Impeller'",
+      "grammar": "of Savitṛ — genitive; savituḥ becomes savitur before a vowel",
+      "t0": 7659,
+      "t1": 8279
+    },
+    {
+      "deva": "वरेण्यं",
+      "iast": "vareṇyaṃ",
+      "glossEn": "most worth choosing — the finest",
+      "glossHi": "सबसे बढ़िया, चुनने लायक",
+      "root": "√vṛ — to choose",
+      "grammar": "describes 'bhargo' (that light) — both are neuter, both point at the light",
+      "t0": 9239,
+      "t1": 10019
+    },
+    {
+      "deva": "भर्गः",
+      "iast": "bhargo",
+      "glossEn": "light, radiance",
+      "glossHi": "रोशनी, तेज",
+      "root": "√bhrāj — to shine",
+      "grammar": "bhargaḥ becomes bhargo before a voiced sound; the thing we meditate on",
+      "t0": 10219,
+      "t1": 11039
+    },
+    {
+      "deva": "देवस्य",
+      "iast": "devasya",
+      "glossEn": "of the god — the shining one",
+      "glossHi": "देव का — जो चमकता है",
+      "grammar": "of the deva — genitive, hence -asya; goes with savitur",
+      "t0": 11059,
+      "t1": 11079
+    },
+    {
+      "deva": "धीमहि",
+      "iast": "dhīmahi",
+      "glossEn": "may we meditate",
+      "glossHi": "हम ध्यान करें",
+      "root": "√dhī / dhyai — to think, meditate (or √dhā, to hold)",
+      "grammar": "we-may-meditate — first person plural, a wish; the only verb in the first line",
+      "t0": 11979,
+      "t1": 12500
+    },
+    {
+      "deva": "धियः",
+      "iast": "dhiyo",
+      "glossEn": "thoughts, our thinking",
+      "glossHi": "सोच, बुद्धि",
+      "root": "dhī — thought (same root as dhīmahi)",
+      "grammar": "dhiyaḥ becomes dhiyo before a voiced sound; the object of 'pracodayāt'",
+      "t0": 13340,
+      "t1": 13639
+    },
+    {
+      "deva": "यः",
+      "iast": "yo",
+      "glossEn": "who — he who",
+      "glossHi": "जो",
+      "grammar": "yaḥ becomes yo before a voiced sound; refers back to Savitṛ",
+      "t0": 13799,
+      "t1": 14039
+    },
+    {
+      "deva": "नः",
+      "iast": "naḥ",
+      "glossEn": "our",
+      "glossHi": "हमारी",
+      "grammar": "short form of 'of us'",
+      "t0": 14179,
+      "t1": 15559
+    },
+    {
+      "deva": "प्रचोदयात्",
+      "iast": "pracodayāt",
+      "glossEn": "may he set in motion — may he inspire",
+      "glossHi": "आगे बढ़ाए, प्रेरित करे",
+      "root": "pra + √cud — to push forward, urge on",
+      "grammar": "may-he-impel — third person, a wish; the ask of the whole mantra",
+      "t0": 19719,
+      "t1": 19739
+    }
+  ],
+  "audio": {
+    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_gayatri_slow_v1.mp3",
+    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_gayatri_natural_v1.mp3",
+    "master": "https://dharmaweave.com/cdn/dharma-audio/vidya/loops/gayatri_f2_9rep_v1.mp3",
+    "voice": "kuber"
+  },
+  "source": {
+    "text": "Ṛgveda",
+    "ref": "3.62.10 (seer: Viśvāmitra); the oṃ + bhūr bhuvaḥ svaḥ prefix is Yajurvedic sandhyā liturgy (cf. Taittirīya Āraṇyaka 2.11)",
+    "confidence": "located",
+    "note": "In the Ṛgveda the verse is addressed to Savitṛ, the impelling Sun; the goddess Gāyatrī as a person is later Purāṇic devotion. Taught here without Vedic accents (svara); traditional recitation adds them."
+  },
+  "significance": {
+    "textSays": "Ṛgveda 3.62.10: 'On that finest light of the god Savitṛ may we meditate; may he set our thoughts in motion.' A wish for a lit-up mind — nothing else is asked.",
+    "traditionSays": "Recited at the three sandhyās — dawn, noon, dusk — and given at the sacred-thread ceremony; called the mother of the Vedas. Historic rules limited who could recite it; the stance here is that everyone may learn it, free.",
+    "weDoNotClaim": "That reciting it brings any result. It is a prayer for clear thought, quoted exactly and taught word by word."
+  },
+  "practice": {
+    "count": 108,
+    "timeOfDay": "sandhyā — dawn, noon, dusk; dawn if only one",
+    "mode": [
+      "aloud",
+      "whispered",
+      "mental"
+    ]
+  },
+  "quiz": [
+    {
+      "prompt": "What does धीमहि (dhīmahi) mean?",
+      "options": [
+        "may he inspire",
+        "may we meditate",
+        "of the god",
+        "most worth choosing"
+      ],
+      "correct": 1
+    },
+    {
+      "prompt": "Which word carries the whole ask of the Gāyatrī — 'may he set our thoughts moving'?",
+      "options": [
+        "वरेण्यं vareṇyaṃ",
+        "भर्गः bhargo",
+        "प्रचोदयात् pracodayāt",
+        "सवितुः savitur"
+      ],
+      "correct": 2
+    },
+    {
+      "prompt": "Savitṛ is —",
+      "options": [
+        "the goddess of learning",
+        "the fire in the altar",
+        "the moon",
+        "the Sun as the one who sets all things going"
+      ],
+      "correct": 3
+    },
+    {
+      "prompt": "Which of these is NOT part of the Ṛgveda verse, but a later liturgical prefix?",
+      "options": [
+        "bhūr bhuvaḥ svaḥ",
+        "tat savitur vareṇyaṃ",
+        "dhiyo yo naḥ",
+        "bhargo devasya"
+      ],
+      "correct": 0
+    }
+  ]
+}

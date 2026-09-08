@@ -1,0 +1,113 @@
+{
+  "id": "mv_hrim",
+  "titleHi": "ह्रीं",
+  "titleEn": "Hrīṃ is the Devī — the Mother's own seed, at the heart of the Navārṇa mantra.",
+  "sanskrit": "ह्रीं",
+  "transliteration": "hrīṃ",
+  "meaningEn": "Hrīṃ is the Devī's own seed — Bhuvaneśvarī, Mother of the worlds, and through her the Goddess in any form. The Tantras call it the māyā-bīja and read it letter by letter: ha is Śiva, ra is nature, ī is the Mother's māyā, and the hum ties them into one — Śiva and Śakti in a single breath. It stands at the centre of the Navārṇa, aiṃ hrīṃ klīṃ, and in the mantras of Bhuvaneśvarī and Lalitā.",
+  "meaningHi": "ह्रीं देवी का अपना बीज है — भुवनेश्वरी, जगत की माँ, और उन्हीं से हर रूप में माँ। तंत्र इसे माया-बीज कहते हैं और अक्षर-अक्षर पढ़ते हैं: ह शिव, र प्रकृति, ई माँ की माया, और गूँज इन सबको एक कर देती है — शिव और शक्ति एक साँस में। नवार्ण मंत्र के बीच में यही है, ऐं ह्रीं क्लीं, और भुवनेश्वरी और ललिता के मंत्रों में भी।",
+  "class": "bija",
+  "tradition": "Hindu",
+  "deityId": "1",
+  "importance": 4,
+  "gap": 5,
+  "shelf": "bija",
+  "sayItLike": "hreem — 'h' + 'r' run together, long 'ee', then a hum",
+  "words": [
+    {
+      "deva": "ह",
+      "iast": "ha",
+      "glossEn": "Śiva — in the Tantras' reading",
+      "glossHi": "शिव — तंत्र की पढ़त में",
+      "grammar": "Varada Tantra kośa: ha = Śiva"
+    },
+    {
+      "deva": "र",
+      "iast": "ra",
+      "glossEn": "prakṛti — nature, the stuff of the world",
+      "glossHi": "प्रकृति — जिससे दुनिया बनी है",
+      "grammar": "Varada Tantra kośa: ra = prakṛti"
+    },
+    {
+      "deva": "ई",
+      "iast": "ī",
+      "glossEn": "māyā — the Mother's power to appear as everything",
+      "glossHi": "माया — माँ की वह ताक़त जिससे वह सब कुछ बनकर दिखती है",
+      "grammar": "Varada Tantra kośa: ī = Mahāmāyā"
+    },
+    {
+      "deva": "अं",
+      "iast": "-ṃ",
+      "glossEn": "the dot (ं) — the closing hum, bindu and nāda",
+      "glossHi": "बिंदी (ं) — अंत की गूँज, बिन्दु और नाद",
+      "grammar": "the kośa reads nāda as 'the mother of the world' and bindu as 'what takes sorrow away'"
+    }
+  ],
+  "audio": {
+    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_hrim_slow_v1.mp3",
+    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_hrim_natural_v1.mp3",
+    "loopKey": "navarna_chamundayai",
+    "voice": "devi_female"
+  },
+  "source": {
+    "text": "Varada Tantra as quoted in Woodroffe, Garland of Letters (1922); Śāradā-tilaka Tantra (11th c.), Bhuvaneśvarī paṭala",
+    "ref": "the māyā-bīja; second seed of the Navārṇa, where the Saptaśatī vidhi names it 'hrīṃ śaktiḥ'",
+    "confidence": "traditional",
+    "note": "The letter-by-letter reading is the Tantras' kośa method — an attribution with authority inside those lineages, not etymology. A seed has no dictionary meaning."
+  },
+  "significance": {
+    "textSays": "The Varada Tantra's kośa: ha is Śiva, ra is prakṛti, ī is Mahāmāyā, nāda the mother of the world, bindu the remover of sorrow. The Saptaśatī vidhi names hrīṃ the śakti of the Navārṇa.",
+    "traditionSays": "Bhuvaneśvarī's seed and the Devī's most-used single syllable; the middle of aiṃ hrīṃ klīṃ; present in the Pañcadaśī of Lalitā. Modern teachers read it as Mahālakṣmī within the Navārṇa. In Śākta practice it is received from a guru.",
+    "weDoNotClaim": "Any effect from saying it. A seed has no dictionary meaning; tradition's reading is shown and the text named."
+  },
+  "practice": {
+    "count": 108,
+    "mode": [
+      "mental",
+      "whispered"
+    ],
+    "dikshaNote": "Many lineages receive seed mantras from a guru; here you learn what the seed means and whom it calls."
+  },
+  "quiz": [
+    {
+      "prompt": "Hrīṃ is the seed of —",
+      "options": [
+        "Gaṇeśa",
+        "Kṛṣṇa",
+        "Hanumān",
+        "the Devī — Bhuvaneśvarī"
+      ],
+      "correct": 3
+    },
+    {
+      "prompt": "In the Tantras' letter-by-letter reading, 'ha' in hrīṃ is —",
+      "options": [
+        "Śiva",
+        "Viṣṇu",
+        "the Sun",
+        "Sarasvatī"
+      ],
+      "correct": 0
+    },
+    {
+      "prompt": "In the Navārṇa, hrīṃ sits —",
+      "options": [
+        "first",
+        "second — between aiṃ and klīṃ",
+        "last, after vicce",
+        "it is not in the Navārṇa"
+      ],
+      "correct": 1
+    },
+    {
+      "prompt": "The Tantras' name for hrīṃ is —",
+      "options": [
+        "vāg-bīja",
+        "kāma-bīja",
+        "māyā-bīja",
+        "tattva-bīja"
+      ],
+      "correct": 2
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "id": "mv_closers",
+  "titleHi": "नमः · स्वाहा · फट्",
+  "titleEn": "Namaḥ bows. Svāhā offers into the fire. Phaṭ strikes. The last word of a mantra is what it does.",
+  "sanskrit": "नमः · स्वाहा · फट् · हूं फट्",
+  "transliteration": "namaḥ · svāhā · phaṭ · hūṃ phaṭ",
+  "meaningEn": "The last word of a mantra is its action. Namaḥ is a bow — and it always tells you to whom: śivāya, to Śiva; gaṇapataye, to Gaṇapati; sarasvatyai, to Sarasvatī. Svāhā is the fire-word, said the instant the offering goes into the flame — 'well offered'; Agni carries it up. Phaṭ is a strike — a sharp, short sound that cuts and guards, closing fierce mantras, often as hūṃ phaṭ. With these three, the shape of most seed-mantras can be read on sight: Oṃ, seed, name, and what to do.",
+  "meaningHi": "मंत्र का आख़िरी शब्द उसका काम बताता है। नमः प्रणाम है — और हमेशा बताता है किसे: शिवाय, शिव को; गणपतये, गणपति को; सरस्वत्यै, सरस्वती को। स्वाहा आग का शब्द है, जो आहुति के आग में जाते ही बोला जाता है — 'अच्छी तरह चढ़ाया'; अग्नि उसे ऊपर ले जाते हैं। फट् एक चोट है — छोटी, तेज़ आवाज़ जो काटती और बचाती है, उग्र मंत्रों का अंत, अक्सर हूं फट्। ये तीन जान लें, तो ज़्यादातर बीज-मंत्रों का ढाँचा देखते ही पढ़ लेंगे: ॐ, बीज, नाम, और क्या करना है।",
+  "class": "bija",
+  "tradition": "Hindu",
+  "importance": 4,
+  "gap": 5,
+  "shelf": "bija",
+  "sayItLike": "na-mah (a soft breath after the h) · svaa-haa · p-hut — a p with a puff of air, never an f · hoom p-hut",
+  "words": [
+    {
+      "deva": "नमः",
+      "iast": "namaḥ",
+      "glossEn": "a bow — homage; always 'to' someone, named in the dative",
+      "glossHi": "प्रणाम — हमेशा किसी 'को'",
+      "root": "√nam — to bend, to bow",
+      "grammar": "the person bowed to takes the dative: śivāya, gaṇapataye, sarasvatyai, kālikāyai — that is why the name before namaḥ ends in -āya / -aye / -ai / -āyai",
+      "alsoIn": [
+        "mv_ganapati"
+      ],
+      "t0": 119,
+      "t1": 599
+    },
+    {
+      "deva": "स्वाहा",
+      "iast": "svāhā",
+      "glossEn": "the offering-word — said as the ghee goes into the fire",
+      "glossHi": "आहुति का शब्द — घी आग में जाते ही",
+      "root": "su + āha — 'well said / well offered' (tradition's reading)",
+      "grammar": "Vedic; every āhuti ends with it; closes Kṛṣṇa's and Tārā's mantras (…gopījanavallabhāya svāhā · …ture svāhā)",
+      "t0": 1779,
+      "t1": 2399
+    },
+    {
+      "deva": "फट्",
+      "iast": "phaṭ",
+      "glossEn": "the striking-word — a sharp sound that cuts and guards",
+      "glossHi": "चोट का शब्द — तेज़ आवाज़ जो काटती और बचाती है",
+      "grammar": "tantric; ends with a stop, not a hum; the sound of a snap or a blow",
+      "t0": 5599,
+      "t1": 6000
+    },
+    {
+      "deva": "हूं फट्",
+      "iast": "hūṃ phaṭ",
+      "glossEn": "armour, then strike — the fierce close of guarding mantras",
+      "glossHi": "कवच, फिर चोट — रखवाली वाले मंत्रों का उग्र अंत",
+      "grammar": "hūṃ is the kūrca / armour seed; phaṭ the blow — the pair closes Hanumān's longer mantra and many Devī mantras"
+    }
+  ],
+  "audio": {
+    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_closers_slow_v1.mp3",
+    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_closers_natural_v1.mp3",
+    "voice": "kuber"
+  },
+  "source": {
+    "text": "Vedic usage for namaḥ and svāhā (Ṛgveda and the Yajurveda liturgy, everywhere an offering is made); tantric handbooks for phaṭ and hūṃ phaṭ (Śāradā-tilaka, 11th c.; Mantra-mahodadhi, 1588)",
+    "ref": "namaḥ + dative: e.g. Taittirīya Saṃhitā 4.5.8.1 (namaḥ śivāya); svāhā at every Vedic āhuti; phaṭ: Mantra-mahodadhi, Hanumat taraṅga (…hūṃ phaṭ)",
+    "confidence": "located",
+    "note": "Namaḥ and svāhā are Vedic and everywhere. Phaṭ belongs to the tantric layer; its 'cutting / guarding' sense is tradition's, and the meaning given for svāhā is tradition's reading, not a settled etymology."
+  },
+  "significance": {
+    "textSays": "The Yajurveda's Śrī Rudram says 'namaḥ śivāya' — a bow, to Śiva, dative. Every Vedic offering ends 'svāhā'. The tantric handbooks close fierce mantras with 'hūṃ phaṭ'.",
+    "traditionSays": "Namaḥ is the humblest close and the commonest; svāhā belongs to the fire and to mantras that are offerings; phaṭ is reserved for guarding and fierce use and is not said casually.",
+    "weDoNotClaim": "That phaṭ protects or that svāhā delivers anything. These are the grammar of what a mantra is doing; what it achieves is not promised."
+  },
+  "practice": {
+    "count": "once",
+    "timeOfDay": "a reading lesson — apply it to the next mantra you meet",
+    "mode": [
+      "aloud"
+    ]
+  },
+  "quiz": [
+    {
+      "prompt": "Which closing word means 'a bow'?",
+      "options": [
+        "svāhā",
+        "phaṭ",
+        "namaḥ",
+        "hūṃ"
+      ],
+      "correct": 2
+    },
+    {
+      "prompt": "Svāhā is said —",
+      "options": [
+        "at the end of a fierce mantra",
+        "before Oṃ",
+        "only in Buddhist mantras",
+        "as the offering goes into the fire"
+      ],
+      "correct": 3
+    },
+    {
+      "prompt": "The name before namaḥ ends in -āya / -aye / -ai because —",
+      "options": [
+        "it is the dative — 'to'",
+        "it is the plural",
+        "it is the seed",
+        "it rhymes with namaḥ"
+      ],
+      "correct": 0
+    },
+    {
+      "prompt": "Which closer ends in a stop, not a hum?",
+      "options": [
+        "gaṃ",
+        "phaṭ",
+        "hrīṃ",
+        "oṃ"
+      ],
+      "correct": 1
+    },
+    {
+      "prompt": "Build it: oṃ + gaṃ + gaṇapataye + ___",
+      "options": [
+        "svāhā",
+        "phaṭ",
+        "namaḥ",
+        "vicce"
+      ],
+      "correct": 2
+    }
+  ]
+}
