@@ -56,21 +56,22 @@ export function isMantraLesson(v: unknown): v is MantraLesson {
     isStr(l.transliteration) && typeof l.meaningHi === 'string' && typeof l.meaningEn === 'string' &&
     isStr(l.class) && isStr(l.tradition) && isStr(l.shelf) && typeof l.sayItLike === 'string' &&
     Array.isArray(l.words) &&
-    !!audio && typeof audio === 'object' && isStr(audio.spokenSlow) && isStr(audio.spokenNatural) &&
+    // v2: `audio.sung` is the one track — a string, or null (player hidden).
+    // An absent key is read as null so a v1 card still opens (silent).
+    !!audio && typeof audio === 'object' && (audio.sung == null || isStr(audio.sung)) &&
     !!l.source && typeof l.source === 'object' &&
-    !!l.significance && typeof l.significance === 'object' &&
-    !!l.practice && typeof l.practice === 'object'
+    !!l.significance && typeof l.significance === 'object'
   );
 }
 
 export const BUNDLED_LESSONS: MantraLesson[] = FIXTURE_LESSONS.filter(isMantraLesson);
 
-/** Engine default (§3): a lesson seen as a CourseVerse carries `audio = spokenSlow`. */
+/** A lesson seen as a CourseVerse carries `audio = sung` (v2: the one track). */
 export function toCourseVerse(l: MantraLesson): CourseVerse {
   return {
     id: l.id, titleHi: l.titleHi, titleEn: l.titleEn, sanskrit: l.sanskrit,
     transliteration: l.transliteration, meaningHi: l.meaningHi, meaningEn: l.meaningEn,
-    audio: l.audio.spokenSlow, ...(l.artUrl ? { artUrl: l.artUrl } : {}),
+    audio: l.audio.sung ?? '', ...(l.artUrl ? { artUrl: l.artUrl } : {}),
   };
 }
 

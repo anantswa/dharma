@@ -12,11 +12,13 @@
  *  - `QuizItem` is referenced by §3 but never defined; the minimal 4-option
  *    shape below is the simplest reading. Batch 1 does not require it (recall
  *    is generated from `words[]`), and the app tolerates its absence.
- *  - §3 says "CourseVerse.audio stays = spokenSlow (engine default)" while also
- *    making `audio` the object below — one field cannot be both. Simplest
- *    reading: the card carries the OBJECT; `toCourseVerse()` (index.ts) derives
- *    the engine-default `audio = spokenSlow` string whenever a lesson is handed
- *    to a CourseVerse consumer (VerseQuiz, ClozeRecall).
+ *  - v2 (founder's TestFlight verdict, 2026-09-08): ONE audio track per card,
+ *    the sung one (`audio.sung`); the spoken TTS tracks are gone. Word audio
+ *    is a per-word clip (`words[i].audioUrl`), never an alignment slice. The
+ *    `practice` block is REMOVED — no prescriptive who/when/how/count language
+ *    anywhere in the app; the field stays optional in the type for old JSON
+ *    and is never rendered. Quiz items may carry an image (`imageUrl`).
+ *    `toCourseVerse()` (index.ts) hands `audio = sung` to CourseVerse consumers.
  */
 import type { CourseVerse } from '../courses';
 
@@ -25,8 +27,9 @@ export type MantraWord = {
   glossEn: string; glossHi: string;
   root?: string;            // "√dhī / dhyai — to think, meditate"
   grammar?: string;         // plain words: "to Śiva (dative) — hence -āya"
-  audioUrl?: string;        // streamed, word alone, spoken slow
-  t0?: number; t1?: number; // ms offsets into audio.spokenSlow (forced-alignment)
+  audioUrl?: string;        // streamed, this word alone — rendered individually (v2)
+  /** @deprecated v1 forced-alignment offsets — tolerated on old JSON, never read. */
+  t0?: number; t1?: number;
   alsoIn?: string[];        // other lesson ids carrying this word
 };
 
@@ -41,11 +44,13 @@ export type SourceConfidence =
   | 'contested';
 export type PracticeMode = 'aloud' | 'whispered' | 'mental';
 
-/** Not defined in §3 (referenced only). Simplest reading: one 4-option question. */
+/** One 4-option question; v2 makes it visual — `imageUrl` sits above the prompt. */
 export type QuizItem = {
   prompt: string;
+  /** Streamed image shown above the prompt (image multiple-choice). */
+  imageUrl?: string;
   options: string[];
-  /** Index into `options`. */
+  /** Index into `options` (as authored; the widget shuffles at render). */
   correct: number;
 };
 
@@ -58,11 +63,19 @@ export type MantraLesson = Omit<CourseVerse, 'audio'> & {
   shelf: MantraShelf;
   sayItLike: string;                  // beginner roman line, no diacritics
   words: MantraWord[];
-  audio: {                            // CourseVerse.audio stays = spokenSlow (engine default)
-    spokenSlow: string; spokenNatural: string;
-    loopKey?: string;                 // key into mantras/catalog.json
-    master?: string;                  // e.g. the Gāyatrī F2 master
-    voice: 'kuber' | 'devi_female';
+  /** Card art (CDN, set by the pipeline); else deity art via deityId. */
+  artUrl?: string;
+  /** The prompt the art was generated from — content-side only, the app ignores it. */
+  artPrompt?: string;
+  audio: {
+    /** THE one track — sung / chanted. null → the player is hidden on this card. */
+    sung: string | null;
+    voice?: string;
+    loopKey?: string;                 // key into mantras/catalog.json (Japa hand-off)
+    /** @deprecated v1 spoken TTS tracks — tolerated on old JSON, never played. */
+    spokenSlow?: string; spokenNatural?: string;
+    /** @deprecated v1 — `sung` is the master now. */
+    master?: string;
   };
   source: {
     text: string; ref: string;
@@ -70,8 +83,10 @@ export type MantraLesson = Omit<CourseVerse, 'audio'> & {
     note?: string;
   };
   significance: { textSays: string; traditionSays: string; weDoNotClaim: string };
-  practice: { count: number | 'once'; timeOfDay?: string; mode: PracticeMode[]; dikshaNote?: string };
-  quiz?: QuizItem[];                  // optional hand-written overrides; else generated from words[]
+  /** @deprecated REMOVED in v2 (hard stop: no prescriptive practice language). Never rendered. */
+  practice?: { count: number | 'once'; timeOfDay?: string; mode: PracticeMode[]; dikshaNote?: string };
+  /** Several visual questions per card; recall renders them first. */
+  quiz?: QuizItem[];
 };
 
 /**

@@ -101,11 +101,11 @@ export function startHereSet(lessons: MantraLesson[], primary: TraditionKey | un
   return own.length ? own : lessons.filter((l) => l.shelf === 'start' || l.shelf === 'buddhist');
 }
 
-/** Deity art for a card: FINAL_DEITIES first, else the card's own artUrl. */
+/** Card art (v2 rule 3 — an image for everything): the card's own artUrl first, else deity art. */
 export function lessonArt(l: MantraLesson): { uri: string } | number | undefined {
+  if (l.artUrl) return { uri: l.artUrl };
   const deity = l.deityId ? FINAL_DEITIES.find((d) => d.id === l.deityId) : undefined;
-  if (deity?.image) return deity.image;
-  return l.artUrl ? { uri: l.artUrl } : undefined;
+  return deity?.image;
 }
 
 export const deityName = (deityId: string | undefined): string | undefined =>
