@@ -239,9 +239,12 @@ class VidyaPlayerClass {
     this.lesson = null;
     this.sheet = null;
     this.stopAt = null;
+    // Reset the store synchronously: an attach() for the next card can run in
+    // the same tick (pop back to a lesson), and a reset after the native
+    // unloads would clobber its lessonId / sungUrl.
+    useVidyaPlayer.getState().reset();
     await this.unloadWord();
     await this.unloadMain();
-    useVidyaPlayer.getState().reset();
   }
 }
 
