@@ -23,6 +23,7 @@ export const SeedEar: React.FC<Props> = ({ lesson, pool, accent, onResult }) => 
   const [picked, setPicked] = useState<string | null>(null);
   const [playing, setPlaying] = useState(false);
   const soundRef = useRef<Audio.Sound | null>(null);
+  const aliveRef = useRef(true);
 
   const { options, correctKey } = useMemo(() => {
     const correct = seedOptionFor(lesson);
@@ -47,6 +48,7 @@ export const SeedEar: React.FC<Props> = ({ lesson, pool, accent, onResult }) => 
       soundRef.current = null;
       const uri = await getPlayableUri(lesson.audio.spokenSlow);
       const { sound } = await Audio.Sound.createAsync({ uri }, { shouldPlay: true });
+      if (!aliveRef.current) { sound.unloadAsync().catch(() => {}); return; } // left before the clip arrived
       soundRef.current = sound;
       setPlaying(true);
       sound.setOnPlaybackStatusUpdate((st) => { if (st.isLoaded && st.didJustFinish) setPlaying(false); });
@@ -54,8 +56,9 @@ export const SeedEar: React.FC<Props> = ({ lesson, pool, accent, onResult }) => 
   };
 
   useEffect(() => {
+    aliveRef.current = true;
     play();
-    return () => { soundRef.current?.unloadAsync().catch(() => {}); };
+    return () => { aliveRef.current = false; soundRef.current?.unloadAsync().catch(() => {}); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lesson.id]);
 
