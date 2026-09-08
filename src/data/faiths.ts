@@ -117,6 +117,21 @@ const WEEKDAY_HINDU: { id: string; reason: string }[] = [
 // still brings a distinct darshan, with a dhamma-flavored reason line.
 const BUDDHIST_REASONS = ["Today's darshan", 'Sit with the Buddha', 'The path of stillness'];
 
+/**
+ * The vāra deity id for a given date — the same weekday table / daily rotation
+ * `todaysDarshan()` uses, but pure (no wall clock), so Mantra of the Day can
+ * ask about other weekdays without the two ever disagreeing.
+ */
+export function varaDeityId(faith: string | null | undefined, date: Date): string {
+  const list = darshanDeities(faith);
+  if (getFaithTheme(faith).key === 'Buddhist') {
+    const day = Math.floor((date.getTime() - date.getTimezoneOffset() * 60000) / 86400000);
+    return list[day % list.length].id;
+  }
+  const pick = WEEKDAY_HINDU[date.getDay()];
+  return list.some((d) => d.id === pick.id) ? pick.id : list[0].id;
+}
+
 /** Today's darshan figure + why. Index is into darshanDeities(faith) (the temple's list). */
 export function todaysDarshan(faith?: string | null): { deity: Deity; index: number; reason: string } {
   const list = darshanDeities(faith);

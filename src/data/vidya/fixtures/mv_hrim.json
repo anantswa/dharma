@@ -1,0 +1,45 @@
+{
+  "_fixture": "FIXTURE — hand-made development card, NOT graded content. Replaced by the content agent's lessons/mv_hrim.json.",
+  "id": "mv_hrim",
+  "titleHi": "ह्रीं",
+  "titleEn": "Hrīṃ is the Devī — the heart-seed at the centre of Navārṇa.",
+  "sanskrit": "ह्रीं",
+  "transliteration": "hrīṃ",
+  "meaningHi": "बीज का शब्दकोश में कोई अर्थ नहीं होता। तंत्र ह्रीं को देवी का अपना बीज मानते हैं — भुवनेश्वरी का। नवार्ण मंत्र के बीच में यही आता है: ऐं ह्रीं क्लीं।",
+  "meaningEn": "A bīja has no dictionary meaning. The Tantras read hrīṃ as the māyā-seed — the Devī's own sound, Bhuvaneśvarī — and it stands in the middle of the Navārṇa mantra you may already know: aiṃ hrīṃ klīṃ.",
+  "class": "bija",
+  "tradition": "Hindu",
+  "deityId": "1",
+  "importance": 4,
+  "gap": 5,
+  "shelf": "bija",
+  "sayItLike": "hreem",
+  "words": [
+    { "deva": "ह", "iast": "ha", "glossEn": "Śiva — in tradition's reading", "glossHi": "शिव — परंपरा के अनुसार" },
+    { "deva": "र", "iast": "ra", "glossEn": "prakṛti — nature", "glossHi": "प्रकृति" },
+    { "deva": "ई", "iast": "ī", "glossEn": "māyā", "glossHi": "माया" },
+    { "deva": "ं", "iast": "ṃ", "glossEn": "the closing hum — bindu and nāda", "glossHi": "अंत की गूँज — बिन्दु और नाद" }
+  ],
+  "audio": {
+    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/mv_hrim/slow.mp3",
+    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/mv_hrim/natural.mp3",
+    "loopKey": "navarna_chamundayai",
+    "voice": "devi_female"
+  },
+  "source": {
+    "text": "Varada Tantra as quoted in Woodroffe, Garland of Letters (1922); Śāradā-tilaka Tantra (11th c.)",
+    "ref": "kośa gloss of hrīṃ",
+    "confidence": "traditional",
+    "note": "The syllable-by-syllable reading is the Tantras' kośa method — an attribution with authority inside those lineages, not etymology."
+  },
+  "significance": {
+    "textSays": "The Tantras read it as ha = Śiva, ra = prakṛti, ī = māyā, closing in bindu and nāda — Śiva and Śakti fused in one sound.",
+    "traditionSays": "The māyā-bīja; Bhuvaneśvarī's seed; second of the three Navārṇa seeds. In Śākta practice it is received from a guru.",
+    "weDoNotClaim": "Any effect from saying it. A bīja has no dictionary meaning; we show tradition's reading and name the text."
+  },
+  "practice": {
+    "count": 108,
+    "mode": ["mental", "whispered"],
+    "dikshaNote": "Many lineages receive this from a guru; here you learn its meaning."
+  }
+}
