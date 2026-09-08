@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Haptics from 'expo-haptics';
 import React, { useEffect, useMemo, useState } from 'react';
@@ -26,6 +26,9 @@ const MALA = 108;
  */
 export const JapaScreen: React.FC = () => {
   const navigation = useNavigation<any>();
+  const route = useRoute<any>();
+  /** Optional: a Mantra Vidyā lesson hands off THIS mantra's loop (key into mantras/catalog.json). */
+  const mantraKey: string | undefined = route.params?.mantraKey;
   const theme = getFaithTheme(usePreferencesStore.getState().primaryTradition);
   const malas = useJapaStore((s) => s.malas);
   const [count, setCount] = useState(0);
@@ -51,9 +54,11 @@ export const JapaScreen: React.FC = () => {
   const isBuddhist = usePreferencesStore.getState().primaryTradition === 'Buddhist';
   const istaId = usePreferencesStore.getState().ista;
   const istaName = FINAL_DEITIES.find((d) => d.id === istaId)?.name;
-  const japaMantra = isBuddhist
-    ? (MANTRA_BY_KEY['buddham_saranam'] ?? UNIVERSAL_OM)
-    : istaName ? mantraForDeity(istaName) : UNIVERSAL_OM;
+  const japaMantra = mantraKey && MANTRA_BY_KEY[mantraKey]
+    ? MANTRA_BY_KEY[mantraKey]                      // explicit hand-off from a Vidyā lesson
+    : isBuddhist
+      ? (MANTRA_BY_KEY['buddham_saranam'] ?? UNIVERSAL_OM)
+      : istaName ? mantraForDeity(istaName) : UNIVERSAL_OM;
   const omUrl = manifest[japaMantra.key] ?? manifest[UNIVERSAL_OM.key];
   useDeityMantra(chantOn ? omUrl : undefined, chantOn);
 

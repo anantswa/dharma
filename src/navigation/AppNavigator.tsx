@@ -36,6 +36,8 @@ import { OfferingScreen } from '../screens/OfferingScreen';
 import { JyotishHomeScreen } from '../screens/JyotishHomeScreen';
 import { JyotishLessonScreen } from '../screens/JyotishLessonScreen';
 import { JyotishBirthScreen } from '../screens/JyotishBirthScreen';
+import { VidyaShelfScreen } from '../screens/VidyaShelfScreen';
+import { VidyaLessonScreen } from '../screens/VidyaLessonScreen';
 import { getFaithTheme } from '../data/faiths';
 import { usePreferencesStore } from '../store/preferencesStore';
 
@@ -153,6 +155,9 @@ const AppNavigator: React.FC = () => {
       {/* Dhyāna — the meditation room (Path slot #2) */}
       <Stack.Screen name="Dhyana" component={DhyanaScreen} />
       <Stack.Screen name="DhyanaPlayer" component={DhyanaPlayerScreen} />
+      {/* Mantra Vidyā — learn the mantras (Path slot #3) */}
+      <Stack.Screen name="VidyaShelf" component={VidyaShelfScreen} />
+      <Stack.Screen name="VidyaLesson" component={VidyaLessonScreen} />
       <Stack.Screen name="KathaScroll" component={KathaScrollScreen} />
       <Stack.Screen name="Wallpapers" component={WallpapersScreen} />
       <Stack.Screen name="Feedback" component={FeedbackScreen} />

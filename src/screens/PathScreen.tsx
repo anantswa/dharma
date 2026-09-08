@@ -107,6 +107,15 @@ export const PathScreen: React.FC = () => {
           <Ionicons name="chevron-forward" size={20} color="#475569" />
         </Pressable>
 
+        {/* ── slot 3: Mantra Vidyā — learn the mantras you already say ──── */}
+        <Pressable style={styles.linkRow} onPress={() => navigation.navigate('VidyaShelf')}>
+          <Text style={styles.linkIcon}>🕉️</Text>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.cardTitle}>Mantra Vidyā · मन्त्र विद्या</Text>
+            <Text style={styles.cardSub}>The words you already say — and what they mean</Text>
+          </View>
+          <Ionicons name="chevron-forward" size={20} color="#475569" />
+        </Pressable>
 
         {/* scorecard — progress is Path's subject */}
         <View style={styles.statusRow}>
