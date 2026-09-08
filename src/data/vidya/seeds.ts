@@ -31,7 +31,14 @@ export function shuffle<T>(a: T[]): T[] {
   return r;
 }
 const KNOWN_SEEDS = ['ॐ', 'गं', 'ह्रीं', 'श्रीं', 'क्लीं', 'ऐं', 'क्रीं', 'दुं', 'हं', 'सौः', 'हूं', 'हूँ'];
-const isSeedToken = (t: string) => /ं$|ँ$|ः$/.test(t) && t.length <= 4 && t !== 'ॐ';
+/**
+ * A seed token: closes in anusvāra / candrabindu / visarga and carries at most
+ * two consonants. Counted on consonants, not string length — ह्रीं / श्रीं /
+ * क्लीं / क्रीं are five UTF-16 units each (virama + vowel sign), which a
+ * length check silently rejected. नमः and ॐ are never seeds.
+ */
+const isSeedToken = (t: string) =>
+  /ं$|ँ$|ः$/.test(t) && (t.match(/[\u0915-\u0939\u0958-\u095F]/g)?.length ?? 0) <= 2 && t !== 'ॐ' && t !== 'नमः';
 
 const deityOf = (id: string | undefined) => (id ? FINAL_DEITIES.find((d) => d.id === id) : undefined);
 
