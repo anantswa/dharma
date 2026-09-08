@@ -73,7 +73,9 @@ function schemaErrors(l, fileStem) {
   const oneOf = (k, v, list) => { if (v !== undefined && !list.includes(v)) e.push(`${k}: "${v}" not one of ${JSON.stringify(list)}`); };
   const optStr = (k, v) => { if (v !== undefined && typeof v !== 'string') e.push(`${k}: must be a string when present`); };
 
-  if (isStr(l.id) && fileStem && l.id !== fileStem) e.push(`id "${l.id}" does not match file name "${fileStem}.json" (loader fetches lessons/<id>.json)`);
+  // local files may carry an "NN_" teaching-order prefix; the producer uploads as lessons/<id>.json
+  const stemId = fileStem ? fileStem.replace(/^\d+_/, "") : fileStem;
+  if (isStr(l.id) && stemId && l.id !== stemId) e.push(`id "${l.id}" does not match file name "${fileStem}.json" (loader fetches lessons/<id>.json)`);
   oneOf('class', l.class, CLASSES);
   oneOf('tradition', l.tradition, TRADITIONS);
   oneOf('shelf', l.shelf, SHELVES);
