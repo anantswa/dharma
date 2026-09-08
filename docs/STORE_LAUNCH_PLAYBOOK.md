@@ -240,3 +240,9 @@ launch teaches something new.*
 - **GitHub push protection** blocks pushes containing the *historical* rotated Supabase key (see SECURITY-NO-KEY-REWRITE.md — no history rewrite by standing decision). Unblock needs Anant's click on the GitHub-provided URL; not a release gate.
 - **Noticeboard:** `scripts/publish_noticeboard.py` uploads `config/noticeboard.json` to `dharma-art/config/` — run at OTA time.
 - **Android:** EAS `build --platform android --profile production` → AAB; Play upload still manual (no service account).
+
+### Play Console notes after the 1.0.8 release (for the v3 binary)
+- Android 1.0.8 released 2026-09-07 15:54 SGT at 20% staged; bump to 100% via Production → Releases → "Manage rollout" after ~48h crash-free.
+- Play flags "App optimisation below threshold — Obfuscation (1%) — fix by Feb 2027": enable R8/ProGuard for release builds (expo-build-properties `android.enableProguardInReleaseBuilds: true` + `enableShrinkResourcesInReleaseBuilds`) and upload the mapping file (EAS does this automatically once R8 is on). Under 25% may limit visibility/publishing after the deadline.
+- Recommended: migrate off deprecated edge-to-edge APIs (SDK-level; expo edge-to-edge config) and remove resizability/orientation restrictions for large screens (app.json `orientation`, `android.resizeableActivity`). Non-blocking now.
+- Release notes are capped at 500 characters per language; the store language is en-GB (tag `<en-GB>`), not en-US.
