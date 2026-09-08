@@ -253,3 +253,12 @@ Once a version (e.g. 1.0.8) is approved/released, Apple closes that "train": any
 ### Vidyā v2.1 OTA (2026-09-08) — the cheap-release template
 - JS + content + one bundled mp3, zero native change → OTA only. Four `eas update --branch production` runs (1.0.8 / 1.0.7 / 1.0.6 / 1.0.4), swapping `app.json` version per run and restoring it after (a `trap` guards the restore). Preview runtime 1.0.9 got its own push via `--branch preview` for TestFlight first; production never needed the 1.0.9 binary.
 - Drift gate re-run before pushing: 1.0.4 still differs only by datetimepicker (lazy-guarded) + astronomy-engine (pure JS).
+
+### In-app purchases — "Support the creators" (2026-09-08)
+- Rule: tips to the developer for digital content = IAP on both stores (App Store 3.1.1; Play billing policy). Never a web link, never framed as a donation (Tara Ventures is not a charity).
+- Library: `expo-iap` (config plugin auto-added; StoreKit 2 / Play Billing 8). Consumable tiers, ids identical on both stores: `com.taraventures.dharma.support.{small,medium,large}` = $0.29 / $0.99 / $2.99 USD base. `finishTransaction({isConsumable:true})` after every success so the tip can repeat.
+- ASC via API: `POST /v2/inAppPurchases` (CONSUMABLE) → `/v1/inAppPurchaseLocalizations` (en-US) → `/v1/inAppPurchasePriceSchedules` (inline price id MUST be `${price-0}`; pick the price point from `/v2/inAppPurchases/{id}/pricePoints?filter[territory]=USA`) → `/v1/inAppPurchaseAvailabilities` (all territories). Transient 500s happen on create — retry.
+- Still manual: review screenshot per IAP; attach IAPs to the version on first submission; Play products (no service account) — see `Daily Reviews/app-support-iap/ANANT_CHECKLIST.md`.
+- Anant-only: Paid Apps agreement + tax + banking (ASC), Payments profile (Play), Small Business Program. Sandbox tester (ASC) + License testing (Play) for free test purchases.
+- Tax: stores are merchant of record (VAT/GST/sales tax collected + remitted by them); SG corporate tax on payouts only.
+- Native change → new binary (1.1.0); builds via `testflight` profile (channel preview) for both platforms; store release only on explicit go.
