@@ -11,7 +11,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ClozeRecall } from '../components/ClozeRecall';
 import { ReciteRecorder } from '../components/ReciteRecorder';
 import { VerseQuiz } from '../components/VerseQuiz';
-import { Interlinear, WordLine } from '../components/vidya/Interlinear';
+import { ImageQuiz } from '../components/vidya/ImageQuiz';
+import { Interlinear } from '../components/vidya/Interlinear';
 import { MulaBuilder } from '../components/vidya/MulaBuilder';
 import { SeedEar } from '../components/vidya/SeedEar';
 import { SeedMatch } from '../components/vidya/SeedMatch';
@@ -23,14 +24,17 @@ import { buildMulaTarget, buildSeedPairs } from '../data/vidya/seeds';
 import { deityName, lessonArt } from '../data/vidya/shelves';
 import type { MantraLesson, MantraWord } from '../data/vidya/types';
 import { track } from '../services/analytics';
-import { useVidyaPlayer, VidyaPlayer } from '../services/vidyaPlayer';
+import { VidyaPlayer } from '../services/vidyaPlayer';
 import { Grade, LEVEL_LABEL, levelForBox, useMasteryStore } from '../store/masteryStore';
 import { usePreferencesStore } from '../store/preferencesStore';
 import { useVidyaStore } from '../store/vidyaStore';
 
-const PAGES = 8;
-const RECALL = PAGES - 1;
-const PLAYER_H = 118; // clearance under each page for the pinned bar
+/** v2: five screens — meaning first · word by word · the whole meaning · recall · japa (last). */
+const PAGES = 5;
+const WORDS = 1;
+const MEANING = 2;
+const RECALL = 3;
+const PLAYER_H = 96; // clearance under each page for the pinned bar
 
 const CONFIDENCE_LABEL: Record<MantraLesson['source']['confidence'], string> = {
   located: 'located',
@@ -40,12 +44,20 @@ const CONFIDENCE_LABEL: Record<MantraLesson['source']['confidence'], string> = {
   contested: 'contested',
 };
 
+/** One recall step; a card runs its steps in order and takes the worst grade. */
+type RecallStep = 'quiz' | 'ear' | 'match' | 'mula' | 'verse' | 'cloze';
+const WORST: Record<Grade, number> = { forgot: 0, okay: 1, knew: 2 };
+
 /**
- * Mantra Vidyā — one card, eight screens (§3), the BANG leading (§8):
- *   1 the connection · 2 see it · 3 word by word · 4 whole meaning ·
- *   5 significance (+ collapsed "where this comes from") · 6 practice ·
- *   7 practise (Japa / Recall) · 8 recall (grades the SRS).
- * The pinned mini-player rides screens 1–7 and hides on 8.
+ * Mantra Vidyā — one card, five screens (v2, the founder's TestFlight verdict):
+ *   1 MEANING FIRST — the card's image, the bang line, the Hindi meaning right
+ *     under it, then the Sanskrit and its roman form. Immediate understanding.
+ *   2 word by word (tap → the word's own clip) · 3 the whole meaning + what the
+ *     text / tradition say + "where this comes from" · 4 RECALL (the visual
+ *     quiz, then the seed widgets; grades the SRS) · 5 the Japa hand-off.
+ * ONE audio track — the sung one — auto-plays on arrival in the pinned bar;
+ * the bar hides on recall, and on cards with no sung track. No practice
+ * screen: no who / when / how / counts anywhere (hard stop).
  */
 export const VidyaLessonScreen: React.FC = () => {
   const navigation = useNavigation<any>();
@@ -60,7 +72,6 @@ export const VidyaLessonScreen: React.FC = () => {
   const lesson = useMemo(() => lessons.find((l) => l.id === id), [lessons, id]);
   const records = useMasteryStore((s) => s.records);
   const autoPlay = usePreferencesStore((s) => s.autoPlay);
-  const wordIndex = useVidyaPlayer((s) => s.wordIndex);
 
   const [page, setPage] = useState(0);
   const [sheetWord, setSheetWord] = useState<MantraWord | null>(null);
@@ -68,10 +79,12 @@ export const VidyaLessonScreen: React.FC = () => {
   const [revealed, setRevealed] = useState(false);
   const [recited, setRecited] = useState(false);
   const [result, setResult] = useState<Grade | null>(null);
+  /** Recall: the steps for this visit and how far along we are. */
+  const [steps, setSteps] = useState<RecallStep[]>([]);
+  const [stepIdx, setStepIdx] = useState(0);
   const pagerRef = useRef<ScrollView>(null);
   const gradedRef = useRef(false);
-  /** Leitner box frozen on entering recall, so the widget cannot swap mid-grade. */
-  const recallBoxRef = useRef<number | undefined>(undefined);
+  const stepGradesRef = useRef<Grade[]>([]);
 
   const accent = getFaithTheme(lesson?.tradition === 'Buddhist' ? 'Buddhist' : 'Hindu').accent;
 
@@ -84,22 +97,34 @@ export const VidyaLessonScreen: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lesson?.id]);
 
-  // The player is bound while this card has focus: auto-play the slow
-  // recitation on arrival (screen 1); navigation away — Japa, another lesson,
-  // back — stops it, so no lesson audio leaks under the temple.
+  // The player is bound while this card has focus: the sung track auto-plays
+  // on arrival (screen 1); navigation away — Japa, another lesson, back —
+  // stops it, so no lesson audio leaks under the temple.
   useFocusEffect(useCallback(() => {
     if (!lesson) return undefined;
-    const sung = lesson.audio.master ?? (lesson.audio.loopKey ? loops[lesson.audio.loopKey] : undefined);
-    VidyaPlayer.attach(lesson, sung, autoPlay && pageRef.current !== RECALL);
+    VidyaPlayer.attach(lesson, autoPlay && pageRef.current !== RECALL);
     return () => { VidyaPlayer.stop(); };
-    // the sung url is refreshed by the effect below when the loop manifest lands later
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lesson?.id]));
-  useEffect(() => {
-    if (!lesson) return;
-    const sung = lesson.audio.master ?? (lesson.audio.loopKey ? loops[lesson.audio.loopKey] : undefined);
-    if (sung && !useVidyaPlayer.getState().sungUrl) useVidyaPlayer.getState().setState({ sungUrl: sung });
-  }, [loops, lesson]);
+
+  /** The recall steps for this visit, staged by Leitner box (frozen on entry). */
+  const planRecall = (l: MantraLesson): RecallStep[] => {
+    const box = useMasteryStore.getState().records[l.id]?.box;
+    const stage = box === undefined || box <= 1 ? 0 : box <= 3 ? 1 : 2;
+    const out: RecallStep[] = [];
+    const hasQuiz = !!l.quiz?.length;
+    if (hasQuiz) out.push('quiz'); // the visual quiz leads on every card
+    if (l.class === 'bija') {
+      const pairs = buildSeedPairs(l, lessons).slice(0, 4);
+      if (stage === 2 && buildMulaTarget(l, lessons)) out.push('mula');
+      else if (stage >= 1 && pairs.length >= 2) out.push('match');
+      else if (!hasQuiz && l.audio.sung) out.push('ear');
+      else if (!hasQuiz && pairs.length >= 2) out.push('match');
+    } else if (!hasQuiz) {
+      out.push(stage === 0 ? 'verse' : 'cloze');
+    }
+    return out.length ? out : ['cloze'];
+  };
 
   const goTo = (n: number) => {
     pagerRef.current?.scrollTo({ x: n * width, animated: true });
@@ -111,7 +136,7 @@ export const VidyaLessonScreen: React.FC = () => {
     pageRef.current = n;
     track('vidya_screen', { id: lesson.id, n: n + 1 });
     if (n === RECALL) {
-      recallBoxRef.current = useMasteryStore.getState().records[lesson.id]?.box;
+      if (!result && steps.length === 0) { setSteps(planRecall(lesson)); setStepIdx(0); stepGradesRef.current = []; }
       VidyaPlayer.pause(); // no listening during recall
     }
   };
@@ -121,6 +146,7 @@ export const VidyaLessonScreen: React.FC = () => {
 
   const openWord = (w: MantraWord) => {
     try { Haptics.selectionAsync(); } catch { /* noop */ }
+    track('vidya_word_tap', { id: lesson?.id, word: w.iast, clip: !!w.audioUrl });
     setSheetWord(w);
     VidyaPlayer.openWord(w);
   };
@@ -145,6 +171,14 @@ export const VidyaLessonScreen: React.FC = () => {
     setResult(g);
   };
 
+  /** A step finished: move on, or grade the whole run with its worst step. */
+  const onStep = (g: Grade) => {
+    stepGradesRef.current = [...stepGradesRef.current, g];
+    if (stepIdx + 1 < steps.length) { setStepIdx(stepIdx + 1); return; }
+    const worst = stepGradesRef.current.reduce((a, b) => (WORST[b] < WORST[a] ? b : a), 'knew' as Grade);
+    grade(worst);
+  };
+
   if (!lesson) {
     return (
       <View style={styles.container}>
@@ -161,9 +195,10 @@ export const VidyaLessonScreen: React.FC = () => {
   const words = lesson.words ?? [];
   const art = lessonArt(lesson);
   const who = deityName(lesson.deityId);
-  const pageContent = { paddingBottom: PLAYER_H + insets.bottom };
+  const hasTrack = !!lesson.audio.sung;
+  const pageContent = { paddingBottom: (hasTrack ? PLAYER_H : 24) + insets.bottom };
 
-  /* ── screen 8: recall, staged by Leitner box ─────────────────────────── */
+  /* ── screen 4: recall — the visual quiz first, then the seed widgets ──── */
   const renderRecall = () => {
     if (result) {
       const level = levelForBox(useMasteryStore.getState().records[lesson.id]?.box);
@@ -183,48 +218,56 @@ export const VidyaLessonScreen: React.FC = () => {
         </View>
       );
     }
-    const box = recallBoxRef.current ?? records[lesson.id]?.box;
-    const stage = box === undefined || box <= 1 ? 0 : box <= 3 ? 1 : 2;
-    if (isSeed) {
-      const pairs = buildSeedPairs(lesson, lessons).slice(0, 4);
-      const mula = stage === 2 ? buildMulaTarget(lesson, lessons) : null;
-      if (stage === 2 && mula) {
-        return <MulaBuilder target={mula.target} distractors={mula.distractors} prompt={`Build the mūla mantra for ${mula.deityName}`} accent={accent} onResult={grade} />;
+    const step = steps[stepIdx];
+    if (!step) return null;
+    switch (step) {
+      case 'quiz':
+        return <ImageQuiz key={`quiz:${lesson.id}`} items={lesson.quiz ?? []} accent={accent} onResult={onStep} />;
+      case 'mula': {
+        const mula = buildMulaTarget(lesson, lessons);
+        if (!mula) return <SeedMatch pairs={buildSeedPairs(lesson, lessons).slice(0, 4)} accent={accent} onResult={onStep} />;
+        return <MulaBuilder target={mula.target} distractors={mula.distractors} prompt={`Build the mūla mantra for ${mula.deityName}`} accent={accent} onResult={onStep} />;
       }
-      if (stage >= 1 && pairs.length >= 2) return <SeedMatch pairs={pairs} accent={accent} onResult={grade} />;
-      return <SeedEar lesson={lesson} pool={lessons} accent={accent} onResult={grade} />;
-    }
-    if (stage === 0) {
-      const pool = lessons.filter((l) => l.class !== 'bija').map(toCourseVerse);
-      return <VerseQuiz verse={toCourseVerse(lesson)} pool={pool} accent={accent} onResult={(ok) => grade(ok ? 'knew' : 'forgot')} />;
-    }
-    return (
-      <View style={{ gap: 18 }}>
-        <ClozeRecall sanskrit={lesson.sanskrit} accent={accent} revealed={revealed} onReveal={() => setRevealed(true)} />
-        {revealed && stage === 2 && !recited && (
-          <>
-            <Text style={styles.reciteAsk}>Recite from memory to seal it by heart</Text>
-            <ReciteRecorder accent={accent} label="Recite from memory" onRecorded={() => setRecited(true)} />
-          </>
-        )}
-        {revealed && (stage === 1 || recited) && (
-          <View>
-            <Text style={styles.gradeQ}>How well did you know it?</Text>
-            <View style={styles.gradeRow}>
-              {([['forgot', 'Still learning'], ['okay', 'Nearly there'], ['knew', 'I knew it']] as [Grade, string][]).map(([g, label], i) => (
-                <Pressable key={g} style={[styles.gradeBtn, { borderColor: `${accent}${['45', '80', 'ff'][i]}`, backgroundColor: `${accent}${['14', '2e', '55'][i]}` }]} onPress={() => grade(g)}>
-                  <Text style={[styles.gradeBtnTxt, { color: i === 2 ? '#0b1220' : accent }]}>{label}</Text>
-                </Pressable>
-              ))}
-            </View>
+      case 'match':
+        return <SeedMatch pairs={buildSeedPairs(lesson, lessons).slice(0, 4)} accent={accent} onResult={onStep} />;
+      case 'ear':
+        return <SeedEar lesson={lesson} pool={lessons} accent={accent} onResult={onStep} />;
+      case 'verse': {
+        const pool = lessons.filter((l) => l.class !== 'bija').map(toCourseVerse);
+        return <VerseQuiz verse={toCourseVerse(lesson)} pool={pool} accent={accent} onResult={(ok) => onStep(ok ? 'knew' : 'forgot')} />;
+      }
+      case 'cloze': {
+        const box = records[lesson.id]?.box;
+        const deep = box !== undefined && box > 3;
+        return (
+          <View style={{ gap: 18 }}>
+            <ClozeRecall sanskrit={lesson.sanskrit} accent={accent} revealed={revealed} onReveal={() => setRevealed(true)} />
+            {revealed && deep && !recited && (
+              <>
+                <Text style={styles.reciteAsk}>Recite from memory to seal it by heart</Text>
+                <ReciteRecorder accent={accent} label="Recite from memory" onRecorded={() => setRecited(true)} />
+              </>
+            )}
+            {revealed && (!deep || recited) && (
+              <View>
+                <Text style={styles.gradeQ}>How well did you know it?</Text>
+                <View style={styles.gradeRow}>
+                  {([['forgot', 'Still learning'], ['okay', 'Nearly there'], ['knew', 'I knew it']] as [Grade, string][]).map(([g, label], i) => (
+                    <Pressable key={g} style={[styles.gradeBtn, { borderColor: `${accent}${['45', '80', 'ff'][i]}`, backgroundColor: `${accent}${['14', '2e', '55'][i]}` }]} onPress={() => onStep(g)}>
+                      <Text style={[styles.gradeBtnTxt, { color: i === 2 ? '#0b1220' : accent }]}>{label}</Text>
+                    </Pressable>
+                  ))}
+                </View>
+              </View>
+            )}
           </View>
-        )}
-      </View>
-    );
+        );
+      }
+    }
   };
 
-  const next = (label: string) => (
-    <Pressable style={[styles.nextBtn, { borderColor: `${accent}66` }]} onPress={() => goTo(page + 1)} hitSlop={8}>
+  const next = (label: string, to = page + 1) => (
+    <Pressable style={[styles.nextBtn, { borderColor: `${accent}66` }]} onPress={() => goTo(to)} hitSlop={8}>
       <Text style={[styles.nextTxt, { color: accent }]}>{label}</Text>
       <Ionicons name="arrow-forward" size={16} color={accent} />
     </Pressable>
@@ -233,12 +276,6 @@ export const VidyaLessonScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <LinearGradient colors={['#020617', '#0b1220', '#020617']} style={StyleSheet.absoluteFill} />
-      {art && page === 0 && (
-        <>
-          <ExpoImage source={art} style={styles.backdrop} contentFit="cover" contentPosition={{ top: '0%' }} transition={400} />
-          <LinearGradient colors={['rgba(2,6,23,0.15)', 'rgba(2,6,23,0.85)', '#020617']} locations={[0, 0.55, 0.8]} style={StyleSheet.absoluteFill} />
-        </>
-      )}
 
       {/* top bar: back · dots · card name */}
       <View style={[styles.topBar, { paddingTop: insets.top + 8 }]}>
@@ -263,72 +300,60 @@ export const VidyaLessonScreen: React.FC = () => {
         onMomentumScrollEnd={onScrollEnd}
         style={{ flex: 1 }}
       >
-        {/* 1 · BANG — the one-line connection, large; Devanagari beneath */}
-        <ScrollView style={{ width }} contentContainerStyle={[styles.pageBang, pageContent]} showsVerticalScrollIndicator={false}>
-          {who && <Text style={[styles.kicker, { color: accent }]}>{who.toUpperCase()}</Text>}
-          <Text style={styles.bang}>{lesson.titleEn}</Text>
-          {isSeed ? (
-            <Text style={[styles.sanskrit, styles.sanskritSeed, { textAlign: 'left' }]}>{lesson.sanskrit}</Text>
-          ) : words.length ? (
-            <WordLine words={words} accent={accent} highlight={wordIndex} size={24} />
-          ) : (
-            <Text style={styles.sanskrit}>{lesson.sanskrit}</Text>
+        {/* 1 · MEANING FIRST — image · bang · Hindi meaning · Sanskrit · roman */}
+        <ScrollView style={{ width }} contentContainerStyle={[styles.page, pageContent]} showsVerticalScrollIndicator={false}>
+          {art && (
+            <ExpoImage source={art} style={styles.hero} contentFit="cover" contentPosition={{ top: '0%' }} transition={400} cachePolicy="memory-disk" />
           )}
+          {who && <Text style={[styles.kicker, { color: accent, marginTop: art ? 18 : 0 }]}>{who.toUpperCase()}</Text>}
+          <Text style={styles.bang}>{lesson.titleEn}</Text>
+          {!!lesson.meaningHi && <Text style={styles.meaningHiLead}>{lesson.meaningHi}</Text>}
+          <Text style={[styles.sanskrit, isSeed && styles.sanskritSeed, { marginTop: 22 }]}>{lesson.sanskrit}</Text>
           <Text style={styles.iastSoft}>{lesson.transliteration}</Text>
-          {next('See it')}
+          <View style={styles.btnRow}>
+            {next(isSeed ? 'Sound by sound' : 'Word by word', WORDS)}
+            <Pressable style={[styles.nextBtn, styles.testBtn, { backgroundColor: accent }]} onPress={() => goTo(RECALL)} hitSlop={8} accessibilityRole="button">
+              <Text style={[styles.nextTxt, { color: '#0b1220' }]}>Test yourself</Text>
+              <Ionicons name="sparkles" size={15} color="#0b1220" />
+            </Pressable>
+          </View>
         </ScrollView>
 
-        {/* 2 · See it */}
+        {/* 2 · Word by word — interlinear; tap → the word's own clip + the sheet */}
         <ScrollView style={{ width }} contentContainerStyle={[styles.page, pageContent]} showsVerticalScrollIndicator={false}>
-          <Text style={[styles.kicker, { color: accent }]}>SEE IT</Text>
-          <Text style={[styles.sanskrit, isSeed && styles.sanskritSeed]}>{lesson.sanskrit}</Text>
-          <Text style={[styles.translit, { borderLeftColor: accent }]}>{lesson.transliteration}</Text>
+          <Text style={[styles.kicker, { color: accent }]}>{isSeed ? 'SOUND BY SOUND' : 'WORD BY WORD'}</Text>
+          {words.length ? (
+            <Interlinear words={words} accent={accent} onPress={openWord} />
+          ) : (
+            <Text style={styles.footnote}>Word glosses are on their way for this card.</Text>
+          )}
+          <Text style={[styles.footnote, { marginTop: 14 }]}>tap a word to hear it alone and read more</Text>
           {!!lesson.sayItLike && (
             <View style={styles.block}>
               <Text style={[styles.kickerSm, { color: accent }]}>SAY IT LIKE</Text>
               <Text style={styles.sayIt}>{lesson.sayItLike}</Text>
             </View>
           )}
-          {words.length > 1 && (
-            <View style={styles.block}>
-              <Text style={[styles.kickerSm, { color: accent }]}>{isSeed ? 'SOUND BY SOUND' : 'WORD BY WORD'}</Text>
-              <WordLine words={words} accent={accent} highlight={wordIndex} />
-            </View>
-          )}
           {lesson.class === 'vedic' && (
             <Text style={styles.footnote}>Taught here without Vedic accents (svara); traditional recitation adds them.</Text>
           )}
-          {next(isSeed ? 'Sound by sound' : 'Word by word')}
+          {next('The whole meaning', MEANING)}
         </ScrollView>
 
-        {/* 3 · Word by word — interlinear by default; tap for the optional sheet */}
-        <ScrollView style={{ width }} contentContainerStyle={[styles.page, pageContent]} showsVerticalScrollIndicator={false}>
-          <Text style={[styles.kicker, { color: accent }]}>{isSeed ? 'SOUND BY SOUND' : 'WORD BY WORD'}</Text>
-          {words.length ? (
-            <Interlinear words={words} accent={accent} highlight={wordIndex} onPress={openWord} />
-          ) : (
-            <Text style={styles.footnote}>Word glosses are on their way for this card.</Text>
-          )}
-          <Text style={[styles.footnote, { marginTop: 14 }]}>tap a word to hear it alone and read more</Text>
-          {next('The whole meaning')}
-        </ScrollView>
-
-        {/* 4 · The whole meaning */}
+        {/* 3 · The whole meaning — long form, what the text / tradition say, the honesty layer collapsed */}
         <ScrollView style={{ width }} contentContainerStyle={[styles.page, pageContent]} showsVerticalScrollIndicator={false}>
           <Text style={[styles.kicker, { color: accent }]}>THE WHOLE MEANING</Text>
           <Text style={styles.meaning}>{lesson.meaningEn}</Text>
-          {!!lesson.meaningHi && <Text style={styles.meaningHi}>{lesson.meaningHi}</Text>}
-          {next('Why it matters')}
-        </ScrollView>
-
-        {/* 5 · Significance — and the honesty layer, small and collapsed */}
-        <ScrollView style={{ width }} contentContainerStyle={[styles.page, pageContent]} showsVerticalScrollIndicator={false}>
-          <Text style={[styles.kicker, { color: accent }]}>WHAT THE TEXT SAYS</Text>
+          <Text style={[styles.kicker, { color: accent, marginTop: 26 }]}>WHAT THE TEXT SAYS</Text>
           <Text style={styles.body}>{lesson.significance?.textSays}</Text>
           <Text style={[styles.kicker, { color: accent, marginTop: 22 }]}>WHAT TRADITION SAYS</Text>
           <Text style={styles.body}>{lesson.significance?.traditionSays}</Text>
-          <Text style={[styles.kicker, { color: '#94a3b8', marginTop: 22 }]}>WHAT WE DON’T CLAIM</Text>
-          <Text style={styles.bodySoft}>{lesson.significance?.weDoNotClaim}</Text>
+          {!!lesson.significance?.weDoNotClaim && (
+            <>
+              <Text style={[styles.kicker, { color: '#94a3b8', marginTop: 22 }]}>WHAT WE DON’T CLAIM</Text>
+              <Text style={styles.bodySoft}>{lesson.significance.weDoNotClaim}</Text>
+            </>
+          )}
 
           <Pressable style={styles.sourceRow} onPress={() => setSourceOpen((v) => !v)} accessibilityRole="button">
             <Ionicons name={sourceOpen ? 'chevron-down' : 'chevron-forward'} size={16} color="#94a3b8" />
@@ -343,33 +368,16 @@ export const VidyaLessonScreen: React.FC = () => {
               {!!lesson.source?.note && <Text style={styles.sourceNote}>{lesson.source.note}</Text>}
             </View>
           )}
-          {next('How it’s practised')}
+          {next('Test yourself', RECALL)}
         </ScrollView>
 
-        {/* 6 · How it's practised */}
-        <ScrollView style={{ width }} contentContainerStyle={[styles.page, pageContent]} showsVerticalScrollIndicator={false}>
-          <Text style={[styles.kicker, { color: accent }]}>HOW IT’S PRACTISED</Text>
-          <View style={styles.practiceGrid}>
-            <View style={styles.practiceCell}>
-              <Text style={styles.practiceNum}>{lesson.practice?.count === 'once' ? 'once' : `${lesson.practice?.count ?? '—'}×`}</Text>
-              <Text style={styles.practiceLbl}>count</Text>
-            </View>
-            {!!lesson.practice?.timeOfDay && (
-              <View style={styles.practiceCell}>
-                <Text style={styles.practiceVal}>{lesson.practice.timeOfDay}</Text>
-                <Text style={styles.practiceLbl}>time of day</Text>
-              </View>
-            )}
-            <View style={styles.practiceCell}>
-              <Text style={styles.practiceVal}>{(lesson.practice?.mode ?? []).join(' · ') || '—'}</Text>
-              <Text style={styles.practiceLbl}>mode — the traditional gradation</Text>
-            </View>
-          </View>
-          {!!lesson.practice?.dikshaNote && <Text style={styles.diksha}>{lesson.practice.dikshaNote}</Text>}
-          {next('Practise')}
+        {/* 4 · Recall — the player is hidden here */}
+        <ScrollView style={{ width }} contentContainerStyle={[styles.page, { paddingBottom: insets.bottom + 40 }]} showsVerticalScrollIndicator={false}>
+          <Text style={[styles.kicker, { color: accent }]}>RECALL</Text>
+          {page === RECALL && renderRecall()}
         </ScrollView>
 
-        {/* 7 · Practise */}
+        {/* 5 · Japa hand-off */}
         <ScrollView style={{ width }} contentContainerStyle={[styles.page, pageContent]} showsVerticalScrollIndicator={false}>
           <Text style={[styles.kicker, { color: accent }]}>PRACTISE</Text>
           <Text style={styles.sanskrit}>{lesson.sanskrit}</Text>
@@ -384,17 +392,11 @@ export const VidyaLessonScreen: React.FC = () => {
           <Pressable style={[styles.bigBtn, styles.bigBtnOutline, { borderColor: accent }]} onPress={() => goTo(RECALL)}>
             <Text style={styles.bigBtnIcon}>✦</Text>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.bigBtnTitle, { color: '#f8fafc' }]}>Recall</Text>
+              <Text style={[styles.bigBtnTitle, { color: '#f8fafc' }]}>Test yourself</Text>
               <Text style={[styles.bigBtnSub, { color: '#94a3b8' }]}>a short check — it schedules the next visit</Text>
             </View>
             <Ionicons name="arrow-forward" size={20} color={accent} />
           </Pressable>
-        </ScrollView>
-
-        {/* 8 · Recall — the player is hidden here */}
-        <ScrollView style={{ width }} contentContainerStyle={[styles.page, { paddingBottom: insets.bottom + 40 }]} showsVerticalScrollIndicator={false}>
-          <Text style={[styles.kicker, { color: accent }]}>RECALL</Text>
-          {page === RECALL && renderRecall()}
         </ScrollView>
       </ScrollView>
 
@@ -413,26 +415,26 @@ export const VidyaLessonScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#020617' },
-  backdrop: { ...StyleSheet.absoluteFillObject, height: '62%', opacity: 0.75 },
   topBar: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingBottom: 6 },
   dots: { flexDirection: 'row', gap: 5, alignItems: 'center' },
   dot: { width: 6, height: 6, borderRadius: 3, backgroundColor: 'rgba(148,163,184,0.35)' },
   topTitle: { flex: 1, textAlign: 'right', color: '#94a3b8', fontSize: 13, fontFamily: 'Playfair_Medium' },
   missing: { color: '#94a3b8', fontSize: 15, textAlign: 'center', marginTop: 60, paddingHorizontal: 30 },
-  page: { paddingHorizontal: 22, paddingTop: 18 },
-  pageBang: { flexGrow: 1, paddingHorizontal: 22, paddingTop: 120, justifyContent: 'flex-end' },
+  page: { paddingHorizontal: 22, paddingTop: 14 },
+  hero: { width: '100%', aspectRatio: 4 / 3, borderRadius: 22, backgroundColor: '#0b1220' },
   kicker: { fontSize: 11, letterSpacing: 2, fontWeight: '800', marginBottom: 12 },
   kickerSm: { fontSize: 10.5, letterSpacing: 1.5, fontWeight: '800', marginBottom: 6 },
-  bang: { color: '#f8fafc', fontSize: 30, fontFamily: 'Playfair_Bold', lineHeight: 40, marginBottom: 22 },
-  sanskrit: { color: '#f8fafc', fontSize: 24, fontFamily: 'Playfair_Medium', lineHeight: 38, marginBottom: 16 },
-  sanskritSeed: { fontSize: 72, lineHeight: 100, textAlign: 'center' },
-  iastSoft: { color: '#94a3b8', fontSize: 14, fontStyle: 'italic', marginTop: 6 },
-  translit: { color: '#cbd5e1', fontSize: 15, fontStyle: 'italic', lineHeight: 23, borderLeftWidth: 2, paddingLeft: 14 },
+  bang: { color: '#f8fafc', fontSize: 30, fontFamily: 'Playfair_Bold', lineHeight: 40 },
+  meaningHiLead: { color: '#e2e8f0', fontSize: 19, lineHeight: 31, marginTop: 10 },
+  sanskrit: { color: '#f8fafc', fontSize: 24, fontFamily: 'Playfair_Medium', lineHeight: 38, marginBottom: 6 },
+  sanskritSeed: { fontSize: 72, lineHeight: 100 },
+  iastSoft: { color: '#94a3b8', fontSize: 14.5, fontStyle: 'italic', lineHeight: 22 },
+  btnRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, alignItems: 'center' },
+  testBtn: { borderWidth: 0 },
   block: { marginTop: 22 },
   sayIt: { color: '#e2e8f0', fontSize: 16, lineHeight: 25 },
   footnote: { color: '#64748b', fontSize: 12.5, fontStyle: 'italic', lineHeight: 18, marginTop: 18 },
   meaning: { color: '#e2e8f0', fontSize: 18, lineHeight: 29, fontFamily: 'Playfair_Regular' },
-  meaningHi: { color: '#cbd5e1', fontSize: 17, lineHeight: 28, marginTop: 20 },
   body: { color: '#e2e8f0', fontSize: 16, lineHeight: 25 },
   bodySoft: { color: '#94a3b8', fontSize: 14.5, lineHeight: 23 },
   sourceRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 26, paddingVertical: 10, minHeight: 44 },
@@ -442,12 +444,6 @@ const styles = StyleSheet.create({
   sourceBody: { paddingLeft: 24, gap: 6 },
   sourceText: { color: '#cbd5e1', fontSize: 13.5, lineHeight: 20 },
   sourceNote: { color: '#64748b', fontSize: 12.5, lineHeight: 19, fontStyle: 'italic' },
-  practiceGrid: { gap: 10 },
-  practiceCell: { backgroundColor: 'rgba(15,23,42,0.55)', borderRadius: 16, borderWidth: 1, borderColor: 'rgba(148,163,184,0.14)', padding: 16 },
-  practiceNum: { color: '#f8fafc', fontSize: 30, fontFamily: 'Playfair_Bold' },
-  practiceVal: { color: '#f1f5f9', fontSize: 17, fontFamily: 'Playfair_Medium', lineHeight: 26 },
-  practiceLbl: { color: '#64748b', fontSize: 11.5, marginTop: 4, letterSpacing: 0.4 },
-  diksha: { color: '#94a3b8', fontSize: 14, fontStyle: 'italic', lineHeight: 22, marginTop: 18 },
   bigBtn: { flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 18, padding: 18, marginTop: 12 },
   bigBtnOutline: { backgroundColor: 'rgba(15,23,42,0.55)', borderWidth: 1 },
   bigBtnIcon: { fontSize: 22 },

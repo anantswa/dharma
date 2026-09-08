@@ -8,12 +8,12 @@ type Props = {
   word: MantraWord | null;
   accent: string;
   onClose: () => void;
-  /** Sound the word again (its clip, or its slice of the slow track). */
+  /** Sound the word again (its own per-word clip). */
   onHear: (w: MantraWord) => void;
   onOpenLesson?: (id: string) => void;
 };
 
-const canHear = (w: MantraWord) => !!w.audioUrl || (typeof w.t0 === 'number' && typeof w.t1 === 'number');
+const canHear = (w: MantraWord) => !!w.audioUrl;
 
 /**
  * The word drill-down (§3 screen 3, tap a triplet): full meaning En + Hi,

@@ -16,8 +16,9 @@ type Props = { lesson: MantraLesson; pool: MantraLesson[]; accent: string; onRes
 /**
  * SeedEar (box 0–1): hear the seed — which Devī / which mantra carries it?
  * Four options: deity art where the seed calls a deity, mantra names
- * otherwise. Plays on its own channel (the mini-player is hidden on recall).
- * correct → knew · wrong → forgot (§3).
+ * otherwise. Plays the card's sung track (v2: the one track) on its own
+ * channel (the mini-player is hidden on recall); the host only mounts this
+ * widget when the card has one. correct → knew · wrong → forgot (§3).
  */
 export const SeedEar: React.FC<Props> = ({ lesson, pool, accent, onResult }) => {
   const [picked, setPicked] = useState<string | null>(null);
@@ -46,7 +47,8 @@ export const SeedEar: React.FC<Props> = ({ lesson, pool, accent, onResult }) => 
     try {
       await soundRef.current?.unloadAsync();
       soundRef.current = null;
-      const uri = await getPlayableUri(lesson.audio.spokenSlow);
+      if (!lesson.audio.sung) return;
+      const uri = await getPlayableUri(lesson.audio.sung);
       const { sound } = await Audio.Sound.createAsync({ uri }, { shouldPlay: true });
       if (!aliveRef.current) { sound.unloadAsync().catch(() => {}); return; } // left before the clip arrived
       soundRef.current = sound;
