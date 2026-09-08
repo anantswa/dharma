@@ -38,7 +38,13 @@ export function localDayOrdinal(d = new Date()): number {
   return Math.floor((d.getTime() - d.getTimezoneOffset() * 60_000) / 86_400_000);
 }
 
-const weekOrdinal = (d: Date) => Math.floor(localDayOrdinal(d) / 7);
+/**
+ * Week number aligned to the vāra week (Sunday → Saturday). Day 0 of the epoch
+ * is a Thursday, so a plain `ordinal / 7` puts Tuesday and the following
+ * Saturday in different weeks — and for a two-card list (Hanumān) that made
+ * both days resolve to the same index. The +4 shifts the boundary to Sunday.
+ */
+const weekOrdinal = (d: Date) => Math.floor((localDayOrdinal(d) + 4) / 7);
 
 /**
  * A deity owning two vāras shows a different card on each (occurrence index),
