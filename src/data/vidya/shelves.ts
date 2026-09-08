@@ -110,3 +110,11 @@ export function lessonArt(l: MantraLesson): { uri: string } | number | undefined
 
 export const deityName = (deityId: string | undefined): string | undefined =>
   deityId ? FINAL_DEITIES.find((d) => d.id === deityId)?.name : undefined;
+
+/** "ॐ (Oṃ)" — the Devanagari name with its roman form beside it, so a row reads bilingual at a glance. */
+export const bilingualName = (l: MantraLesson) => {
+  const roman = l.titleIast ?? (l.class === 'bija' ? l.transliteration : undefined);
+  return roman && roman !== l.titleHi ? `${l.titleHi} (${roman})` : l.titleHi;
+};
+/** Learned = the last "Test yourself" on this card was passed (box ≥ 1 and graded 'knew'). */
+export const isLearned = (r: { box: number; lastGrade?: string } | undefined) => !!r && r.box >= 1 && r.lastGrade === 'knew';

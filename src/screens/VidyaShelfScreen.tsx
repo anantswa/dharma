@@ -7,7 +7,7 @@ import React, { useCallback, useEffect, useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { getFaithTheme } from '../data/faiths';
-import { buildShelves, deityName, lessonArt, VidyaShelfRow } from '../data/vidya/shelves';
+import { bilingualName, buildShelves, deityName, isLearned, lessonArt, VidyaShelfRow } from '../data/vidya/shelves';
 import type { MantraLesson } from '../data/vidya/types';
 import { track } from '../services/analytics';
 import { LEVEL_LABEL, levelForBox, useMasteryStore } from '../store/masteryStore';
@@ -43,13 +43,14 @@ export const VidyaShelfScreen: React.FC = () => {
   const shelves = useMemo(() => buildShelves(lessons, primary, ista, enabled), [lessons, primary, ista, enabled]);
 
   // words you know: every word on a card that is at least "Familiar" (box ≥ 2)
-  const { known, total } = useMemo(() => {
-    let known = 0, total = 0;
+  const { known, total, learned } = useMemo(() => {
+    let known = 0, total = 0, learned = 0;
     for (const l of lessons) {
       total += l.words.length;
       if ((records[l.id]?.box ?? -1) >= 2) known += l.words.length;
+      if (isLearned(records[l.id])) learned += 1;
     }
-    return { known, total };
+    return { known, total, learned };
   }, [lessons, records]);
 
   const open = (l: MantraLesson) => {
@@ -60,6 +61,7 @@ export const VidyaShelfScreen: React.FC = () => {
   const renderRow = (l: MantraLesson, accent: string) => {
     const art = lessonArt(l);
     const level = levelForBox(records[l.id]?.box);
+    const done = isLearned(records[l.id]);
     return (
       <Pressable key={l.id} style={styles.card} onPress={() => open(l)}>
         <LinearGradient colors={[`${accent}1c`, `${accent}06`]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.cardGrad}>
@@ -68,8 +70,13 @@ export const VidyaShelfScreen: React.FC = () => {
           ) : (
             <View style={[styles.thumb, styles.thumbFallback]}><Text style={styles.thumbDeva}>{l.sanskrit.slice(0, 2)}</Text></View>
           )}
+          {done && (
+            <View style={[styles.doneBadge, { backgroundColor: accent }]} accessibilityLabel="Learned">
+              <Ionicons name="checkmark" size={13} color="#0b1220" />
+            </View>
+          )}
           <View style={{ flex: 1 }}>
-            <Text style={styles.cardTitle}>{l.titleHi}</Text>
+            <Text style={styles.cardTitle}>{bilingualName(l)}</Text>
             <Text style={styles.cardBang} numberOfLines={2}>{l.titleEn}</Text>
             <Text style={styles.cardMeta}>
               {CLASS_LABEL[l.class] ?? l.class}
@@ -88,16 +95,22 @@ export const VidyaShelfScreen: React.FC = () => {
       {shelf.lessons.map((l) => {
         const who = deityName(l.deityId);
         const level = levelForBox(records[l.id]?.box);
+        const done = isLearned(records[l.id]);
         return (
-          <Pressable key={l.id} style={[styles.seedTile, { borderColor: `${accent}55` }]} onPress={() => open(l)}>
+          <Pressable key={l.id} style={[styles.seedTile, { borderColor: done ? accent : `${accent}55` }]} onPress={() => open(l)}>
             <LinearGradient colors={['#1a1640', '#0b1220']} style={StyleSheet.absoluteFill} />
+            {done && (
+              <View style={[styles.seedDone, { backgroundColor: accent }]} accessibilityLabel="Learned">
+                <Ionicons name="checkmark" size={12} color="#0b1220" />
+              </View>
+            )}
             <Text style={[styles.seedDeva, { color: accent }]}>{l.sanskrit}</Text>
             <Text style={styles.seedIast}>{l.transliteration}</Text>
             <View style={styles.seedArrowRow}>
               <Ionicons name="arrow-forward" size={13} color="#94a3b8" />
               <Text style={styles.seedWho} numberOfLines={1}>{who ?? l.titleHi}</Text>
             </View>
-            {level !== 'new' && <Text style={[styles.seedLevel, { color: accent }]}>{LEVEL_LABEL[level]}</Text>}
+            {level !== 'new' && !done && <Text style={[styles.seedLevel, { color: accent }]}>{LEVEL_LABEL[level]}</Text>}
           </Pressable>
         );
       })}
@@ -118,6 +131,9 @@ export const VidyaShelfScreen: React.FC = () => {
             <Text style={[styles.kicker, { color: theme.accent }]}>MANTRA VIDYĀ</Text>
             <Text style={styles.title}>Learn the mantras</Text>
             <Text style={styles.sub}>The words you already say — and what they mean.</Text>
+            <Text style={[styles.progress, { color: theme.accent }]}>
+              {learned === 0 ? 'Pass a card’s test and it gets its mark here.' : `${learned} of ${lessons.length} learned`}
+            </Text>
           </View>
           {/* words-you-know ring — a count, quietly; word-level SRS is v2 */}
           <View style={[styles.ring, { borderColor: `${theme.accent}66` }]}>
@@ -155,6 +171,9 @@ const styles = StyleSheet.create({
   kicker: { fontSize: 12, letterSpacing: 3, fontWeight: '800' },
   title: { fontSize: 30, color: '#f8fafc', fontFamily: 'Playfair_Bold', marginTop: 4 },
   sub: { fontSize: 13.5, color: '#94a3b8', marginTop: 6, lineHeight: 19 },
+  progress: { fontSize: 12, fontWeight: '700', marginTop: 8, letterSpacing: 0.3 },
+  doneBadge: { position: 'absolute', left: 52, top: 10, width: 20, height: 20, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: '#0b1220' },
+  seedDone: { position: 'absolute', top: 10, right: 10, width: 20, height: 20, borderRadius: 10, alignItems: 'center', justifyContent: 'center' },
   ring: { width: 74, height: 74, borderRadius: 37, borderWidth: 2, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(15,23,42,0.6)' },
   ringNum: { color: '#f8fafc', fontSize: 18, fontWeight: '800', lineHeight: 20 },
   ringOf: { color: '#94a3b8', fontSize: 10.5, fontWeight: '700' },

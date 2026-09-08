@@ -21,7 +21,8 @@ import { WordSheet } from '../components/vidya/WordSheet';
 import { getFaithTheme } from '../data/faiths';
 import { toCourseVerse } from '../data/vidya';
 import { buildMulaTarget, buildSeedPairs } from '../data/vidya/seeds';
-import { deityName, lessonArt } from '../data/vidya/shelves';
+import { bilingualName, deityName, lessonArt } from '../data/vidya/shelves';
+import { playLearnedDing } from '../services/vidyaDing';
 import type { MantraLesson, MantraWord } from '../data/vidya/types';
 import { track } from '../services/analytics';
 import { VidyaPlayer } from '../services/vidyaPlayer';
@@ -50,8 +51,9 @@ const WORST: Record<Grade, number> = { forgot: 0, okay: 1, knew: 2 };
 
 /**
  * Mantra Vidyā — one card, five screens (v2, the founder's TestFlight verdict):
- *   1 MEANING FIRST — the card's image, the bang line, the Hindi meaning right
- *     under it, then the Sanskrit and its roman form. Immediate understanding.
+ *   1 MEANING FIRST — the card's image, the bang line, then WHAT THE TEXT SAYS
+ *     as a plain English block (founder: "the most useful English — first"),
+ *     the Hindi meaning, then the Sanskrit and its roman form.
  *   2 word by word (tap → the word's own clip) · 3 the whole meaning + what the
  *     text / tradition say + "where this comes from" · 4 RECALL (the visual
  *     quiz, then the seed widgets; grades the SRS) · 5 the Japa hand-off.
@@ -166,6 +168,10 @@ export const VidyaLessonScreen: React.FC = () => {
     if (!lesson || gradedRef.current) return;
     gradedRef.current = true;
     await useMasteryStore.getState().recordRecall(lesson.id, g);
+    if (g === 'knew') {
+      try { Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success); } catch { /* noop */ }
+      playLearnedDing(); // the mark lands on the shelf; the ding marks the moment
+    }
     track('vidya_recall', { id: lesson.id, grade: g });
     track('vidya_lesson_complete', { id: lesson.id });
     setResult(g);
@@ -206,8 +212,13 @@ export const VidyaLessonScreen: React.FC = () => {
         <View style={styles.doneWrap}>
           <Text style={styles.doneDeva}>{lesson.sanskrit}</Text>
           <Text style={[styles.doneLevel, { color: accent }]}>{LEVEL_LABEL[level]}</Text>
+          {result === 'knew' && (
+            <View style={[styles.doneMark, { backgroundColor: accent }]}>
+              <Ionicons name="checkmark" size={26} color="#0b1220" />
+            </View>
+          )}
           <Text style={styles.doneSub}>
-            {result === 'knew' ? 'It stays with you.' : result === 'okay' ? 'Nearly there — it comes round again soon.' : 'It comes round again tomorrow.'}
+            {result === 'knew' ? 'Learned — it carries its mark on the shelf now.' : result === 'okay' ? 'Nearly there — it comes round again soon.' : 'It comes round again tomorrow.'}
           </Text>
           <Pressable style={[styles.primaryBtn, { backgroundColor: accent }]} onPress={toJapa}>
             <Text style={styles.primaryTxt}>Japa with this mantra</Text>
@@ -289,7 +300,7 @@ export const VidyaLessonScreen: React.FC = () => {
             </Pressable>
           ))}
         </View>
-        <Text style={styles.topTitle} numberOfLines={1}>{lesson.titleHi}</Text>
+        <Text style={styles.topTitle} numberOfLines={1}>{bilingualName(lesson)}</Text>
       </View>
 
       <ScrollView
@@ -307,6 +318,8 @@ export const VidyaLessonScreen: React.FC = () => {
           )}
           {who && <Text style={[styles.kicker, { color: accent, marginTop: art ? 18 : 0 }]}>{who.toUpperCase()}</Text>}
           <Text style={styles.bang}>{lesson.titleEn}</Text>
+          {/* the English that matters, first: what the text itself says — plain block, not bold */}
+          {!!lesson.significance?.textSays && <Text style={styles.textSaysLead}>{lesson.significance.textSays}</Text>}
           {!!lesson.meaningHi && <Text style={styles.meaningHiLead}>{lesson.meaningHi}</Text>}
           <Text style={[styles.sanskrit, isSeed && styles.sanskritSeed, { marginTop: 22 }]}>{lesson.sanskrit}</Text>
           <Text style={styles.iastSoft}>{lesson.transliteration}</Text>
@@ -344,9 +357,7 @@ export const VidyaLessonScreen: React.FC = () => {
         <ScrollView style={{ width }} contentContainerStyle={[styles.page, pageContent]} showsVerticalScrollIndicator={false}>
           <Text style={[styles.kicker, { color: accent }]}>THE WHOLE MEANING</Text>
           <Text style={styles.meaning}>{lesson.meaningEn}</Text>
-          <Text style={[styles.kicker, { color: accent, marginTop: 26 }]}>WHAT THE TEXT SAYS</Text>
-          <Text style={styles.body}>{lesson.significance?.textSays}</Text>
-          <Text style={[styles.kicker, { color: accent, marginTop: 22 }]}>WHAT TRADITION SAYS</Text>
+          <Text style={[styles.kicker, { color: accent, marginTop: 26 }]}>WHAT TRADITION SAYS</Text>
           <Text style={styles.body}>{lesson.significance?.traditionSays}</Text>
           {!!lesson.significance?.weDoNotClaim && (
             <>
@@ -425,7 +436,9 @@ const styles = StyleSheet.create({
   kicker: { fontSize: 11, letterSpacing: 2, fontWeight: '800', marginBottom: 12 },
   kickerSm: { fontSize: 10.5, letterSpacing: 1.5, fontWeight: '800', marginBottom: 6 },
   bang: { color: '#f8fafc', fontSize: 30, fontFamily: 'Playfair_Bold', lineHeight: 40 },
-  meaningHiLead: { color: '#e2e8f0', fontSize: 19, lineHeight: 31, marginTop: 10 },
+  textSaysLead: { color: '#e2e8f0', fontSize: 17, lineHeight: 27, marginTop: 14 },
+  meaningHiLead: { color: '#cbd5e1', fontSize: 17.5, lineHeight: 29, marginTop: 16 },
+  doneMark: { width: 52, height: 52, borderRadius: 26, alignItems: 'center', justifyContent: 'center', marginTop: 4 },
   sanskrit: { color: '#f8fafc', fontSize: 24, fontFamily: 'Playfair_Medium', lineHeight: 38, marginBottom: 6 },
   sanskritSeed: { fontSize: 72, lineHeight: 100 },
   iastSoft: { color: '#94a3b8', fontSize: 14.5, fontStyle: 'italic', lineHeight: 22 },

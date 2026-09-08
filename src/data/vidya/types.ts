@@ -61,6 +61,8 @@ export type MantraLesson = Omit<CourseVerse, 'audio'> & {
   importance: 1 | 2 | 3 | 4 | 5;
   gap: 1 | 2 | 3 | 4 | 5;             // understanding gap (founder's axis)
   shelf: MantraShelf;
+  /** Roman name shown beside titleHi on shelf rows and the lesson top bar — "ॐ (Oṃ)", "गायत्री मन्त्र (Gāyatrī Mantra)". */
+  titleIast?: string;
   sayItLike: string;                  // beginner roman line, no diacritics
   words: MantraWord[];
   /** Card art (CDN, set by the pipeline); else deity art via deityId. */
