@@ -42,7 +42,7 @@ const M = {
   vasudeva: { key: 'om_namo_bhagavate_vasudevaya', deva: 'ॐ नमो भगवते वासुदेवाय', trans: 'Om Namo Bhagavate Vāsudevāya', source: 'Viṣṇu Purāṇa' },
   ram: { key: 'om_sri_ram_jaya_ram', deva: 'ॐ श्री राम जय राम जय जय राम', trans: 'Om Śrī Rāma Jaya Rāma', source: 'Rāma tāraka mantra' },
   hanuman: { key: 'om_ham_hanumate_namah', deva: 'ॐ हं हनुमते नमः', trans: 'Om Haṃ Hanumate Namaḥ', source: 'Hanumān bīja mantra' },
-  lakshmi: { key: 'om_shreem_mahalakshmiyei', deva: 'ॐ श्रीं महालक्ष्म्यै नमः', trans: 'Om Śrīṃ Mahālakṣmyai Namaḥ', source: 'Śrī Sūkta' },
+  lakshmi: { key: 'om_shreem_mahalakshmiyei', deva: 'ॐ श्रीं महालक्ष्म्यै नमः', trans: 'Om Śrīṃ Mahālakṣmyai Namaḥ', source: 'Lakṣmī bīja mantra · Śāradā-tilaka / Mantra-mahodadhi' },
   devi: { key: 'navarna_chamundayai', deva: 'ॐ ऐं ह्रीं क्लीं चामुण्डायै विच्चे', trans: 'Om Aiṃ Hrīṃ Klīṃ Cāmuṇḍāyai Vicce', source: 'Navārṇa · Devī Māhātmya' },
   manipadme: { key: 'om_mani_padme_hum', deva: 'ॐ मणि पद्मे हूँ', trans: 'Om Maṇi Padme Hūṃ', source: 'Avalokiteśvara / Chenrezig' },
   shakyamuni: { key: 'shakyamuni', deva: 'ॐ मुनि मुनि महामुनये स्वाहा', trans: 'Om Muni Muni Mahāmunaye Svāhā', source: 'Śākyamuni Buddha mantra' },
@@ -50,7 +50,7 @@ const M = {
   // new calibrated-register roster
   saraswati: { key: 'om_aim_saraswatyai_namah', deva: 'ॐ ऐं सरस्वत्यै नमः', trans: 'Om Aiṃ Sarasvatyai Namaḥ', source: 'Sarasvatī mantra' },
   kali: { key: 'om_krim_kalyai_namah', deva: 'ॐ क्रीं कालिकायै नमः', trans: 'Om Krīṃ Kālikāyai Namaḥ', source: 'Kālī bīja mantra' },
-  kartikeya: { key: 'om_sharavanabhavaya_namah', deva: 'ॐ शरवणभव', trans: 'Om Śaravaṇabhava', source: 'Kārtikeya / Murugan mantra' },
+  kartikeya: { key: 'om_sharavanabhavaya_namah', deva: 'ॐ शरवणभवाय नमः', trans: 'Om Śaravaṇabhavāya Namaḥ', source: 'Kārtikeya / Murugan mantra' },
   venkateswara: { key: 'om_namo_venkateshaya', deva: 'ॐ नमो वेङ्कटेशाय', trans: 'Om Namo Veṅkaṭeśāya', source: 'Veṅkaṭeśvara mantra' },
   surya: { key: 'om_suryaya_namah', deva: 'ॐ सूर्याय नमः', trans: 'Om Sūryāya Namaḥ', source: 'Sūrya mantra' },
   brahma: { key: 'om_brahmane_namah', deva: 'ॐ ब्रह्मणे नमः', trans: 'Om Brahmaṇe Namaḥ', source: 'Brahmā mantra' },
