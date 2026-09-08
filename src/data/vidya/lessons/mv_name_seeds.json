@@ -23,8 +23,7 @@
         "mv_ganapati",
         "mv_bija_anatomy"
       ],
-      "t0": 99,
-      "t1": 419
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_name_seeds_0.mp3"
     },
     {
       "deva": "दुं",
@@ -32,8 +31,7 @@
       "glossEn": "Durgā — the du of Durgā, with a hum",
       "glossHi": "दुर्गा — दुर्गा का दु, गूँज के साथ",
       "grammar": "attested in the Tantras (Śāradā-tilaka, Durgā section); not explained by them",
-      "t0": 1459,
-      "t1": 1759
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_name_seeds_1.mp3"
     },
     {
       "deva": "हं",
@@ -41,13 +39,11 @@
       "glossEn": "Hanumān — the ha of Hanumān, with a hum",
       "glossHi": "हनुमान — हनुमान का ह, गूँज के साथ",
       "grammar": "attested in Mantra-mahodadhi (Hanumat section). The same sound is also the space-element seed in the cakra map — one syllable, two traditional uses",
-      "t0": 2720,
-      "t1": 3099
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_name_seeds_2.mp3"
     }
   ],
   "audio": {
-    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_name_seeds_slow_v1.mp3",
-    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_name_seeds_natural_v1.mp3",
+    "sung": "https://dharmaweave.com/cdn/dharma-audio/mantras/om_gam_ganapataye_namah.mp3",
     "voice": "kuber"
   },
   "source": {
@@ -61,35 +57,31 @@
     "traditionSays": "Each of the three opens its deity's short mantra: oṃ gaṃ gaṇapataye namaḥ · oṃ duṃ durgāyai namaḥ · oṃ haṃ hanumate namaḥ. Haṃ doubles, in a different use, as the seed of space in the cakra map.",
     "weDoNotClaim": "That first-sound is a rule to extend. It fits name-seeds; hrīṃ, klīṃ, aiṃ and śrīṃ are not made this way."
   },
-  "practice": {
-    "count": 108,
-    "timeOfDay": "as part of the deity's mantra, not alone",
-    "mode": [
-      "aloud",
-      "whispered",
-      "mental"
-    ]
-  },
+  "artPrompt": "Three small oil lamps in a row on a temple step at dusk, each flame a slightly different warmth — one before a Gaṇeśa figure, one before Durgā, fully clothed in a red-and-gold sari, on her lion, one before Hanumān kneeling — the figures softly out of focus behind the flames. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
   "quiz": [
     {
-      "prompt": "Duṃ is the seed of —",
+      "imagePrompt": "Durgā, fully clothed in a red-and-gold sari, seated on a lion, serene, many arms holding lotus and conch and trident, a warm halo behind her; gold on indigo, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "Which seed belongs to the one in this picture?",
       "options": [
-        "Lakṣmī",
-        "Durgā",
-        "Sarasvatī",
-        "Kālī"
+        "gaṃ",
+        "duṃ",
+        "haṃ",
+        "hrīṃ"
       ],
-      "correct": 1
+      "correct": 1,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_name_seeds_0_v2.jpg"
     },
     {
-      "prompt": "Which seed opens 'oṃ ___ hanumate namaḥ'?",
+      "imagePrompt": "Hanumān kneeling with hands folded, the mountain of herbs faint behind him, a warm halo; gold on indigo, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "Which seed belongs to the one in this picture?",
       "options": [
         "hrīṃ",
         "hūṃ",
         "haṃ",
         "gaṃ"
       ],
-      "correct": 2
+      "correct": 2,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_name_seeds_1_v1.jpg"
     },
     {
       "prompt": "Which of these seeds is NOT built from the deity's first sound?",
@@ -111,5 +103,6 @@
       ],
       "correct": 0
     }
-  ]
+  ],
+  "artUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/cards/mv_name_seeds_v2.jpg"
 }

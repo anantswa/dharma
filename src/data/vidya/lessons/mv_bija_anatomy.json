@@ -19,8 +19,7 @@
       "glossEn": "the consonant — the body of the seed",
       "glossHi": "व्यंजन — बीज का शरीर",
       "grammar": "Atharvaśīrṣa §8: 'ga-kāra is the first form'",
-      "t0": 99,
-      "t1": 500
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_bija_anatomy_0.mp3"
     },
     {
       "deva": "अ",
@@ -28,34 +27,35 @@
       "glossEn": "the vowel — the breath that lets it sound",
       "glossHi": "स्वर — वह साँस जिससे आवाज़ निकलती है",
       "grammar": "'a-kāra is the middle form'",
-      "t0": 1419,
-      "t1": 1759
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_bija_anatomy_1.mp3"
     },
     {
       "deva": "अं",
       "iast": "-ṃ",
       "glossEn": "the dot (ं) — anusvāra, the hum that closes it",
       "glossHi": "बिंदी (ं) — अनुस्वार, गूँज जो इसे बंद करती है",
-      "grammar": "'the anusvāra is the last form'; written as the dot above the letter"
+      "grammar": "'the anusvāra is the last form'; written as the dot above the letter",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_bija_anatomy_2.mp3"
     },
     {
       "deva": "बिन्दु",
       "iast": "bindu",
       "glossEn": "the dot — the hum drawn to a point",
       "glossHi": "बिंदु — गूँज एक बिंदी में सिमटी",
-      "grammar": "'bindu is the upper form' — the written dot and the sound narrowing to nothing"
+      "grammar": "'bindu is the upper form' — the written dot and the sound narrowing to nothing",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_bija_anatomy_3.mp3"
     },
     {
       "deva": "नाद",
       "iast": "nāda",
       "glossEn": "the fading tone — what joins the parts into one",
       "glossHi": "नाद — वह धीमी होती आवाज़ जो सबको एक कर देती है",
-      "grammar": "'nāda is the joining'; the tail of the hum after the lips close"
+      "grammar": "'nāda is the joining'; the tail of the hum after the lips close",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_bija_anatomy_4.mp3"
     }
   ],
   "audio": {
-    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_bija_anatomy_slow_v1.mp3",
-    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_bija_anatomy_natural_v1.mp3",
+    "sung": "https://dharmaweave.com/cdn/dharma-audio/mantras/om_gam_ganapataye_namah.mp3",
     "voice": "kuber"
   },
   "source": {
@@ -66,27 +66,34 @@
   },
   "significance": {
     "textSays": "Atharvaśīrṣa §8: the seed gaṃ is ga + a + anusvāra, with bindu above and nāda joining — 'this is the Gaṇeśa-vidyā.' Scripture doing its own dissection.",
-    "traditionSays": "The Tantras treat the fifty letters as the Devī's own body (mātṛkā) and build every seed from them; a seed is meant to be heard as one fused sound, the parts felt but not separated.",
-    "weDoNotClaim": "That the sound has a power of its own, or a dictionary meaning. This card shows how a seed is spelled and how it is voiced — nothing more."
+    "traditionSays": "The Tantras treat the fifty letters as the Devī's own body (mātṛkā) and build every seed from them; a seed is one fused sound — the parts are in it, but it does not come apart.",
+    "weDoNotClaim": "That the sound has a power of its own, or a dictionary meaning. This card shows how a seed is spelled and how it sounds — nothing more."
   },
-  "practice": {
-    "count": "once",
-    "timeOfDay": "any time — a listening lesson, not a japa",
-    "mode": [
-      "aloud",
-      "whispered"
-    ]
-  },
+  "artPrompt": "A single seed resting in an open palm, a thread of warm light rising from it, narrowing to one bright point, then fading into a soft glow above — sound made visible; indigo dusk, mandala radiance behind the hand. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
   "quiz": [
     {
-      "prompt": "Which of these seeds does NOT close in a hum?",
+      "imagePrompt": "A lamp flame narrowing at its tip to one bright point of light, the glow above it fading into darkness; close, still, warm gold on indigo; no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "The flame drawn to a single point — which part of a seed-syllable is that?",
       "options": [
-        "sauḥ",
-        "gaṃ",
-        "hrīṃ",
-        "klīṃ"
+        "ga — the consonant, the body",
+        "a — the vowel, the breath",
+        "bindu — the dot, the hum drawn to a point",
+        "phaṭ — the stop"
       ],
-      "correct": 0
+      "correct": 2,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_bija_anatomy_0_v1.jpg"
+    },
+    {
+      "imagePrompt": "A temple bell just struck, its ring shown as soft rings of light spreading and fading into the evening air; warm gold on indigo, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "The tone fading after the strike — which part of the seed is that?",
+      "options": [
+        "nāda — the fading tone that joins the parts",
+        "bindu — the dot",
+        "ga — the consonant",
+        "a — the vowel"
+      ],
+      "correct": 0,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_bija_anatomy_1_v1.jpg"
     },
     {
       "prompt": "The three written parts of gaṃ are —",
@@ -99,24 +106,15 @@
       "correct": 1
     },
     {
-      "prompt": "Which word means the hum written as a dot above the letter?",
+      "prompt": "Which of these seeds does NOT close in a hum?",
       "options": [
-        "visarga",
-        "virāma",
-        "anusvāra",
-        "svāhā"
-      ],
-      "correct": 2
-    },
-    {
-      "prompt": "Which text takes gaṃ apart in front of the reader?",
-      "options": [
-        "Ṛgveda 7.59.12",
-        "Bṛhadāraṇyaka Upaniṣad",
-        "Gopāla-tāpanī Upaniṣad",
-        "Gaṇapati Atharvaśīrṣa"
+        "gaṃ",
+        "hrīṃ",
+        "klīṃ",
+        "sauḥ"
       ],
       "correct": 3
     }
-  ]
+  ],
+  "artUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/cards/mv_bija_anatomy_v1.jpg"
 }

@@ -1,10 +1,10 @@
 {
   "id": "mv_aim",
   "titleHi": "ऐं",
-  "titleEn": "Aiṃ is Sarasvatī. Speech, learning, the guru's voice — all in one syllable.",
+  "titleEn": "Aiṃ is Sarasvatī. Speech, learning, a teacher's voice — all in one syllable.",
   "sanskrit": "ऐं",
   "transliteration": "aiṃ",
-  "meaningEn": "Aiṃ is Sarasvatī's seed. Wherever a mantra wants speech, study, music or the guru's teaching, this syllable is placed first. You have already heard it: oṃ aiṃ sarasvatyai namaḥ opens with it, and the Navārṇa begins aiṃ hrīṃ klīṃ. The Tantras call it the vāg-bīja — the seed of the voice. It is the one great seed with no consonant at all: just the vowel ai, and the hum.",
+  "meaningEn": "Aiṃ is Sarasvatī's seed. Wherever a mantra wants speech, study, music or a teacher's words, this syllable is placed first. You have already heard it: oṃ aiṃ sarasvatyai namaḥ opens with it, and the Navārṇa begins aiṃ hrīṃ klīṃ. The Tantras call it the vāg-bīja — the seed of the voice. It is the one great seed with no consonant at all: just the vowel ai, and the hum.",
   "meaningHi": "ऐं सरस्वती का बीज है। जहाँ मंत्र में बोली, पढ़ाई, संगीत या गुरु की सीख माँगी जाती है, वहाँ यह अक्षर सबसे पहले रखा जाता है। आपने इसे सुना है: ॐ ऐं सरस्वत्यै नमः इसी से शुरू होता है, और नवार्ण मंत्र ऐं ह्रीं क्लीं से। तंत्र इसे वाग्-बीज कहते हैं — वाणी का बीज। बड़े बीजों में यही अकेला है जिसमें कोई व्यंजन नहीं: बस स्वर ऐ, और गूँज।",
   "class": "bija",
   "tradition": "Hindu",
@@ -19,20 +19,20 @@
       "iast": "ai",
       "glossEn": "the vowel — read by the Tantras as Sarasvatī herself",
       "glossHi": "स्वर — तंत्र इसे सरस्वती ही पढ़ते हैं",
-      "grammar": "no consonant: this seed is a bare vowel — Vāgīśvarī, the Lady of Speech, in the Śāradā-tilaka"
+      "grammar": "no consonant: this seed is a bare vowel — Vāgīśvarī, the Lady of Speech, in the Śāradā-tilaka",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_aim_0.mp3"
     },
     {
       "deva": "अं",
       "iast": "-ṃ",
       "glossEn": "the dot (ं) — the closing hum, bindu and nāda",
       "glossHi": "बिंदी (ं) — अंत की गूँज, बिन्दु और नाद",
-      "grammar": "the Varada Tantra's kośa reads the dot as 'what takes sorrow away' — tradition's attribution, not a meaning"
+      "grammar": "the Varada Tantra's kośa reads the dot as 'what takes sorrow away' — tradition's attribution, not a meaning",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_aim_1.mp3"
     }
   ],
   "audio": {
-    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_aim_slow_v1.mp3",
-    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_aim_natural_v1.mp3",
-    "loopKey": "om_aim_saraswatyai_namah",
+    "sung": "https://dharmaweave.com/cdn/dharma-audio/mantras/om_aim_saraswatyai_namah.mp3",
     "voice": "devi_female"
   },
   "source": {
@@ -43,29 +43,34 @@
   },
   "significance": {
     "textSays": "The Śāradā-tilaka gives aiṃ to Vāgīśvarī, the Lady of Speech; the Saptaśatī vidhi names it the bīja of the Navārṇa; the Varada Tantra's kośa reads ai as Sarasvatī and the closing dot as 'that which takes sorrow away'.",
-    "traditionSays": "The seed in Sarasvatī's own mantra; first of the Navārṇa's three seeds; first of the Bālā triad aiṃ klīṃ sauḥ; often given by a guru to a student beginning study, and read by modern teachers as Mahāsarasvatī within the Navārṇa.",
+    "traditionSays": "The seed in Sarasvatī's own mantra; first of the Navārṇa's three seeds; first of the Bālā triad aiṃ klīṃ sauḥ; read by modern teachers as Mahāsarasvatī within the Navārṇa.",
     "weDoNotClaim": "That it improves memory, speech or examinations. It names Sarasvatī by sound; asking is the devotee's, granting is hers."
   },
-  "practice": {
-    "count": 108,
-    "timeOfDay": "morning, before study or practice",
-    "mode": [
-      "mental",
-      "whispered",
-      "aloud"
-    ],
-    "dikshaNote": "Many lineages receive seed mantras from a guru; here you learn what the seed means and whom it calls."
-  },
+  "artPrompt": "Sarasvatī, fully clothed in a white sari, seated on a white lotus playing the veena, a swan at the water's edge, a palm-leaf book beside her; white and pale gold against cool indigo, warm halo, first light of morning. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
   "quiz": [
     {
-      "prompt": "Aiṃ is the seed of —",
+      "imagePrompt": "Sarasvatī, fully clothed in a white sari, seated on a white lotus playing the veena, a swan at the water's edge, a palm-leaf book beside her; white and pale gold against indigo, warm halo, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "Which seed belongs to the one in this picture?",
       "options": [
-        "Lakṣmī",
-        "Durgā",
-        "Sarasvatī",
-        "Gaṇeśa"
+        "śrīṃ",
+        "duṃ",
+        "aiṃ",
+        "klīṃ"
       ],
-      "correct": 2
+      "correct": 2,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_aim_0_v2.jpg"
+    },
+    {
+      "imagePrompt": "An open palm-leaf manuscript and a veena lying together in morning light, a thread of warm light rising from the strings like a voice; gold on indigo, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "This picture shows the Tantras' name for aiṃ. Which is it?",
+      "options": [
+        "vāg-bīja — the seed of speech",
+        "māyā-bīja",
+        "kāma-bīja",
+        "kūrca-bīja"
+      ],
+      "correct": 0,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_aim_1_v1.jpg"
     },
     {
       "prompt": "Which mantra opens with aiṃ?",
@@ -78,34 +83,15 @@
       "correct": 3
     },
     {
-      "prompt": "The Tantras' name for aiṃ is —",
-      "options": [
-        "vāg-bīja — the seed of speech",
-        "māyā-bīja",
-        "kāma-bīja",
-        "kūrca-bīja"
-      ],
-      "correct": 0
-    },
-    {
-      "prompt": "Build the mūla: oṃ + aiṃ + ___ + namaḥ",
-      "options": [
-        "sarasvatī",
-        "sarasvatyai",
-        "sarasvatyāḥ",
-        "gaṇapataye"
-      ],
-      "correct": 1
-    },
-    {
       "prompt": "What is unusual about aiṃ among the great seeds?",
       "options": [
         "it closes in a breath (ḥ)",
-        "it has two consonants",
         "it has no consonant — a bare vowel plus the hum",
+        "it has two consonants",
         "it is the only Vedic seed"
       ],
-      "correct": 2
+      "correct": 1
     }
-  ]
+  ],
+  "artUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/cards/mv_aim_v2.jpg"
 }

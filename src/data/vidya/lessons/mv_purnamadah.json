@@ -21,50 +21,55 @@
       "alsoIn": [
         "mv_om"
       ],
-      "t0": 439,
-      "t1": 1079
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_0.mp3"
     },
     {
       "deva": "पूर्णम्",
       "iast": "pūrṇam",
       "glossEn": "whole, full",
       "glossHi": "पूरा",
-      "root": "√pṝ — to fill"
+      "root": "√pṝ — to fill",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_1.mp3"
     },
     {
       "deva": "अदः",
       "iast": "adaḥ",
       "glossEn": "that — the far one, what is not seen",
       "glossHi": "वह — दूर वाला, जो दिखता नहीं",
-      "grammar": "'that' (over there) — the Upaniṣads use it for Brahman, the unseen"
+      "grammar": "'that' (over there) — the Upaniṣads use it for Brahman, the unseen",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_2.mp3"
     },
     {
       "deva": "पूर्णम्",
       "iast": "pūrṇam",
       "glossEn": "whole, full",
       "glossHi": "पूरा",
-      "root": "√pṝ — to fill"
+      "root": "√pṝ — to fill",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_3.mp3"
     },
     {
       "deva": "इदम्",
       "iast": "idam",
       "glossEn": "this — the near one, the world here",
       "glossHi": "यह — पास वाला, सामने की दुनिया",
-      "grammar": "'this' (right here) — the visible world"
+      "grammar": "'this' (right here) — the visible world",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_4.mp3"
     },
     {
       "deva": "पूर्णात्",
       "iast": "pūrṇāt",
       "glossEn": "from the whole",
       "glossHi": "पूरे से",
-      "grammar": "from — ablative, hence -āt"
+      "grammar": "from — ablative, hence -āt",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_5.mp3"
     },
     {
       "deva": "पूर्णम्",
       "iast": "pūrṇam",
       "glossEn": "whole, full",
       "glossHi": "पूरा",
-      "root": "√pṝ — to fill"
+      "root": "√pṝ — to fill",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_6.mp3"
     },
     {
       "deva": "उदच्यते",
@@ -72,7 +77,8 @@
       "glossEn": "comes forth, rises",
       "glossHi": "निकलता है, उठता है",
       "root": "ud + √añc — to rise up",
-      "grammar": "is-raised — passive; the whole comes out of the whole"
+      "grammar": "is-raised — passive; the whole comes out of the whole",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_7.mp3"
     },
     {
       "deva": "पूर्णस्य",
@@ -80,15 +86,15 @@
       "glossEn": "of the whole",
       "glossHi": "पूरे का",
       "grammar": "of — genitive, hence -asya",
-      "t0": 9679,
-      "t1": 10619
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_8.mp3"
     },
     {
       "deva": "पूर्णम्",
       "iast": "pūrṇam",
       "glossEn": "whole, full",
       "glossHi": "पूरा",
-      "root": "√pṝ — to fill"
+      "root": "√pṝ — to fill",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_9.mp3"
     },
     {
       "deva": "आदाय",
@@ -96,21 +102,24 @@
       "glossEn": "having taken",
       "glossHi": "लेकर",
       "root": "ā + √dā — to take",
-      "grammar": "having-taken — a gerund; 'taking the whole of the whole'"
+      "grammar": "having-taken — a gerund; 'taking the whole of the whole'",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_10.mp3"
     },
     {
       "deva": "पूर्णम्",
       "iast": "pūrṇam",
       "glossEn": "whole, full",
       "glossHi": "पूरा",
-      "root": "√pṝ — to fill"
+      "root": "√pṝ — to fill",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_11.mp3"
     },
     {
       "deva": "एव",
       "iast": "eva",
       "glossEn": "only, just — nothing but",
       "glossHi": "ही, सिर्फ़",
-      "grammar": "stresses the word before it: 'the whole, and only the whole'"
+      "grammar": "stresses the word before it: 'the whole, and only the whole'",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_12.mp3"
     },
     {
       "deva": "अवशिष्यते",
@@ -118,34 +127,51 @@
       "glossEn": "remains, is left over",
       "glossHi": "बचता है, बाक़ी रहता है",
       "root": "ava + √śiṣ — to leave behind",
-      "grammar": "is-left — passive; eva + avaśiṣyate join as evāvaśiṣyate"
+      "grammar": "is-left — passive; eva + avaśiṣyate join as evāvaśiṣyate",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_purnamadah_13.mp3"
     }
   ],
   "audio": {
-    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_purnamadah_slow_v1.mp3",
-    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_purnamadah_natural_v1.mp3",
+    "sung": "https://dharmaweave.com/cdn/dharma-audio/vidya/loops/mv_purnamadah_v1.mp3",
     "voice": "kuber"
   },
   "source": {
     "text": "Bṛhadāraṇyaka Upaniṣad",
     "ref": "5.1.1; the same verse is the peace-chant (śānti-pāṭha) of the Īśa Upaniṣad",
     "confidence": "located",
-    "note": "'That' and 'this' are the Upaniṣad's own words; the reading 'that = the unseen Brahman, this = the world' is the standard commentary (Śaṅkara) and is how the verse has been chanted for a thousand years."
+    "note": "'That' and 'this' are the Upaniṣad's own words; the reading 'that = the unseen Brahman, this = the world' is the standard commentary (Śaṅkara) and is how the verse has been understood for a thousand years."
   },
   "significance": {
     "textSays": "Bṛhadāraṇyaka 5.1.1: 'oṃ — that is whole, this is whole; from the whole the whole comes forth; taking the whole of the whole, the whole alone remains.'",
-    "traditionSays": "Chanted before and after Upaniṣad study and at the close of Vedāntic satsaṅg, followed by oṃ śāntiḥ śāntiḥ śāntiḥ; loved as the one verse that says the world and its source are both complete.",
+    "traditionSays": "The peace-verse of the Īśa Upaniṣad and the best-loved of all śānti-pāṭhas — the one verse that says the world and its source are both complete; oṃ śāntiḥ śāntiḥ śāntiḥ follows it.",
     "weDoNotClaim": "Any effect. It is a statement about reality, chanted as peace; it is quoted here and left to stand."
   },
-  "practice": {
-    "count": "once",
-    "timeOfDay": "before and after study, or at the close of a gathering",
-    "mode": [
-      "aloud",
-      "whispered"
-    ]
-  },
+  "artPrompt": "A full moon reflected whole and undiminished in a full, still lake at night — the moon above and the moon in the water equal; silver-gold on deep indigo, mist at the far shore; no figures. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
   "quiz": [
+    {
+      "imagePrompt": "A full moon reflected whole and undiminished in a full, still lake at night — the moon above and the moon in the water equal; silver-gold on indigo, no figures, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "What does this picture say about the verse?",
+      "options": [
+        "the whole comes from the whole, and nothing is lost",
+        "the Sun sets our thoughts moving",
+        "peace comes from three directions",
+        "death loosens its grip like a ripe fruit"
+      ],
+      "correct": 0,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_purnamadah_0_v1.jpg"
+    },
+    {
+      "imagePrompt": "A near village in warm lamplight and, far beyond it, a great mountain half-hidden in luminous mist; indigo night, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "'That' (adaḥ) is the far one, 'this' (idam) the near. What do they point to?",
+      "options": [
+        "the sun and the moon",
+        "the unseen and the world in front of you",
+        "the teacher and the student",
+        "death and the deathless"
+      ],
+      "correct": 1,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_purnamadah_1_v1.jpg"
+    },
     {
       "prompt": "What does पूर्णम् (pūrṇam) mean?",
       "options": [
@@ -157,34 +183,15 @@
       "correct": 3
     },
     {
-      "prompt": "In the verse, अदः (adaḥ, 'that') and इदम् (idam, 'this') point to —",
-      "options": [
-        "the unseen and the world in front of you",
-        "the sun and the moon",
-        "the teacher and the student",
-        "death and the deathless"
-      ],
-      "correct": 0
-    },
-    {
       "prompt": "अवशिष्यते (avaśiṣyate) means —",
       "options": [
         "comes forth",
-        "remains, is left over",
         "having taken",
+        "remains, is left over",
         "we meditate"
-      ],
-      "correct": 1
-    },
-    {
-      "prompt": "Where is the verse found?",
-      "options": [
-        "Ṛgveda 3.62.10",
-        "Māṇḍūkya Upaniṣad 12",
-        "Bṛhadāraṇyaka Upaniṣad 5.1.1",
-        "Devī Māhātmya 11.10"
       ],
       "correct": 2
     }
-  ]
+  ],
+  "artUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/cards/mv_purnamadah_v1.jpg"
 }

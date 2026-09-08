@@ -22,8 +22,7 @@
       "alsoIn": [
         "mv_om"
       ],
-      "t0": 219,
-      "t1": 699
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_ganapati_0.mp3"
     },
     {
       "deva": "गं",
@@ -35,8 +34,7 @@
         "mv_bija_anatomy",
         "mv_name_seeds"
       ],
-      "t0": 1339,
-      "t1": 1659
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_ganapati_1.mp3"
     },
     {
       "deva": "गणपतये",
@@ -45,8 +43,7 @@
       "glossHi": "गणपति को — गणों के मालिक",
       "root": "gaṇa (troop, host) + pati (lord)",
       "grammar": "to Gaṇapati — dative, hence -aye (an -i name takes -aye for 'to')",
-      "t0": 2419,
-      "t1": 3359
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_ganapati_2.mp3"
     },
     {
       "deva": "नमः",
@@ -58,14 +55,11 @@
       "alsoIn": [
         "mv_closers"
       ],
-      "t0": 3720,
-      "t1": 4159
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_ganapati_3.mp3"
     }
   ],
   "audio": {
-    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_ganapati_slow_v1.mp3",
-    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_ganapati_natural_v1.mp3",
-    "loopKey": "om_gam_ganapataye_namah",
+    "sung": "https://dharmaweave.com/cdn/dharma-audio/mantras/om_gam_ganapataye_namah.mp3",
     "voice": "kuber"
   },
   "source": {
@@ -76,38 +70,34 @@
   },
   "significance": {
     "textSays": "Gaṇapati Atharvaśīrṣa §8 builds the seed in front of you: 'the letter ga is the first form, a the middle, the anusvāra the last; the dot above, the nāda joining — this is the Gaṇeśa-vidyā.'",
-    "traditionSays": "Said before any beginning — a journey, a wedding, a new ledger; Gaṇeśa is worshipped first by custom. 108 times on a mālā.",
+    "traditionSays": "Gaṇeśa's short mantra. He is the god of beginnings, so his four words open the whole seed-mantra shelf.",
     "weDoNotClaim": "That saying it removes obstacles. Tradition asks Gaṇeśa; the outcome is not ours to promise."
   },
-  "practice": {
-    "count": 108,
-    "timeOfDay": "morning, or before starting anything new; Thursday's mantra in this app",
-    "mode": [
-      "aloud",
-      "whispered",
-      "mental"
-    ]
-  },
+  "artPrompt": "Gaṇeśa seated in gentle lamplight, one hand raised in blessing, a single modak in the other, a small mouse at his feet; gold halo against deep indigo, marigolds scattered on the step. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
   "quiz": [
     {
-      "prompt": "Which word is Gaṇeśa's seed?",
+      "imagePrompt": "Gaṇeśa seated in gentle lamplight, one hand raised in blessing, a modak in the other, a small mouse at his feet; gold halo against deep indigo, marigolds on the step; no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "Which word of the mantra names the one in this picture?",
       "options": [
         "ॐ oṃ",
-        "नमः namaḥ",
-        "गणपतये gaṇapataye",
-        "गं gaṃ"
+        "गं gaṃ",
+        "गणपतये gaṇapataye — to Gaṇapati",
+        "नमः namaḥ"
       ],
-      "correct": 3
+      "correct": 2,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_ganapati_0_v1.jpg"
     },
     {
-      "prompt": "गणपतये (gaṇapataye) means —",
+      "imagePrompt": "Two hands folded together in a bow before a single oil lamp, the face out of frame, warm gold light on the fingers, indigo dark around; no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "Which word of the mantra is this gesture?",
       "options": [
-        "to Gaṇapati",
-        "of Gaṇapati",
-        "Gaṇapati (the name alone)",
-        "O Gaṇapati!"
+        "नमः namaḥ — a bow",
+        "गं gaṃ — the seed",
+        "ॐ oṃ",
+        "गणपतये gaṇapataye"
       ],
-      "correct": 0
+      "correct": 0,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_ganapati_1_v1.jpg"
     },
     {
       "prompt": "Why does the name end in -aye?",
@@ -124,20 +114,11 @@
       "options": [
         "hrīṃ",
         "klīṃ",
-        "gaṃ",
-        "duṃ"
-      ],
-      "correct": 2
-    },
-    {
-      "prompt": "Which text takes the seed gaṃ apart letter by letter?",
-      "options": [
-        "Ṛgveda 3.62.10",
-        "Māṇḍūkya Upaniṣad",
-        "Devī Māhātmya",
-        "Gaṇapati Atharvaśīrṣa"
+        "duṃ",
+        "gaṃ"
       ],
       "correct": 3
     }
-  ]
+  ],
+  "artUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/cards/mv_ganapati_v1.jpg"
 }

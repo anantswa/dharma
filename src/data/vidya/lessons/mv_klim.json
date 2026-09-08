@@ -5,7 +5,7 @@
   "sanskrit": "क्लीं",
   "transliteration": "klīṃ",
   "meaningEn": "Klīṃ is the seed of longing — the Tantras' kāma-bīja, the seed of desire and of being drawn. In the Navārṇa it is the third seed, aiṃ hrīṃ klīṃ, where the ritual frame calls it the kīlaka — the peg that fastens the mantra — and modern teachers read it as Mahākālī, the Mother's pull. It belongs to Kṛṣṇa: his eighteen-syllable mantra in the Gopāla-tāpanī Upaniṣad opens klīṃ kṛṣṇāya govindāya…, and it is Kāmadeva's seed too.",
-  "meaningHi": "क्लीं चाह का बीज है — तंत्र इसे काम-बीज कहते हैं, चाह का और खिंचे चले आने का बीज। नवार्ण में यह तीसरा बीज है, ऐं ह्रीं क्लीं, जहाँ पाठ-विधि इसे कीलक कहती है — मंत्र को बाँधने वाली खूँटी — और आज के गुरु इसे महाकाली पढ़ते हैं, माँ का खिंचाव। यह कृष्ण का है: गोपाल-तापनी उपनिषद में उनका अठारह अक्षर का मंत्र क्लीं कृष्णाय गोविन्दाय… से शुरू होता है, और यह कामदेव का बीज भी है।",
+  "meaningHi": "क्लीं चाह का बीज है — तंत्र इसे काम-बीज कहते हैं, चाह का और खिंचे चले आने का बीज। नवार्ण में यह तीसरा बीज है, ऐं ह्रीं क्लीं, जहाँ पाठ-विधि इसे कीलक कहती है — मंत्र को बाँधने वाली खूँटी — और आज के जानकार इसे महाकाली पढ़ते हैं, माँ का खिंचाव। यह कृष्ण का है: गोपाल-तापनी उपनिषद में उनका अठारह अक्षर का मंत्र क्लीं कृष्णाय गोविन्दाय… से शुरू होता है, और यह कामदेव का बीज भी है।",
   "class": "bija",
   "tradition": "Hindu",
   "deityId": "5",
@@ -18,35 +18,37 @@
       "deva": "क",
       "iast": "ka",
       "glossEn": "Kāma — and Kṛṣṇa — in the Tantras' reading",
-      "glossHi": "काम — और कृष्ण — तंत्र की पढ़त में",
-      "grammar": "Varada Tantra kośa via Woodroffe: ka = Kāmadeva / Kṛṣṇa"
+      "glossHi": "काम — और कृष्ण — तंत्र के हिसाब से",
+      "grammar": "Varada Tantra kośa via Woodroffe: ka = Kāmadeva / Kṛṣṇa",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_klim_0.mp3"
     },
     {
       "deva": "ल",
       "iast": "la",
       "glossEn": "Indra — lordship, in the same reading",
-      "glossHi": "इंद्र — प्रभुता, उसी पढ़त में",
-      "grammar": "kośa: la = Indra"
+      "glossHi": "इंद्र — प्रभुता, उसी हिसाब से",
+      "grammar": "kośa: la = Indra",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_klim_1.mp3"
     },
     {
       "deva": "ई",
       "iast": "ī",
       "glossEn": "contentment — tuṣṭi, in the same reading",
-      "glossHi": "संतोष — तुष्टि, उसी पढ़त में",
-      "grammar": "kośa: ī = tuṣṭi"
+      "glossHi": "संतोष — तुष्टि, उसी हिसाब से",
+      "grammar": "kośa: ī = tuṣṭi",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_klim_2.mp3"
     },
     {
       "deva": "अं",
       "iast": "-ṃ",
       "glossEn": "the dot (ं) — the closing hum, bindu and nāda",
       "glossHi": "बिंदी (ं) — अंत की गूँज, बिन्दु और नाद",
-      "grammar": "kośa: 'the giver of joy' — tradition's attribution, not a meaning"
+      "grammar": "kośa: 'the giver of joy' — tradition's attribution, not a meaning",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_klim_3.mp3"
     }
   ],
   "audio": {
-    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_klim_slow_v1.mp3",
-    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_klim_natural_v1.mp3",
-    "loopKey": "navarna_chamundayai",
+    "sung": "https://dharmaweave.com/cdn/dharma-audio/mantras/navarna_chamundayai.mp3",
     "voice": "devi_female"
   },
   "source": {
@@ -57,27 +59,34 @@
   },
   "significance": {
     "textSays": "Gopāla-tāpanī: Kṛṣṇa's mantra begins klīṃ. The Saptaśatī vidhi: 'klīṃ kīlakam' — klīṃ is the Navārṇa's peg. The Varada Tantra's kośa reads ka as Kāma, la as Indra, ī as contentment.",
-    "traditionSays": "Kṛṣṇa's and Kāmadeva's seed — the sound of being drawn, the way the gopīs were drawn by the flute; middle of the Bālā triad aiṃ klīṃ sauḥ; read by modern teachers as Mahākālī within the Navārṇa. Received from a guru in Śākta and Vaiṣṇava tantric lines.",
+    "traditionSays": "Kṛṣṇa's and Kāmadeva's seed — the sound of being drawn, the way the gopīs were drawn by the flute; middle of the Bālā triad aiṃ klīṃ sauḥ; read by modern teachers as Mahākālī within the Navārṇa.",
     "weDoNotClaim": "That it attracts a person, a partner or wealth. It names a pull toward the Lord; what is given is his."
   },
-  "practice": {
-    "count": 108,
-    "mode": [
-      "mental",
-      "whispered"
-    ],
-    "dikshaNote": "Many lineages receive seed mantras from a guru; here you learn what the seed means and whom it calls."
-  },
+  "artPrompt": "Kṛṣṇa at dusk beneath a kadamba tree, flute raised to his lips, cows and peacocks turning toward the sound, the Yamunā catching the last gold; indigo evening, warm backlight. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
   "quiz": [
     {
-      "prompt": "Klīṃ is the seed of —",
+      "imagePrompt": "Kṛṣṇa at dusk beneath a kadamba tree, flute at his lips, cows and gopīs — the gopīs fully clothed in sarees, seen at a distance — turning toward the sound as one, the Yamunā catching the last gold; indigo evening, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "The pull in this picture — which seed is it?",
       "options": [
-        "Kṛṣṇa (and Kāmadeva)",
-        "Gaṇeśa",
-        "Śiva",
-        "Hanumān"
+        "klīṃ",
+        "hrīṃ",
+        "aiṃ",
+        "gaṃ"
       ],
-      "correct": 0
+      "correct": 0,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_klim_0_v2.jpg"
+    },
+    {
+      "imagePrompt": "A single wooden peg driven into the earth, holding a rope taut against a great tent in the wind; warm evening light, indigo sky, no figures, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "The Saptaśatī's ritual frame gives klīṃ this role. Which is it?",
+      "options": [
+        "bīja — the seed",
+        "śakti — the power",
+        "kīlaka — the peg that fastens the mantra",
+        "devatā — the deity"
+      ],
+      "correct": 2,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_klim_1_v1.jpg"
     },
     {
       "prompt": "The Tantras' name for klīṃ is —",
@@ -90,34 +99,15 @@
       "correct": 1
     },
     {
-      "prompt": "In the Saptaśatī ritual frame, klīṃ is the Navārṇa's —",
-      "options": [
-        "bīja — the seed",
-        "śakti — the power",
-        "kīlaka — the peg",
-        "devatā — the deity"
-      ],
-      "correct": 2
-    },
-    {
-      "prompt": "Which mantra opens with klīṃ?",
-      "options": [
-        "oṃ namo bhagavate vāsudevāya",
-        "oṃ gaṃ gaṇapataye namaḥ",
-        "oṃ namaḥ śivāya",
-        "klīṃ kṛṣṇāya govindāya…"
-      ],
-      "correct": 3
-    },
-    {
       "prompt": "Order the Navārṇa's three seeds:",
       "options": [
-        "aiṃ hrīṃ klīṃ",
         "klīṃ hrīṃ aiṃ",
         "hrīṃ aiṃ klīṃ",
-        "aiṃ klīṃ hrīṃ"
+        "aiṃ klīṃ hrīṃ",
+        "aiṃ hrīṃ klīṃ"
       ],
-      "correct": 0
+      "correct": 3
     }
-  ]
+  ],
+  "artUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/cards/mv_klim_v1.jpg"
 }

@@ -18,35 +18,37 @@
       "deva": "ह",
       "iast": "ha",
       "glossEn": "Śiva — in the Tantras' reading",
-      "glossHi": "शिव — तंत्र की पढ़त में",
-      "grammar": "Varada Tantra kośa: ha = Śiva"
+      "glossHi": "शिव — तंत्र के हिसाब से",
+      "grammar": "Varada Tantra kośa: ha = Śiva",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_hrim_0.mp3"
     },
     {
       "deva": "र",
       "iast": "ra",
       "glossEn": "prakṛti — nature, the stuff of the world",
       "glossHi": "प्रकृति — जिससे दुनिया बनी है",
-      "grammar": "Varada Tantra kośa: ra = prakṛti"
+      "grammar": "Varada Tantra kośa: ra = prakṛti",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_hrim_1.mp3"
     },
     {
       "deva": "ई",
       "iast": "ī",
       "glossEn": "māyā — the Mother's power to appear as everything",
       "glossHi": "माया — माँ की वह ताक़त जिससे वह सब कुछ बनकर दिखती है",
-      "grammar": "Varada Tantra kośa: ī = Mahāmāyā"
+      "grammar": "Varada Tantra kośa: ī = Mahāmāyā",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_hrim_2.mp3"
     },
     {
       "deva": "अं",
       "iast": "-ṃ",
       "glossEn": "the dot (ं) — the closing hum, bindu and nāda",
       "glossHi": "बिंदी (ं) — अंत की गूँज, बिन्दु और नाद",
-      "grammar": "the kośa reads nāda as 'the mother of the world' and bindu as 'what takes sorrow away'"
+      "grammar": "the kośa reads nāda as 'the mother of the world' and bindu as 'what takes sorrow away'",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_hrim_3.mp3"
     }
   ],
   "audio": {
-    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_hrim_slow_v1.mp3",
-    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_hrim_natural_v1.mp3",
-    "loopKey": "navarna_chamundayai",
+    "sung": "https://dharmaweave.com/cdn/dharma-audio/mantras/navarna_chamundayai.mp3",
     "voice": "devi_female"
   },
   "source": {
@@ -57,37 +59,34 @@
   },
   "significance": {
     "textSays": "The Varada Tantra's kośa: ha is Śiva, ra is prakṛti, ī is Mahāmāyā, nāda the mother of the world, bindu the remover of sorrow. The Saptaśatī vidhi names hrīṃ the śakti of the Navārṇa.",
-    "traditionSays": "Bhuvaneśvarī's seed and the Devī's most-used single syllable; the middle of aiṃ hrīṃ klīṃ; present in the Pañcadaśī of Lalitā. Modern teachers read it as Mahālakṣmī within the Navārṇa. In Śākta practice it is received from a guru.",
+    "traditionSays": "Bhuvaneśvarī's seed and the Devī's most-used single syllable; the middle of aiṃ hrīṃ klīṃ; present in the Pañcadaśī of Lalitā. Modern teachers read it as Mahālakṣmī within the Navārṇa.",
     "weDoNotClaim": "Any effect from saying it. A seed has no dictionary meaning; tradition's reading is shown and the text named."
   },
-  "practice": {
-    "count": 108,
-    "mode": [
-      "mental",
-      "whispered"
-    ],
-    "dikshaNote": "Many lineages receive seed mantras from a guru; here you learn what the seed means and whom it calls."
-  },
+  "artPrompt": "The Mother's face lit from below by a single oil lamp, eyes lowered in tenderness, a red-and-gold veil, a faint mandala of light behind her head; deep indigo night around her. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
   "quiz": [
     {
-      "prompt": "Hrīṃ is the seed of —",
+      "imagePrompt": "The Mother's face lit from below by a single oil lamp, eyes lowered in tenderness, red-and-gold veil, a faint mandala of light behind her head; indigo night, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "Which seed belongs to the one in this picture?",
       "options": [
-        "Gaṇeśa",
-        "Kṛṣṇa",
-        "Hanumān",
-        "the Devī — Bhuvaneśvarī"
+        "aiṃ",
+        "klīṃ",
+        "gaṃ",
+        "hrīṃ"
       ],
-      "correct": 3
+      "correct": 3,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_hrim_0_v1.jpg"
     },
     {
-      "prompt": "In the Tantras' letter-by-letter reading, 'ha' in hrīṃ is —",
+      "imagePrompt": "A shimmering veil of light drawn across a whole landscape — mountains, river and sky all seen through it and appearing as its folds; indigo and gold, no figures, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "In the Tantras' letter-by-letter reading of hrīṃ, which letter does the veil stand for?",
       "options": [
-        "Śiva",
-        "Viṣṇu",
-        "the Sun",
-        "Sarasvatī"
+        "ha — Śiva",
+        "ra — nature",
+        "ī — māyā, the Mother's power to appear as everything",
+        "the hum"
       ],
-      "correct": 0
+      "correct": 2,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_hrim_1_v1.jpg"
     },
     {
       "prompt": "In the Navārṇa, hrīṃ sits —",
@@ -102,12 +101,13 @@
     {
       "prompt": "The Tantras' name for hrīṃ is —",
       "options": [
+        "māyā-bīja",
         "vāg-bīja",
         "kāma-bīja",
-        "māyā-bīja",
         "tattva-bīja"
       ],
-      "correct": 2
+      "correct": 0
     }
-  ]
+  ],
+  "artUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/cards/mv_hrim_v1.jpg"
 }

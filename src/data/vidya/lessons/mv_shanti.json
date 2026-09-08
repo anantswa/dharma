@@ -4,8 +4,8 @@
   "titleEn": "Śāntiḥ three times: peace from fate, from other beings, and from your own body and mind.",
   "sanskrit": "ॐ शान्तिः शान्तिः शान्तिः",
   "transliteration": "oṃ śāntiḥ śāntiḥ śāntiḥ",
-  "meaningEn": "Peace, peace, peace. The Upaniṣads end every peace-chant with the word said three times. Tradition says why: trouble reaches a person from three directions — from what no one controls (storm, accident, fate), from other living beings, and from one's own body and mind. One śāntiḥ for each. In the living teaching the first is said full-voiced, for what is farthest, and the last softest, for what is nearest — one's own mind. No text fixes which śāntiḥ is which; the three-fold reading itself is the commentators'.",
-  "meaningHi": "शांति, शांति, शांति। उपनिषद हर शांति-पाठ को यह शब्द तीन बार कहकर पूरा करते हैं। परंपरा बताती है क्यों: दुख आदमी तक तीन तरफ़ से आता है — उससे जो किसी के बस में नहीं (आँधी, हादसा, किस्मत), दूसरे जीवों से, और अपने शरीर और मन से। हर एक के लिए एक शांति। चलन में पहली ऊँची आवाज़ में कही जाती है, सबसे दूर वाले के लिए, और आख़िरी सबसे धीरे, सबसे पास वाले के लिए — अपना मन। कौन-सी शांति किसके लिए, यह कोई ग्रंथ तय नहीं करता; तीन का यह हिसाब भी टीकाकारों का है।",
+  "meaningEn": "Peace, peace, peace. The Upaniṣads end every peace-chant with the word said three times. Tradition says why: trouble reaches a person from three directions — from what no one controls (storm, accident, fate), from other living beings, and from one's own body and mind. One śāntiḥ for each. No text fixes which śāntiḥ is which; the three-fold reading itself is the commentators'.",
+  "meaningHi": "शांति, शांति, शांति। उपनिषद हर शांति-पाठ को यह शब्द तीन बार कहकर पूरा करते हैं। परंपरा बताती है क्यों: दुख आदमी तक तीन तरफ़ से आता है — उससे जो किसी के बस में नहीं (आँधी, हादसा, किस्मत), दूसरे जीवों से, और अपने शरीर और मन से। हर एक के लिए एक शांति। कौन-सी शांति किसके लिए, यह कोई ग्रंथ तय नहीं करता; तीन का यह हिसाब भी टीकाकारों का है।",
   "class": "vedic",
   "tradition": "Hindu",
   "importance": 3,
@@ -21,8 +21,7 @@
       "alsoIn": [
         "mv_om"
       ],
-      "t0": 319,
-      "t1": 839
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_shanti_0.mp3"
     },
     {
       "deva": "शान्तिः",
@@ -30,9 +29,8 @@
       "glossEn": "peace — from what no one controls: weather, accident, fate",
       "glossHi": "शांति — उससे जो किसी के बस में नहीं: मौसम, हादसा, किस्मत",
       "root": "√śam — to become quiet",
-      "grammar": "the -ḥ (visarga) is a soft breath after the i; tradition: ādhidaivika — trouble from the gods, the elements, chance; said full-voiced",
-      "t0": 1439,
-      "t1": 3139
+      "grammar": "the -ḥ (visarga) is a soft breath after the i; tradition: ādhidaivika — trouble from the gods, the elements, chance",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_shanti_1.mp3"
     },
     {
       "deva": "शान्तिः",
@@ -40,22 +38,19 @@
       "glossEn": "peace — from other living beings",
       "glossHi": "शांति — दूसरे जीवों से",
       "grammar": "tradition: ādhibhautika — trouble from other creatures and people",
-      "t0": 3220,
-      "t1": 3939
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_shanti_2.mp3"
     },
     {
       "deva": "शान्तिः",
       "iast": "śāntiḥ",
       "glossEn": "peace — from what is inside: one's own body and mind",
       "glossHi": "शांति — अंदर से: अपने शरीर और मन से",
-      "grammar": "tradition: ādhyātmika — the trouble that is one's own; said softest. Which śāntiḥ is which is not fixed by any text",
-      "t0": 4900,
-      "t1": 5739
+      "grammar": "tradition: ādhyātmika — the trouble that is one's own. Which śāntiḥ is which is not fixed by any text",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_shanti_3.mp3"
     }
   ],
   "audio": {
-    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_shanti_slow_v1.mp3",
-    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_shanti_natural_v1.mp3",
+    "sung": "https://dharmaweave.com/cdn/dharma-audio/vidya/loops/mv_shanti_v1.mp3",
     "voice": "kuber"
   },
   "source": {
@@ -66,27 +61,34 @@
   },
   "significance": {
     "textSays": "Every Upaniṣad's peace-chant ends 'oṃ śāntiḥ śāntiḥ śāntiḥ' — peace, said three times, and nothing else.",
-    "traditionSays": "One for each of the three sources of trouble — the powers beyond anyone's hand, other beings, the self; said at the close of prayer, study and meditation, the first full-voiced and the last softest.",
-    "weDoNotClaim": "That saying it brings peace. It asks for peace, three ways; the asking is the practice."
+    "traditionSays": "One for each of the three sources of trouble — the powers beyond anyone's hand, other beings, the self; the word that closes every Upaniṣad.",
+    "weDoNotClaim": "That saying it brings peace. It asks for peace, three ways; that is all the word does."
   },
-  "practice": {
-    "count": "once",
-    "timeOfDay": "the close of any prayer, reading or meditation",
-    "mode": [
-      "aloud",
-      "whispered"
-    ]
-  },
+  "artPrompt": "Three concentric stillnesses: a single oil lamp burning without a flicker, set in a quiet empty courtyard, under a vast clear night sky; warm gold flame, cool indigo sky, absolute calm. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
   "quiz": [
     {
-      "prompt": "Why is śāntiḥ said three times?",
+      "imagePrompt": "Three concentric stillnesses: a single oil lamp burning without a flicker, set in a quiet empty courtyard, under a vast clear night sky; gold flame, indigo sky, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "Lamp, courtyard, sky — what do the three stillnesses show?",
       "options": [
-        "one for each of the three sources of trouble — self, other beings, fate",
-        "for the three Vedas",
-        "for morning, noon and night",
-        "for the three seeds"
+        "one śāntiḥ for each of the three sources of trouble — fate, other beings, the self",
+        "the three Vedas",
+        "morning, noon and night",
+        "the three seeds"
       ],
-      "correct": 0
+      "correct": 0,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_shanti_0_v1.jpg"
+    },
+    {
+      "imagePrompt": "A storm passing far out over the sea, lightning in the distance, the sky above the near shore already clearing to gold; no figures, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "Which of the three troubles does this picture show?",
+      "options": [
+        "one's own body and mind",
+        "other living beings",
+        "what no one controls — weather, accident, fate",
+        "the three seeds"
+      ],
+      "correct": 2,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_shanti_1_v1.jpg"
     },
     {
       "prompt": "The -ḥ at the end of śāntiḥ is —",
@@ -99,16 +101,6 @@
       "correct": 1
     },
     {
-      "prompt": "ādhidaivika trouble means —",
-      "options": [
-        "one's own body and mind",
-        "other living beings",
-        "what no one controls: weather, accident, fate",
-        "the three seeds"
-      ],
-      "correct": 2
-    },
-    {
       "prompt": "Where does the three-troubles explanation come from?",
       "options": [
         "the Ṛgveda",
@@ -118,5 +110,6 @@
       ],
       "correct": 3
     }
-  ]
+  ],
+  "artUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/cards/mv_shanti_v1.jpg"
 }

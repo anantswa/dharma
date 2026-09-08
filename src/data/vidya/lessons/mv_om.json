@@ -4,35 +4,38 @@
   "titleEn": "Oṃ is a, u, m — and the silence after. Waking, dream, deep sleep, and the one who watches.",
   "sanskrit": "ॐ",
   "transliteration": "oṃ",
-  "meaningEn": "Oṃ is not a word; it is one sound that holds three. A, U and M run together into one, and then there is a silence. The Māṇḍūkya Upaniṣad says: A is the waking world, U is the dream, M is dreamless sleep — and the silence after is the fourth, the awareness in which all three come and go.",
-  "meaningHi": "ॐ कोई शब्द नहीं, एक आवाज़ है जिसमें तीन आवाज़ें हैं — अ, उ, म — और फिर चुप्पी। माण्डूक्य उपनिषद कहता है: अ जागना है, उ सपना है, म गहरी नींद है — और उसके बाद की चुप्पी चौथी है, वह जो तीनों को आते-जाते देखता है।",
+  "meaningEn": "Oṃ is one sound that holds three. A, U and M run together into one, and then there is a silence. The Māṇḍūkya Upaniṣad says: A is the waking world, U is the dream, M is dreamless sleep — and the silence after is the fourth, the awareness in which all three come and go.",
+  "meaningHi": "ॐ एक आवाज़ है जिसमें तीन आवाज़ें हैं — अ, उ, म — और फिर चुप्पी। माण्डूक्य उपनिषद कहता है: अ जागना है, उ सपना है, म गहरी नींद है — और उसके बाद की चुप्पी चौथी है, वह जो तीनों को आते-जाते देखता है।",
   "class": "bija",
   "tradition": "Hindu",
   "importance": 5,
   "gap": 4,
   "shelf": "start",
-  "sayItLike": "om — 'o' as in 'home', then let the m hum, then stop and stay quiet a moment",
+  "sayItLike": "om — 'o' as in 'home', then the m hums and fades into silence",
   "words": [
     {
       "deva": "अ",
       "iast": "a",
       "glossEn": "the first sound — the waking world",
       "glossHi": "पहली आवाज़ — जागती दुनिया",
-      "grammar": "Māṇḍūkya 9: a-kāra is Vaiśvānara, the waking self"
+      "grammar": "Māṇḍūkya 9: a-kāra is Vaiśvānara, the waking self",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_om_0.mp3"
     },
     {
       "deva": "उ",
       "iast": "u",
       "glossEn": "the second sound — the dream",
       "glossHi": "दूसरी आवाज़ — सपना",
-      "grammar": "Māṇḍūkya 10: u-kāra is Taijasa, the dreaming self"
+      "grammar": "Māṇḍūkya 10: u-kāra is Taijasa, the dreaming self",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_om_1.mp3"
     },
     {
       "deva": "म",
       "iast": "m",
       "glossEn": "the third sound — deep, dreamless sleep",
       "glossHi": "तीसरी आवाज़ — गहरी नींद",
-      "grammar": "Māṇḍūkya 11: ma-kāra is Prājña, the self in deep sleep"
+      "grammar": "Māṇḍūkya 11: ma-kāra is Prājña, the self in deep sleep",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_om_2.mp3"
     },
     {
       "deva": "अमात्र",
@@ -40,13 +43,12 @@
       "glossEn": "the fourth — no sound at all; the silence after",
       "glossHi": "चौथा — कोई आवाज़ नहीं; बाद की चुप्पी",
       "root": "a + mātrā — 'without measure', the text's own word for the soundless fourth",
-      "grammar": "Māṇḍūkya 12: the part with no measure is Turīya, the fourth"
+      "grammar": "Māṇḍūkya 12: the part with no measure is Turīya, the fourth",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_om_3.mp3"
     }
   ],
   "audio": {
-    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_om_slow_v1.mp3",
-    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_om_natural_v1.mp3",
-    "loopKey": "om",
+    "sung": "https://dharmaweave.com/cdn/dharma-audio/mantras/om.mp3",
     "voice": "kuber"
   },
   "source": {
@@ -57,48 +59,44 @@
   },
   "significance": {
     "textSays": "Māṇḍūkya 1: 'Oṃ — this syllable is all this.' Verses 9–12 lay a, u, m over waking, dream and deep sleep, and the soundless fourth over the Self that knows all three.",
-    "traditionSays": "Said before every mantra and before every reading of scripture; the Gītā (8.13) names it the syllable to hold in the mind at the end of life. Chanted alone as japa, or drawn out long in meditation.",
-    "weDoNotClaim": "That the sound does anything on its own. The text teaches what to notice while saying it; that is quoted here, and no more."
+    "traditionSays": "Opens every mantra and every reading of scripture; the Gītā (8.13) calls it the one-syllable Brahman — and the silence the Upaniṣad names is part of the sound itself.",
+    "weDoNotClaim": "That the sound does anything on its own. The text says what the sound means; that is quoted here, and no more."
   },
-  "practice": {
-    "count": 108,
-    "timeOfDay": "any time; by custom the first sound of the morning",
-    "mode": [
-      "aloud",
-      "whispered",
-      "mental"
-    ]
-  },
+  "artPrompt": "A single point of warm light hovering just above still water at dawn, three soft sound-ripples spreading outward across the surface and fading into perfect stillness; thin mist, a pale sky turning gold at the horizon; no figures. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
   "quiz": [
     {
-      "prompt": "In the Māṇḍūkya Upaniṣad, the sound 'u' in Oṃ stands for —",
+      "imagePrompt": "A sleeper at rest under a crescent moon, a small luminous scene — a garden, a river — floating softly above the sleeper's closed eyes — a dream made visible; indigo night, warm glow on the face. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "The shapes drifting above the sleeper's closed eyes — which sound of Oṃ is that?",
       "options": [
-        "the dream",
-        "the waking world",
-        "deep sleep",
+        "a — the waking world",
+        "u — the dream",
+        "m — deep, dreamless sleep",
         "the silence after"
       ],
-      "correct": 0
+      "correct": 1,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_om_0_v2.jpg"
     },
     {
-      "prompt": "What does the Upaniṣad call the part of Oṃ that has no sound?",
+      "imagePrompt": "A single point of light above still water at dawn; the last faint ripple has just faded and the surface is perfectly still again; mist, pale gold horizon, no figures. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "The stillness after the ripples — which part of Oṃ is that?",
       "options": [
-        "bindu — the dot",
-        "amātra — the measureless fourth",
-        "svāhā — the offering",
+        "a — the waking world",
+        "m — deep sleep",
+        "amātra — the soundless fourth",
         "nāda — the tone"
       ],
-      "correct": 1
+      "correct": 2,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_om_1_v1.jpg"
     },
     {
       "prompt": "Oṃ is written as ओ with a mark, not अउम, because —",
       "options": [
+        "a + u + m fuse into 'o' by ordinary Sanskrit sandhi",
         "the vowel a is silent",
         "it is a Tamil spelling",
-        "a + u + m fuse into 'o' by ordinary Sanskrit sandhi",
         "the Vedas forbid writing it"
       ],
-      "correct": 2
+      "correct": 0
     },
     {
       "prompt": "Which text says 'oṃ — this syllable is all this'?",
@@ -110,5 +108,6 @@
       ],
       "correct": 3
     }
-  ]
+  ],
+  "artUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/cards/mv_om_v1.jpg"
 }

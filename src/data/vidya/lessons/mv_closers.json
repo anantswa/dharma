@@ -4,8 +4,8 @@
   "titleEn": "Namaḥ bows. Svāhā offers into the fire. Phaṭ strikes. The last word of a mantra is what it does.",
   "sanskrit": "नमः · स्वाहा · फट् · हूं फट्",
   "transliteration": "namaḥ · svāhā · phaṭ · hūṃ phaṭ",
-  "meaningEn": "The last word of a mantra is its action. Namaḥ is a bow — and it always tells you to whom: śivāya, to Śiva; gaṇapataye, to Gaṇapati; sarasvatyai, to Sarasvatī. Svāhā is the fire-word, said the instant the offering goes into the flame — 'well offered'; Agni carries it up. Phaṭ is a strike — a sharp, short sound that cuts and guards, closing fierce mantras, often as hūṃ phaṭ. With these three, the shape of most seed-mantras can be read on sight: Oṃ, seed, name, and what to do.",
-  "meaningHi": "मंत्र का आख़िरी शब्द उसका काम बताता है। नमः प्रणाम है — और हमेशा बताता है किसे: शिवाय, शिव को; गणपतये, गणपति को; सरस्वत्यै, सरस्वती को। स्वाहा आग का शब्द है, जो आहुति के आग में जाते ही बोला जाता है — 'अच्छी तरह चढ़ाया'; अग्नि उसे ऊपर ले जाते हैं। फट् एक चोट है — छोटी, तेज़ आवाज़ जो काटती और बचाती है, उग्र मंत्रों का अंत, अक्सर हूं फट्। ये तीन जान लें, तो ज़्यादातर बीज-मंत्रों का ढाँचा देखते ही पढ़ लेंगे: ॐ, बीज, नाम, और क्या करना है।",
+  "meaningEn": "The last word of a mantra is its action. Namaḥ is a bow — and it always tells you to whom: śivāya, to Śiva; gaṇapataye, to Gaṇapati; sarasvatyai, to Sarasvatī. Svāhā is the fire-word — the word that goes with the offering into the flame — 'well offered'; Agni carries it up. Phaṭ is a strike — a sharp, short sound that tradition hears as a cut and a guard, closing fierce mantras, often as hūṃ phaṭ. With these three, the shape of most seed-mantras can be read on sight: Oṃ, seed, name, and the action word.",
+  "meaningHi": "मंत्र का आख़िरी शब्द उसका काम बताता है। नमः प्रणाम है — और हमेशा बताता है किसे: शिवाय, शिव को; गणपतये, गणपति को; सरस्वत्यै, सरस्वती को। स्वाहा आग का शब्द है — जो आहुति के साथ आग में जाता है — 'अच्छी तरह चढ़ाया'; अग्नि उसे ऊपर ले जाते हैं। फट् एक चोट है — छोटी, तेज़ आवाज़ जिसे परंपरा काटना और बचाना सुनती है, उग्र मंत्रों का अंत, अक्सर हूं फट्। ये तीन जान लें, तो ज़्यादातर बीज-मंत्रों का ढाँचा देखते ही पढ़ लेंगे: ॐ, बीज, नाम, और काम का शब्द।",
   "class": "bija",
   "tradition": "Hindu",
   "importance": 4,
@@ -23,39 +23,36 @@
       "alsoIn": [
         "mv_ganapati"
       ],
-      "t0": 119,
-      "t1": 599
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_closers_0.mp3"
     },
     {
       "deva": "स्वाहा",
       "iast": "svāhā",
-      "glossEn": "the offering-word — said as the ghee goes into the fire",
-      "glossHi": "आहुति का शब्द — घी आग में जाते ही",
+      "glossEn": "the offering-word — the word that goes with the ghee into the fire",
+      "glossHi": "आहुति का शब्द — जो घी के साथ आग में जाता है",
       "root": "su + āha — 'well said / well offered' (tradition's reading)",
-      "grammar": "Vedic; every āhuti ends with it; closes Kṛṣṇa's and Tārā's mantras (…gopījanavallabhāya svāhā · …ture svāhā)",
-      "t0": 1779,
-      "t1": 2399
+      "grammar": "Vedic; every āhuti ends with it; closes Kṛṣṇa's mantra (…gopījanavallabhāya svāhā) and the Buddhist Tārā mantra (…ture svāhā)",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_closers_1.mp3"
     },
     {
       "deva": "फट्",
       "iast": "phaṭ",
-      "glossEn": "the striking-word — a sharp sound that cuts and guards",
-      "glossHi": "चोट का शब्द — तेज़ आवाज़ जो काटती और बचाती है",
+      "glossEn": "the striking-word — a sharp sound; tradition hears a cut, a guard",
+      "glossHi": "चोट का शब्द — तेज़ आवाज़; परंपरा इसे काटना और बचाना सुनती है",
       "grammar": "tantric; ends with a stop, not a hum; the sound of a snap or a blow",
-      "t0": 5599,
-      "t1": 6000
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_closers_2.mp3"
     },
     {
       "deva": "हूं फट्",
       "iast": "hūṃ phaṭ",
-      "glossEn": "armour, then strike — the fierce close of guarding mantras",
+      "glossEn": "armour-seed, then strike — tradition's fierce close",
       "glossHi": "कवच, फिर चोट — रखवाली वाले मंत्रों का उग्र अंत",
-      "grammar": "hūṃ is the kūrca / armour seed; phaṭ the blow — the pair closes Hanumān's longer mantra and many Devī mantras"
+      "grammar": "hūṃ is the kūrca / armour seed; phaṭ the blow — the pair closes Hanumān's longer mantra and many Devī mantras",
+      "audioUrl": "https://dharmaweave.com/cdn/dharma-audio/vidya/words/mv_closers_3.mp3"
     }
   ],
   "audio": {
-    "spokenSlow": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_closers_slow_v1.mp3",
-    "spokenNatural": "https://dharmaweave.com/cdn/dharma-audio/vidya/spoken/mv_closers_natural_v1.mp3",
+    "sung": "https://dharmaweave.com/cdn/dharma-audio/mantras/om_namah_shivaya.mp3",
     "voice": "kuber"
   },
   "source": {
@@ -66,66 +63,57 @@
   },
   "significance": {
     "textSays": "The Yajurveda's Śrī Rudram says 'namaḥ śivāya' — a bow, to Śiva, dative. Every Vedic offering ends 'svāhā'. The tantric handbooks close fierce mantras with 'hūṃ phaṭ'.",
-    "traditionSays": "Namaḥ is the humblest close and the commonest; svāhā belongs to the fire and to mantras that are offerings; phaṭ is reserved for guarding and fierce use and is not said casually.",
+    "traditionSays": "Namaḥ is the humblest close and the commonest; svāhā belongs to the fire and to mantras that are offerings; phaṭ belongs to guarding and fierce mantras.",
     "weDoNotClaim": "That phaṭ protects or that svāhā delivers anything. These are the grammar of what a mantra is doing; what it achieves is not promised."
   },
-  "practice": {
-    "count": "once",
-    "timeOfDay": "a reading lesson — apply it to the next mantra you meet",
-    "mode": [
-      "aloud"
-    ]
-  },
+  "artPrompt": "Three moments in one frame: hands folded in a bow, a ladle of ghee poured into a sacred fire as the flame leaps, and an open palm raised in a guarding gesture with light blazing from it; warm gold against indigo. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
   "quiz": [
     {
-      "prompt": "Which closing word means 'a bow'?",
+      "imagePrompt": "Two hands folded together in a bow before a single oil lamp, the face out of frame; warm gold on indigo, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "Which closing word is this gesture?",
       "options": [
         "svāhā",
         "phaṭ",
         "namaḥ",
         "hūṃ"
       ],
-      "correct": 2
+      "correct": 2,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_closers_0_v1.jpg"
     },
     {
-      "prompt": "Svāhā is said —",
+      "imagePrompt": "A ladle of ghee poured into a sacred fire, the flame leaping up at the instant it lands, sparks rising into the dark; warm gold on indigo, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "Which closing word belongs to this moment?",
       "options": [
-        "at the end of a fierce mantra",
-        "before Oṃ",
-        "only in Buddhist mantras",
-        "as the offering goes into the fire"
+        "namaḥ",
+        "phaṭ",
+        "hūṃ",
+        "svāhā"
       ],
-      "correct": 3
+      "correct": 3,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_closers_1_v1.jpg"
+    },
+    {
+      "imagePrompt": "An open palm raised outward in a guarding gesture, light blazing from the hand and cutting the darkness; warm gold on indigo, no text. Premium Indian sacred illustration, painterly realism with layered oil-like glazing, soft blended edges, warm gold × cool indigo palette, mandala radiance, visible warm halo and backlight; emotional restraint; family-safe. NO text, no letters, no diagrams, no watermark.",
+      "prompt": "Which closing word is this gesture?",
+      "options": [
+        "phaṭ",
+        "namaḥ",
+        "svāhā",
+        "oṃ"
+      ],
+      "correct": 0,
+      "imageUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/quiz/mv_closers_2_v1.jpg"
     },
     {
       "prompt": "The name before namaḥ ends in -āya / -aye / -ai because —",
       "options": [
-        "it is the dative — 'to'",
         "it is the plural",
+        "it is the dative — 'to'",
         "it is the seed",
         "it rhymes with namaḥ"
       ],
-      "correct": 0
-    },
-    {
-      "prompt": "Which closer ends in a stop, not a hum?",
-      "options": [
-        "gaṃ",
-        "phaṭ",
-        "hrīṃ",
-        "oṃ"
-      ],
       "correct": 1
-    },
-    {
-      "prompt": "Build it: oṃ + gaṃ + gaṇapataye + ___",
-      "options": [
-        "svāhā",
-        "phaṭ",
-        "namaḥ",
-        "vicce"
-      ],
-      "correct": 2
     }
-  ]
+  ],
+  "artUrl": "https://dharmaweave.com/cdn/dharma-art/vidya/cards/mv_closers_v1.jpg"
 }
