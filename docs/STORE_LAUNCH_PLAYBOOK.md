@@ -249,3 +249,7 @@ launch teaches something new.*
 
 ### TestFlight after a store release — bump the version (learned 2026-09-08)
 Once a version (e.g. 1.0.8) is approved/released, Apple closes that "train": any new build with the same CFBundleShortVersionString is rejected AFTER upload with ITMS-90186 (train closed) + ITMS-90062, and EAS still reports "successfully uploaded" — the rejection arrives only by email to the ASC account holder, and the build never appears in App Store Connect. **Rule:** every TestFlight preview after a store release bumps `expo.version` (1.0.8 → 1.0.9). The preview channel (`testflight` profile) keeps it isolated from store OTAs; the bump does not touch store users.
+
+### Vidyā v2.1 OTA (2026-09-08) — the cheap-release template
+- JS + content + one bundled mp3, zero native change → OTA only. Four `eas update --branch production` runs (1.0.8 / 1.0.7 / 1.0.6 / 1.0.4), swapping `app.json` version per run and restoring it after (a `trap` guards the restore). Preview runtime 1.0.9 got its own push via `--branch preview` for TestFlight first; production never needed the 1.0.9 binary.
+- Drift gate re-run before pushing: 1.0.4 still differs only by datetimepicker (lazy-guarded) + astronomy-engine (pure JS).
